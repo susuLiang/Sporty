@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
+  - Cartography (2.1.0)
   - Firebase/AdMob (4.6.0):
     - Firebase/Core
     - Google-Mobile-Ads-SDK (= 7.25.0)
@@ -65,6 +66,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 4.5.1)
+  - Cartography (= 2.1.0)
   - Firebase/AdMob
   - Firebase/Auth
   - Firebase/Core
@@ -78,6 +80,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Cartography: 19c2223a8dfed35d82b098d365213b7ceb25ab2b
   Firebase: 27321a925aa85520618255a7c630859e0502ccbd
   FirebaseAnalytics: 5b02a63ead2c3f0259cfc7f15e053e440587ecf8
   FirebaseAuth: e58563adb207a43910a2ed87fecb9fa7d556df5a
@@ -95,6 +98,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nuke: 5f420c4637415f979c83afb35e73176dd03232d9
 
-PODFILE CHECKSUM: bcc7eb2b51234312b8cc5952c9a54243cd035b48
+PODFILE CHECKSUM: 58600e664bfc7cb3539a8e27f673dbad2404442d
 
 COCOAPODS: 1.3.1
