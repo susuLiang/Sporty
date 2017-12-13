@@ -14,6 +14,7 @@ target 'iSports' do
   pod 'Firebase/AdMob'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'MessageKit'
 
 
 

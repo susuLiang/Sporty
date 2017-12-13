@@ -55,6 +55,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
   - leveldb-library (1.20)
+  - MessageKit (0.10.2)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - GoogleMaps
   - GooglePlaces
+  - MessageKit
   - Nuke (= 5.2)
 
 SPEC CHECKSUMS:
@@ -89,9 +91,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
+  MessageKit: 2642b9641290691650cfa2612ad672512799a71c
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nuke: 5f420c4637415f979c83afb35e73176dd03232d9
 
-PODFILE CHECKSUM: dd9d6af4b0c68bae0db636689320c1624d093c7e
+PODFILE CHECKSUM: bcc7eb2b51234312b8cc5952c9a54243cd035b48
 
 COCOAPODS: 1.3.1
