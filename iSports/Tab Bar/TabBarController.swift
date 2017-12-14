@@ -90,7 +90,7 @@ class TabBarController: UITabBarController {
             navigationController.tabBarItem = TabBarItem(
                 itemType: itemType
             )
-            
+                        
             return navigationController
             
         case .messages:

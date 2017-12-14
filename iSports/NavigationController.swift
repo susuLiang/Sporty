@@ -55,6 +55,11 @@ class GradientNavigationController: UINavigationController {
         
         navigationBar.isTranslucent = true
         
+        navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!
+        ]
+        
         // Prepare gradient navigation bar view
         
         view.insertSubview(

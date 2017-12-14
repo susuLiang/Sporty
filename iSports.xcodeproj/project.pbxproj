@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6358E61FE2471200B6511A /* MainViewController.swift */; };
 		1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */; };
 		1F6CE5C71FE11BFC006D6AAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C61FE11BFC006D6AAD /* ViewController.swift */; };
 		1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */; };
@@ -24,10 +25,12 @@
 		1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF01FE17B81003071B9 /* ListsController.swift */; };
 		1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */; };
 		1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF41FE18058003071B9 /* UserSettingController.swift */; };
+		1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF71FE229CA003071B9 /* Preference.swift */; };
 		AF7D1C3524BBB56E03E5420B /* Pods_iSports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C5625200452BB789C1CC23 /* Pods_iSports.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F6358E61FE2471200B6511A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1F6CE5C11FE11BFC006D6AAD /* iSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6CE5C61FE11BFC006D6AAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		1FFC9DF01FE17B81003071B9 /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsCell.swift; sourceTree = "<group>"; };
 		1FFC9DF41FE18058003071B9 /* UserSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingController.swift; sourceTree = "<group>"; };
+		1FFC9DF71FE229CA003071B9 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		4DD76A467625E70E85392DE9 /* Pods-iSports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.debug.xcconfig"; sourceTree = "<group>"; };
 		C6C5625200452BB789C1CC23 /* Pods_iSports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16CEEBCF8DE1FE5AE8FF54A /* Pods-iSports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,8 +92,10 @@
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
 				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
+				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
 				1F6CE5C61FE11BFC006D6AAD /* ViewController.swift */,
+				1F6358E61FE2471200B6511A /* MainViewController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
@@ -298,11 +304,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F6CE5C71FE11BFC006D6AAD /* ViewController.swift in Sources */,
+				1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */,
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
 				1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
+				1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
