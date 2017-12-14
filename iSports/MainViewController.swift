@@ -9,7 +9,15 @@
 import UIKit
 import Firebase
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 1
+    }
+    
     
     var searchResults = [Preference]()
      @IBOutlet weak var searText: UITextField!

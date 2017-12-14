@@ -64,7 +64,7 @@ class GradientNavigationController: UINavigationController {
         
         view.insertSubview(
             navigationBarGradientView,
-            belowSubview: navigationBar
+            aboveSubview: navigationBar
         )
         
         constrain(

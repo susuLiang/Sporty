@@ -68,8 +68,18 @@ class ListsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableCell()
-        navigationItem.title = "title"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "search", style: .plain, target: self, action: #selector(searchAuthor))
+        navigationItem.title = "Title"
+        print(navigationItem)
+
+        
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "icon-home"), for: .normal)
+
+        button.tintColor = UIColor.black
+        button.addTarget(self, action: #selector(searchAuthor), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.rightBarButtonItem = barButton
+        
         tableView.delegate = self
         tableView.dataSource = self
         

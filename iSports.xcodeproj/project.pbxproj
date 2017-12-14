@@ -15,6 +15,8 @@
 		1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */; };
 		1F6CE5D71FE12077006D6AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */; };
 		1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* LoginController.swift */; };
+		1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */; };
+		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -40,6 +42,8 @@
 		1F6CE5D01FE11BFC006D6AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6CE5D81FE12A28006D6AAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -89,17 +93,19 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
+				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
 				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
 				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
-				1FFC9DF61FE18060003071B9 /* Lists */,
 				1F6CE5C61FE11BFC006D6AAD /* ViewController.swift */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
+				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
+				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
+				1FFC9DF61FE18060003071B9 /* Lists */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
-				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */,
 				1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */,
 				1F6CE5D01FE11BFC006D6AAD /* Info.plist */,
@@ -303,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */,
 				1F6CE5C71FE11BFC006D6AAD /* ViewController.swift in Sources */,
 				1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */,
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
@@ -316,6 +323,7 @@
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
+				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

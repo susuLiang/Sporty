@@ -67,12 +67,12 @@ class TabBarController: UITabBarController {
             
         case .map:
 
-            let profileTableViewController = ViewController()
+            let profileTableViewController = MapController()
 
-            let navigationController = GradientNavigationController(
+            let navigationController = UINavigationController(
                 rootViewController: profileTableViewController
             )
-
+            
             navigationController.tabBarItem = TabBarItem(
                 itemType: itemType
             )
@@ -83,14 +83,14 @@ class TabBarController: UITabBarController {
             
             let listsController = ListsController()
             
-            let navigationController = GradientNavigationController(
+            let navigationController = UINavigationController(
                 rootViewController: listsController
             )
             
             navigationController.tabBarItem = TabBarItem(
                 itemType: itemType
             )
-                        
+                                                
             return navigationController
             
         case .messages:
@@ -98,7 +98,7 @@ class TabBarController: UITabBarController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let cartTableViewController = storyboard.instantiateViewController(withIdentifier: "Main")
 
-            let navigationController = GradientNavigationController(
+            let navigationController = UINavigationController(
                 rootViewController: cartTableViewController
             )
 

@@ -15,7 +15,6 @@ enum Sportstype: String {
         baseball,
         football,
         badminton,
-        snooker,
         tennis,
         bowling
 }
