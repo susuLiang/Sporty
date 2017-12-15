@@ -13,10 +13,13 @@ class ListsController: UITableViewController {
     
     var results = [Preference]()
     
-    var selectedType: String?
-    var selectedLevel: String?
-    var selectedPlace: String?
-    var selectedTime: String?
+    var selectedPreference: Preference? {
+        
+        didSet {
+            tableView?.reloadData()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +27,13 @@ class ListsController: UITableViewController {
         setNavigation()
         tableView.delegate = self
         tableView.dataSource = self
-
-        fetch()
-
+        if selectedPreference == nil {
+            fetch()
+        } else {
+            search(selected: selectedPreference!)
+        }
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,7 +60,6 @@ class ListsController: UITableViewController {
             cell.timeLabel.text = results[indexPath.row].time
             cell.levelLabel.text = results[indexPath.row].level.rawValue
             cell.typeLabel.text = results[indexPath.row].type.rawValue
-            
             return cell
     }
     
@@ -62,17 +67,17 @@ class ListsController: UITableViewController {
         return 120
     }
     
-    @objc func search() {
-
+    @objc func showSearchView() {
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
-
         self.addChildViewController(searchView)
         searchView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
         self.view.addSubview(searchView.view)
         searchView.didMove(toParentViewController: self)
-
+    }
+    
+    func search(selected: Preference) {
         results = [Preference]()
-        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: "badminton")
+        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected.type.rawValue)
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
             for (activitiesId, activitiesData) in snapShotData {
@@ -81,14 +86,15 @@ class ListsController: UITableViewController {
                 guard let level = activitiesData["level"] as? String else { return }
                 guard let place = activitiesData["place"] as? String else { return }
                 guard let time = activitiesData["time"] as? String else { return }
-                let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
-                self.results.append(activities)
+                if time == selected.time && level == selected.level.rawValue && place == selected.place {
+                    let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
+                    self.results.append(activities)
+                }
             }
+            print("self", self.results)
             self.tableView.reloadData()
         })
     }
-
-
 
 }
 
@@ -117,7 +123,7 @@ extension ListsController {
         
         Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
             self.results = [Preference]()
-            print(snapshot)
+            print("snap", snapshot)
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (id, data) in objects {
                     let id = id
@@ -138,11 +144,8 @@ extension ListsController {
 extension ListsController {
 
     func setNavigation() {
-        
         navigationItem.title = "Title"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(search))
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
     }
 }
 

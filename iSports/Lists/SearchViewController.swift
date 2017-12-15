@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -19,8 +20,13 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var levelTF: UITextField!
     @IBOutlet weak var timeTF: UITextField!
     @IBOutlet weak var placeTF: UITextField!
-    
-//    let searchView = UIView.load(nibName: "searchView") as! SearchView
+
+    @IBAction func sureButton(_ sender: Any) {
+        let listsController = ListsController()
+        listsController.selectedPreference = Preference(id: "", type: Sportstype(rawValue: typeTF.text!)!, level: Level(rawValue: levelTF.text!)!, place: placeTF.text!, time: timeTF.text!)
+        self.view.removeFromSuperview()
+
+    }
     
     var level: [Level] = [.A, .B, .C, .D]
     var type: [Sportstype] = [  .basketball,

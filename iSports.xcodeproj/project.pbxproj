@@ -19,6 +19,7 @@
 		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
 		1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */; };
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
+		1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -48,6 +49,7 @@
 		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -106,7 +108,7 @@
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
-				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
+				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
@@ -116,6 +118,15 @@
 				1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */,
 			);
 			path = iSports;
+			sourceTree = "<group>";
+		};
+		1F70C5091FE3CE1500DDAF03 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
+				1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		1FFC9DDE1FE137A7003071B9 /* Tab Bar */ = {
@@ -233,6 +244,7 @@
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
+				1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
