@@ -13,16 +13,20 @@ class ListsController: UITableViewController {
     
     var results = [Preference]()
     
+    var selectedType: String?
+    var selectedLevel: String?
+    var selectedPlace: String?
+    var selectedTime: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableCell()
         setNavigation()
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         fetch()
-  
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +38,6 @@ class ListsController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: "cell")
     }
 
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,11 +45,9 @@ class ListsController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(results.count)
         return results.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
             cell.titleLabel.text = results[indexPath.row].id
@@ -55,15 +56,21 @@ class ListsController: UITableViewController {
             cell.typeLabel.text = results[indexPath.row].type.rawValue
             
             return cell
-        
-
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
     
-    @objc func searchAuthor() {
+    @objc func search() {
+
+        let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
+
+        self.addChildViewController(searchView)
+        searchView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        self.view.addSubview(searchView.view)
+        searchView.didMove(toParentViewController: self)
+
         results = [Preference]()
         let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: "badminton")
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
@@ -81,9 +88,7 @@ class ListsController: UITableViewController {
         })
     }
 
-    
 
-  
 
 }
 
@@ -95,10 +100,10 @@ class ListsController: UITableViewController {
 //        searchTextField.addSubview(activityIndicator)
 //        activityIndicator.frame = searchTextField.bounds
 //        activityIndicator.startAnimating()
-//        
+//
 //        let searchText = searchTextField.text ?? ""
 //        self.searchAuthor(type: searchText)
-//        
+//
 //        searchTextField.text = nil
 //        searchTextField.resignFirstResponder()
 //        activityIndicator.stopAnimating()
@@ -131,24 +136,15 @@ extension ListsController {
 }
 
 extension ListsController {
-    
+
     func setNavigation() {
+        
         navigationItem.title = "Title"
         
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "icon-home"), for: .normal)
-        
-        button.tintColor = UIColor.black
-        button.addTarget(self, action: #selector(searchAuthor), for: .touchUpInside)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem = barButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(search))
         
     }
-    
-    
 }
-
-        
 
     
     
