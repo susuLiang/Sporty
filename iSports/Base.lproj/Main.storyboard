@@ -189,7 +189,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XPn-96-tnT">
-                                <rect key="frame" x="141" y="149" width="97" height="30"/>
+                                <rect key="frame" x="16" y="149" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -202,19 +202,43 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iPS-5j-Yz0">
+                                <rect key="frame" x="141" y="212" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTc-s7-5pX">
+                                <rect key="frame" x="141" y="266" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oOO-1r-khR" userLabel="Time Text">
+                                <rect key="frame" x="139" y="342" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="FQs-Qt-VAC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="3LH-Oc-Q6d"/>
                     <connections>
+                        <outlet property="levelText" destination="iPS-5j-Yz0" id="hDE-BP-cRX"/>
                         <outlet property="numLabel" destination="G1K-0F-WyL" id="9lB-wA-wPt"/>
-                        <outlet property="searText" destination="XPn-96-tnT" id="atX-em-RKo"/>
+                        <outlet property="placeText" destination="gTc-s7-5pX" id="Bnu-Zc-y3k"/>
+                        <outlet property="timeText" destination="oOO-1r-khR" id="d0W-ot-cEj"/>
+                        <outlet property="typeText" destination="XPn-96-tnT" id="a4u-7j-dEW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMq-fO-Uhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="1654"/>
+            <point key="canvasLocation" x="1088.8" y="1653.8230884557722"/>
         </scene>
         <!--Lists Controller-->
         <scene sceneID="Cah-dN-GsV">
