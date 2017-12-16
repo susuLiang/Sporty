@@ -79,6 +79,13 @@ class ListsController: UITableViewController {
         searchView.didMove(toParentViewController: self)
     }
     
+    @objc func showAddView() {
+        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+
+        navigationController?.pushViewController(activityView, animated: true)
+        
+    }
+    
     func search(selected: Preference) {
         results = [Activity]()
         let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected.type.rawValue)
@@ -142,7 +149,9 @@ extension ListsController {
 
     func setNavigation() {
         navigationItem.title = "Title"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
+        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(showAddView))
+        let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
+        navigationItem.rightBarButtonItems = [addButton, searchButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
 }

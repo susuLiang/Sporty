@@ -78,6 +78,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Vf-xW-sZU">
+                        <rect key="frame" x="182" y="178" width="97" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAD-n0-Lej">
                         <rect key="frame" x="141" y="225" width="97" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -99,6 +106,13 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-2h-6N8">
+                        <rect key="frame" x="262" y="271" width="97" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HzR-wU-2yI">
                         <rect key="frame" x="141" y="271" width="97" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -113,8 +127,8 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9pT-2h-6N8">
-                        <rect key="frame" x="262" y="271" width="97" height="30"/>
+                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PM5-Tc-FAY">
+                        <rect key="frame" x="262" y="178" width="97" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -125,6 +139,14 @@
                 <viewLayoutGuide key="safeArea" id="b4p-Ts-90Q"/>
             </view>
             <connections>
+                <outlet property="addAuthorTextField" destination="3It-bb-13c" id="0s5-Xk-Iaw"/>
+                <outlet property="addFeeTextField" destination="9pT-2h-6N8" id="qgs-9X-BTa"/>
+                <outlet property="addLevelTextField" destination="PM5-Tc-FAY" id="5WO-Yy-QRW"/>
+                <outlet property="addNameTextField" destination="lQs-Y5-bN1" id="PlX-gh-2uS"/>
+                <outlet property="addNumberTextField" destination="tbk-Q7-4mJ" id="w9s-DQ-k62"/>
+                <outlet property="addPlaceTextField" destination="HzR-wU-2yI" id="dbv-cQ-Uzw"/>
+                <outlet property="addTimeTextField" destination="WAD-n0-Lej" id="YOt-2R-dHx"/>
+                <outlet property="addTypeTextField" destination="4Vf-xW-sZU" id="PcI-9W-7FU"/>
                 <outlet property="authorLabel" destination="rIz-BS-x6R" id="Rmt-9P-wxX"/>
                 <outlet property="feeLabel" destination="cxP-5F-hrJ" id="AkZ-ly-PWH"/>
                 <outlet property="levelLabel" destination="GRf-vd-5U8" id="f3x-iN-Alq"/>
