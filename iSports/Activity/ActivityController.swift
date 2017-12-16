@@ -10,10 +10,36 @@ import UIKit
 
 class ActivityController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var mapPlacedView: UIView!
+    @IBOutlet weak var feeLabel: UILabel!
+    
+    var selectedActivity: Activity?  {
+        
+        didSet {
+            
+            nameLabel.text = selectedActivity?.id
+            authorLabel.text = selectedActivity?.author
+            typeLabel.text = selectedActivity?.type.rawValue
+            levelLabel.text = selectedActivity?.level.rawValue
+            timeLabel.text = selectedActivity?.time
+            placeLabel.text = selectedActivity?.place
+            numberLabel.text = "\(selectedActivity?.number) / \(selectedActivity?.allNumber)"
+            feeLabel.text = "\(selectedActivity?.fee)"
+            
+        }
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +47,5 @@ class ActivityController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

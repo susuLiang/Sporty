@@ -11,14 +11,15 @@ import Firebase
 
 class ListsController: UITableViewController {
     
-    var results = [Preference]()
+    var results = [Activity]()
     
     var selectedPreference: Preference? {
         
         didSet {
-            tableView?.reloadData()
+           
+            search(selected: selectedPreference!)
+
         }
-        
     }
     
     override func viewDidLoad() {
@@ -29,11 +30,8 @@ class ListsController: UITableViewController {
         tableView.dataSource = self
         if selectedPreference == nil {
             fetch()
-        } else {
-            search(selected: selectedPreference!)
         }
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -67,6 +65,12 @@ class ListsController: UITableViewController {
         return 120
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        activityView.selectedActivity = results[indexPath.row]
+        navigationController?.pushViewController(activityView, animated: true)
+    }
+    
     @objc func showSearchView() {
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
         self.addChildViewController(searchView)
@@ -76,53 +80,40 @@ class ListsController: UITableViewController {
     }
     
     func search(selected: Preference) {
-        results = [Preference]()
+        results = [Activity]()
         let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected.type.rawValue)
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
             for (activitiesId, activitiesData) in snapShotData {
                 let id = activitiesId
-                guard let type = activitiesData["type"] as? String else { return }
-                guard let level = activitiesData["level"] as? String else { return }
-                guard let place = activitiesData["place"] as? String else { return }
-                guard let time = activitiesData["time"] as? String else { return }
-                if time == selected.time && level == selected.level.rawValue && place == selected.place {
-                    let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
-                    self.results.append(activities)
+                if
+                    let type = activitiesData["type"] as? String,
+                    let time = activitiesData["time"] as? String,
+                    let place = activitiesData["place"] as? String,
+                    let level = activitiesData["level"] as? String,
+                    let address = activitiesData["address"] as? String,
+                    let number = activitiesData["number"] as? Int,
+                    let allNumber = activitiesData["allNumber"] as? Int,
+                    let fee = activitiesData["fee"] as? Int,
+                    let author = activitiesData["author"] as? String {
+                        if time == selected.time && place == selected.place && level == selected.level.rawValue {
+                            let activities = (Activity(id: id, level: Level(rawValue: level)!, place: place, address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author))
+                            self.results.append(activities)
+                        }
                 }
             }
             print("self", self.results)
             self.tableView.reloadData()
         })
     }
-
 }
-
-//extension ListsController: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.isSearch = true
-//        print(self.isSearch)
-//        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-//        searchTextField.addSubview(activityIndicator)
-//        activityIndicator.frame = searchTextField.bounds
-//        activityIndicator.startAnimating()
-//
-//        let searchText = searchTextField.text ?? ""
-//        self.searchAuthor(type: searchText)
-//
-//        searchTextField.text = nil
-//        searchTextField.resignFirstResponder()
-//        activityIndicator.stopAnimating()
-//        return true
-//    }
-//}
 
 extension ListsController {
     
     func fetch() {
         
         Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
-            self.results = [Preference]()
+            self.results = [Activity]()
             print("snap", snapshot)
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (id, data) in objects {
@@ -131,8 +122,14 @@ extension ListsController {
                         let type = data["type"] as? String,
                         let time = data["time"] as? String,
                         let place = data["place"] as? String,
-                        let level = data["level"] as? String {
-                        self.results.append(Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time))
+                        let level = data["level"] as? String,
+                        let address = data["address"] as? String,
+                        let number = data["number"] as? Int,
+                        let allNumber = data["allNumber"] as? Int,
+                        let fee = data["fee"] as? Int,
+                        let author = data["author"] as? String
+                        {
+                            self.results.append(Activity(id: id, level: Level(rawValue: level)!, place: place, address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author))
                         }
                 }
                 self.tableView.reloadData()
@@ -146,6 +143,7 @@ extension ListsController {
     func setNavigation() {
         navigationItem.title = "Title"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
 }
 
