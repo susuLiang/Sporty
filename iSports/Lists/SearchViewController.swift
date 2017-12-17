@@ -22,12 +22,12 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var placeTF: UITextField!
 
     @IBAction func sureButton(_ sender: Any) {
-        let listsController = ListsController()
-        listsController.selectedPreference = Preference(id: "", type: Sportstype(rawValue: typeTF.text!)!, level: Level(rawValue: levelTF.text!)!, place: placeTF.text!, time: timeTF.text!)
+        mainViewController?.selectedPreference = Preference(id: "", type: Sportstype(rawValue: "volleyball")!, level: Level(rawValue: "C")!, place: "大安區", time: "星期三")
         self.view.removeFromSuperview()
 
     }
     
+    var mainViewController: ListsController?
     var level: [Level] = [.A, .B, .C, .D]
     var type: [Sportstype] = [  .basketball,
                                 .volleyball,

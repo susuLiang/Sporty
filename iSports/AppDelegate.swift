@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        GMSServices.provideAPIKey("AIzaSyD4CGr4E1kcHpv_OJyD1ILlZppv1dDX5z0")
-        GMSPlacesClient.provideAPIKey("AIzaSyD4CGr4E1kcHpv_OJyD1ILlZppv1dDX5z0")
+        GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
+        GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         

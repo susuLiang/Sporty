@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -44,31 +45,39 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var numLabel: UILabel!
    
     @IBAction func search(_ sender: Any) {
-        searchResults = [Preference]()
-        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: choosedtype)
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
-            print(snapshot.value)
-            guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
-            for (activitiesId, activitiesData) in snapShotData {
-                let id = activitiesId
-                guard let type = activitiesData["type"] as? String else { return }
-                guard let level = activitiesData["level"] as? String else { return }
-                guard let place = activitiesData["place"] as? String else { return }
-                guard let time = activitiesData["time"] as? String else { return }
-                if time == self.choosedtime && level == self.choosedlevel && place == self.choosedcity{
-                    let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
-                self.searchResults.append(activities)
-                }
-            }
-            print(self.searchResults)
-
-        })
+//        searchResults = [Preference]()
+//        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: choosedtype)
+//        ref.observe(.value, with: { (snapshot: DataSnapshot) in
+//            print(snapshot.value)
+//            guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
+//            for (activitiesId, activitiesData) in snapShotData {
+//                let id = activitiesId
+//                guard let type = activitiesData["type"] as? String else { return }
+//                guard let level = activitiesData["level"] as? String else { return }
+//                guard let place = activitiesData["place"] as? String else { return }
+//                guard let time = activitiesData["time"] as? String else { return }
+//                if time == self.choosedtime && level == self.choosedlevel && place == self.choosedcity{
+//                    let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
+//                self.searchResults.append(activities)
+//                }
+//            }
+//            print(self.searchResults)
+//
+//        })
+        if let address = typeText.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) as? String {
+        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(address),+CA&key=AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8"
+        Alamofire.request(url).responseJSON { response in
+            print("Request: \(response.request)")
+            print("Response: \(response.response)")
+            print("Error: \(response.error)")
+        }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numLabel.text = String(searchResults.count)
-        typeText.inputView = typePicker
+//        numLabel.text = String(searchResults.count)
+//        typeText.inputView = typePicker
         typePicker.delegate = self
         typePicker.dataSource = self
 //        timeText.inputView = timePicker

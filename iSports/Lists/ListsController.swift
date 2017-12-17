@@ -16,12 +16,11 @@ class ListsController: UITableViewController {
     var selectedPreference: Preference? {
         
         didSet {
-           
-            search(selected: selectedPreference!)
 
+            search(selected: selectedPreference!)
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableCell()
@@ -33,6 +32,7 @@ class ListsController: UITableViewController {
         }
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -47,19 +47,26 @@ class ListsController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        print("self:\(self)")
+        return self.results.count
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("indexPath:\(indexPath)")
+        print("self:\(self)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
-            cell.titleLabel.text = results[indexPath.row].id
-            cell.timeLabel.text = results[indexPath.row].time
-            cell.levelLabel.text = results[indexPath.row].level.rawValue
-            cell.typeLabel.text = results[indexPath.row].type.rawValue
-            return cell
+        cell.titleLabel.text = results[indexPath.row].id
+        cell.timeLabel.text = results[indexPath.row].time
+        cell.levelLabel.text = results[indexPath.row].level.rawValue
+        cell.typeLabel.text = results[indexPath.row].type.rawValue
+        return cell
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -73,6 +80,7 @@ class ListsController: UITableViewController {
     
     @objc func showSearchView() {
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
+        searchView.mainViewController = self
         self.addChildViewController(searchView)
         searchView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
         self.view.addSubview(searchView.view)
@@ -87,7 +95,7 @@ class ListsController: UITableViewController {
     }
     
     func search(selected: Preference) {
-        results = [Activity]()
+        self.results = [Activity]()
         let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected.type.rawValue)
         ref.observe(.value, with: { (snapshot: DataSnapshot) in
             guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
@@ -109,7 +117,7 @@ class ListsController: UITableViewController {
                         }
                 }
             }
-            print("self", self.results)
+            print("self", self)
             self.tableView.reloadData()
         })
     }
