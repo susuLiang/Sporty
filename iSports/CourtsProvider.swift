@@ -23,10 +23,6 @@ class CourtsProvider {
         let urlString = "https://iplay.sa.gov.tw/odata/GymSearch?$format=application/json;odata.metadata=none&City=\(city)&GymType=\(gymType)"
         var courts = [Court]()
         Alamofire.request(urlString).responseJSON { response in
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result.value)")                         // response serialization result
-
             if let resultsValue = response.result.value as? [String: AnyObject] {
                         if let results = resultsValue["value"] as? [[String: AnyObject]] {
                     for result in results {
@@ -57,13 +53,9 @@ class CourtsProvider {
                         
                         courts.append(court)
                     }
-                    
                     // todo: 過濾球場
-                    
                     completion(courts, nil)
-                    
                 } else { completion(nil, GetCourtError.invalidResponseData) }
-                
             }
         }
     }

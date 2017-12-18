@@ -18,10 +18,11 @@ class MapController: UIViewController {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
+    var courts: [Court] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(setMap(latitude: 25.0472, longitude: 121.564939))
+        getLocation()
         // Do any additional setup after loading the view.
     }
 
@@ -30,17 +31,34 @@ class MapController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func getLocation() {
+        if let city = "臺北市".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
+                if error == nil {
+                    self.courts = Courts!
+                    self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
+                } else {
+                    // todo: error handling
+                }
+            })
+        }
+        
+    }
+    
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
         let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
-        marker.map = mapView
-        
+        for court in self.courts {
+            print(court.latitude)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: Double(court.latitude)!, longitude: Double(court.longitude)!)
+            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+            marker.map = mapView
+        }
         setLocationManager()
         return mapView
     }
@@ -52,10 +70,8 @@ class MapController: UIViewController {
         self.locationManager.distanceFilter = 50
         self.locationManager.startUpdatingLocation()
         self.locationManager.delegate = self
-        
         self.placesClient = GMSPlacesClient.shared()
     }
-
 }
 
 extension MapController: CLLocationManagerDelegate {
@@ -71,9 +87,9 @@ extension MapController: CLLocationManagerDelegate {
         marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         marker.map = mapView
     }
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            locationManager.stopUpdatingLocation()
-            print("Error: \(error)")
-        }
-
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        print("Error: \(error)")
+    }
 }

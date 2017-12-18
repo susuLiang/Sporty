@@ -44,24 +44,15 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
             CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
                 if error == nil {
-                    print(Courts)
+//                    print(Courts)
                     self.courts = Courts!
-
                 } else {
-
                     // todo: error handling
-
                 }
-
-                print(self.courts)
+//                print(self.courts)
             })
-//            let urlString = "https://iplay.sa.gov.tw/odata/GymSearch?$format=application/json;odata.metadata=none&City=\(city)&GymType=\(gym)"
-            
-
-
-                    }
-        
-                }
+        }
+    }
     
     
     override func viewDidLoad() {

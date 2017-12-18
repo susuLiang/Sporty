@@ -14,9 +14,7 @@ class ListsController: UITableViewController {
     var results = [Activity]()
     
     var selectedPreference: Preference? {
-        
         didSet {
-
             search(selected: selectedPreference!)
         }
     }
