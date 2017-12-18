@@ -22,21 +22,16 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var placeTF: UITextField!
 
     @IBAction func sureButton(_ sender: Any) {
-        mainViewController?.selectedPreference = Preference(id: "", type: Sportstype(rawValue: "volleyball")!, level: Level(rawValue: "C")!, place: "大安區", time: "星期三")
+        mainViewController?.selectedPreference = Preference(id: "", type: Sportstype(rawValue: "badminton")!, level: Level(rawValue: "C")!, place: "大安運動中心", time: "星期三")
         self.view.removeFromSuperview()
 
     }
     
     var mainViewController: ListsController?
     var level: [Level] = [.A, .B, .C, .D]
-    var type: [Sportstype] = [  .basketball,
-                                .volleyball,
-                                .baseball,
-                                .football,
-                                .badminton,
-                                .tennis,
-                                .bowling]
-    var place: [String] = ["信義區", "大安區", "松山區", "中正區", "中山區"]
+    var type: [Sportstype] = [.basketball, .volleyball, .baseball, .football, .badminton, .tennis, .bowling]
+    var place: [String] = []
+    
     var time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
     
     var selectedType: String?
@@ -48,26 +43,20 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     var levelPicker = UIPickerView()
     var timePicker = UIPickerView()
     var placePicker = UIPickerView()
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerDelegate()
-//        UINib.load(nibName: "SearchView")
-        
+        setPlaces()
         
         typeTF.inputView = typePicker
         levelTF.inputView = levelPicker
         timeTF.inputView = timePicker
         placeTF.inputView = placePicker
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -113,13 +102,21 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         default: break
         }
     }
+    
+    func setPlaces() {
+        FirebaseProvider.shared.getAllData(completion: { (results, error) in
+            for result in results! {
+                self.place.append(result.place)
+            }
+            print(self.place)
+        })
+    }
 
 }
 
 extension SearchViewController {
     
     func pickerDelegate() {
-
         typePicker.delegate = self
         typePicker.dataSource = self
         levelPicker.delegate = self
@@ -128,9 +125,6 @@ extension SearchViewController {
         placePicker.dataSource = self
         timePicker.delegate = self
         timePicker.dataSource = self
-        
-    }
-    
-    
+    }  
 }
 

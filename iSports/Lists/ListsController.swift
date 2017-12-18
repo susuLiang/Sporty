@@ -29,7 +29,6 @@ class ListsController: UITableViewController {
             fetch()
         }
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -57,11 +56,12 @@ class ListsController: UITableViewController {
         cell.timeLabel.text = results[indexPath.row].time
         cell.levelLabel.text = results[indexPath.row].level.rawValue
         cell.typeLabel.text = results[indexPath.row].type.rawValue
+        cell.placeLabel.text = results[indexPath.row].place
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 180
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,30 +115,12 @@ class ListsController: UITableViewController {
 extension ListsController {
     
     @objc func fetch() {
-        
-        Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
-            self.results = [Activity]()
-            print("snap", snapshot)
-            if let objects = snapshot.value as? [String: AnyObject] {
-                for (id, data) in objects {
-                    let id = id
-                    if
-                        let type = data["type"] as? String,
-                        let time = data["time"] as? String,
-                        let place = data["place"] as? String,
-                        let level = data["level"] as? String,
-                        let address = data["address"] as? String,
-                        let number = data["number"] as? Int,
-                        let allNumber = data["allNumber"] as? Int,
-                        let fee = data["fee"] as? Int,
-                        let author = data["author"] as? String
-                        {
-                            self.results.append(Activity(id: id, level: Level(rawValue: level)!, place: place, address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author))
-                        }
-                }
+        FirebaseProvider.shared.getAllData(completion: { (results, error) in
+            if error == nil {
+                self.results = results!
                 self.tableView.reloadData()
             }
-        }
+        })
     }
 }
 

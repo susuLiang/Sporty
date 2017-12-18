@@ -18,7 +18,7 @@ class CourtsProvider {
     
     static let shared = CourtsProvider()
     
-    func getApiData(city: String, gymType: String, completion: @escaping ([Court]?, Error?) -> Void ) {
+    func getApiData(city: String, gymType: String, completion: @escaping ([Court]?, Error?) -> Void) {
         let urlString = "https://iplay.sa.gov.tw/api/GymSearchAllList?$format=application/json;odata.metadata=none&City=\(city)&GymType=\(gymType)"
         var courts = [Court]()
         Alamofire.request(urlString).responseJSON { response in

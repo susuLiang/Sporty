@@ -159,9 +159,6 @@
                                 <rect key="frame" x="164" y="584" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="確定"/>
-                                <connections>
-                                    <segue destination="d7C-Py-H0f" kind="show" id="CZk-4S-JBY"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -238,25 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMq-fO-Uhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088.8" y="1653.8230884557722"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="1OZ-Hi-8Xf">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="d7C-Py-H0f" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Bb-LY-p18">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="VJU-hT-u3q" kind="relationship" relationship="viewControllers" id="oE2-7Q-itX"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fxb-BN-x3N" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="620" y="856"/>
+            <point key="canvasLocation" x="876" y="799"/>
         </scene>
     </scenes>
 </document>

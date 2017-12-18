@@ -23,6 +23,7 @@ class MapController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
+        navigationItem.title = "Map"
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +35,6 @@ class MapController: UIViewController {
             let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
                 if error == nil {
-                    print(Courts)
                     self.courts = Courts!
                     self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
                 } else {
@@ -42,17 +42,15 @@ class MapController: UIViewController {
                 }
             })
         }
-        
     }
     
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12.0)
         let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         
         for court in self.courts {
-            print(court.latitude)
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(court.latitude)!, longitude: Double(court.longitude)!)
             marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)

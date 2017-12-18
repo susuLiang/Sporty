@@ -50,7 +50,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 addFeeTextField.text = "\(fee)"
             }
         }
-
     }
 
     override func viewDidLoad() {
@@ -61,27 +60,20 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc func save() {
-        
         guard
-
             let level = addLevelTextField.text,
             let num = addNumberTextField.text,
             let fee = addFeeTextField.text
-        
             else {
                 print("Form is not valid")
                 return
             }
-        
         let ref = Database.database().reference()
         let value = ["name": "123", "level": level, "time": "星期二", "place": "大安區", "number": Int(num), "fee": Int(fee), "author": "me", "type": "volleyball", "allNumber": 8, "address": "台北市信義區"] as [String : Any]
-                
             ref.child("activities").childByAutoId().setValue(value)
-        
         self.navigationController?.popToRootViewController(animated: true)
         
     }
