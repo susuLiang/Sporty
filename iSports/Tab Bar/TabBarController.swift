@@ -38,6 +38,8 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         setUpTabBar()
+        self.selectedIndex = 1
+
         
     }
     

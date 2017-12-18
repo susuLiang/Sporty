@@ -107,7 +107,6 @@ class ListsController: UITableViewController {
                         }
                 }
             }
-            print("self", self)
             self.tableView.reloadData()
         })
     }
@@ -115,7 +114,7 @@ class ListsController: UITableViewController {
 
 extension ListsController {
     
-    func fetch() {
+    @objc func fetch() {
         
         Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
             self.results = [Activity]()
@@ -149,13 +148,8 @@ extension ListsController {
         navigationItem.title = "Title"
         let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(showAddView))
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
-        navigationItem.rightBarButtonItems = [addButton, searchButton]
+        let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
+        navigationItem.rightBarButtonItems = [addButton, searchButton, allButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
 }
-
-    
-    
-    
-    
-

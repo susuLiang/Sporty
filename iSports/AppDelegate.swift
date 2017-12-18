@@ -25,7 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        window.rootViewController = TabBarController(itemTypes: [ .map, .home, .messages])
+        let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+        
+        tabBarController.selectedIndex = 1
+        
+        window.rootViewController = tabBarController
         
         window.makeKeyAndVisible()
         
