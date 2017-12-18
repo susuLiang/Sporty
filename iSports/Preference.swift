@@ -25,8 +25,6 @@ enum Level: String {
 
 }
 
-
-
 struct Preference {
     
     let id: String

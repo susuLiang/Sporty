@@ -20,67 +20,59 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 .badminton,
                                 .tennis,
                                 .bowling]
-    var city: [String] = ["信義區", "大安區", "松山區", "中正區", "中山區"]
+    var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
     var time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-    
-    var choosedtype: String?
-    var choosedlevel: String?
-    var choosedcity: String?
-    var choosedtime: String?
+    var gymType = ["羽球場", "籃球場", "棒球場"]
 
-    
-    
-    var searchResults = [Preference]()
-    @IBOutlet weak var typeText: UITextField!
-    @IBOutlet weak var levelText: UITextField!
-    @IBOutlet weak var placeText: UITextField!
-    @IBOutlet weak var timeText: UITextField!
+    @IBOutlet weak var oneText: UITextField!
+    @IBOutlet weak var twoText: UITextField!
+    @IBOutlet weak var threeText: UITextField!
+    @IBOutlet weak var fourText: UITextField!
     
     var typePicker = UIPickerView()
 //    var levelPicker = UIPickerView()
 //    var placePicker = UIPickerView()
 //    var timePicker = UIPickerView()
-//
+    var courts: [Court] = []
 
     @IBOutlet weak var numLabel: UILabel!
    
     @IBAction func search(_ sender: Any) {
-//        searchResults = [Preference]()
-//        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: choosedtype)
-//        ref.observe(.value, with: { (snapshot: DataSnapshot) in
-//            print(snapshot.value)
-//            guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
-//            for (activitiesId, activitiesData) in snapShotData {
-//                let id = activitiesId
-//                guard let type = activitiesData["type"] as? String else { return }
-//                guard let level = activitiesData["level"] as? String else { return }
-//                guard let place = activitiesData["place"] as? String else { return }
-//                guard let time = activitiesData["time"] as? String else { return }
-//                if time == self.choosedtime && level == self.choosedlevel && place == self.choosedcity{
-//                    let activities = Preference(id: id, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: place, time: time)
-//                self.searchResults.append(activities)
-//                }
-//            }
-//            print(self.searchResults)
-//
-//        })
-        if let address = typeText.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) as? String {
-        let url = "https://maps.googleapis.com/maps/api/geocode/json?address=\(address),+CA&key=AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8"
-        Alamofire.request(url).responseJSON { response in
-            print("Request: \(response.request)")
-            print("Response: \(response.response)")
-            print("Error: \(response.error)")
-        }
-        }
-    }
+
+        if let city = threeText.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let gym = fourText.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+
+            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
+                if error == nil {
+                    print(Courts)
+                    self.courts = Courts!
+
+                } else {
+
+                    // todo: error handling
+
+                }
+
+                print(self.courts)
+            })
+//            let urlString = "https://iplay.sa.gov.tw/odata/GymSearch?$format=application/json;odata.metadata=none&City=\(city)&GymType=\(gym)"
+            
+
+
+                    }
+        
+                }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        numLabel.text = String(searchResults.count)
-//        typeText.inputView = typePicker
+        oneText.inputView = typePicker
         typePicker.delegate = self
         typePicker.dataSource = self
-//        timeText.inputView = timePicker
+//        fourText.inputView = timePicker
+//        timePicker.delegate = self
+//        timePicker.dataSource = self
 //        levelText.inputView = levelPicker
 //        placeText.inputView = placePicker
         
@@ -105,7 +97,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         case 2:
             return level.count
         case 3:
-            return time.count
+            return gymType.count
         case 4:
             return city.count
         default:
@@ -121,7 +113,7 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         case 2:
             return level[row].rawValue
         case 3:
-            return time[row]
+            return gymType[row]
         case 4:
             return city[row]
         default:
@@ -132,17 +124,13 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 1:
-            typeText.text = type[row].rawValue
-            choosedtype = type[row].rawValue
+            oneText.text = type[row].rawValue
         case 2:
-            levelText.text = level[row].rawValue
-            choosedlevel = level[row].rawValue
+            twoText.text = level[row].rawValue
         case 3:
-            timeText.text = time[row]
-            choosedtime = time[row]
+            fourText.text = gymType[row]
         case 4:
-            placeText.text = city[row]
-            choosedcity = city[row]
+            threeText.text = city[row]
         default:
             return 
         }

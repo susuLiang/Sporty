@@ -21,6 +21,8 @@
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
 		1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */; };
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
+		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
+		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -52,6 +54,8 @@
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
+		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
 				1F6CE5C61FE11BFC006D6AAD /* ViewController.swift */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
+				1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */,
+				1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */,
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
@@ -340,6 +346,7 @@
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
+				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
 				1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
@@ -348,6 +355,7 @@
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
+				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

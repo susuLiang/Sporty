@@ -50,14 +50,10 @@ class ListsController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("self:\(self)")
         return self.results.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("indexPath:\(indexPath)")
-        print("self:\(self)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
         cell.titleLabel.text = results[indexPath.row].id
         cell.timeLabel.text = results[indexPath.row].time
@@ -65,8 +61,6 @@ class ListsController: UITableViewController {
         cell.typeLabel.text = results[indexPath.row].type.rawValue
         return cell
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -89,9 +83,7 @@ class ListsController: UITableViewController {
     
     @objc func showAddView() {
         let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
-
         navigationController?.pushViewController(activityView, animated: true)
-        
     }
     
     func search(selected: Preference) {

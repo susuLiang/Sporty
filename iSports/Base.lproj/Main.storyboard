@@ -229,11 +229,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="3LH-Oc-Q6d"/>
                     <connections>
-                        <outlet property="levelText" destination="iPS-5j-Yz0" id="hDE-BP-cRX"/>
+                        <outlet property="fourText" destination="oOO-1r-khR" id="7gy-WT-4r0"/>
                         <outlet property="numLabel" destination="G1K-0F-WyL" id="9lB-wA-wPt"/>
-                        <outlet property="placeText" destination="gTc-s7-5pX" id="Bnu-Zc-y3k"/>
-                        <outlet property="timeText" destination="oOO-1r-khR" id="d0W-ot-cEj"/>
-                        <outlet property="typeText" destination="XPn-96-tnT" id="a4u-7j-dEW"/>
+                        <outlet property="oneText" destination="XPn-96-tnT" id="wTU-Nd-CJY"/>
+                        <outlet property="threeText" destination="gTc-s7-5pX" id="a3i-FC-bTk"/>
+                        <outlet property="twoText" destination="iPS-5j-Yz0" id="80E-Rc-JOe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMq-fO-Uhi" userLabel="First Responder" sceneMemberID="firstResponder"/>

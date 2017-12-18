@@ -86,15 +86,10 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         
     }
 
-        
-    
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         textField.delegate = self
         return false
-    }
-    
-    
+    }   
 }
 
 extension ActivityController {
