@@ -36,6 +36,7 @@ class MapController: UIViewController {
             let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
                 if error == nil {
+                    print(Courts)
                     self.courts = Courts!
                     self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
                 } else {

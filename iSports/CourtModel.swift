@@ -14,21 +14,19 @@ struct Court {
     var name: String
     var tel: String?
     var address: String
-    var rate: Int
     var rateCount: Int
     var gymFuncList: String
     var latitude: String
     var longitude: String
     
     init(courtID: Int, name: String, tel: String?,
-         address: String, rate: Int, rateCount: Int,
+         address: String, rateCount: Int,
          gymFuncList: String, latitude: String, longitude: String) {
         
         self.courtID = courtID
         self.name = name
         self.tel = tel
         self.address = address
-        self.rate = rate
         self.rateCount = rateCount
         self.gymFuncList = gymFuncList
         self.latitude = latitude

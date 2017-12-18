@@ -44,12 +44,13 @@ class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
             CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
                 if error == nil {
-//                    print(Courts)
+                    print(Courts)
                     self.courts = Courts!
                 } else {
                     // todo: error handling
                 }
-//                print(self.courts)
+                print(error)
+                print(self.courts)
             })
         }
     }
