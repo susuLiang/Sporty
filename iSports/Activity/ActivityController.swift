@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMaps
+import NVActivityIndicatorView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
 
@@ -21,8 +22,10 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var mapPlacedView: UIView!
     @IBOutlet weak var feeLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
     
     @IBOutlet weak var addNameTextField: UITextField!
+    @IBOutlet weak var addCityTextField: UITextField!
     @IBOutlet weak var addLevelTextField: UITextField!
     @IBOutlet weak var addTimeTextField: UITextField!
     @IBOutlet weak var addPlaceTextField: UITextField!
@@ -30,7 +33,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addFeeTextField: UITextField!
     @IBOutlet weak var addAuthorTextField: UITextField!
     @IBOutlet weak var addTypeTextField: UITextField!
-    
     
     var selectedActivity: Activity?  {
         
@@ -41,7 +43,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             addTypeTextField.text = selectedActivity?.type.rawValue
             addLevelTextField.text = selectedActivity?.level.rawValue
             addTimeTextField.text = selectedActivity?.time
-            addPlaceTextField.text = selectedActivity?.place
+            addPlaceTextField.text = selectedActivity?.place.placeName
             if let number = selectedActivity?.number,
                 let allNumber = selectedActivity?.allNumber,
                 let fee = selectedActivity?.fee
@@ -51,9 +53,16 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    let loadingIndicator = LoadingIndicator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if (addTypeTextField.text?.isEmpty)! && (addCityTextField.text?.isEmpty)! {
+//            let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
+//            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//            alert.addAction(defaultAction)
+//        }
         setLabels()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
     }
@@ -96,3 +105,4 @@ extension ActivityController {
          feeLabel.text = "Fee*"
     }
 }
+

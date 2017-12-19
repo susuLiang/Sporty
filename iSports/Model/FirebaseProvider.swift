@@ -21,7 +21,9 @@ class FirebaseProvider {
                 if
                     let type = data["type"] as? String,
                     let time = data["time"] as? String,
-                    let place = data["place"] as? String,
+                    let placeName = data["place"] as? String,
+                    let latitude = data["latitude"] as? String,
+                    let longitude = data["longitude"] as? String,
                     let level = data["level"] as? String,
                     let address = data["address"] as? String,
                     let number = data["number"] as? Int,
@@ -29,9 +31,9 @@ class FirebaseProvider {
                     let fee = data["fee"] as? Int,
                     let author = data["author"] as? String
                 {
-                    let activity = Activity(id: id, level: Level(rawValue: level)!, place: place, address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author)
+                    let activity = Activity(id: id, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author)
                     if selected != nil {
-                        if time == selected?.time && place == selected?.place && level == selected?.level.rawValue {
+                        if time == selected?.time && placeName == selected?.place && level == selected?.level.rawValue {
                             results.append(activity)
                         }
                     } else {

@@ -23,6 +23,8 @@
 		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
 		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
+		1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */; };
+		1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF21FE8A84300E485F1 /* UserManager.swift */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -56,6 +58,8 @@
 		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
 		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
+		1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		1FFA2EF21FE8A84300E485F1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -109,15 +113,12 @@
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
 				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
-				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
-				1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */,
-				1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */,
-				1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */,
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
+				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
 				1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */,
@@ -131,11 +132,24 @@
 		1F70C5091FE3CE1500DDAF03 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				1F70C50A1FE3D3D600DDAF03 /* Activity.swift */,
 				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
 				1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		1FFA2EF41FE8AD3400E485F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F70C50A1FE3D3D600DDAF03 /* Activity.swift */,
+				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
+				1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */,
+				1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */,
+				1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */,
+				1FFA2EF21FE8A84300E485F1 /* UserManager.swift */,
+				1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1FFC9DDE1FE137A7003071B9 /* Tab Bar */ = {
@@ -342,6 +356,7 @@
 				1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */,
 				1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */,
 				1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */,
+				1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */,
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
 				1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */,
@@ -358,6 +373,7 @@
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
+				1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -106,7 +106,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func setPlaces() {
         FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
             for result in results! {
-                self.place.append(result.place)
+                self.place.append(result.place.placeName)
             }
         })
     }

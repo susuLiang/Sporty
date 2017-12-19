@@ -18,8 +18,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
-    var courts: [Court] = []
-
+//    var courts: [Court] = []
+    var results: [Activity] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
@@ -31,30 +33,38 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     func getLocation() {
-        if let city = "臺北市".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-            let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
-                if error == nil {
-                    self.courts = Courts!
-                    self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
-                } else {
-                    // todo: error handling
-                }
-            })
-        }
+        FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
+            if error == nil {
+                self.results = results!
+                self.view.addSubview(self.setMap())
+            }
+        })
     }
+//        if let city = "臺北市".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+//            let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+//            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
+//                if error == nil {
+//                    self.courts = Courts!
+//                    self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
+//                } else {
+//                    // todo: error handling
+//                }
+//            })
+//        }
     
-    func setMap(latitude: Double, longitude: Double) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12.0)
+    
+    func setMap() -> GMSMapView {
+        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
         let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         
-        for court in self.courts {
+        for court in self.results {
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: Double(court.latitude)!, longitude: Double(court.longitude)!)
+            marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
             marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+            marker.title = court.id
             marker.map = mapView
         }
         setLocationManager()
@@ -72,7 +82,16 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        var didSelectedMarker: Activity?
+        for activity in results {
+            if activity.id == marker.title {
+                didSelectedMarker = activity
+                break
+            }
+        }
         let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        activityView.selectedActivity = didSelectedMarker
+
         navigationController?.pushViewController(activityView, animated: true)
         return true
     }

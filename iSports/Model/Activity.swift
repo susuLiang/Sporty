@@ -14,7 +14,7 @@ struct Activity {
     
     let level: Level
     
-    let place: String
+    let place: Place
     
     let address: String
     
@@ -30,4 +30,14 @@ struct Activity {
     
     let author: String
     
+}
+
+struct Place {
+    
+    let placeName: String
+    
+    let placeLatitude: String
+    
+    let placeLongitude: String
+
 }

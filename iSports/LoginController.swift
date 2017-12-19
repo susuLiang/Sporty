@@ -42,7 +42,7 @@ class LoginController: UIViewController {
                 print("Form is not valid")
                 return
         }
-        Auth.auth().createUser(withEmail: email, password: password, completion: {(user: User?, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
             
             if error != nil {
                 print(error)

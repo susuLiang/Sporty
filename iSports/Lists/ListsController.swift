@@ -56,7 +56,7 @@ class ListsController: UITableViewController {
         cell.timeLabel.text = results[indexPath.row].time
         cell.levelLabel.text = results[indexPath.row].level.rawValue
         cell.typeLabel.text = results[indexPath.row].type.rawValue
-        cell.placeLabel.text = results[indexPath.row].place
+        cell.placeLabel.text = results[indexPath.row].place.placeName
         return cell
     }
     
