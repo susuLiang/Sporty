@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapController: UIViewController {
+class MapController: UIViewController, GMSMapViewDelegate {
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -47,6 +47,7 @@ class MapController: UIViewController {
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 12.0)
         let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
+        mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
         
@@ -68,6 +69,12 @@ class MapController: UIViewController {
         self.locationManager.startUpdatingLocation()
         self.locationManager.delegate = self
         self.placesClient = GMSPlacesClient.shared()
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        navigationController?.pushViewController(activityView, animated: true)
+        return true
     }
 }
 

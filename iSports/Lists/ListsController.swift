@@ -85,29 +85,11 @@ class ListsController: UITableViewController {
     }
     
     func search(selected: Preference) {
-        self.results = [Activity]()
-        let ref = Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected.type.rawValue)
-        ref.observe(.value, with: { (snapshot: DataSnapshot) in
-            guard let snapShotData = snapshot.value as? [String: AnyObject] else { return }
-            for (activitiesId, activitiesData) in snapShotData {
-                let id = activitiesId
-                if
-                    let type = activitiesData["type"] as? String,
-                    let time = activitiesData["time"] as? String,
-                    let place = activitiesData["place"] as? String,
-                    let level = activitiesData["level"] as? String,
-                    let address = activitiesData["address"] as? String,
-                    let number = activitiesData["number"] as? Int,
-                    let allNumber = activitiesData["allNumber"] as? Int,
-                    let fee = activitiesData["fee"] as? Int,
-                    let author = activitiesData["author"] as? String {
-                        if time == selected.time && place == selected.place && level == selected.level.rawValue {
-                            let activities = (Activity(id: id, level: Level(rawValue: level)!, place: place, address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author))
-                            self.results.append(activities)
-                        }
-                }
+        FirebaseProvider.shared.getData(selected: selected, completion: { (results, error) in
+            if error == nil {
+                self.results = results!
+                self.tableView.reloadData()
             }
-            self.tableView.reloadData()
         })
     }
 }
@@ -115,7 +97,7 @@ class ListsController: UITableViewController {
 extension ListsController {
     
     @objc func fetch() {
-        FirebaseProvider.shared.getAllData(completion: { (results, error) in
+        FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
             if error == nil {
                 self.results = results!
                 self.tableView.reloadData()

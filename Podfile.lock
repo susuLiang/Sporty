@@ -63,6 +63,9 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Nuke (5.2)
+  - NVActivityIndicatorView (4.0.1):
+    - NVActivityIndicatorView/Presenter (= 4.0.1)
+  - NVActivityIndicatorView/Presenter (4.0.1)
 
 DEPENDENCIES:
   - Alamofire (= 4.5.1)
@@ -77,6 +80,7 @@ DEPENDENCIES:
   - GooglePlaces
   - MessageKit
   - Nuke (= 5.2)
+  - NVActivityIndicatorView
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -97,7 +101,8 @@ SPEC CHECKSUMS:
   MessageKit: 2642b9641290691650cfa2612ad672512799a71c
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nuke: 5f420c4637415f979c83afb35e73176dd03232d9
+  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
 
-PODFILE CHECKSUM: 58600e664bfc7cb3539a8e27f673dbad2404442d
+PODFILE CHECKSUM: 76d287d17fdd1fd23266e41c1338551ee28a1a78
 
 COCOAPODS: 1.3.1
