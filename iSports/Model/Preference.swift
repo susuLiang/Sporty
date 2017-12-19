@@ -15,8 +15,21 @@ enum Sportstype: String {
         baseball,
         football,
         badminton,
-        tennis,
-        bowling
+        tennis
+    
+    static var count: Int { return Sportstype.tennis.hashValue + 1}
+    
+//    var description: String {
+//        switch self {
+//        case .basketball: return "籃球"
+//        case .volleyball   : return "排球"
+//        case .baseball  : return "棒球"
+//        case .football : return "足球"
+//        case .badminton: return "羽球"
+//        case .tennis   : return "網球"
+//        default: return ""
+//        }
+//    }
 }
 
 enum Level: String {

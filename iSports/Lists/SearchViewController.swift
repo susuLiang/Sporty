@@ -29,7 +29,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     var mainViewController: ListsController?
     var level: [Level] = [.A, .B, .C, .D]
-    var type: [Sportstype] = [.basketball, .volleyball, .baseball, .football, .badminton, .tennis, .bowling]
+    var type: [Sportstype] = [.basketball, .volleyball, .baseball, .football, .badminton, .tennis]
     var place: [String] = []
     
     var time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]

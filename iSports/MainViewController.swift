@@ -13,13 +13,7 @@ import Alamofire
 class MainViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var level: [Level] = [.A, .B, .C, .D]
-    var type: [Sportstype] = [  .basketball,
-                                .volleyball,
-                                .baseball,
-                                .football,
-                                .badminton,
-                                .tennis,
-                                .bowling]
+    var type: [Sportstype] = [.basketball, .volleyball, .baseball, .football, .badminton, .tennis]
     var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
     var time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
     var gymType = ["羽球場", "籃球場", "棒球場"]
