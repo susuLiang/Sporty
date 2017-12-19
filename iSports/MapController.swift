@@ -10,7 +10,18 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class MapController: UIViewController, GMSMapViewDelegate {
+/// Point of Interest Item which implements the GMUClusterItem protocol.
+class POIItem: NSObject, GMUClusterItem {
+    var position: CLLocationCoordinate2D
+    var name: String!
+    
+    init(position: CLLocationCoordinate2D, name: String) {
+        self.position = position
+        self.name = name
+    }
+}
+
+class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDelegate {
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -18,13 +29,15 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
-//    var courts: [Court] = []
     var results: [Activity] = []
+    var clusterManager: GMUClusterManager!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getLocation()
+//        clusterManager.setDelegate(self, mapDelegate: self)
+//        setCluster()
         navigationItem.title = "Map"
     }
 
@@ -115,4 +128,59 @@ extension MapController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+    
+//    func setCluster() {
+//        // Set up the cluster manager with the supplied icon generator and
+//        // renderer.
+//        let iconGenerator = GMUDefaultClusterIconGenerator()
+//        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+//        let renderer = GMUDefaultClusterRenderer(mapView: mapView,
+//                                                 clusterIconGenerator: iconGenerator)
+//        clusterManager = GMUClusterManager(map: mapView, algorithm: algorithm,
+//                                           renderer: renderer)
+//
+//        // Generate and add random items to the cluster manager.
+//        generateClusterItems()
+//
+//        // Call cluster() after items have been added to perform the clustering
+//        // and rendering on map.
+//        clusterManager.cluster()
+//
+//    }
+//
+//    private func generateClusterItems() {
+//        let extent = 0.2
+//        for index in 1...results.count {
+//            let lat = Double(results[index].place.placeLatitude)! + extent * randomScale()
+//            let lng = Double(results[index].place.placeLongitude)! + extent * randomScale()
+//            let name = "Item \(index)"
+//            let item =
+//                POIItem(position: CLLocationCoordinate2DMake(lat, lng), name: name)
+//            clusterManager.add(item)
+//        }
+//    }
+//
+//    /// Returns a random value between -1.0 and 1.0.
+//    private func randomScale() -> Double {
+//        return Double(arc4random()) / Double(UINT32_MAX) * 2.0 - 1.0
+//    }
+//    // MARK: - GMUClusterManagerDelegate
+//
+//    func clusterManager(clusterManager: GMUClusterManager, didTapCluster cluster: GMUCluster) {
+//        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
+//                                                           zoom: mapView.camera.zoom + 1)
+//        let update = GMSCameraUpdate.setCamera(newCamera)
+//        mapView.moveCamera(update)
+//    }
+//
+//    // MARK: - GMUMapViewDelegate
+//
+//    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+//        if let poiItem = marker.userData as? POIItem {
+//            NSLog("Did tap marker for cluster item \(poiItem.name)")
+//        } else {
+//            NSLog("Did tap a normal marker")
+//        }
+//        return false
+//    }
 }

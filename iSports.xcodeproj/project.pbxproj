@@ -25,6 +25,16 @@
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
 		1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */; };
 		1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF21FE8A84300E485F1 /* UserManager.swift */; };
+		1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EFC1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.m */; };
+		1FFA2F011FE8EB6D00E485F1 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EFD1FE8EB6D00E485F1 /* GQTPointQuadTree.m */; };
+		1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F041FE8EB7C00E485F1 /* GMUDefaultClusterIconGenerator.m */; };
+		1FFA2F131FE8EB8300E485F1 /* GMUClusterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F091FE8EB7F00E485F1 /* GMUClusterManager.m */; };
+		1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F0A1FE8EB8000E485F1 /* GMUStaticCluster.m */; };
+		1FFA2F151FE8EB8300E485F1 /* GMUDefaultClusterRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F111FE8EB8200E485F1 /* GMUDefaultClusterRenderer.m */; };
+		1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F161FE8EB8900E485F1 /* GMUWrappingDictionaryKey.m */; };
+		1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1A1FE8EB8B00E485F1 /* GMUSimpleClusterAlgorithm.m */; };
+		1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1C1FE8EB8C00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */; };
+		1FFA2F221FE8EB8D00E485F1 /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1D1FE8EB8C00E485F1 /* GMUGridBasedClusterAlgorithm.m */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -60,6 +70,39 @@
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
 		1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		1FFA2EF21FE8A84300E485F1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1FFA2EF81FE8EB6A00E485F1 /* iSports-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSports-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FFA2EF91FE8EB6B00E485F1 /* GQTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPoint.h; sourceTree = "<group>"; };
+		1FFA2EFA1FE8EB6B00E485F1 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
+		1FFA2EFB1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
+		1FFA2EFC1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
+		1FFA2EFD1FE8EB6D00E485F1 /* GQTPointQuadTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTree.m; sourceTree = "<group>"; };
+		1FFA2EFE1FE8EB6D00E485F1 /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTBounds.h; sourceTree = "<group>"; };
+		1FFA2EFF1FE8EB6D00E485F1 /* GQTPointQuadTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTree.h; sourceTree = "<group>"; };
+		1FFA2F021FE8EB7B00E485F1 /* GMUMarkerClustering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUMarkerClustering.h; sourceTree = "<group>"; };
+		1FFA2F031FE8EB7C00E485F1 /* GMUDefaultClusterRenderer+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMUDefaultClusterRenderer+Testing.h"; sourceTree = "<group>"; };
+		1FFA2F041FE8EB7C00E485F1 /* GMUDefaultClusterIconGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUDefaultClusterIconGenerator.m; sourceTree = "<group>"; };
+		1FFA2F051FE8EB7D00E485F1 /* GMUClusterManager+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMUClusterManager+Testing.h"; sourceTree = "<group>"; };
+		1FFA2F061FE8EB7D00E485F1 /* GMUDefaultClusterIconGenerator+Testing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMUDefaultClusterIconGenerator+Testing.h"; sourceTree = "<group>"; };
+		1FFA2F071FE8EB7E00E485F1 /* GMUCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUCluster.h; sourceTree = "<group>"; };
+		1FFA2F081FE8EB7E00E485F1 /* GMUClusterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterItem.h; sourceTree = "<group>"; };
+		1FFA2F091FE8EB7F00E485F1 /* GMUClusterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUClusterManager.m; sourceTree = "<group>"; };
+		1FFA2F0A1FE8EB8000E485F1 /* GMUStaticCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUStaticCluster.m; sourceTree = "<group>"; };
+		1FFA2F0B1FE8EB8000E485F1 /* GMUClusterRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterRenderer.h; sourceTree = "<group>"; };
+		1FFA2F0C1FE8EB8100E485F1 /* GMUDefaultClusterIconGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUDefaultClusterIconGenerator.h; sourceTree = "<group>"; };
+		1FFA2F0D1FE8EB8100E485F1 /* GMUStaticCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUStaticCluster.h; sourceTree = "<group>"; };
+		1FFA2F0E1FE8EB8100E485F1 /* GMUClusterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterManager.h; sourceTree = "<group>"; };
+		1FFA2F0F1FE8EB8200E485F1 /* GMUClusterIconGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterIconGenerator.h; sourceTree = "<group>"; };
+		1FFA2F101FE8EB8200E485F1 /* GMUDefaultClusterRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUDefaultClusterRenderer.h; sourceTree = "<group>"; };
+		1FFA2F111FE8EB8200E485F1 /* GMUDefaultClusterRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUDefaultClusterRenderer.m; sourceTree = "<group>"; };
+		1FFA2F161FE8EB8900E485F1 /* GMUWrappingDictionaryKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUWrappingDictionaryKey.m; sourceTree = "<group>"; };
+		1FFA2F171FE8EB8900E485F1 /* GMUSimpleClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUSimpleClusterAlgorithm.h; sourceTree = "<group>"; };
+		1FFA2F181FE8EB8A00E485F1 /* GMUGridBasedClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUGridBasedClusterAlgorithm.h; sourceTree = "<group>"; };
+		1FFA2F191FE8EB8A00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUNonHierarchicalDistanceBasedAlgorithm.h; sourceTree = "<group>"; };
+		1FFA2F1A1FE8EB8B00E485F1 /* GMUSimpleClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUSimpleClusterAlgorithm.m; sourceTree = "<group>"; };
+		1FFA2F1B1FE8EB8C00E485F1 /* GMUWrappingDictionaryKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUWrappingDictionaryKey.h; sourceTree = "<group>"; };
+		1FFA2F1C1FE8EB8C00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUNonHierarchicalDistanceBasedAlgorithm.m; sourceTree = "<group>"; };
+		1FFA2F1D1FE8EB8C00E485F1 /* GMUGridBasedClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGridBasedClusterAlgorithm.m; sourceTree = "<group>"; };
+		1FFA2F1E1FE8EB8D00E485F1 /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -109,6 +152,7 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
@@ -150,6 +194,46 @@
 				1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA2F1E1FE8EB8D00E485F1 /* GMUClusterAlgorithm.h */,
+				1FFA2F181FE8EB8A00E485F1 /* GMUGridBasedClusterAlgorithm.h */,
+				1FFA2F1D1FE8EB8C00E485F1 /* GMUGridBasedClusterAlgorithm.m */,
+				1FFA2F191FE8EB8A00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.h */,
+				1FFA2F1C1FE8EB8C00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */,
+				1FFA2F171FE8EB8900E485F1 /* GMUSimpleClusterAlgorithm.h */,
+				1FFA2F1A1FE8EB8B00E485F1 /* GMUSimpleClusterAlgorithm.m */,
+				1FFA2F1B1FE8EB8C00E485F1 /* GMUWrappingDictionaryKey.h */,
+				1FFA2F161FE8EB8900E485F1 /* GMUWrappingDictionaryKey.m */,
+				1FFA2EFE1FE8EB6D00E485F1 /* GQTBounds.h */,
+				1FFA2EF91FE8EB6B00E485F1 /* GQTPoint.h */,
+				1FFA2EFF1FE8EB6D00E485F1 /* GQTPointQuadTree.h */,
+				1FFA2EFD1FE8EB6D00E485F1 /* GQTPointQuadTree.m */,
+				1FFA2EFB1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.h */,
+				1FFA2EFC1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.m */,
+				1FFA2EFA1FE8EB6B00E485F1 /* GQTPointQuadTreeItem.h */,
+				1FFA2EF81FE8EB6A00E485F1 /* iSports-Bridging-Header.h */,
+				1FFA2F071FE8EB7E00E485F1 /* GMUCluster.h */,
+				1FFA2F0F1FE8EB8200E485F1 /* GMUClusterIconGenerator.h */,
+				1FFA2F081FE8EB7E00E485F1 /* GMUClusterItem.h */,
+				1FFA2F0E1FE8EB8100E485F1 /* GMUClusterManager.h */,
+				1FFA2F091FE8EB7F00E485F1 /* GMUClusterManager.m */,
+				1FFA2F051FE8EB7D00E485F1 /* GMUClusterManager+Testing.h */,
+				1FFA2F0B1FE8EB8000E485F1 /* GMUClusterRenderer.h */,
+				1FFA2F0C1FE8EB8100E485F1 /* GMUDefaultClusterIconGenerator.h */,
+				1FFA2F041FE8EB7C00E485F1 /* GMUDefaultClusterIconGenerator.m */,
+				1FFA2F061FE8EB7D00E485F1 /* GMUDefaultClusterIconGenerator+Testing.h */,
+				1FFA2F101FE8EB8200E485F1 /* GMUDefaultClusterRenderer.h */,
+				1FFA2F111FE8EB8200E485F1 /* GMUDefaultClusterRenderer.m */,
+				1FFA2F031FE8EB7C00E485F1 /* GMUDefaultClusterRenderer+Testing.h */,
+				1FFA2F021FE8EB7B00E485F1 /* GMUMarkerClustering.h */,
+				1FFA2F0D1FE8EB8100E485F1 /* GMUStaticCluster.h */,
+				1FFA2F0A1FE8EB8000E485F1 /* GMUStaticCluster.m */,
+			);
+			path = "Google-Maps-iOS-Utils";
 			sourceTree = "<group>";
 		};
 		1FFC9DDE1FE137A7003071B9 /* Tab Bar */ = {
@@ -235,6 +319,7 @@
 				TargetAttributes = {
 					1F6CE5C01FE11BFC006D6AAD = {
 						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -359,20 +444,30 @@
 				1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */,
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
+				1FFA2F011FE8EB6D00E485F1 /* GQTPointQuadTree.m in Sources */,
 				1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */,
+				1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
+				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
 				1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
+				1FFA2F221FE8EB8D00E485F1 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
 				1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */,
+				1FFA2F151FE8EB8300E485F1 /* GMUDefaultClusterRenderer.m in Sources */,
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
+				1FFA2F131FE8EB8300E485F1 /* GMUClusterManager.m in Sources */,
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
+				1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */,
+				1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */,
+				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
+				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
@@ -512,11 +607,14 @@
 			baseConfigurationReference = 4DD76A467625E70E85392DE9 /* Pods-iSports.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iSports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = susu.iSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iSports/Google-Maps-iOS-Utils/iSports-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -527,11 +625,13 @@
 			baseConfigurationReference = E16CEEBCF8DE1FE5AE8FF54A /* Pods-iSports.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = iSports/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = susu.iSports;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iSports/Google-Maps-iOS-Utils/iSports-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

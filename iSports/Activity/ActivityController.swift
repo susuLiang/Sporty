@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMaps
+import GooglePlaces
 import NVActivityIndicatorView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
@@ -51,10 +52,20 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 addNameTextField.text = "\(number) / \(allNumber)"
                 addFeeTextField.text = "\(fee)"
             }
+            if let lat = selectedActivity?.place.placeLatitude, let lng = selectedActivity?.place.placeLongitude{
+            mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
+            }
         }
     }
     
     let loadingIndicator = LoadingIndicator()
+    
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    var mapView: GMSMapView!
+    var placesClient: GMSPlacesClient!
+    var zoomLevel: Float = 15.0
+    var selectedPlace: GMSPlace?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +98,35 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.delegate = self
-        return false
-    }   
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        textField.delegate = self
+//        return false
+//    }
+    
+    func setMap(latitude: Double, longitude: Double) -> GMSMapView {
+        let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
+        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 10), size: CGSize(width: view.frame.width, height: 300)), camera: camera)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker.map = mapView
+        
+        setLocationManager()
+        return mapView
+    }
+    
+    func setLocationManager() {
+        self.locationManager = CLLocationManager()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.distanceFilter = 50
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.delegate = self
+        self.placesClient = GMSPlacesClient.shared()
+    }
 }
 
 extension ActivityController {
@@ -106,3 +142,21 @@ extension ActivityController {
     }
 }
 
+
+
+
+extension ActivityController: CLLocationManagerDelegate {
+    
+    // Handle incoming location events.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location: CLLocation = locations.last!
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
+                                              zoom: zoomLevel)
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        marker.map = mapView
+        
+    }
+}
