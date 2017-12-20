@@ -63,15 +63,15 @@ class FirebaseProvider {
         }
     }
     
-    func getPosts(completion: @escaping ([Activity]?, Error?) -> Void) {
+    func getPosts(childKind:String, completion: @escaping ([Activity]?, Error?) -> Void) {
         
         var results = [String]()
         var posts = [Activity]()
 
-        Database.database().reference().child("user_postId").queryOrdered(byChild: "user").queryEqual(toValue: userUid).observe(.value) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (key, data) in objects {
-                    if let postId = data["postId"] as? String {
+                    if let postId = data[childKind] as? String {
                         results.append(postId)
                     }
                 }
@@ -106,29 +106,6 @@ class FirebaseProvider {
         }
     }
     
-    func getUser(completion: @escaping (UserSetting?, Error?) -> Void) {
-        
-        var user: UserSetting?
-        
-        if let uid = Auth.auth().currentUser?.uid {
-            
-            Database.database().reference().child(uid).observe(.value) { (snapshot) in
-                
-                if let userInfo = snapshot.value as? [String: Any],
-                    let name = userInfo["name"] as? String,
-                    let preference = userInfo["preference"] as? [String: String],
-                    let city = preference["city"],
-                    let level = preference["level"],
-                    let type = preference["type"],
-                    let time = preference["time"]
-                {
-                    user = UserSetting(name: name, preference: Preference(id: uid, type: Sportstype(rawValue: type)!, level: Level(rawValue: level)!, place: city, time: time))
-                }
-                completion(user, nil)
-            }
-            
-        }
-        
-    }
+    
 }
 

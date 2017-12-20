@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func makeEntryController() -> UIViewController {
         
         if Auth.auth().currentUser?.uid == nil {
-            
+                        
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")

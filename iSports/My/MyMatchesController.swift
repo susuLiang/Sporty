@@ -32,7 +32,22 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTableCell()
+        
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            self.myMatches = posts!
+            self.tableView.reloadData()
+        })
 
+    }
+    
+    func setupTableCell() {
+        
+        let nib = UINib(nibName: "ListsCell", bundle: nil)
+        
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,20 +57,29 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(self.myMatches)
+        return self.myMatches.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
+        
+        cell.placeLabel.text = myMatches[indexPath.row].id
+        
+        cell.joinButton.backgroundColor = UIColor.clear
+        
+        cell.joinButton.tintColor = UIColor.clear
 
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

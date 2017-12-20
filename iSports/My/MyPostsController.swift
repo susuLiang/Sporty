@@ -81,7 +81,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
     func getPosts() {
         
-        FirebaseProvider.shared.getPosts(completion: { (posts, error) in
+        FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, error) in
             self.myPosts = posts!
             self.tableView.reloadData()
         })
