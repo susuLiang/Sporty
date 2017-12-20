@@ -8,8 +8,11 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class SignUpController: UIViewController {
+    
+    let keyChain = KeychainSwift()
 
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -46,6 +49,12 @@ class SignUpController: UIViewController {
                     print(err)
                     return
                 }
+
+                self.keyChain.set(email, forKey: "email")
+                self.keyChain.set(password, forKey: "password")
+                self.keyChain.set(name, forKey: "name")
+                self.keyChain.set(uid, forKey: "uid")
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let userSettingController = storyboard.instantiateViewController(withIdentifier: "userSettingController") as! UserSettingController
                 userSettingController.userUid = uid

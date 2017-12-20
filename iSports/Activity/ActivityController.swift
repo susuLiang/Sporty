@@ -11,6 +11,7 @@ import Firebase
 import GoogleMaps
 import GooglePlaces
 import NVActivityIndicatorView
+import KeychainSwift
 
 class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -21,9 +22,11 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var mapPlacedView: UIView!
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var authorName: UILabel!
+    
+    @IBOutlet weak var mapPlacedView: UIView!
     
     @IBOutlet weak var addNameTextField: UITextField!
     @IBOutlet weak var addCityTextField: UITextField!
@@ -32,15 +35,13 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var addPlaceTextField: UITextField!
     @IBOutlet weak var addNumberTextField: UITextField!
     @IBOutlet weak var addFeeTextField: UITextField!
-    @IBOutlet weak var addAuthorTextField: UITextField!
     @IBOutlet weak var addTypeTextField: UITextField!
     
     var selectedActivity: Activity?  {
-        
         didSet {
             navigationItem.rightBarButtonItem = nil
             addNameTextField.text = selectedActivity?.id
-            addAuthorTextField.text = selectedActivity?.author
+            authorName.text = selectedActivity?.author
             addTypeTextField.text = selectedActivity?.type.rawValue
             addLevelTextField.text = selectedActivity?.level.rawValue
             addTimeTextField.text = selectedActivity?.time
@@ -58,7 +59,17 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
     }
     
+    var nowPlace: (latitude: String, longitude: String)? {
+        didSet {
+            if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
+            mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
+            }
+        }
+    }
+    
     let loadingIndicator = LoadingIndicator()
+    
+    let keyChain = KeychainSwift()
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -87,10 +98,16 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         addPlaceTextField.inputView = courtPicker
         pickerDelegate()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func closeKeyboard() {
+        self.view.endEditing(true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -126,20 +143,9 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         case typePicker: return Sportstype.count
         case cityPicker: return city.count
         case courtPicker:
-            print("test")
-//            if (addTypeTextField.text == "") || (addCityTextField.text == "") {
-//                let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
-//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
-////                    self.courtPicker.isHidden = true
-//                    self.addPlaceTextField.endEditing(true)
-//                })
-//                alert.addAction(defaultAction)
-//                self.present(alert, animated: true, completion: nil)
-//                return 0
-//            } else if courts != nil {
-//                courtPicker.isHidden = false
-//                return courts!.count
-//            }
+            if courts != nil {
+                return courts!.count
+            }
             return 0
         default: return 0
         }
@@ -179,14 +185,13 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
         case courtPicker:
             addPlaceTextField.text = courts![row].name
-
+            self.nowPlace = (courts![row].latitude, courts![row].longitude)
         default: return
         }
     }
     
     func getLocation(city: String, gym: String) {
         loadingIndicator.start()
-//        var courts = [Court]()
         if let city = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
             let gym = gym.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
@@ -200,8 +205,6 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             })
 
         }
-//        return courts
-
     }
     
     
@@ -223,18 +226,19 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                 return
             }
         let ref = Database.database().reference()
-        let value = ["name": "123", "level": level, "time": "星期二", "place": "大安區", "number": Int(num), "fee": Int(fee), "author": "me", "type": "volleyball", "allNumber": 8, "address": "台北市信義區"] as [String : Any]
-            ref.child("activities").childByAutoId().setValue(value)
+        let refChild = ref.child("activities")
+        let uid = keyChain.get("uid")
+        let authorName = keyChain.get("name")
+        let lat = nowPlace?.latitude
+        let lng = nowPlace?.longitude
+        let value = ["name": "name", "level": level, "time": "星期二", "place": "大安區", "number": Int(num), "fee": Int(fee), "author": authorName, "type": "volleyball", "allNumber": 8, "address": "台北市信義區", "userUid": uid, "latitude": lat, "longitude": lng] as [String : Any]
+        let childRef = refChild.childByAutoId()
+        childRef.setValue(value)
+        ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
+        
         self.navigationController?.popToRootViewController(animated: true)
         
     }
-
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        textField.delegate = self
-//        return false
-//    }
-    
-    
     
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
@@ -264,15 +268,15 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
 
 extension ActivityController {
     func setLabels() {
-         nameLabel.text = "Name"
-         authorLabel.text = "Author"
-         typeLabel.text = "Type"
-         levelLabel.text = "Level*"
-         timeLabel.text = "Time"
-         placeLabel.text = "Place"
-         numberLabel.text = "Number*"
-         feeLabel.text = "Fee*"
-         cityLabel.text = "City"
+        nameLabel.text = "Name"
+        authorLabel.text = "Author"
+        typeLabel.text = "Type"
+        levelLabel.text = "Level*"
+        timeLabel.text = "Time"
+        placeLabel.text = "Place"
+        numberLabel.text = "Number*"
+        feeLabel.text = "Fee*"
+        cityLabel.text = "City"
     }
 }
 
@@ -285,7 +289,6 @@ extension ActivityController {
         courtPicker.delegate = self
         courtPicker.dataSource = self
     }
-
 }
 
 

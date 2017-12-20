@@ -26,7 +26,7 @@ class LoginController: UIViewController {
                 print(error)
                 return
             }
-            let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+            let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
             tabBarController.selectedIndex = 1
             self.present(tabBarController, animated: true, completion: nil)
         })

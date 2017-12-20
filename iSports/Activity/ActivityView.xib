@@ -92,13 +92,6 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3It-bb-13c">
-                        <rect key="frame" x="106" y="129" width="97" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQs-Y5-bN1">
                         <rect key="frame" x="106" y="74" width="97" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -148,12 +141,18 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfC-EH-2G4">
+                        <rect key="frame" x="106" y="132" width="80" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <viewLayoutGuide key="safeArea" id="b4p-Ts-90Q"/>
             </view>
             <connections>
-                <outlet property="addAuthorTextField" destination="3It-bb-13c" id="0s5-Xk-Iaw"/>
                 <outlet property="addCityTextField" destination="Ix1-Kd-AkG" id="nct-dZ-2cF"/>
                 <outlet property="addFeeTextField" destination="9pT-2h-6N8" id="qgs-9X-BTa"/>
                 <outlet property="addLevelTextField" destination="PM5-Tc-FAY" id="5WO-Yy-QRW"/>
@@ -163,6 +162,7 @@
                 <outlet property="addTimeTextField" destination="WAD-n0-Lej" id="YOt-2R-dHx"/>
                 <outlet property="addTypeTextField" destination="4Vf-xW-sZU" id="PcI-9W-7FU"/>
                 <outlet property="authorLabel" destination="rIz-BS-x6R" id="Rmt-9P-wxX"/>
+                <outlet property="authorName" destination="vfC-EH-2G4" id="1fX-Vt-scn"/>
                 <outlet property="cityLabel" destination="DI8-UZ-ZHX" id="asi-4l-LUs"/>
                 <outlet property="feeLabel" destination="cxP-5F-hrJ" id="AkZ-ly-PWH"/>
                 <outlet property="levelLabel" destination="GRf-vd-5U8" id="f3x-iN-Alq"/>
@@ -175,5 +175,12 @@
             </connections>
             <point key="canvasLocation" x="-144.5" y="86.5"/>
         </viewController>
+        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G2n-5d-GVt">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="textColor"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
 </document>

@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import Firebase
 
 class MyActivitiesController: ButtonBarPagerTabStripViewController {
     
@@ -15,7 +16,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     
     let graySpotifyColor = UIColor(red: 21/255.0, green: 21/255.0, blue: 24/255.0, alpha: 1.0)
     let darkGraySpotifyColor = UIColor(red: 19/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
-    
+        
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isTranslucent = false
         // change selected bar color
@@ -43,9 +44,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = MyMatchesController(style: .plain, itemInfo: IndicatorInfo(title: "MyMatches"))
-//        child_1.blackTheme = true
         let child_2 = MyPostsController(style: .plain, itemInfo: IndicatorInfo(title: "MyPosts"))
-//        child_2.blackTheme = true
         return [child_1, child_2]
     }
     

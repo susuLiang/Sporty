@@ -15,6 +15,8 @@ class ListsCell: UITableViewCell {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var numLabel: UILabel!
+    @IBOutlet weak var joinButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

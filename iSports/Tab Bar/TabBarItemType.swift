@@ -13,7 +13,7 @@ enum TabBarItemType {
     
     // MARK: Case
     
-    case map, home, messages
+    case map, home, my
     
 }
 
@@ -33,9 +33,9 @@ extension TabBarItemType {
             
             return NSLocalizedString("Map", comment: "")
             
-        case .messages:
+        case .my:
             
-            return NSLocalizedString("Messages", comment: "")
+            return NSLocalizedString("my", comment: "")
                         
         }
         
@@ -59,9 +59,9 @@ extension TabBarItemType {
             
             return #imageLiteral(resourceName: "icon-map").withRenderingMode(.alwaysTemplate)
             
-        case .messages:
+        case .my:
             
-            return #imageLiteral(resourceName: "icon-chat").withRenderingMode(.alwaysTemplate)
+            return #imageLiteral(resourceName: "icon-my").withRenderingMode(.alwaysTemplate)
             
         }
         

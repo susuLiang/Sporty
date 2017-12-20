@@ -95,7 +95,7 @@ class TabBarController: UITabBarController {
                                                 
             return navigationController
             
-        case .messages:
+        case .my:
             
             
             let myActivitiesController = MyActivitiesController()

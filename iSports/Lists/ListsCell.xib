@@ -47,16 +47,30 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hv-mW-WTF">
-                        <rect key="frame" x="265" y="24" width="94" height="21"/>
+                        <rect key="frame" x="230" y="25" width="94" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb4-Ml-3xY">
+                        <rect key="frame" x="230" y="63" width="94" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbi-27-vcq">
+                        <rect key="frame" x="230" y="105" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Join"/>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="joinButton" destination="Xbi-27-vcq" id="DCI-jA-cRb"/>
                 <outlet property="levelLabel" destination="w5X-u8-85W" id="mcE-4A-E26"/>
+                <outlet property="numLabel" destination="eb4-Ml-3xY" id="NtT-cQ-R8E"/>
                 <outlet property="placeLabel" destination="g1t-TW-gq8" id="LAf-dO-i4b"/>
                 <outlet property="timeLabel" destination="Qjv-SE-SWw" id="Wdg-sU-ugz"/>
                 <outlet property="titleLabel" destination="inh-JF-zSA" id="6C5-Sf-OGI"/>

@@ -29,6 +29,8 @@ struct Activity {
     let fee: Int
     
     let author: String
+
+    let authorUid: String
     
 }
 

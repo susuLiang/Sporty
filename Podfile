@@ -19,7 +19,7 @@ target 'iSports' do
   pod 'NVActivityIndicatorView'
   pod 'XLPagerTabStrip', '~> 8.0'
   pod 'LGButton'
-
+  pod 'KeychainSwift', '~> 10.0'
 
 
 end

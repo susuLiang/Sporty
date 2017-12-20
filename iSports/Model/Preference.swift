@@ -19,17 +19,6 @@ enum Sportstype: String {
     
     static var count: Int { return Sportstype.tennis.hashValue + 1}
     
-//    var description: String {
-//        switch self {
-//        case .basketball: return "籃球"
-//        case .volleyball   : return "排球"
-//        case .baseball  : return "棒球"
-//        case .football : return "足球"
-//        case .badminton: return "羽球"
-//        case .tennis   : return "網球"
-//        default: return ""
-//        }
-//    }
 }
 
 enum Level: String {
@@ -40,14 +29,14 @@ enum Level: String {
 
 struct Preference {
     
-    let id: String
+    var id: String
     
-    let type: Sportstype
+    var type: Sportstype
     
-    let level: Level
+    var level: Level
     
-    let place: String
+    var place: String
     
-    let time: String
+    var time: String
     
 }

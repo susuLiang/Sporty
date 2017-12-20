@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         } else {
             
-            let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+            let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
             
             tabBarController.selectedIndex = 1
  

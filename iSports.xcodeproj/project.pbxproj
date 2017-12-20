@@ -26,8 +26,8 @@
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
 		1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */; };
 		1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */; };
+		1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */; };
 		1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */; };
-		1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF21FE8A84300E485F1 /* UserManager.swift */; };
 		1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EFC1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.m */; };
 		1FFA2F011FE8EB6D00E485F1 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EFD1FE8EB6D00E485F1 /* GQTPointQuadTree.m */; };
 		1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F041FE8EB7C00E485F1 /* GMUDefaultClusterIconGenerator.m */; };
@@ -77,8 +77,8 @@
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
 		1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsController.swift; sourceTree = "<group>"; };
 		1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesController.swift; sourceTree = "<group>"; };
+		1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		1FFA2EF21FE8A84300E485F1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FFA2EF81FE8EB6A00E485F1 /* iSports-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSports-Bridging-Header.h"; sourceTree = "<group>"; };
 		1FFA2EF91FE8EB6B00E485F1 /* GQTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPoint.h; sourceTree = "<group>"; };
 		1FFA2EFA1FE8EB6B00E485F1 /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
@@ -214,12 +214,12 @@
 		1FFA2EF41FE8AD3400E485F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */,
 				1F70C50A1FE3D3D600DDAF03 /* Activity.swift */,
 				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
 				1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */,
 				1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */,
 				1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */,
-				1FFA2EF21FE8A84300E485F1 /* UserManager.swift */,
 				1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */,
 			);
 			path = Model;
@@ -413,6 +413,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
@@ -427,6 +428,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
@@ -502,6 +504,7 @@
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
 				1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
+				1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */,
 				1FFA2F221FE8EB8D00E485F1 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
 				1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */,
@@ -520,7 +523,6 @@
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
-				1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

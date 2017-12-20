@@ -11,7 +11,7 @@ import Firebase
 
 enum PreferenceSetting: String {
     
-    case type, level, city
+    case type, level, city, time
    
 }
 
@@ -25,17 +25,18 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
     var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
     var type: [Sportstype.RawValue] = ["籃球", "排球", "棒球", "足球", "羽球", "網球"]
     var level: [Level] = [.A, .B, .C, .D]
-    var preferenceSetting: [PreferenceSetting] = [.type, .city, .level]
+    var time: [String] = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+    var preferenceSetting: [PreferenceSetting] = [.type, .city, .level, .time]
 
     @IBAction func saveButton(_ sender: Any) {
         
-        let value = ["type": selectedItems[0], "city": selectedItems[1], "level": selectedItems[2]]
+        let value = ["type": selectedItems[0], "city": selectedItems[1], "level": selectedItems[2], "time": selectedItems[3]]
         
         let ref = Database.database().reference().child("users").child(userUid)
         
         ref.child("preference").setValue(value)
 
-        let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+        let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
         tabBarController.selectedIndex = 1
         self.present(tabBarController, animated: true, completion: nil)
     }
@@ -52,6 +53,8 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
             return city.count
         case 2:
             return level.count
+        case 3:
+            return time.count
         default:
             return 1
         }
@@ -73,6 +76,10 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
             case 2:
                 
                 cell.nameLabel.text = level[indexPath.row].rawValue
+                
+            case 3:
+                
+                cell.nameLabel.text = time[indexPath.row]
                 
             default:
                 break
@@ -105,6 +112,8 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
             selectedItems.append(city[indexPath.row])
         case 2:
             selectedItems.append(level[indexPath.row].rawValue)
+        case 3:
+            selectedItems.append(time[indexPath.row])
         default:
             break
         }
