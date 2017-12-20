@@ -22,6 +22,7 @@ class FirebaseProvider {
             for (id, data) in objects {
                 let id = id
                 if
+                    let name = data["name"] as? String,
                     let type = data["type"] as? String,
                     let time = data["time"] as? String,
                     let placeName = data["place"] as? String,
@@ -35,7 +36,7 @@ class FirebaseProvider {
                     let userUid = data["userUid"] as? String,
                     let author = data["author"] as? String
                 {
-                    let activity = Activity(id: id, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
+                    let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
                     if selected != nil {
                         if time == selected?.time && placeName == selected?.place && level == selected?.level.rawValue {
                             results.append(activity)
@@ -79,6 +80,7 @@ class FirebaseProvider {
                     Database.database().reference().child("activities").child(result).observe(.value, with: {
                         (snapshot) in
                         if let data = snapshot.value as? [String: AnyObject] {
+                            let id = snapshot.key
                             if
                                 let name = data["name"] as? String,
                                 let type = data["type"] as? String,
@@ -95,7 +97,7 @@ class FirebaseProvider {
                                 let author = data["author"] as? String
 
                             {
-                                let activity = Activity(id: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
+                                let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: Sportstype(rawValue: type)!, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
                                 posts.append(activity)
                             }
                         }

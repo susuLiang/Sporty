@@ -12,6 +12,8 @@ struct Activity {
     
     let id: String
     
+    let name: String
+    
     let level: Level
     
     let place: Place

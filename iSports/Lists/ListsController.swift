@@ -20,7 +20,11 @@ class ListsController: UITableViewController {
         }
     }
     
-    var keyChain = KeychainSwift()
+    var uid = KeychainSwift().get("uid")
+    
+    var ref = Database.database().reference()
+    
+    var myMatches = [Activity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,7 @@ class ListsController: UITableViewController {
         if selectedPreference == nil {
             fetch()
         }
+        getPosts()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,16 +64,24 @@ class ListsController: UITableViewController {
         cell.typeLabel.text = result.type.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-        if result.authorUid != keyChain.get("uid") {
-            if result.number < result.allNumber {
-                cell.joinButton.addTarget(self, action: #selector(join), for: .touchUpInside)
-            } else {
+        var isMyMatch = false
+        if result.authorUid != uid {
+            for myMatch in myMatches where myMatch.id == result.id {
+                isMyMatch = true
+            }
+            if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
+                cell.joinButton.backgroundColor = UIColor.red
+                cell.joinButton.tintColor = UIColor.blue
+                cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
+            } else {
+                cell.joinButton.isEnabled = false
                 cell.joinButton.backgroundColor = UIColor.gray
                 cell.joinButton.tintColor = UIColor.white
             }
+            
         } else {
-            cell.joinButton.isEnabled = true
+            cell.joinButton.isEnabled = false
             cell.joinButton.backgroundColor = UIColor.yellow
             cell.joinButton.tintColor = UIColor.clear
         }
@@ -79,22 +92,25 @@ class ListsController: UITableViewController {
     @objc func join(sender: UIButton) {
         sender.backgroundColor = UIColor.gray
         sender.tintColor = UIColor.white
-        sender.isEnabled = true
         if let cell = sender.superview?.superview as? ListsCell,
             let indexPath = tableView.indexPath(for: cell) {
-            let uid = keyChain.get("uid")
             let joinId = results[indexPath.row].id
             let newVaule = results[indexPath.row].number + 1
             
-            Database.database().reference().child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
-            Database.database().reference().child("activities").child(joinId).child("number").setValue(newVaule)
+            ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
+            ref.child("activities").child(joinId).child("number").setValue(newVaule)
         }
-        
-        
-        
-        
     }
     
+    func getPosts() {
+        
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            self.myMatches = posts!
+            self.tableView.reloadData()
+        })
+        
+    }
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
