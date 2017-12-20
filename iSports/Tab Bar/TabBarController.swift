@@ -97,11 +97,11 @@ class TabBarController: UITabBarController {
             
         case .messages:
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let cartTableViewController = storyboard.instantiateViewController(withIdentifier: "Main")
+            
+            let myActivitiesController = MyActivitiesController()
 
             let navigationController = UINavigationController(
-                rootViewController: cartTableViewController
+                rootViewController: myActivitiesController
             )
 
             navigationController.tabBarItem = TabBarItem(

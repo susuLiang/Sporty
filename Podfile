@@ -17,6 +17,8 @@ target 'iSports' do
   pod 'MessageKit'
   pod 'Cartography', '2.1.0'
   pod 'NVActivityIndicatorView'
+  pod 'XLPagerTabStrip', '~> 8.0'
+  pod 'LGButton'
 
 
 

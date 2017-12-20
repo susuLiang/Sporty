@@ -11,7 +11,7 @@ import Firebase
 
 enum PreferenceSetting: String {
     
-    case likedType, level, city
+    case type, level, city
    
 }
 
@@ -23,9 +23,9 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
     var userUid: String = ""
     
     var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
-    var type: [String] = ["籃球", "棒球", "羽球", "網球", "足球", "排球" ]
+    var type: [Sportstype.RawValue] = ["籃球", "排球", "棒球", "足球", "羽球", "網球"]
     var level: [Level] = [.A, .B, .C, .D]
-    var preferenceSetting: [PreferenceSetting] = [.likedType, .city, .level]
+    var preferenceSetting: [PreferenceSetting] = [.type, .city, .level]
 
     @IBAction func saveButton(_ sender: Any) {
         
@@ -60,7 +60,6 @@ class UserSettingController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? UserSettingCell else {fatalError("invalid")}
-        cell.isSelected = false
             switch indexPath.section {
                 
             case 0:

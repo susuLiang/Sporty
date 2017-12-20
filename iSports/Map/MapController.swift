@@ -53,17 +53,6 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
             }
         })
     }
-//        if let city = "臺北市".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-//            let gym = "羽球場".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-//            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
-//                if error == nil {
-//                    self.courts = Courts!
-//                    self.view.addSubview(self.setMap(latitude: 25.0472, longitude: 121.564939))
-//                } else {
-//                    // todo: error handling
-//                }
-//            })
-//        }
     
     
     func setMap() -> GMSMapView {

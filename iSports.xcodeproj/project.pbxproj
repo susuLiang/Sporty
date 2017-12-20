@@ -14,6 +14,7 @@
 		1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */; };
 		1F6CE5D71FE12077006D6AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */; };
 		1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* LoginController.swift */; };
+		1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F705F121FEA0AED0010963E /* MyActivitiesController.swift */; };
 		1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */; };
 		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
 		1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */; };
@@ -23,6 +24,8 @@
 		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
 		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
+		1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */; };
+		1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */; };
 		1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */; };
 		1FFA2EF31FE8A84300E485F1 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EF21FE8A84300E485F1 /* UserManager.swift */; };
 		1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2EFC1FE8EB6C00E485F1 /* GQTPointQuadTreeChild.m */; };
@@ -62,6 +65,7 @@
 		1F6CE5D01FE11BFC006D6AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6CE5D81FE12A28006D6AAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1F705F121FEA0AED0010963E /* MyActivitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesController.swift; sourceTree = "<group>"; };
 		1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
 		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
+		1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsController.swift; sourceTree = "<group>"; };
+		1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesController.swift; sourceTree = "<group>"; };
 		1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		1FFA2EF21FE8A84300E485F1 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FFA2EF81FE8EB6A00E485F1 /* iSports-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSports-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -159,17 +165,12 @@
 			isa = PBXGroup;
 			children = (
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
-				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
-				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
-				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
-				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
-				1FFA2F271FE9189E00E485F1 /* HeaderView.swift */,
-				1FFA2F251FE9105300E485F1 /* UserSettingCell.swift */,
-				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
-				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
+				1F705F111FEA0ACB0010963E /* My */,
+				1F705F101FEA0A9F0010963E /* Map */,
+				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
@@ -181,6 +182,24 @@
 				1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */,
 			);
 			path = iSports;
+			sourceTree = "<group>";
+		};
+		1F705F101FEA0A9F0010963E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		1F705F111FEA0ACB0010963E /* My */ = {
+			isa = PBXGroup;
+			children = (
+				1F705F121FEA0AED0010963E /* MyActivitiesController.swift */,
+				1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */,
+				1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */,
+			);
+			path = My;
 			sourceTree = "<group>";
 		};
 		1F70C5091FE3CE1500DDAF03 /* Activity */ = {
@@ -249,6 +268,12 @@
 		1FFA2F291FE9196600E485F1 /* LoginAndSignUp */ = {
 			isa = PBXGroup;
 			children = (
+				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
+				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
+				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
+				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
+				1FFA2F271FE9189E00E485F1 /* HeaderView.swift */,
+				1FFA2F251FE9105300E485F1 /* UserSettingCell.swift */,
 			);
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
@@ -388,9 +413,11 @@
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -400,9 +427,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -455,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */,
 				1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */,
 				1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */,
 				1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */,
@@ -466,6 +496,7 @@
 				1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
+				1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
 				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
@@ -482,6 +513,7 @@
 				1FFA2F261FE9105300E485F1 /* UserSettingCell.swift in Sources */,
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
+				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */,
 				1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */,

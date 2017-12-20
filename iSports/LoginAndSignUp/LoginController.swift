@@ -13,9 +13,7 @@ class LoginController: UIViewController {
 
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var nameText: UITextField!
     @IBAction func signIn(_ sender: Any) {
-        
         guard let email = emailText.text,
             let password = passwordText.text
             else {
@@ -31,7 +29,6 @@ class LoginController: UIViewController {
             let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
             tabBarController.selectedIndex = 1
             self.present(tabBarController, animated: true, completion: nil)
-            
         })
     }
     
@@ -43,14 +40,9 @@ class LoginController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-
 }
