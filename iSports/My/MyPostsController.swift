@@ -95,4 +95,10 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        activityView.selectedActivity = myPosts[indexPath.row]
+        self.navigationController?.pushViewController(activityView, animated: true)
+    }
 }

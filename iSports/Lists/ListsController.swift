@@ -46,7 +46,6 @@ class ListsController: UITableViewController {
         return 1
     }
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.results.count
     }
@@ -85,8 +84,10 @@ class ListsController: UITableViewController {
             let indexPath = tableView.indexPath(for: cell) {
             let uid = keyChain.get("uid")
             let joinId = results[indexPath.row].id
+            let newVaule = results[indexPath.row].number + 1
             
             Database.database().reference().child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
+            Database.database().reference().child("activities").child(joinId).child("number").setValue(newVaule)
         }
         
         

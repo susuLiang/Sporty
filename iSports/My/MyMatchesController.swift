@@ -82,6 +82,12 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         return 180
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        activityView.selectedActivity = myMatches[indexPath.row]
+        navigationController?.pushViewController(activityView, animated: true)
+    }
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
