@@ -35,6 +35,9 @@
 		1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1A1FE8EB8B00E485F1 /* GMUSimpleClusterAlgorithm.m */; };
 		1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1C1FE8EB8C00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */; };
 		1FFA2F221FE8EB8D00E485F1 /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F1D1FE8EB8C00E485F1 /* GMUGridBasedClusterAlgorithm.m */; };
+		1FFA2F241FE908E100E485F1 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F231FE908E100E485F1 /* SignUpController.swift */; };
+		1FFA2F261FE9105300E485F1 /* UserSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F251FE9105300E485F1 /* UserSettingCell.swift */; };
+		1FFA2F281FE9189E00E485F1 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA2F271FE9189E00E485F1 /* HeaderView.swift */; };
 		1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */; };
 		1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */; };
 		1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */; };
@@ -103,6 +106,9 @@
 		1FFA2F1C1FE8EB8C00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUNonHierarchicalDistanceBasedAlgorithm.m; sourceTree = "<group>"; };
 		1FFA2F1D1FE8EB8C00E485F1 /* GMUGridBasedClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGridBasedClusterAlgorithm.m; sourceTree = "<group>"; };
 		1FFA2F1E1FE8EB8D00E485F1 /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
+		1FFA2F231FE908E100E485F1 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		1FFA2F251FE9105300E485F1 /* UserSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingCell.swift; sourceTree = "<group>"; };
+		1FFA2F271FE9189E00E485F1 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1FFC9DDF1FE16A3A003071B9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		1FFC9DE11FE16A78003071B9 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
 		1FFC9DE31FE16A9F003071B9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -156,7 +162,11 @@
 				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
+				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
 				1FFC9DF41FE18058003071B9 /* UserSettingController.swift */,
+				1FFA2F271FE9189E00E485F1 /* HeaderView.swift */,
+				1FFA2F251FE9105300E485F1 /* UserSettingCell.swift */,
+				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
@@ -234,6 +244,13 @@
 				1FFA2F0A1FE8EB8000E485F1 /* GMUStaticCluster.m */,
 			);
 			path = "Google-Maps-iOS-Utils";
+			sourceTree = "<group>";
+		};
+		1FFA2F291FE9196600E485F1 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginAndSignUp;
 			sourceTree = "<group>";
 		};
 		1FFC9DDE1FE137A7003071B9 /* Tab Bar */ = {
@@ -458,8 +475,11 @@
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
 				1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */,
 				1FFA2F151FE8EB8300E485F1 /* GMUDefaultClusterRenderer.m in Sources */,
+				1FFA2F281FE9189E00E485F1 /* HeaderView.swift in Sources */,
+				1FFA2F241FE908E100E485F1 /* SignUpController.swift in Sources */,
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
 				1FFA2F131FE8EB8300E485F1 /* GMUClusterManager.m in Sources */,
+				1FFA2F261FE9105300E485F1 /* UserSettingCell.swift in Sources */,
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,

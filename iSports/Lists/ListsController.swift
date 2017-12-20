@@ -115,5 +115,22 @@ extension ListsController {
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
         navigationItem.rightBarButtonItems = [addButton, searchButton, allButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
+    }
+    
+    @objc func logOut() {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
+        present(loginController, animated: true, completion: nil)
+        
+        
     }
 }

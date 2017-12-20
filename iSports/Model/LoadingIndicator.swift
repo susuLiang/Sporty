@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 class LoadingIndicator {
     
-    var activityData = ActivityData()
+    var activityData = ActivityData(type: .ballPulseSync)
     
     func start() {
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)

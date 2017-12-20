@@ -28,44 +28,18 @@ class LoginController: UIViewController {
                 print(error)
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+            tabBarController.selectedIndex = 1
+            self.present(tabBarController, animated: true, completion: nil)
             
         })
     }
     
     @IBAction func signUp(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signUpController = storyboard.instantiateViewController(withIdentifier: "signUpController")
+        self.present(signUpController, animated: true, completion: nil)
         
-        guard let email = emailText.text,
-            let password = passwordText.text,
-            let name = nameText.text
-            else {
-                print("Form is not valid")
-                return
-        }
-        Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
-            
-            if error != nil {
-                print(error)
-                return
-            }
-            
-            guard let uid = user?.uid else {
-                return
-            }
-            
-            let ref = Database.database().reference()
-            let userReference = ref.child("users").child(uid)
-            let value = ["name": name, "email": email]
-            userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
-                if err != nil {
-                    print(err)
-                    return
-                }
-                self.dismiss(animated: true, completion: nil)
-            })
-            
-            
-        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()

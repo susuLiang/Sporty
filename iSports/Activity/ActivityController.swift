@@ -12,7 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import NVActivityIndicatorView
 
-class ActivityController: UIViewController, UITextFieldDelegate {
+class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -72,20 +72,20 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var courtPicker = UIPickerView()
     var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
     var type: [String] = ["籃球", "棒球", "羽球", "網球", "足球", "排球" ]
-//    var court: [Court]? {
-//
-//        didSet {
-//            courtPicker.reloadAllComponents()
-//        }
-//    }
+    var courts: [Court]? {
+
+        didSet {
+            courtPicker.reloadAllComponents()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabels()
-//        addTypeTextField.inputView = typePicker
-//        addCityTextField.inputView = cityPicker
-//        addPlaceTextField.inputView = courtPicker
-//        pickerDelegate()
+        addTypeTextField.inputView = typePicker
+        addCityTextField.inputView = cityPicker
+        addPlaceTextField.inputView = courtPicker
+        pickerDelegate()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
     }
 
@@ -93,58 +93,116 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        switch pickerView {
-//        case typePicker: return Sportstype.count
-//        case cityPicker: return city.count
-//        default: return 1
-//        }
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        switch pickerView {
-//        case typePicker: return type[row]
-//        case cityPicker: return city[row]
-//        case courtPicker:
-//        if let type = addTypeTextField.text, let place = addCityTextField.text {
-//            return getLocation(city: place, gym: type)[row].name
-//        } else {return ""}
-//            default: return ""
-//        }
-//
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        switch pickerView {
-//            case typePicker:
-//                addTypeTextField.text = type[row]
-//            case cityPicker:
-//                addCityTextField.text = city[row]
-//            default: return
-//        }
-//    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        switch pickerView {
+        case typePicker, cityPicker:
+            return 1
+        case courtPicker:
+            courtPicker.isHidden = true
+            if (addTypeTextField.text == "") || (addCityTextField.text == "") {
+                let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                    self.addPlaceTextField.endEditing(true)
+                    self.addTypeTextField.becomeFirstResponder()
+                })
+                alert.addAction(defaultAction)
+                if self.presentedViewController == nil {
+                    self.present(alert, animated: true, completion: nil)
+                }
+                return 0
+            } else if courts != nil {
+                courtPicker.isHidden = false
+                return 1
+            }
+            
+        default:
+            return 1
+        }
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case typePicker: return Sportstype.count
+        case cityPicker: return city.count
+        case courtPicker:
+            print("test")
+//            if (addTypeTextField.text == "") || (addCityTextField.text == "") {
+//                let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
+//                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+////                    self.courtPicker.isHidden = true
+//                    self.addPlaceTextField.endEditing(true)
+//                })
+//                alert.addAction(defaultAction)
+//                self.present(alert, animated: true, completion: nil)
+//                return 0
+//            } else if courts != nil {
+//                courtPicker.isHidden = false
+//                return courts!.count
+//            }
+            return 0
+        default: return 0
+        }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case typePicker: return type[row]
+        case cityPicker: return city[row]
+        case courtPicker:
+            if courts != nil {
+                return courts?[row].name
+            } else {
+                return ""
+            }
+        default: return ""
+        }
+
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView {
+        case typePicker:
+            addTypeTextField.text = type[row]
+            if addCityTextField.text != "" {
+                if let type = addTypeTextField.text, let place = addCityTextField.text {
+                    getLocation(city: place, gym: type)
+                }
+            }
+            
+        case cityPicker:
+            addCityTextField.text = city[row]
+            if addTypeTextField.text != "" {
+                if let type = addTypeTextField.text, let place = addCityTextField.text {
+                    getLocation(city: place, gym: type)
+                }
+            }
+        case courtPicker:
+            addPlaceTextField.text = courts![row].name
+
+        default: return
+        }
+    }
     
-//    func getLocation(city: String, gym: String) -> [Court] {
+    func getLocation(city: String, gym: String) {
+        loadingIndicator.start()
 //        var courts = [Court]()
-//        if let city = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-//            let gym = gym.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-//            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
-//                if error == nil {
-//                    courts = Courts!
-//                } else {
-//                    // todo: error handling
-//                }
-//            })
-//
-//        }
-//        print(courts)
+        if let city = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let gym = gym.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            CourtsProvider.shared.getApiData(city: city, gymType: gym, completion: { (Courts, error) in
+                if error == nil {
+                    self.courts = Courts!
+                } else {
+                    // todo: error handling
+                }
+                print(self.courts)
+                self.loadingIndicator.stop()
+            })
+
+        }
 //        return courts
-//
-//    }
+
+    }
     
     
     @objc func save() {
@@ -175,6 +233,8 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 //        textField.delegate = self
 //        return false
 //    }
+    
+    
     
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
@@ -216,17 +276,17 @@ extension ActivityController {
     }
 }
 
-//extension ActivityController {
-//    func pickerDelegate() {
-//        typePicker.delegate = self
-//        typePicker.dataSource = self
-//        cityPicker.delegate = self
-//        cityPicker.dataSource = self
-//        courtPicker.delegate = self
-//        courtPicker.dataSource = self
-//    }
-//
-//}
+extension ActivityController {
+    func pickerDelegate() {
+        typePicker.delegate = self
+        typePicker.dataSource = self
+        cityPicker.delegate = self
+        cityPicker.dataSource = self
+        courtPicker.delegate = self
+        courtPicker.dataSource = self
+    }
+
+}
 
 
 

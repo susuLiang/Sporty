@@ -23,13 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
         GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
         
+        let rootViewController = makeEntryController()
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
-        
-        tabBarController.selectedIndex = 1
-        
-        window.rootViewController = tabBarController
+        window.rootViewController = rootViewController
         
         window.makeKeyAndVisible()
         
@@ -51,6 +49,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
+    }
+    
+    func makeEntryController() -> UIViewController {
+        
+        if Auth.auth().currentUser?.uid == nil {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
+   
+            return loginController
+        
+        } else {
+            
+            let tabBarController = TabBarController(itemTypes: [ .map, .home, .messages])
+            
+            tabBarController.selectedIndex = 1
+ 
+            return tabBarController
+        }
+        
     }
 
 
