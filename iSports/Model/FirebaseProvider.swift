@@ -80,7 +80,7 @@ class FirebaseProvider {
                     }
                 }
                 print(results)
-
+                posts = [Activity]()
                 for result in results {
                     Database.database().reference().child("activities").child(result).observe(.value, with: {
                         (snapshot) in

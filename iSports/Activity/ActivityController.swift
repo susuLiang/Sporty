@@ -235,7 +235,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         let lat = nowPlace?.latitude
         let lng = nowPlace?.longitude
         let address = nowPlace?.address
-        let value = ["name": "name", "level": level, "time": "星期二", "place": place, "number": Int(num), "fee": Int(fee), "author": authorName, "type": type, "allNumber": 8, "address": address, "userUid": uid, "latitude": lat, "longitude": lng] as [String : Any]
+        let value = ["name": name, "level": level, "time": "星期二", "place": place, "number": Int(num), "fee": Int(fee), "author": authorName, "type": type, "allNumber": 8, "address": address, "userUid": uid, "latitude": lat, "longitude": lng] as [String : Any]
         let childRef = refChild.childByAutoId()
         childRef.setValue(value)
         ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])

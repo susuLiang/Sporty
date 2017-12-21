@@ -71,10 +71,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
         let result = myMatches[indexPath.row]
         
-        cell.titleLabel.text = result.id
+        cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
         cell.levelLabel.text = result.level.rawValue
-//        cell.typeLabel.text = result.type.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         

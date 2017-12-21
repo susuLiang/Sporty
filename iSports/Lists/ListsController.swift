@@ -27,7 +27,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var ref = Database.database().reference()
     
     var myMatches = [Activity]()
-    
     var tableView = UITableView()
     
     lazy var addButton: UIButton = {
@@ -89,7 +88,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
         cell.levelLabel.text = result.level.rawValue
-//        cell.typeLabel.text = result.type.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         var isMyMatch = false
