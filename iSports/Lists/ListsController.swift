@@ -34,7 +34,22 @@ class ListsController: UITableViewController {
             fetch()
         }
         getPosts()
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+        
+        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+        
+        
+//        self.tableView.contentInsetAdjustmentBehavior = .never
+        
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 120 {
+        }
+    }
+    
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -125,7 +140,7 @@ class ListsController: UITableViewController {
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
         searchView.mainViewController = self
         self.addChildViewController(searchView)
-        searchView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        searchView.view.frame = self.view.frame
         self.view.addSubview(searchView.view)
         searchView.didMove(toParentViewController: self)
     }

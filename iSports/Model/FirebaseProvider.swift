@@ -64,7 +64,7 @@ class FirebaseProvider {
         }
     }
     
-    func getPosts(childKind:String, completion: @escaping ([Activity]?, Error?) -> Void) {
+    func getPosts(childKind: String, completion: @escaping ([Activity]?, Error?) -> Void) {
         
         var results = [String]()
         var posts = [Activity]()

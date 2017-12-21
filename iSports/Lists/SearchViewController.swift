@@ -48,6 +48,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.viewDidLoad()
         pickerDelegate()
         setPlaces()
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         typeTF.inputView = typePicker
         levelTF.inputView = levelPicker
