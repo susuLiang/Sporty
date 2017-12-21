@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import KeychainSwift
+import Firebase
 
 class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
@@ -19,6 +20,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     var itemInfo = IndicatorInfo(title: "MyPosts")
     
     var myPosts = [Activity]()
+    
+    var keyUid = [String]()
     
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
         
@@ -42,6 +45,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         setupTableCell()
         
         getPosts()
+
         
     }
 
@@ -69,8 +73,14 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
-
-        cell.placeLabel.text = myPosts[indexPath.row].id
+        
+        let result = myPosts[indexPath.row]
+        cell.titleLabel.text = result.id
+        cell.timeLabel.text = result.time
+        cell.levelLabel.text = result.level.rawValue
+        cell.typeLabel.text = result.type.rawValue
+        cell.placeLabel.text = result.place.placeName
+        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         
         cell.joinButton.backgroundColor = UIColor.clear
         
@@ -81,8 +91,9 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
     func getPosts() {
         
-        FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, error) in
+        FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, keyUid, error) in
             self.myPosts = posts!
+            self.keyUid = keyUid!
             self.tableView.reloadData()
         })
         
@@ -91,7 +102,21 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
-   
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let postId = myPosts[indexPath.row].id
+        let uid = keyUid[indexPath.row]
+        
+        if editingStyle == .delete {
+            
+            let ref = Database.database().reference()
+            ref.child("activities").child(postId).removeValue()
+            ref.child("user_postId").child(uid).removeValue()
+
+        }
+    }
+    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }

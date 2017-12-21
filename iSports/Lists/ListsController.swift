@@ -10,7 +10,9 @@ import UIKit
 import Firebase
 import KeychainSwift
 
-class ListsController: UITableViewController {
+class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var isShowed = false
     
     var results = [Activity]()
     
@@ -25,32 +27,42 @@ class ListsController: UITableViewController {
     var ref = Database.database().reference()
     
     var myMatches = [Activity]()
+    
+    var tableView = UITableView()
+    
+    lazy var addButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = UIColor.black
+        button.layer.shadowRadius = 2
+        button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
+        button.setImage(UIImage(named: "icon-add"), for: .normal)
+        
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        
+        tableView.dataSource = self
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        self.view.addSubview(tableView)
+        
+        self.addButton.frame = CGRect(x: 330, y: 600, width: 50, height: 50)
+        
+        self.view.addSubview(addButton)
+
         setupTableCell()
         setNavigation()
         if selectedPreference == nil {
             fetch()
         }
         getPosts()
-        
-        self.tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-        
-        self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-        
-        
-//        self.tableView.contentInsetAdjustmentBehavior = .never
-        
     }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 120 {
-        }
-    }
-    
-  
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -62,15 +74,15 @@ class ListsController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.results.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
         let result = results[indexPath.row]
         cell.titleLabel.text = result.id
@@ -118,19 +130,17 @@ class ListsController: UITableViewController {
     }
     
     func getPosts() {
-        
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.tableView.reloadData()
         })
-        
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
         activityView.selectedActivity = results[indexPath.row]
         navigationController?.pushViewController(activityView, animated: true)
@@ -139,10 +149,17 @@ class ListsController: UITableViewController {
     @objc func showSearchView() {
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
         searchView.mainViewController = self
-        self.addChildViewController(searchView)
-        searchView.view.frame = self.view.frame
-        self.view.addSubview(searchView.view)
-        searchView.didMove(toParentViewController: self)
+        searchView.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        if !isShowed {
+            isShowed = !isShowed
+            searchView.mainViewController = self
+            self.addChildViewController(searchView)
+
+            self.view.addSubview(searchView.view)
+            searchView.didMove(toParentViewController: self)
+        } else {
+            searchView.view.removeFromSuperview()
+        }
     }
     
     @objc func showAddView() {
@@ -176,10 +193,9 @@ extension ListsController {
 
     func setNavigation() {
         navigationItem.title = "Title"
-        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(showAddView))
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
-        navigationItem.rightBarButtonItems = [addButton, searchButton, allButton]
+        navigationItem.rightBarButtonItems = [searchButton, allButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
     }

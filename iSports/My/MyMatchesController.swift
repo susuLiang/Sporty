@@ -18,6 +18,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     let userUid = KeychainSwift().get("uid")
     
     var myMatches = [Activity]()
+    
+    var keyUid = [String]()
 
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
         
@@ -35,8 +37,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         
         setupTableCell()
         
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
+            self.keyUid = keyUid!
             self.tableView.reloadData()
         })
 
@@ -61,20 +64,21 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.myMatches)
         return self.myMatches.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
+        let result = myMatches[indexPath.row]
         
-        cell.placeLabel.text = myMatches[indexPath.row].id
+        cell.titleLabel.text = result.id
+        cell.timeLabel.text = result.time
+        cell.levelLabel.text = result.level.rawValue
+        cell.typeLabel.text = result.type.rawValue
+        cell.placeLabel.text = result.place.placeName
+        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         
-        cell.joinButton.backgroundColor = UIColor.clear
-        
-        cell.joinButton.tintColor = UIColor.clear
-
-
+        cell.joinButton.tintColor = UIColor.gray
         return cell
     }
     
@@ -86,6 +90,18 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
         activityView.selectedActivity = myMatches[indexPath.row]
         navigationController?.pushViewController(activityView, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let uid = keyUid[indexPath.row]
+        
+        if editingStyle == .delete {
+            
+            let ref = Database.database().reference()
+            ref.child("user_joinId").child(uid).removeValue()
+            
+        }
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
