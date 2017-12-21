@@ -9,7 +9,7 @@
 import Cartography
 import UIKit
 
-class GradientNavigationController: UINavigationController {
+class BlueNavigationController: UINavigationController {
     
     // MARK: Property
     
@@ -56,15 +56,15 @@ class GradientNavigationController: UINavigationController {
         navigationBar.isTranslucent = true
         
         navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!
+            NSAttributedStringKey.foregroundColor: UIColor(red: 52.0 / 255.0, green: 4.0 / 255.0, blue: 140.0 / 255.0, alpha: 1.0),
+            NSAttributedStringKey.font: UIFont(name: "IowanOldStyle-Bold", size: 22)!
         ]
         
         // Prepare gradient navigation bar view
         
         view.insertSubview(
             navigationBarGradientView,
-            aboveSubview: navigationBar
+            belowSubview: navigationBar
         )
         
         constrain(
@@ -90,13 +90,13 @@ class GradientNavigationController: UINavigationController {
         let gradientLayer = navigationBarGradientLayer
         
         gradientLayer.colors = [
-            UIColor(red: 3.0 / 255.0, green: 63.0 / 255.0, blue: 122.0 / 255.0, alpha: 1.0).cgColor,
-            UIColor(red: 4.0 / 255.0, green: 107.0 / 255.0, blue: 149.0 / 255.0, alpha: 1.0).cgColor
+            UIColor(red: 189.0 / 255.0, green: 204.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0).cgColor,
+            UIColor(red: 1.0 / 255.0, green: 184.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0).cgColor
         ]
         
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
         
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
         
         navigationBarGradientView.layer.insertSublayer(
             gradientLayer,

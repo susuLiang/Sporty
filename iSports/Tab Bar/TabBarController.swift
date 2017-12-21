@@ -71,7 +71,7 @@ class TabBarController: UITabBarController {
 
             let profileTableViewController = MapController()
 
-            let navigationController = UINavigationController(
+            let navigationController = BlueNavigationController(
                 rootViewController: profileTableViewController
             )
             
@@ -85,7 +85,7 @@ class TabBarController: UITabBarController {
             
             let listsController = ListsController()
             
-            let navigationController = UINavigationController(
+            let navigationController = BlueNavigationController(
                 rootViewController: listsController
             )
             
@@ -100,7 +100,7 @@ class TabBarController: UITabBarController {
             
             let myActivitiesController = MyActivitiesController()
 
-            let navigationController = UINavigationController(
+            let navigationController = BlueNavigationController(
                 rootViewController: myActivitiesController
             )
 

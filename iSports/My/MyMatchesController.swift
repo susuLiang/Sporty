@@ -74,7 +74,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         cell.titleLabel.text = result.id
         cell.timeLabel.text = result.time
         cell.levelLabel.text = result.level.rawValue
-        cell.typeLabel.text = result.type.rawValue
+//        cell.typeLabel.text = result.type.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         

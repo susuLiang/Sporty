@@ -67,6 +67,7 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
             marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
             marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
             marker.title = court.id
+            marker.icon = UIImage(named: "tennisMaker")
             marker.map = mapView
         }
         setLocationManager()
@@ -97,6 +98,16 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         navigationController?.pushViewController(activityView, animated: true)
         return true
     }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
+            return UIView()
+        }
+        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
+        
+        infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
+        return infoWindow
+    }
 }
 
 extension MapController: CLLocationManagerDelegate {
@@ -117,6 +128,8 @@ extension MapController: CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
+    
+    
     
 //    func setCluster() {
 //        // Set up the cluster manager with the supplied icon generator and

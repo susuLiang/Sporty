@@ -41,6 +41,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         tableView.delegate = self
@@ -85,10 +86,10 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
         let result = results[indexPath.row]
-        cell.titleLabel.text = result.id
+        cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
         cell.levelLabel.text = result.level.rawValue
-        cell.typeLabel.text = result.type.rawValue
+//        cell.typeLabel.text = result.type.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         var isMyMatch = false
@@ -109,10 +110,22 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         } else {
             cell.joinButton.isEnabled = false
-            cell.joinButton.backgroundColor = UIColor.yellow
+            cell.joinButton.backgroundColor = UIColor.clear
             cell.joinButton.tintColor = UIColor.clear
         }
         
+        cell.imagePlaced.adjustsImageSizeForAccessibilityContentSizeCategory = false
+        
+        switch result.type {
+        case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
+        case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
+        case "籃球": cell.imagePlaced.image = UIImage(named: "basketball")!
+        case "排球": cell.imagePlaced.image = UIImage(named: "volleyball")!
+        case "網球": cell.imagePlaced.image = UIImage(named: "tennis")!
+        case "足球": cell.imagePlaced.image = UIImage(named: "soccer")!
+        default:
+            return cell
+        }
         return cell
     }
     

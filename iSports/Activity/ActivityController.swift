@@ -40,9 +40,10 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var selectedActivity: Activity?  {
         didSet {
             navigationItem.rightBarButtonItem = nil
-            addNameTextField.text = selectedActivity?.id
+            navigationItem.title = selectedActivity?.name
+            addNameTextField.text = selectedActivity?.name
             authorName.text = selectedActivity?.author
-            addTypeTextField.text = selectedActivity?.type.rawValue
+            addTypeTextField.text = selectedActivity?.type
             addLevelTextField.text = selectedActivity?.level.rawValue
             addTimeTextField.text = selectedActivity?.time
             addPlaceTextField.text = selectedActivity?.place.placeName
@@ -59,7 +60,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
     }
     
-    var nowPlace: (latitude: String, longitude: String)? {
+    var nowPlace: (latitude: String, longitude: String, address: String)? {
         didSet {
             if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
             mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
@@ -81,8 +82,6 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     var typePicker = UIPickerView()
     var cityPicker = UIPickerView()
     var courtPicker = UIPickerView()
-    var city: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
-    var type: [String] = ["籃球", "棒球", "羽球", "網球", "足球", "排球" ]
     var courts: [Court]? {
 
         didSet {
@@ -153,7 +152,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-        case typePicker: return type[row]
+        case typePicker: return typeArray[row]
         case cityPicker: return city[row]
         case courtPicker:
             if courts != nil {
@@ -169,7 +168,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case typePicker:
-            addTypeTextField.text = type[row]
+            addTypeTextField.text = typeArray[row]
             if addCityTextField.text != "" {
                 if let type = addTypeTextField.text, let place = addCityTextField.text {
                     getLocation(city: place, gym: type)
@@ -185,7 +184,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             }
         case courtPicker:
             addPlaceTextField.text = courts![row].name
-            self.nowPlace = (courts![row].latitude, courts![row].longitude)
+            self.nowPlace = (courts![row].latitude, courts![row].longitude, courts![row].address)
         default: return
         }
     }
@@ -220,7 +219,11 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         guard
             let level = addLevelTextField.text,
             let num = addNumberTextField.text,
-            let fee = addFeeTextField.text
+            let fee = addFeeTextField.text,
+            let place = addPlaceTextField.text,
+            let name = addNameTextField.text,
+            let type = addTypeTextField.text,
+            let time = addTimeTextField.text
             else {
                 print("Form is not valid")
                 return
@@ -231,7 +234,8 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         let authorName = keyChain.get("name")
         let lat = nowPlace?.latitude
         let lng = nowPlace?.longitude
-        let value = ["name": "name", "level": level, "time": "星期二", "place": "大安區", "number": Int(num), "fee": Int(fee), "author": authorName, "type": "volleyball", "allNumber": 8, "address": "台北市信義區", "userUid": uid, "latitude": lat, "longitude": lng] as [String : Any]
+        let address = nowPlace?.address
+        let value = ["name": "name", "level": level, "time": "星期二", "place": place, "number": Int(num), "fee": Int(fee), "author": authorName, "type": type, "allNumber": 8, "address": address, "userUid": uid, "latitude": lat, "longitude": lng] as [String : Any]
         let childRef = refChild.childByAutoId()
         childRef.setValue(value)
         ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])

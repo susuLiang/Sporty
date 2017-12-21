@@ -23,6 +23,8 @@
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
 		1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */; };
 		1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */; };
+		1FB1081A1FEBF80900D2B4BF /* MapInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108191FEBF80900D2B4BF /* MapInfo.xib */; };
+		1FB1081C1FEBF86C00D2B4BF /* MapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB1081B1FEBF86C00D2B4BF /* MapInfo.swift */; };
 		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
 		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
@@ -53,7 +55,6 @@
 		1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF01FE17B81003071B9 /* ListsController.swift */; };
 		1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */; };
 		1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF41FE18058003071B9 /* UserSettingController.swift */; };
-		1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF71FE229CA003071B9 /* Preference.swift */; };
 		AF7D1C3524BBB56E03E5420B /* Pods_iSports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C5625200452BB789C1CC23 /* Pods_iSports.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
 		1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileController.xib; sourceTree = "<group>"; };
+		1FB108191FEBF80900D2B4BF /* MapInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapInfo.xib; sourceTree = "<group>"; };
+		1FB1081B1FEBF86C00D2B4BF /* MapInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
 		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
 		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
@@ -129,7 +132,6 @@
 		1FFC9DF01FE17B81003071B9 /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsCell.swift; sourceTree = "<group>"; };
 		1FFC9DF41FE18058003071B9 /* UserSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingController.swift; sourceTree = "<group>"; };
-		1FFC9DF71FE229CA003071B9 /* Preference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		4DD76A467625E70E85392DE9 /* Pods-iSports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.debug.xcconfig"; sourceTree = "<group>"; };
 		C6C5625200452BB789C1CC23 /* Pods_iSports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16CEEBCF8DE1FE5AE8FF54A /* Pods-iSports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
+				1FB1081B1FEBF86C00D2B4BF /* MapInfo.swift */,
+				1FB108191FEBF80900D2B4BF /* MapInfo.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -222,7 +226,6 @@
 			children = (
 				1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */,
 				1F70C50A1FE3D3D600DDAF03 /* Activity.swift */,
-				1FFC9DF71FE229CA003071B9 /* Preference.swift */,
 				1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */,
 				1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */,
 				1FFA2EF01FE8A6D000E485F1 /* LoadingIndicator.swift */,
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F6CE5D71FE12077006D6AAD /* GoogleService-Info.plist in Resources */,
+				1FB1081A1FEBF80900D2B4BF /* MapInfo.xib in Resources */,
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */,
@@ -496,7 +500,6 @@
 				1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */,
 				1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */,
 				1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */,
-				1FFC9DF81FE229CA003071B9 /* Preference.swift in Sources */,
 				1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */,
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
@@ -506,6 +509,7 @@
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
 				1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */,
+				1FB1081C1FEBF86C00D2B4BF /* MapInfo.swift in Sources */,
 				1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
 				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,

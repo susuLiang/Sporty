@@ -19,6 +19,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isTranslucent = false
+
         // change selected bar color
         settings.style.buttonBarBackgroundColor = graySpotifyColor
         settings.style.buttonBarItemBackgroundColor = graySpotifyColor
