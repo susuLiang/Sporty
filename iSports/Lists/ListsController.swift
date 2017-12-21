@@ -99,8 +99,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
-                cell.joinButton.backgroundColor = UIColor.red
-                cell.joinButton.tintColor = UIColor.blue
+                cell.joinButton.backgroundColor = UIColor.blue
+                cell.joinButton.tintColor = UIColor.white
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
