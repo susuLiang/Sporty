@@ -39,6 +39,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         
         print(userUid)
         
+        print(Auth.auth().currentUser?.uid)
+
+        
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!

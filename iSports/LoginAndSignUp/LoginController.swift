@@ -8,8 +8,11 @@
 
 import UIKit
 import Firebase
+import KeychainSwift
 
 class LoginController: UIViewController {
+    
+    let keyChain = KeychainSwift()
 
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -26,6 +29,7 @@ class LoginController: UIViewController {
                 print(error)
                 return
             }
+                        
             let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
             tabBarController.selectedIndex = 1
             self.present(tabBarController, animated: true, completion: nil)
@@ -39,6 +43,7 @@ class LoginController: UIViewController {
         
     }
     override func viewDidLoad() {
+        keyChain.clear()
         super.viewDidLoad()
     }
 

@@ -64,6 +64,7 @@ class SignUpController: UIViewController {
     }
    
     override func viewDidLoad() {
+        keyChain.clear()
         super.viewDidLoad()
     }
 

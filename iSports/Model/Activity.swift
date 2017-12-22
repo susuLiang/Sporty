@@ -77,6 +77,8 @@ let typeDict: [Sportstype: String] = [
 
 let typeArray: [String] = ["棒球", "籃球", "排球", "羽球", "網球", "足球"]
 
+let time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+
 struct Preference {
     
     var id: String

@@ -14,8 +14,8 @@ class FirebaseProvider {
     
     static let shared = FirebaseProvider()
     
-    let userCurrentUid = Auth.auth().currentUser?.uid
-
+    var keyChain = KeychainSwift()
+        
     func parseSnapshot(snapshot: DataSnapshot, selected: Preference?) -> [Activity] {
         var results = [Activity]()
         if let objects = snapshot.value as? [String: AnyObject] {
@@ -69,6 +69,8 @@ class FirebaseProvider {
         var keyUid = [String]()
         var results = [String]()
         var posts = [Activity]()
+        
+        let userCurrentUid = keyChain.get("uid")
 
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {

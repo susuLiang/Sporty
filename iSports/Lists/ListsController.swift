@@ -53,6 +53,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         keyChain.set(uid!, forKey: "uid")
         
+        print("Lists", keyChain.get("uid"))
+        
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         self.view.addSubview(tableView)
@@ -212,9 +214,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @objc func logOut() {
         
-        keyChain.delete("uid")
-        keyChain.delete("email")
-        keyChain.delete("password")
+        keyChain.clear()
         
         do {
             try Auth.auth().signOut()
