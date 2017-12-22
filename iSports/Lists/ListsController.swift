@@ -14,6 +14,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var isShowed = false
     
+    var keyChain = KeychainSwift()
+    
     var results = [Activity]()
     
     var selectedPreference: Preference? {
@@ -22,7 +24,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    var uid = KeychainSwift().get("uid")
+    var uid = Auth.auth().currentUser?.uid
     
     var ref = Database.database().reference()
     
@@ -46,6 +48,10 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.delegate = self
         
         tableView.dataSource = self
+        
+        var uid = Auth.auth().currentUser?.uid
+        
+        keyChain.set(uid!, forKey: "uid")
         
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
@@ -111,9 +117,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.joinButton.backgroundColor = UIColor.clear
             cell.joinButton.tintColor = UIColor.clear
         }
-        
-        cell.imagePlaced.adjustsImageSizeForAccessibilityContentSizeCategory = false
-        
+                
         switch result.type {
         case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
         case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
@@ -148,7 +152,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return 165
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -161,16 +165,15 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
         searchView.mainViewController = self
         searchView.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        if !isShowed {
-            isShowed = !isShowed
-            searchView.mainViewController = self
+//        if !isShowed {
+//            isShowed = !isShowed
             self.addChildViewController(searchView)
 
             self.view.addSubview(searchView.view)
             searchView.didMove(toParentViewController: self)
-        } else {
-            searchView.view.removeFromSuperview()
-        }
+//        } else {
+//            searchView.view.removeFromSuperview()
+//        }
     }
     
     @objc func showAddView() {
@@ -186,9 +189,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         })
     }
-}
-
-extension ListsController {
     
     @objc func fetch() {
         FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
@@ -198,9 +198,6 @@ extension ListsController {
             }
         })
     }
-}
-
-extension ListsController {
 
     func setNavigation() {
         navigationItem.title = "Title"
@@ -208,10 +205,16 @@ extension ListsController {
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
         navigationItem.rightBarButtonItems = [searchButton, allButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
+        let logOutButton = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
+        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(showMenu))
+        navigationItem.leftBarButtonItems = [myProfile, logOutButton]
     }
     
     @objc func logOut() {
+        
+        keyChain.delete("uid")
+        keyChain.delete("email")
+        keyChain.delete("password")
         
         do {
             try Auth.auth().signOut()
@@ -223,7 +226,19 @@ extension ListsController {
         
         let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
         present(loginController, animated: true, completion: nil)
-        
-        
+
+    }
+    
+    @objc func showMenu() {
+        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
+//        myProfileController.mainViewController = self
+//        myProfileController.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//
+//        self.addChildViewController(myProfileController)
+//
+//        self.view.addSubview(myProfileController.view)
+//        myProfileController.didMove(toParentViewController: self)
+        navigationController?.pushViewController(myProfileController, animated: true)
+//
     }
 }

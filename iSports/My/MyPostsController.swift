@@ -15,7 +15,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
     var user: UserSetting?
     
-    let userUid = KeychainSwift().get("uid")
+    let userUid = Auth.auth().currentUser?.uid
     
     var itemInfo = IndicatorInfo(title: "MyPosts")
     
@@ -46,6 +46,14 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
         getPosts()
 
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        getPosts()
         
     }
 
@@ -99,7 +107,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
+        return 165
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

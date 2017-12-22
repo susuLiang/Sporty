@@ -14,7 +14,7 @@ class FirebaseProvider {
     
     static let shared = FirebaseProvider()
     
-    var userUid = KeychainSwift().get("uid")
+    let userCurrentUid = Auth.auth().currentUser?.uid
 
     func parseSnapshot(snapshot: DataSnapshot, selected: Preference?) -> [Activity] {
         var results = [Activity]()
@@ -70,7 +70,7 @@ class FirebaseProvider {
         var results = [String]()
         var posts = [Activity]()
 
-        Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userUid).observe(.value) { (snapshot: DataSnapshot) in
+        Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
                 for (key, data) in objects {
@@ -79,7 +79,6 @@ class FirebaseProvider {
                         results.append(postId)
                     }
                 }
-                print(results)
                 posts = [Activity]()
                 for result in results {
                     Database.database().reference().child("activities").child(result).observe(.value, with: {
@@ -104,7 +103,6 @@ class FirebaseProvider {
                             {
                                 let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
                                 posts.append(activity)
-                                print("+++++++++")
                             }
                         }
                         completion(posts, keyUid, nil)

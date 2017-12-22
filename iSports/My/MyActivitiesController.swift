@@ -44,7 +44,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     // MARK: - PagerTabStripDataSource
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let child_1 = MyMatchesController(style: .plain, itemInfo: IndicatorInfo(title: "MyMatches"))
+        let child_1 = MyMatchesController(style: .plain, itemInfo: IndicatorInfo(title: "Join"))
         let child_2 = MyPostsController(style: .plain, itemInfo: IndicatorInfo(title: "MyPosts"))
         return [child_1, child_2]
     }

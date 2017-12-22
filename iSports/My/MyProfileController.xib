@@ -12,28 +12,54 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileController" customModule="iSports" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="I6e-n9-55K">
+        <viewController id="I6e-n9-55K" customClass="MyProfileController" customModule="iSports" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="RLI-rK-reA">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="djA-bF-fOd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIz-gz-xxZ" userLabel="User Name Label">
+                        <rect key="frame" x="58" y="381" width="244" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-fN-gZg">
+                        <rect key="frame" x="58" y="542" width="100" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7J-u3-Vez">
+                        <rect key="frame" x="58" y="465" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djA-bF-fOd">
+                        <rect key="frame" x="0.0" y="44" width="375" height="279"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tB-wc-EZp" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="87" y="39" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tB-wc-EZp" customClass="LGButton" customModule="LGButton">
+                                <rect key="frame" x="87" y="54" width="201" height="171"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="P9x-si-cgQ"/>
+                                    <constraint firstAttribute="height" constant="171" id="nbi-Ee-dPx"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="100"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8tB-wc-EZp" firstAttribute="centerY" secondItem="djA-bF-fOd" secondAttribute="centerY" id="E6T-c9-6Z3"/>
+                            <constraint firstItem="8tB-wc-EZp" firstAttribute="centerX" secondItem="djA-bF-fOd" secondAttribute="centerX" id="Yfg-Gc-7UC"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -51,32 +77,23 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIz-gz-xxZ">
-                        <rect key="frame" x="58" y="353" width="100" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7J-u3-Vez">
-                        <rect key="frame" x="58" y="428" width="100" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-fN-gZg">
-                        <rect key="frame" x="58" y="499" width="100" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="344" id="9IF-gB-hsi"/>
+                    <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="9dQ-Y0-wFQ"/>
+                    <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" constant="24" id="GVi-sN-nXr"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="cIz-gz-xxZ" secondAttribute="trailing" constant="73" id="LGc-Fm-4Yk"/>
+                    <constraint firstItem="cIz-gz-xxZ" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="58" id="mvV-yn-le0"/>
+                    <constraint firstItem="cIz-gz-xxZ" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="58" id="o2f-Or-QGD"/>
+                    <constraint firstItem="djA-bF-fOd" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="szL-hz-seN"/>
+                </constraints>
                 <viewLayoutGuide key="safeArea" id="sTJ-Kh-Oxe"/>
             </view>
-            <point key="canvasLocation" x="-72.5" y="94.5"/>
+            <connections>
+                <outlet property="userNameLabel" destination="cIz-gz-xxZ" id="mk2-6c-JQ2"/>
+            </connections>
+            <point key="canvasLocation" x="-331.5" y="95.5"/>
         </viewController>
     </objects>
 </document>
