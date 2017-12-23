@@ -26,7 +26,29 @@ class LoginController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil {
-                print(error)
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
+                    var message: String = ""
+                    
+                    switch errCode {
+                    case .invalidEmail:
+                        message = NSLocalizedString("Invalid email", comment: "")
+                    case .userNotFound:
+                        message = NSLocalizedString("Wrong email", comment: "")
+                    case .wrongPassword:
+                        message = NSLocalizedString("Wrong password", comment: "")
+                    default:
+                        print("Create User Error: \(error!)")
+                        
+                    }
+                    
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alert.addAction(defaultAction)
+                    if self.presentedViewController == nil {
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                }
                 return
             }
                         

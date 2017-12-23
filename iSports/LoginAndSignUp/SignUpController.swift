@@ -22,19 +22,43 @@ class SignUpController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: Any) {
-
+        
         guard let email = emailText.text,
-            let password = passwordText.text,
-            let name = nameText.text
-            else {
-                print("Form is not valid")
-                return
+            let password = passwordText.text else {
+            return
         }
+        
+        guard let name = nameText.text, !name.isEmpty else {
+            showAlert(title: "Error", message: "Must enter name", dismiss: nil)
+            return
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
             
             if error != nil {
-                print(error)
-                return
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
+
+                    var message: String = ""
+                    
+                    switch errCode {
+                    case .invalidEmail:
+                        message = NSLocalizedString("Invalid email", comment: "")
+                    case .emailAlreadyInUse:
+                        message = NSLocalizedString("Email already in use", comment: "")
+                    case .weakPassword:
+                        message = NSLocalizedString("Password should be greater than six digits", comment: "")
+                    case .missingEmail:
+                        message = NSLocalizedString("Must enter email", comment: "")
+                   
+                    default:
+                        print("Create User Error: \(error!)")
+                        
+                    }
+                    
+                    self.showAlert(title: "Error", message: message, dismiss: nil)
+                    
+                    return
+                }
             }
             
             guard let uid = user?.uid else {
@@ -72,4 +96,25 @@ class SignUpController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    typealias ShowAlertDismissHandler = () -> Void
+    
+    func showAlert(title: String?, message: String?, dismiss handler: ShowAlertDismissHandler?) {
+        
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        let ok = UIAlertAction(
+            title: NSLocalizedString("OK", comment: ""),
+            style: .cancel,
+            handler: { _ in handler?() }
+        )
+        
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
