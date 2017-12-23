@@ -174,6 +174,7 @@
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
+				1F8627761FEEB04200D82614 /* MyProfile */,
 				1F705F111FEA0ACB0010963E /* My */,
 				1F705F101FEA0A9F0010963E /* Map */,
 				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
@@ -207,8 +208,6 @@
 				1F705F121FEA0AED0010963E /* MyActivitiesController.swift */,
 				1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */,
 				1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */,
-				1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */,
-				1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -229,6 +228,15 @@
 				1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		1F8627761FEEB04200D82614 /* MyProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */,
+				1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */,
+			);
+			path = MyProfile;
 			sourceTree = "<group>";
 		};
 		1FFA2EF41FE8AD3400E485F1 /* Model */ = {

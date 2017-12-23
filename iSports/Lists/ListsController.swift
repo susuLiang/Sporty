@@ -204,31 +204,14 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     func setNavigation() {
         navigationItem.title = "Title"
-        let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-home"), style: .plain, target: self, action: #selector(showSearchView))
+        let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
         navigationItem.rightBarButtonItems = [searchButton, allButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        let logOutButton = UIBarButtonItem(title: "LogOut", style: .plain, target: self, action: #selector(logOut))
-        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(showMenu))
-        navigationItem.leftBarButtonItems = [myProfile, logOutButton]
+        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
+        navigationItem.leftBarButtonItems = [myProfile]
     }
     
-    @objc func logOut() {
-        
-        keyChain.clear()
-        
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError {
-            print(logoutError)
-        }
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-        present(loginController, animated: true, completion: nil)
-
-    }
     
     @objc func showMenu() {
         
