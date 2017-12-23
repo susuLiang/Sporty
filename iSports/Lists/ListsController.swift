@@ -33,11 +33,11 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = UIColor.black
-        button.layer.shadowRadius = 2
+//        button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
-        
+        button.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -49,25 +49,26 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         tableView.dataSource = self
         
-        var uid = Auth.auth().currentUser?.uid
-        
         keyChain.set(uid!, forKey: "uid")
-        
-        print("Lists", keyChain.get("uid"))
         
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         self.view.addSubview(tableView)
-        
-        self.addButton.frame = CGRect(x: 330, y: 600, width: 50, height: 50)
+
+//        self.addButton.frame = CGRect(x: 330, y: 500, width: 50, height: 50)
         
         self.view.addSubview(addButton)
 
+        setUpAddButton()
+
         setupTableCell()
+        
         setNavigation()
+        
         if selectedPreference == nil {
             fetch()
         }
+        
         getPosts()
     }
 
@@ -230,15 +231,17 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func showMenu() {
+        
         let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
-//        myProfileController.mainViewController = self
-//        myProfileController.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//
-//        self.addChildViewController(myProfileController)
-//
-//        self.view.addSubview(myProfileController.view)
-//        myProfileController.didMove(toParentViewController: self)
+
         navigationController?.pushViewController(myProfileController, animated: true)
-//
+        
+    }
+    
+    func setUpAddButton() {
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

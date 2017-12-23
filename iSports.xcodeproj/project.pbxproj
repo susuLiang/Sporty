@@ -179,6 +179,7 @@
 				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
+				1F8627751FEE9C9300D82614 /* Search */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
@@ -219,6 +220,15 @@
 				1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		1F8627751FEE9C9300D82614 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */,
+				1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		1FFA2EF41FE8AD3400E485F1 /* Model */ = {
@@ -310,8 +320,6 @@
 			isa = PBXGroup;
 			children = (
 				1FFC9DF01FE17B81003071B9 /* ListsController.swift */,
-				1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */,
-				1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */,
 				1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */,
 				1FFC9DED1FE17B1B003071B9 /* ListsCell.xib */,
 			);

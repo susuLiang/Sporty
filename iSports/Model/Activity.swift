@@ -83,7 +83,7 @@ struct Preference {
     
     var id: String
     
-    var type: Sportstype
+    var type: String
     
     var level: Level
     

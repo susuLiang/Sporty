@@ -38,7 +38,6 @@ class LoginController: UIViewController {
                         message = NSLocalizedString("Wrong password", comment: "")
                     default:
                         print("Create User Error: \(error!)")
-                        
                     }
                     
                     let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -47,7 +46,6 @@ class LoginController: UIViewController {
                     if self.presentedViewController == nil {
                         self.present(alert, animated: true, completion: nil)
                     }
-                    
                 }
                 return
             }
@@ -65,7 +63,6 @@ class LoginController: UIViewController {
         
     }
     override func viewDidLoad() {
-        keyChain.clear()
         super.viewDidLoad()
     }
 

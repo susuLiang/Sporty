@@ -52,7 +52,7 @@ class FirebaseProvider {
     
     func getData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
         if selected != nil {
-            Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type.rawValue).observe(.value) { (snapshot: DataSnapshot) in
+            Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observe(.value) { (snapshot: DataSnapshot) in
                 let results = self.parseSnapshot(snapshot: snapshot, selected: selected)
                     completion(results, nil)
             }
