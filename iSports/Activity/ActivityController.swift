@@ -96,7 +96,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         addCityTextField.inputView = cityPicker
         addPlaceTextField.inputView = courtPicker
         pickerDelegate()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-check"), style: .plain, target: self, action: #selector(save))
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         view.addGestureRecognizer(tap)
     }

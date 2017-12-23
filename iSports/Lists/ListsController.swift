@@ -198,12 +198,14 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         })
     }
-
+    
     func setNavigation() {
         navigationItem.title = "Title"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
         navigationItem.rightBarButtonItems = [searchButton, allButton]
+        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
         navigationItem.leftBarButtonItems = [myProfile]
