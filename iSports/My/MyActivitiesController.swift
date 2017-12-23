@@ -19,11 +19,11 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isTranslucent = false
-
+        
         // change selected bar color
         settings.style.buttonBarBackgroundColor = graySpotifyColor
         settings.style.buttonBarItemBackgroundColor = graySpotifyColor
-        settings.style.selectedBarBackgroundColor = UIColor(red: 33/255.0, green: 174/255.0, blue: 67/255.0, alpha: 1.0)
+        settings.style.selectedBarBackgroundColor = UIColor(red: 80/255.0, green: 227/255.0, blue:194/255.0, alpha: 1.0)
         settings.style.buttonBarItemFont = UIFont(name: "HelveticaNeue-Light", size:14) ?? UIFont.systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
@@ -39,6 +39,8 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
             newCell?.label.textColor = .white
         }
         super.viewDidLoad()
+        navigationItem.title = "My Activities"
+        navigationController?.navigationBar.barTintColor = UIColor.black
     }
     
     // MARK: - PagerTabStripDataSource

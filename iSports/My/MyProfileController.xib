@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,8 +23,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-fN-gZg">
+                        <rect key="frame" x="58" y="542" width="100" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7J-u3-Vez">
-                        <rect key="frame" x="58" y="443" width="100" height="21"/>
+                        <rect key="frame" x="58" y="465" width="100" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -71,51 +77,20 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-as-Dcn">
-                        <rect key="frame" x="87" y="592" width="200" height="44"/>
-                        <color key="backgroundColor" red="0.11938482034106634" green="1" blue="0.75988307144894418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="gW6-as-Dcn" secondAttribute="height" multiplier="50:11" id="ft8-Ln-25y"/>
-                        </constraints>
-                        <state key="normal">
-                            <attributedString key="attributedTitle">
-                                <fragment content="Log out">
-                                    <attributes>
-                                        <font key="NSFont" size="18" name="Helvetica"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </state>
-                        <connections>
-                            <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-fN-gZg">
-                        <rect key="frame" x="58" y="503" width="100" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="344" id="9IF-gB-hsi"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="9dQ-Y0-wFQ"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" constant="24" id="GVi-sN-nXr"/>
-                    <constraint firstItem="gW6-as-Dcn" firstAttribute="centerX" secondItem="RLI-rK-reA" secondAttribute="centerX" id="I8o-Bh-Hm9"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="cIz-gz-xxZ" secondAttribute="trailing" constant="73" id="LGc-Fm-4Yk"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" constant="31" id="hdt-QJ-nMf"/>
                     <constraint firstItem="cIz-gz-xxZ" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="58" id="mvV-yn-le0"/>
-                    <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="mxm-RY-PYh"/>
                     <constraint firstItem="cIz-gz-xxZ" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="58" id="o2f-Or-QGD"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="szL-hz-seN"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="gW6-as-Dcn" secondAttribute="trailing" constant="88" id="ynJ-op-p4S"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="sTJ-Kh-Oxe"/>
             </view>
             <connections>
-                <outlet property="logOutButton" destination="gW6-as-Dcn" id="AwF-Ka-76Y"/>
                 <outlet property="userNameLabel" destination="cIz-gz-xxZ" id="mk2-6c-JQ2"/>
             </connections>
             <point key="canvasLocation" x="-331.5" y="95.5"/>

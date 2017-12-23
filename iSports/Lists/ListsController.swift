@@ -33,7 +33,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
-//        button.tintColor = UIColor.black
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
         button.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
@@ -54,8 +53,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
         self.view.addSubview(tableView)
-
-//        self.addButton.frame = CGRect(x: 330, y: 500, width: 50, height: 50)
         
         self.view.addSubview(addButton)
 
@@ -210,6 +207,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
         navigationItem.leftBarButtonItems = [myProfile]
+        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
     }
     
     
