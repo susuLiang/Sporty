@@ -45,8 +45,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         setupTableCell()
         
         getPosts()
-
-        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +106,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 165
+        return 150
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

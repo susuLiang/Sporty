@@ -23,6 +23,7 @@ class ListsCell: UITableViewCell {
         super.awakeFromNib()
         imagePlaced.frame.size = CGSize(width: 75, height: 75)
         imagePlaced.contentMode = .scaleToFill
+
 //        levelView.backgroundColor = UIColor.gray
 //        levelView.alpha = 0.5
 //        levelView.layer.cornerRadius = 100

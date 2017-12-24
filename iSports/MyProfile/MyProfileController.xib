@@ -32,28 +32,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djA-bF-fOd">
-                        <rect key="frame" x="0.0" y="44" width="375" height="279"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="303"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8tB-wc-EZp" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="87" y="54" width="201" height="171"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="201" id="P9x-si-cgQ"/>
-                                    <constraint firstAttribute="height" constant="171" id="nbi-Ee-dPx"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullyRoundedCorners" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDs-Rc-jRq">
+                                <rect key="frame" x="87" y="39" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="8tB-wc-EZp" firstAttribute="centerY" secondItem="djA-bF-fOd" secondAttribute="centerY" id="E6T-c9-6Z3"/>
-                            <constraint firstItem="8tB-wc-EZp" firstAttribute="centerX" secondItem="djA-bF-fOd" secondAttribute="centerX" id="Yfg-Gc-7UC"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
@@ -102,9 +88,9 @@
                 <constraints>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="344" id="9IF-gB-hsi"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="9dQ-Y0-wFQ"/>
-                    <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" constant="24" id="GVi-sN-nXr"/>
                     <constraint firstItem="gW6-as-Dcn" firstAttribute="centerX" secondItem="RLI-rK-reA" secondAttribute="centerX" id="I8o-Bh-Hm9"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="cIz-gz-xxZ" secondAttribute="trailing" constant="73" id="LGc-Fm-4Yk"/>
+                    <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" id="fnG-1V-XR3"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" constant="31" id="hdt-QJ-nMf"/>
                     <constraint firstItem="cIz-gz-xxZ" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="58" id="mvV-yn-le0"/>
                     <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="mxm-RY-PYh"/>

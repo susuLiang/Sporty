@@ -37,17 +37,11 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         
         setupTableCell()
         
-        print(userUid)
-        
-        print(Auth.auth().currentUser?.uid)
-
-        
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!
             self.tableView.reloadData()
         })
-
     }
     
     func setupTableCell() {
@@ -87,7 +81,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 165
+        return 150
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

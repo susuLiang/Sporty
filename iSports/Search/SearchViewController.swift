@@ -26,23 +26,10 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func sureButton(_ sender: Any) {
-        guard let type = typeTF.text, !type.isEmpty else {
-            showAlert(title: "Please enter", message: "Type is empty", dismiss: nil)
-            return
-        }
-        
-        guard let level = levelTF.text, !level.isEmpty else {
-            showAlert(title: "Please enter", message: "Level is empty", dismiss: nil)
-            return
-        }
-        
-        guard let city = placeTF.text, !city.isEmpty else {
-            showAlert(title: "Please enter", message: "City is empty", dismiss: nil)
-            return
-        }
-        
-        guard let time = timeTF.text, !time.isEmpty else {
-            showAlert(title: "Please enter", message: "Time is empty", dismiss: nil)
+        guard let type = typeTF.text,
+            let level = levelTF.text,
+            let city = placeTF.text,
+            let time = timeTF.text else {
             return
         }
         

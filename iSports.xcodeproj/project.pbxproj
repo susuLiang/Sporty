@@ -170,6 +170,7 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
 				1F6358E61FE2471200B6511A /* MainViewController.swift */,
@@ -181,7 +182,6 @@
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
 				1F8627751FEE9C9300D82614 /* Search */,
-				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFC9DE51FE16C8B003071B9 /* Library */,
 				1FFC9DDE1FE137A7003071B9 /* Tab Bar */,
 				1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */,

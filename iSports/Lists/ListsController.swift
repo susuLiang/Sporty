@@ -103,13 +103,11 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
-                cell.joinButton.backgroundColor = UIColor.blue
-                cell.joinButton.tintColor = UIColor.white
+                cell.joinButton.tintColor = UIColor.yellow
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
-                cell.joinButton.backgroundColor = UIColor.gray
-                cell.joinButton.tintColor = UIColor.white
+                cell.joinButton.tintColor = UIColor.gray
             }
             
         } else {
@@ -132,8 +130,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func join(sender: UIButton) {
-        sender.backgroundColor = UIColor.gray
-        sender.tintColor = UIColor.white
+        sender.tintColor = UIColor.gray
         if let cell = sender.superview?.superview as? ListsCell,
             let indexPath = tableView.indexPath(for: cell) {
             let joinId = results[indexPath.row].id
@@ -152,7 +149,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 165
+        return 150
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
