@@ -53,6 +53,8 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
 //        clusterManager.setDelegate(self, mapDelegate: self)
 //        setCluster()
         navigationItem.title = "Map"
+        let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
+        navigationItem.rightBarButtonItems = [searchButton]
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,6 +71,10 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
 //                self.view.addSubview(self.setMap())
             }
         })
+    }
+    
+    @objc func search() {
+        
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -145,6 +151,7 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         self.locationManager.delegate = self
         self.placesClient = GMSPlacesClient.shared()
     }
+    
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         var didSelectedMarker: Activity?

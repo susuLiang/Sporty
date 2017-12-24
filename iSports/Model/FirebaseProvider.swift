@@ -38,9 +38,12 @@ class FirebaseProvider {
                 {
                     let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
                     if selected != nil {
-                        if time == selected?.time && placeName == selected?.place && level == selected?.level.rawValue {
-                            results.append(activity)
-                        }
+                            if (time == selected?.time || (selected?.time == "")) &&
+                                (level == selected?.level?.rawValue || (selected?.level == nil)) &&
+                                (placeName == selected?.place || (selected?.place == "")) {
+                                results.append(activity)
+                            }
+                        
                     } else {
                         results.append(activity)
                     }

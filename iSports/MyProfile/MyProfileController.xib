@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="303"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDs-Rc-jRq">
-                                <rect key="frame" x="87" y="39" width="200" height="200"/>
+                                <rect key="frame" x="87" y="51" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

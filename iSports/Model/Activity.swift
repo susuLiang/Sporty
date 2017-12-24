@@ -85,7 +85,7 @@ struct Preference {
     
     var type: String
     
-    var level: Level
+    var level: Level?
     
     var place: String
     

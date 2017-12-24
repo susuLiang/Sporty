@@ -33,7 +33,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             return
         }
         
-        mainViewController?.selectedPreference = Preference(id: "", type: type, level: Level(rawValue: level)!, place: city, time: time)
+        mainViewController?.selectedPreference = Preference(id: "", type: type, level: Level(rawValue: level), place: city, time: time)
         self.view.removeFromSuperview()
     }
     
