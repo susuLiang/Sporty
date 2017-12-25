@@ -95,17 +95,24 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let result = results[indexPath.row]
         cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
-        cell.levelLabel.text = result.level.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         var isMyMatch = false
+        
+        switch result.level {
+        case .A: cell.levelImage.image = UIImage(named: "labelA")
+        case .B: cell.levelImage.image = UIImage(named: "labelB")
+        case .C: cell.levelImage.image = UIImage(named: "labelC")
+        case .D: cell.levelImage.image = UIImage(named: "labelD")
+       }
+        
         if result.authorUid != uid {
             for myMatch in myMatches where myMatch.id == result.id {
                 isMyMatch = true
             }
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
-                cell.joinButton.tintColor = UIColor.yellow
+                cell.joinButton.tintColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
@@ -151,7 +158,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 110
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

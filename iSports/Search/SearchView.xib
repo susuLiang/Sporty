@@ -86,6 +86,7 @@
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="crm-Lu-Aos"/>
                                     <constraint firstAttribute="width" constant="150" id="nDq-Je-hy1"/>
                                 </constraints>
                             </stackView>
@@ -108,7 +109,6 @@
                 <constraints>
                     <constraint firstItem="2cM-AZ-PVd" firstAttribute="leading" secondItem="pln-BK-Qs8" secondAttribute="leading" constant="168" id="8lM-7C-aHW"/>
                     <constraint firstItem="2cM-AZ-PVd" firstAttribute="top" secondItem="pln-BK-Qs8" secondAttribute="top" constant="51" id="Cc5-6H-csC"/>
-                    <constraint firstItem="pln-BK-Qs8" firstAttribute="bottom" secondItem="2cM-AZ-PVd" secondAttribute="bottom" constant="356" id="L1r-Pd-VSu"/>
                     <constraint firstItem="pln-BK-Qs8" firstAttribute="top" secondItem="KAX-fO-Gw8" secondAttribute="top" constant="20" id="NXv-4H-Pqe"/>
                     <constraint firstItem="pln-BK-Qs8" firstAttribute="trailing" secondItem="KAX-fO-Gw8" secondAttribute="trailing" id="d35-W2-1WY"/>
                     <constraint firstItem="KAX-fO-Gw8" firstAttribute="leading" secondItem="pln-BK-Qs8" secondAttribute="leading" id="lzU-af-w2g"/>

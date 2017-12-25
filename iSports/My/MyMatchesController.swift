@@ -72,16 +72,21 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         
         cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
-        cell.levelLabel.text = result.level.rawValue
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+        switch result.level {
+        case .A: cell.levelImage.image = UIImage(named: "labelA")
+        case .B: cell.levelImage.image = UIImage(named: "labelB")
+        case .C: cell.levelImage.image = UIImage(named: "labelC")
+        case .D: cell.levelImage.image = UIImage(named: "labelD")
+        }
         
         cell.joinButton.tintColor = UIColor.gray
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 110
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

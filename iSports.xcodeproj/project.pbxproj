@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6358E61FE2471200B6511A /* MainViewController.swift */; };
 		1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */; };
 		1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */; };
 		1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */; };
 		1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */; };
-		1F6CE5D71FE12077006D6AAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */; };
 		1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* LoginController.swift */; };
 		1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F705F121FEA0AED0010963E /* MyActivitiesController.swift */; };
 		1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */; };
@@ -21,6 +19,11 @@
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
 		1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */; };
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
+		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
+		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
+		1F86277D1FF0A5B600D82614 /* MapDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F86277B1FF0A5B600D82614 /* MapDetailController.xib */; };
+		1F8627801FF0A71A00D82614 /* MapDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277E1FF0A71A00D82614 /* MapDetailCell.swift */; };
+		1F8627811FF0A71A00D82614 /* MapDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F86277F1FF0A71A00D82614 /* MapDetailCell.xib */; };
 		1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */; };
 		1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */; };
 		1FB1081A1FEBF80900D2B4BF /* MapInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108191FEBF80900D2B4BF /* MapInfo.xib */; };
@@ -59,14 +62,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F6358E61FE2471200B6511A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1F6CE5C11FE11BFC006D6AAD /* iSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6CE5C91FE11BFC006D6AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F6CE5CE1FE11BFC006D6AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F6CE5D01FE11BFC006D6AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6CE5D81FE12A28006D6AAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1F705F121FEA0AED0010963E /* MyActivitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesController.swift; sourceTree = "<group>"; };
 		1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
@@ -75,6 +76,11 @@
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
+		1F86277B1FF0A5B600D82614 /* MapDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailController.xib; sourceTree = "<group>"; };
+		1F86277E1FF0A71A00D82614 /* MapDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailCell.swift; sourceTree = "<group>"; };
+		1F86277F1FF0A71A00D82614 /* MapDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailCell.xib; sourceTree = "<group>"; };
 		1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
 		1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileController.xib; sourceTree = "<group>"; };
 		1FB108191FEBF80900D2B4BF /* MapInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapInfo.xib; sourceTree = "<group>"; };
@@ -173,7 +179,6 @@
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
-				1F6358E61FE2471200B6511A /* MainViewController.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1F8627761FEEB04200D82614 /* MyProfile */,
 				1F705F111FEA0ACB0010963E /* My */,
@@ -187,7 +192,7 @@
 				1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */,
 				1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */,
 				1F6CE5D01FE11BFC006D6AAD /* Info.plist */,
-				1F6CE5D61FE12077006D6AAD /* GoogleService-Info.plist */,
+				1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */,
 			);
 			path = iSports;
 			sourceTree = "<group>";
@@ -196,6 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */,
+				1F86277A1FF0A5B600D82614 /* MapDetailController.swift */,
+				1F86277B1FF0A5B600D82614 /* MapDetailController.xib */,
+				1F86277E1FF0A71A00D82614 /* MapDetailCell.swift */,
+				1F86277F1FF0A71A00D82614 /* MapDetailCell.xib */,
 				1FB1081B1FEBF86C00D2B4BF /* MapInfo.swift */,
 				1FB108191FEBF80900D2B4BF /* MapInfo.xib */,
 			);
@@ -414,14 +423,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6CE5D71FE12077006D6AAD /* GoogleService-Info.plist in Resources */,
 				1FB1081A1FEBF80900D2B4BF /* MapInfo.xib in Resources */,
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
+				1F86277D1FF0A5B600D82614 /* MapDetailController.xib in Resources */,
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
+				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
 				1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */,
+				1F8627811FF0A71A00D82614 /* MapDetailCell.xib in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +533,7 @@
 				1FFC9DE21FE16A78003071B9 /* TabBarItemType.swift in Sources */,
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
 				1FFA2F011FE8EB6D00E485F1 /* GQTPointQuadTree.m in Sources */,
+				1F8627801FF0A71A00D82614 /* MapDetailCell.swift in Sources */,
 				1FFC9DF51FE18058003071B9 /* UserSettingController.swift in Sources */,
 				1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
@@ -532,7 +544,7 @@
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
 				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
-				1F6358E71FE2471200B6511A /* MainViewController.swift in Sources */,
+				1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
 				1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */,
 				1FFA2F221FE8EB8D00E485F1 /* GMUGridBasedClusterAlgorithm.m in Sources */,
