@@ -16,12 +16,30 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height)
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height)
+        
+        tableView.alpha = 0.9
+        
+        tableView.delegate = self
+        
+        tableView.dataSource = self
+        
+        view.addSubview(tableView)
+        
+        setupTableCell()
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupTableCell() {
+        let nib = UINib(nibName: "MapSearchCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "mapSearchCell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,7 +51,7 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MapSearchCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mapSearchCell", for: indexPath) as! MapSearchCell
         cell.typeButton.setTitle(typeArray[indexPath.row], for: .normal)
 
         return cell

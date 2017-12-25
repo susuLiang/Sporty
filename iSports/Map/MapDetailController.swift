@@ -32,9 +32,9 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         
-        tableView.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
         tableView.delegate = self
         
@@ -46,8 +46,6 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         
         view.addSubview(tableView)
         
-        print(selectedPlace)
-
     }
 
     override func didReceiveMemoryWarning() {
