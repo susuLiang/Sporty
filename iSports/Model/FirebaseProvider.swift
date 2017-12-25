@@ -67,6 +67,37 @@ class FirebaseProvider {
         }
     }
     
+    func getPlaceAllActivities(place: Place?, completion: @escaping ([Activity]?, Error?) -> Void) {
+        Database.database().reference().child("activities").queryOrdered(byChild: "place").queryEqual(toValue: place?.placeName).observe(.value) { (snapshot: DataSnapshot) in
+            var results = [Activity]()
+            if let objects = snapshot.value as? [String: AnyObject] {
+                for (id, data) in objects {
+                    let id = id
+                    if
+                        let name = data["name"] as? String,
+                        let type = data["type"] as? String,
+                        let time = data["time"] as? String,
+                        let placeName = data["place"] as? String,
+                        let latitude = data["latitude"] as? String,
+                        let longitude = data["longitude"] as? String,
+                        let level = data["level"] as? String,
+                        let address = data["address"] as? String,
+                        let number = data["number"] as? Int,
+                        let allNumber = data["allNumber"] as? Int,
+                        let fee = data["fee"] as? Int,
+                        let userUid = data["userUid"] as? String,
+                        let author = data["author"] as? String
+                    {
+                        let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
+                    
+                        results.append(activity)
+                    }
+                }
+                completion(results, nil)
+            }
+        }
+    }
+    
     func getPosts(childKind: String, completion: @escaping ([Activity]?, [String]?, Error?) -> Void) {
         
         var keyUid = [String]()
@@ -116,7 +147,6 @@ class FirebaseProvider {
              }
         }
     }
-    
     
 }
 

@@ -94,13 +94,6 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//
-//        super.viewWillDisappear(animated)
-//
-//        print(self.mapView)
-//    }
-//
     
 //    func setMarker() {
 //        for court in self.results {
@@ -167,34 +160,54 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         self.placesClient = GMSPlacesClient.shared()
     }
     
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        var didSelectedMarker: Activity?
+//        for activity in results {
+//            if activity.id == marker.title {
+//                didSelectedMarker = activity
+//                break
+//            }
+//        }
+//        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+//        activityView.selectedActivity = didSelectedMarker
+//
+//        navigationController?.pushViewController(activityView, animated: true)
+//        return true
+//    }
+    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        var didSelectedMarker: Activity?
+        var selectedActivity: Activity?
         for activity in results {
             if activity.id == marker.title {
-                didSelectedMarker = activity
+                selectedActivity = activity
                 break
             }
         }
-        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
-        activityView.selectedActivity = didSelectedMarker
+        let detailView = MapDetailController()
+        detailView.selectedPlace = selectedActivity?.place
+        detailView.mainViewController = self
+        detailView.view.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
-        navigationController?.pushViewController(activityView, animated: true)
+        self.addChildViewController(detailView)
+        self.view.addSubview(detailView.view)
+
         return true
     }
     
-    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-
-        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
-            return UIView()
-        }
-        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
-
-        infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
-        return infoWindow
-    }
+    
+//    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+//
+//        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
+//            return UIView()
+//        }
+//        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
+//
+//        infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
+//        return infoWindow
+//    }
 
 //    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-//        guard let infoWindow = UIView.load(nibName: "MapInfo") as? MapInfo else {
+//        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
 //            return UIView()
 //        }
 //        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)

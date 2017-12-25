@@ -47,6 +47,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        view.backgroundColor = myWhite
                 
         tableView.delegate = self
         

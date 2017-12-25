@@ -10,17 +10,44 @@ import UIKit
 
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBAction func backButton(_ sender: Any) {
-        self.view.removeFromSuperview()
-    }
+    var tableView = UITableView()
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var placeLabel: UILabel!
+    var selectedPlaceActivities = [Activity]()
+    
+    var mainViewController: MapController?
+    
+    var headerView = UITableViewHeaderFooterView()
+    
+    var selectedPlace: Place? {
+        
+        didSet {
+            FirebaseProvider.shared.getPlaceAllActivities(place: selectedPlace, completion: { (results, error) in
+                self.selectedPlaceActivities = results!
+                print(self.selectedPlaceActivities)
+                self.tableView.reloadData()
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        tableView.frame = CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        
+        tableView.dataSource = self
+        
+        tableView.backgroundColor = myWhite
+        
+        setupTableCell()
+        
+        view.addSubview(tableView)
+        
+        print(selectedPlace)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,48 +60,62 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.selectedPlaceActivities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
-//        let result = results[indexPath.row]
-//        cell.titleLabel.text = result.name
-//        cell.timeLabel.text = result.time
-//        cell.levelLabel.text = result.level.rawValue
-//        cell.placeLabel.text = result.place.placeName
-//        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-//        var isMyMatch = false
-//        if result.authorUid != uid {
-//            for myMatch in myMatches where myMatch.id == result.id {
-//                isMyMatch = true
-//            }
-//            if result.number < result.allNumber && !isMyMatch {
-//                cell.joinButton.isEnabled = true
-//                cell.joinButton.tintColor = UIColor.yellow
-//                cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
-//            } else {
-//                cell.joinButton.isEnabled = false
-//                cell.joinButton.tintColor = UIColor.gray
-//            }
-//
-//        } else {
-//            cell.joinButton.isEnabled = false
-//            cell.joinButton.backgroundColor = UIColor.clear
-//            cell.joinButton.tintColor = UIColor.clear
-//        }
-//
-//        switch result.type {
-//        case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
-//        case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
-//        case "籃球": cell.imagePlaced.image = UIImage(named: "basketball")!
-//        case "排球": cell.imagePlaced.image = UIImage(named: "volleyball")!
-//        case "網球": cell.imagePlaced.image = UIImage(named: "tennis")!
-//        case "足球": cell.imagePlaced.image = UIImage(named: "soccer")!
-//        default:
-//            return cell
-//        }
+        let result = selectedPlaceActivities[indexPath.row]
+            cell.titleLabel.text = result.name
+            cell.timeLabel.text = result.time
+            cell.placeLabel.text = result.place.placeName
+            cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+            cell.joinButton.isHidden = true
+
+        switch result.type {
+        case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
+        case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
+        case "籃球": cell.imagePlaced.image = UIImage(named: "basketball")!
+        case "排球": cell.imagePlaced.image = UIImage(named: "volleyball")!
+        case "網球": cell.imagePlaced.image = UIImage(named: "tennis")!
+        case "足球": cell.imagePlaced.image = UIImage(named: "soccer")!
+        default:
+            return cell
+        }
+        
+        switch result.level {
+        case .A: cell.levelImage.image = UIImage(named: "labelA")
+        case .B: cell.levelImage.image = UIImage(named: "labelB")
+        case .C: cell.levelImage.image = UIImage(named: "labelC")
+        case .D: cell.levelImage.image = UIImage(named: "labelD")
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let button = UIButton()
+        let downArrowIcon = UIImage(named: "icon-down-arrow")?.withRenderingMode(.alwaysTemplate)
+        button.frame = CGRect(x: 0, y: 0, width: headerView.frame.width, height: 32)
+        headerView.addSubview(button)
+        button.backgroundColor = myBlack
+        button.setImage(downArrowIcon, for: .normal)
+        button.contentMode = .scaleAspectFit
+        button.imageView?.tintColor = myWhite
+        button.addTarget(self, action: #selector(close), for: .touchUpInside)
+        return headerView
+    }
+    
+    func setupTableCell() {
+        let nib = UINib(nibName: "ListsCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "cell")
+    }
+    
+    @objc func close() {
+        self.view.removeFromSuperview()
     }
 
 }
