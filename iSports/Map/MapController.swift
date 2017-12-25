@@ -25,7 +25,6 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-//    var camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
     var mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
@@ -33,6 +32,9 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
     var results: [Activity] = []
     var clusterManager: GMUClusterManager!
     
+    let searchView = MapSearchController()
+    
+    var isShowed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +57,7 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         navigationItem.title = "Map"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
-        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+        navigationController?.navigationBar.tintColor = myGreen
 
     }
 
@@ -76,7 +78,20 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
     }
     
     @objc func search() {
+        searchView.mainViewController = self
+        searchView.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: 200, height: UIScreen.main.bounds.height)
         
+        if !isShowed {
+            self.addChildViewController(searchView)
+            self.mapView.addSubview(searchView.view)
+            searchView.didMove(toParentViewController: self)
+            isShowed = true
+        } else {
+            searchView.willMove(toParentViewController: nil)
+            searchView.view.removeFromSuperview()
+            searchView.removeFromParentViewController()
+            isShowed = false
+        }
     }
     
 //    override func viewWillDisappear(_ animated: Bool) {
@@ -135,8 +150,7 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
             case "足球": iconName = "soccerMarker"
             default: ""
             }
-            marker.icon = UIImage(named: iconName)
-
+            marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
             marker.map = mapView
         }
         setLocationManager()

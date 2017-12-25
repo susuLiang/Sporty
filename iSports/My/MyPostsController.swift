@@ -42,6 +42,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
         super.viewDidLoad()
         
+        view.backgroundColor = myWhite
+        
         setupTableCell()
         
         getPosts()

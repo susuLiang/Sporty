@@ -35,6 +35,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = myWhite
+        
         setupTableCell()
         
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
@@ -80,8 +82,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         case .C: cell.levelImage.image = UIImage(named: "labelC")
         case .D: cell.levelImage.image = UIImage(named: "labelD")
         }
+        let iconQuit =
         cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
-        cell.joinButton.tintColor = UIColor.red
+        cell.joinButton.tintColor = myRed
         cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
         return cell
     }

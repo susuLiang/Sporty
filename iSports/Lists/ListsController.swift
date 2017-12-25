@@ -37,7 +37,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
-        button.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+        button.tintColor = myGreen
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -47,7 +47,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+                
         tableView.delegate = self
         
         tableView.dataSource = self
@@ -113,7 +113,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
                 cell.joinButton.setImage(joinIcon, for: .normal)
-                cell.joinButton.tintColor = UIColor.blue
+                cell.joinButton.tintColor = myRed
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
@@ -210,7 +210,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func setNavigation() {
-        navigationItem.title = "Title"
+//        navigationItem.title = "Title"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
         navigationItem.rightBarButtonItems = [searchButton, allButton]
@@ -219,7 +219,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
         navigationItem.leftBarButtonItems = [myProfile]
-        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+        navigationController?.navigationBar.tintColor = myGreen
     }
     
     
