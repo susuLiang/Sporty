@@ -31,6 +31,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     var myMatches = [Activity]()
     var tableView = UITableView()
     
+    let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
+    
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
@@ -159,18 +161,20 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func showSearchView() {
-        let searchView = UINib.load(nibName: "SearchView") as! SearchViewController
         searchView.mainViewController = self
         searchView.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        if !isShowed {
-//            isShowed = !isShowed
+        
+        if !isShowed {
             self.addChildViewController(searchView)
-
             self.view.addSubview(searchView.view)
             searchView.didMove(toParentViewController: self)
-//        } else {
-//            searchView.view.removeFromSuperview()
-//        }
+            isShowed = true
+        } else {
+            searchView.willMove(toParentViewController: nil)
+            searchView.view.removeFromSuperview()
+            searchView.removeFromParentViewController()
+            isShowed = false
+        }
     }
     
     @objc func showAddView() {

@@ -86,12 +86,11 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
 //
     
     func setMarker() {
-        print("++++")
         for court in self.results {
             var iconName: String = ""
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
-            //            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
             marker.title = court.id
             marker.opacity = 1
             
@@ -152,7 +151,6 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         self.placesClient = GMSPlacesClient.shared()
     }
     
-    
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         var didSelectedMarker: Activity?
         for activity in results {
@@ -168,33 +166,23 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         return true
     }
     
-//    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-//
-//        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
-//            return UIView()
-//        }
-//        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
-//
-//        infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
-//        return infoWindow
-//    }
-    
-    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-        guard let infoWindow = UIView.load(nibName: "MapInfo") as? MapInfo else {
+    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+
+        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
             return UIView()
         }
         infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
-        
+
         infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
         return infoWindow
     }
-    
-//    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
-//        guard let infoWindow = Bundle.main.loadNibNamed("MapInfo", owner: self, options: nil)?.first as? MapInfo else {
+
+//    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+//        guard let infoWindow = UIView.load(nibName: "MapInfo") as? MapInfo else {
 //            return UIView()
 //        }
 //        infoWindow.bounds = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.5, height: mapView.frame.height * 0.2)
-//        
+//
 //        infoWindow.titleLabel.text = "\(marker.position.latitude) \(marker.position.longitude)"
 //        return infoWindow
 //    }

@@ -60,6 +60,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         levelTF.inputView = levelPicker
         timeTF.inputView = timePicker
         placeTF.inputView = placePicker
+        
     }
 
     override func didReceiveMemoryWarning() {
