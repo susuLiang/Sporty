@@ -36,18 +36,18 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
 //        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
+////        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
+////        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
+//        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
+////        mapView.delegate = self
+////        mapView.isMyLocationEnabled = true
+////        mapView.settings.myLocationButton = true
 //        mapView.delegate = self
 //        mapView.isMyLocationEnabled = true
 //        mapView.settings.myLocationButton = true
-        mapView.delegate = self
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
 //        view.addSubview(mapView)
-        setLocationManager()
+//        setLocationManager()
         
         getLocation()
 //        clusterManager.setDelegate(self, mapDelegate: self)
@@ -55,6 +55,8 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         navigationItem.title = "Map"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
+        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,10 +67,10 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
         FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
             if error == nil {
                 self.results = results!
-                self.setMarker()
-                self.view.addSubview(self.mapView)
+//                self.setMarker()
+//                self.view.addSubview(self.mapView)
 
-//                self.view.addSubview(self.setMap())
+                self.view.addSubview(self.setMap())
             }
         })
     }
@@ -85,42 +87,12 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
 //    }
 //
     
-    func setMarker() {
-        for court in self.results {
-            var iconName: String = ""
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
-            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
-            marker.title = court.id
-            marker.opacity = 1
-            
-            switch court.type {
-            case "羽球": iconName = "badmintonMarker"
-            case "棒球": iconName = "baseballMarker"
-            case "籃球": iconName = "basketballMarker"
-            case "排球": iconName = "volleyballMarker"
-            case "網球": iconName = "tennisMarker"
-            case "足球": iconName = "soccerMarker"
-            default: ""
-            }
-            marker.icon = UIImage(named: iconName)
-            
-            marker.map = mapView
-        }
-        
-    }
-//    func setMap() -> GMSMapView {
-//        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
-//        mapView.delegate = self
-//        mapView.isMyLocationEnabled = true
-//        mapView.settings.myLocationButton = true
-//
+//    func setMarker() {
 //        for court in self.results {
 //            var iconName: String = ""
 //            let marker = GMSMarker()
 //            marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
-////            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+//            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
 //            marker.title = court.id
 //            marker.opacity = 1
 //
@@ -137,9 +109,39 @@ class MapController: UIViewController, GMSMapViewDelegate, GMUClusterManagerDele
 //
 //            marker.map = mapView
 //        }
-//        setLocationManager()
-//        return mapView
+//
 //    }
+    func setMap() -> GMSMapView {
+        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
+        let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
+        mapView.delegate = self
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+
+        for court in self.results {
+            var iconName: String = ""
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)
+//            marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+            marker.title = court.id
+            marker.opacity = 1
+
+            switch court.type {
+            case "羽球": iconName = "badmintonMarker"
+            case "棒球": iconName = "baseballMarker"
+            case "籃球": iconName = "basketballMarker"
+            case "排球": iconName = "volleyballMarker"
+            case "網球": iconName = "tennisMarker"
+            case "足球": iconName = "soccerMarker"
+            default: ""
+            }
+            marker.icon = UIImage(named: iconName)
+
+            marker.map = mapView
+        }
+        setLocationManager()
+        return mapView
+    }
     
     func setLocationManager() {
         self.locationManager = CLLocationManager()

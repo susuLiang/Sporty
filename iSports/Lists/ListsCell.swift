@@ -20,6 +20,16 @@ class ListsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setFont()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    func setFont() {
+        
         // imagePlaced
         imagePlaced.frame.size = CGSize(width: 75, height: 75)
         imagePlaced.contentMode = .scaleToFill
@@ -28,17 +38,13 @@ class ListsCell: UITableViewCell {
         titleLabel.font = UIFont(name: "Arial-Black", size: 20)
         
         // timeLabel
-        timeLabel.font = UIFont(name: "Arial-Black", size: 14)
+        timeLabel.font = UIFont(name: "Arial-Black", size: 12)
         timeLabel.tintColor = UIColor.gray
         
         //placeLabel
-        placeLabel.font = UIFont(name: "Arial-Black", size: 14)
+        placeLabel.font = UIFont(name: "Arial-Black", size: 12)
         placeLabel.tintColor = UIColor.gray
         
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 
 }

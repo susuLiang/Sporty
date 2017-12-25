@@ -285,6 +285,8 @@ extension ActivityController {
         numberLabel.text = "Number*"
         feeLabel.text = "Fee*"
         cityLabel.text = "City"
+        let name = keyChain.get("name")
+        authorName.text = name
     }
 }
 

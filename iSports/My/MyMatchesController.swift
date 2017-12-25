@@ -80,8 +80,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         case .C: cell.levelImage.image = UIImage(named: "labelC")
         case .D: cell.levelImage.image = UIImage(named: "labelD")
         }
-        
-        cell.joinButton.tintColor = UIColor.gray
+        cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
+        cell.joinButton.tintColor = UIColor.red
+        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
         return cell
     }
     
@@ -110,6 +111,34 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
+    
+    @objc func deleteIt(_ sender: UIButton) {
+        
+        guard let cell = sender.superview?.superview as? ListsCell,
+        
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not a cell.")
+                return
+        }
+        
+        let alertController = UIAlertController(title: "Quit now", message: "Be sure to quit?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
+            
+            let uid = self.keyUid[indexPath.row]
 
+            let ref = Database.database().reference()
+            
+            ref.child("user_joinId").child(uid).removeValue()
+            
+            self.keyUid.remove(at: indexPath.row)
+            
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
     
 }

@@ -92,11 +92,10 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         case .C: cell.levelImage.image = UIImage(named: "labelC")
         case .D: cell.levelImage.image = UIImage(named: "labelD")
         }
+        cell.joinButton.setImage(UIImage(named: "icon-delete"), for: .normal)
+        cell.joinButton.tintColor = UIColor.red
+        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
         
-        cell.joinButton.backgroundColor = UIColor.clear
-        
-        cell.joinButton.tintColor = UIColor.clear
-
         return cell
     }
     
@@ -114,20 +113,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         return 110
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        let postId = myPosts[indexPath.row].id
-        let uid = keyUid[indexPath.row]
-        
-        if editingStyle == .delete {
-            
-            let ref = Database.database().reference()
-            ref.child("activities").child(postId).removeValue()
-            ref.child("user_postId").child(uid).removeValue()
-
-        }
-    }
-    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
@@ -136,5 +121,39 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
         activityView.selectedActivity = myPosts[indexPath.row]
         self.navigationController?.pushViewController(activityView, animated: true)
+    }
+    
+    @objc func deleteIt(_ sender: UIButton) {
+        
+        guard let cell = sender.superview?.superview as? ListsCell,
+            
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not a cell.")
+                return
+        }
+        
+        let alertController = UIAlertController(title: "Delete now", message: "Be sure to delete?", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
+            
+            let uid = self.keyUid[indexPath.row]
+            
+            let postId = self.myPosts[indexPath.row].id
+            
+            let ref = Database.database().reference()
+            
+            self.keyUid.remove(at: indexPath.row)
+            
+            ref.child("activities").child(postId).removeValue()
+            
+            ref.child("user_postId").child(uid).removeValue()
+       
+        
+        }))
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 }

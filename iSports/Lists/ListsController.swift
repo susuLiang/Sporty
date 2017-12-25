@@ -41,6 +41,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    var joinIcon = UIImage(named: "icon-join")?.withRenderingMode(.alwaysTemplate)
 
     override func viewDidLoad() {
         
@@ -64,9 +66,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         setNavigation()
         
-        if selectedPreference == nil {
-            fetch()
-        }
+        fetch()
         
         getPosts()
     }
@@ -112,16 +112,18 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
-                cell.joinButton.tintColor = UIColor(red: 74/255, green: 144/255, blue: 226/255, alpha: 1)
+                cell.joinButton.setImage(joinIcon, for: .normal)
+                cell.joinButton.tintColor = UIColor.blue
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
+                cell.joinButton.setImage(joinIcon, for: .normal)
                 cell.joinButton.tintColor = UIColor.gray
             }
             
         } else {
             cell.joinButton.isEnabled = false
-            cell.joinButton.backgroundColor = UIColor.clear
+            cell.joinButton.setImage(joinIcon, for: .normal)
             cell.joinButton.tintColor = UIColor.clear
         }
                 
