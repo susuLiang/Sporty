@@ -32,16 +32,12 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
-        view.backgroundColor = myBlue
-        
+                
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
         tableView.delegate = self
         
         tableView.dataSource = self
-        
-        tableView.backgroundColor = myBlue
         
         setupTableCell()
         

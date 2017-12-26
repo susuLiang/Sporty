@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import KeychainSwift
+import SCLAlertView
 
 class LoginController: UIViewController {
     
@@ -41,12 +42,14 @@ class LoginController: UIViewController {
                         print("Create User Error: \(error!)")
                     }
                     
-                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alert.addAction(defaultAction)
-                    if self.presentedViewController == nil {
-                        self.present(alert, animated: true, completion: nil)
-                    }
+                    SCLAlertView().showWarning("Warning", subTitle: message)
+                    
+//                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+//                    alert.addAction(defaultAction)
+//                    if self.presentedViewController == nil {
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
                 }
                 return
             }
