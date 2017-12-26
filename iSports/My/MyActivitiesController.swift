@@ -21,13 +21,13 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         // change selected bar color
-        settings.style.buttonBarBackgroundColor = graySpotifyColor
-        settings.style.buttonBarItemBackgroundColor = graySpotifyColor
+        settings.style.buttonBarBackgroundColor = myBlack
+        settings.style.buttonBarItemBackgroundColor = myBlack
         settings.style.selectedBarBackgroundColor = myRed
         settings.style.buttonBarItemFont = UIFont(name: "HelveticaNeue-Light", size:14) ?? UIFont.systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = myBlack
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
         
         settings.style.buttonBarLeftContentInset = 20
@@ -58,11 +58,11 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     
     func setNavigationItem() {
         navigationItem.title = "My Activities"
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = myGreen
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
-        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+//        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
     }
 
 }

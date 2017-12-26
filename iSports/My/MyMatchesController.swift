@@ -35,8 +35,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = myWhite
-        
+        view.backgroundColor = mySkyBlue
+                
         setupTableCell()
         
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in

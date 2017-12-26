@@ -37,7 +37,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
-        button.tintColor = myGreen
+        button.tintColor = myRed
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -221,7 +221,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
         navigationItem.leftBarButtonItems = [myProfile]
-        navigationController?.navigationBar.tintColor = myGreen
+        navigationController?.navigationBar.tintColor = myWhite
     }
     
     

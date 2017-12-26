@@ -199,7 +199,6 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
                 } else {
                     // todo: error handling
                 }
-                print(self.courts)
                 self.loadingIndicator.stop()
             })
 

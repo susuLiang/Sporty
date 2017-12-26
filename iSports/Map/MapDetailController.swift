@@ -23,7 +23,6 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         didSet {
             FirebaseProvider.shared.getPlaceAllActivities(place: selectedPlace, completion: { (results, error) in
                 self.selectedPlaceActivities = results!
-                print(self.selectedPlaceActivities)
                 self.tableView.reloadData()
             })
         }
