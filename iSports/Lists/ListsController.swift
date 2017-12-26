@@ -48,7 +48,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         super.viewDidLoad()
         
-        view.backgroundColor = myWhite
+        view.backgroundColor = myBlue
                 
         tableView.delegate = self
         
@@ -95,6 +95,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
         let result = results[indexPath.row]
+        
         cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
         cell.placeLabel.text = result.place.placeName

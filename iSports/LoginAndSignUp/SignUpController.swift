@@ -14,6 +14,7 @@ class SignUpController: UIViewController {
     
     let keyChain = KeychainSwift()
 
+    @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var nameText: UITextField!
@@ -90,6 +91,8 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         keyChain.clear()
         super.viewDidLoad()
+        signUpButton.layer.cornerRadius = 10
+        signUpButton.layer.shadowRadius = 10
     }
 
     override func didReceiveMemoryWarning() {

@@ -54,7 +54,7 @@ class TabBarController: UITabBarController {
         // Todo: palette
         tabBar.tintColor = myWhite
         
-        tabBar.barTintColor = myGreen
+        tabBar.barTintColor = myBlack
         
     }
     

@@ -21,9 +21,10 @@ class ListsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = mySkyBlue
+        backgroundColor = myBlue
         
         setFont()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,15 +38,18 @@ class ListsCell: UITableViewCell {
         imagePlaced.contentMode = .scaleToFill
         
         // titleLabel
-        titleLabel.font = UIFont(name: "Arial-Black", size: 20)
+        titleLabel.font = UIFont(name: "ArialHebrew-Bold", size: 20)
         
         // timeLabel
-        timeLabel.font = UIFont(name: "Arial-Black", size: 12)
-        timeLabel.tintColor = UIColor.gray
+        timeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
+        timeLabel.tintColor = myWhite
         
         //placeLabel
-        placeLabel.font = UIFont(name: "Arial-Black", size: 12)
-        placeLabel.tintColor = UIColor.gray
+        placeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
+        placeLabel.tintColor = myWhite
+        
+        //numLabel
+        numLabel.tintColor = myWhite
         
     }
 

@@ -21,6 +21,8 @@ target 'iSports' do
   pod 'LGButton'
   pod 'KeychainSwift', '~> 10.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift', :branch => 'master'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
 
 end

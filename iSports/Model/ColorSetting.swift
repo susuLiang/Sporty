@@ -8,12 +8,13 @@
 
 import Foundation
 
-let myGreen = UIColor(red: 67/255, green: 145/255, blue: 214/255, alpha: 1)
+let myBlue = UIColor(red: 3/255, green: 65/255, blue: 117/255, alpha: 1)
 
-let myRed = UIColor(red: 250/255, green: 142/255, blue: 158/255, alpha: 1)
+let myRed = UIColor(red: 255/255, green: 152/255, blue: 139/255, alpha: 1)
 
-let myWhite = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+let myWhite = UIColor(red: 246/255, green: 233/255, blue: 207/255, alpha: 1)
 
-let myBlack = UIColor(red: 13/255, green: 73/255, blue: 122/255, alpha: 1)
+let myBlack = UIColor(red: 27/255, green: 40/255, blue: 41/255, alpha: 1)
 
-let mySkyBlue = UIColor(red: 161/255, green: 199/255, blue: 233/255, alpha: 1)
+let myGreen = UIColor(red: 57/255, green: 131/255, blue: 107/255, alpha: 1)
+

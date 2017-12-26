@@ -35,7 +35,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = mySkyBlue
+        view.backgroundColor = myBlack
                 
         setupTableCell()
         

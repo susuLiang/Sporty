@@ -42,7 +42,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
         super.viewDidLoad()
         
-        view.backgroundColor = mySkyBlue
+        view.backgroundColor = myBlack
                 
         setupTableCell()
         

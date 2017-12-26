@@ -56,7 +56,7 @@ class BlueNavigationController: UINavigationController {
         navigationBar.isTranslucent = true
         
         navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: myWhite,
+            NSAttributedStringKey.foregroundColor: myRed,
             NSAttributedStringKey.font: UIFont(name: "IowanOldStyle-Bold", size: 22)!
         ]
         
@@ -90,13 +90,13 @@ class BlueNavigationController: UINavigationController {
         let gradientLayer = navigationBarGradientLayer
         
         gradientLayer.colors = [
-            myGreen.cgColor,
-            myGreen.cgColor
+            myBlue.cgColor,
+            myBlack.cgColor
         ]
         
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
         
         navigationBarGradientView.layer.insertSublayer(
             gradientLayer,

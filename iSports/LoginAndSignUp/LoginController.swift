@@ -14,6 +14,7 @@ class LoginController: UIViewController {
     
     let keyChain = KeychainSwift()
 
+    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBAction func signIn(_ sender: Any) {
@@ -64,6 +65,8 @@ class LoginController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        logInButton.layer.cornerRadius = 10
+        logInButton.layer.shadowRadius = 10
     }
 
     override func didReceiveMemoryWarning() {
