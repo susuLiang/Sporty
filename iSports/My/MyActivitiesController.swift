@@ -62,7 +62,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
-//        navigationController?.navigationBar.tintColor = UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1)
+        navigationController?.navigationBar.tintColor = myWhite
     }
 
 }

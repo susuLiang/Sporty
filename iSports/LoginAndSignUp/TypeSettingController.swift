@@ -12,6 +12,7 @@ import KeychainSwift
 
 class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var sureButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var selectedType: String = ""
@@ -22,7 +23,8 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        sureButton.layer.cornerRadius = 10
+        view.backgroundColor = myBlack
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,7 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
         default: ""
         }
         DispatchQueue.main.async {
-            cell.typeImage.image = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
+            cell.typeImage.image = UIImage(named: iconName)
 
         }
         return cell
@@ -61,10 +63,11 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedType = typeArray[indexPath.row]
         self.selectedIndexPath = indexPath
+        let cell = tableView.cellForRow(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 116
     }
 
     @IBAction func saveUserLikedType(_ sender: Any) {

@@ -12,6 +12,7 @@ import KeychainSwift
 
 class LevelSettingController: UIViewController {
     
+    @IBOutlet weak var sureButton: UIButton!
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
     @IBOutlet weak var buttonC: UIButton!
@@ -23,6 +24,8 @@ class LevelSettingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sureButton.layer.cornerRadius = 10
+        view.backgroundColor = myBlack
         setUpButtons()
     }
     

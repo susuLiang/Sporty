@@ -37,6 +37,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
                         
         setupTableCell()
         
+        view.backgroundColor = myWhite
+        
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!

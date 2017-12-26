@@ -48,7 +48,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         super.viewDidLoad()
         
-        view.backgroundColor = myBlue
+        view.backgroundColor = myWhite
                 
         tableView.delegate = self
         

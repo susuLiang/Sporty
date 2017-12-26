@@ -21,6 +21,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var titleSubLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sureButton: UIButton!
     
     let keyChain = KeychainSwift()
     
@@ -30,6 +31,9 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sureButton.layer.cornerRadius = 10
+        view.backgroundColor = myBlack
+        tableView.backgroundColor = myBlack
         switch controllerType {
         case .city:
             titleLabel.text = "City"

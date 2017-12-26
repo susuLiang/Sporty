@@ -12,7 +12,9 @@ class CityAndTimeSettingCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = myBlack
+        textLabel?.textColor = myWhite
+        textLabel?.textAlignment = .center
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

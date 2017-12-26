@@ -21,6 +21,8 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
         
         view.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height)
         
+        view.backgroundColor = myWhite
+        
         tableView.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height - 30)
         
         tableView.alpha = 0.95

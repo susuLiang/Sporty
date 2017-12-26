@@ -22,6 +22,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     var selectedType: String? {
         didSet {
+            self.mapView.removeFromSuperview()
             var selected: [Activity] = []
             for result in results where result.type == selectedType {
                 selected.append(result)

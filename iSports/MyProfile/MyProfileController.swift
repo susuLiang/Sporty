@@ -61,8 +61,6 @@ class MyProfileController: UIViewController {
     
     func setLogOutButton() {
         logOutButton.layer.cornerRadius = 20
-        logOutButton.tintColor = myBlue
-        logOutButton.titleLabel?.font = UIFont(name: "IowanOldStyle-Bold", size: 22)!
         logOutButton.layer.shadowRadius = 5
     }
 

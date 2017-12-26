@@ -95,6 +95,7 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         keyChain.clear()
         super.viewDidLoad()
+        view.backgroundColor = myWhite
         signUpButton.layer.cornerRadius = 10
         signUpButton.layer.shadowRadius = 10
     }

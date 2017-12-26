@@ -12,7 +12,7 @@ let myBlue = UIColor(red: 3/255, green: 65/255, blue: 117/255, alpha: 1)
 
 let myRed = UIColor(red: 255/255, green: 152/255, blue: 139/255, alpha: 1)
 
-let myWhite = UIColor(red: 246/255, green: 233/255, blue: 207/255, alpha: 1)
+let myWhite = UIColor(red: 252/255, green: 247/255, blue: 238/255, alpha: 1)
 
 let myBlack = UIColor(red: 27/255, green: 40/255, blue: 41/255, alpha: 1)
 

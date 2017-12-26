@@ -21,7 +21,7 @@ class ListsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        backgroundColor = myBlue
+        backgroundColor = myWhite
         
         setFont()
         
