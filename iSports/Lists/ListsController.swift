@@ -56,7 +56,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         keyChain.set(uid!, forKey: "uid")
         
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
         
         self.view.addSubview(tableView)
         
