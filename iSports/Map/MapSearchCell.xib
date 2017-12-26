@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,23 +19,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="59.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-yv-4dN">
-                        <rect key="frame" x="15" y="15" width="120" height="30"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcZ-KC-ULy">
+                        <rect key="frame" x="25" y="20.5" width="100" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="llU-E8-lYn"/>
+                            <constraint firstAttribute="width" secondItem="mcZ-KC-ULy" secondAttribute="height" multiplier="5:1" id="AKR-yn-lSw"/>
+                            <constraint firstAttribute="width" constant="100" id="jkH-Y5-67u"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                    </button>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Nt1-yv-4dN" firstAttribute="centerX" secondItem="A9T-vf-msb" secondAttribute="centerX" id="PWA-VK-Qg5"/>
-                    <constraint firstItem="Nt1-yv-4dN" firstAttribute="centerY" secondItem="A9T-vf-msb" secondAttribute="centerY" id="xLU-8D-d0w"/>
+                    <constraint firstItem="mcZ-KC-ULy" firstAttribute="centerY" secondItem="A9T-vf-msb" secondAttribute="centerY" id="hoO-8N-Au5"/>
+                    <constraint firstItem="mcZ-KC-ULy" firstAttribute="centerX" secondItem="A9T-vf-msb" secondAttribute="centerX" id="zCk-80-axw"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="typeButton" destination="Nt1-yv-4dN" id="6wf-Nb-IYs"/>
+                <outlet property="typeLabel" destination="mcZ-KC-ULy" id="QTr-si-a5q"/>
             </connections>
-            <point key="canvasLocation" x="-189" y="-70.5"/>
+            <point key="canvasLocation" x="-189" y="-71"/>
         </tableViewCell>
     </objects>
 </document>

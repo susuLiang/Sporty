@@ -34,22 +34,19 @@ class LoginController: UIViewController {
                     switch errCode {
                     case .invalidEmail:
                         message = NSLocalizedString("Invalid email", comment: "")
+                        break
                     case .userNotFound:
                         message = NSLocalizedString("Wrong email", comment: "")
+                        break
                     case .wrongPassword:
                         message = NSLocalizedString("Wrong password", comment: "")
+                        break
                     default:
                         print("Create User Error: \(error!)")
                     }
                     
-                    SCLAlertView().showWarning("Warning", subTitle: message)
+                    SCLAlertView().showWarning("Error", subTitle: message)
                     
-//                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-//                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                    alert.addAction(defaultAction)
-//                    if self.presentedViewController == nil {
-//                        self.present(alert, animated: true, completion: nil)
-//                    }
                 }
                 return
             }

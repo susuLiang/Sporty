@@ -81,8 +81,15 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapSearchCell", for: indexPath) as! MapSearchCell
         cell.typeButton.setTitle(typeArray[indexPath.row], for: .normal)
-
+        cell.typeButton.addTarget(self, action: #selector(typeSelected), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func typeSelected(_ sender: UIButton) {
+        
+        
+        
+        
     }
     
 }

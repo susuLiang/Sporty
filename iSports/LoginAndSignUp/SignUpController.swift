@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import KeychainSwift
+import SCLAlertView
 
 class SignUpController: UIViewController {
     
@@ -30,7 +31,9 @@ class SignUpController: UIViewController {
         }
         
         guard let name = nameText.text, !name.isEmpty else {
-            showAlert(title: "Error", message: "Must enter name", dismiss: nil)
+            SCLAlertView().showWarning("Error", subTitle: "Must enter name")
+
+//            showAlert(title: "Error", message: "Must enter name", dismiss: nil)
             return
         }
         
@@ -56,7 +59,9 @@ class SignUpController: UIViewController {
                         
                     }
                     
-                    self.showAlert(title: "Error", message: message, dismiss: nil)
+                    SCLAlertView().showWarning("Error", subTitle: message)
+
+//                    self.showAlert(title: "Error", message: message, dismiss: nil)
                     
                     return
                 }
@@ -81,8 +86,7 @@ class SignUpController: UIViewController {
                 self.keyChain.set(uid, forKey: "uid")
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let userSettingController = storyboard.instantiateViewController(withIdentifier: "userSettingController") as! UserSettingController
-                userSettingController.userUid = uid
+                let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as! TypeSettingController
                 self.present(userSettingController, animated: true, completion: nil)
             })
         })
