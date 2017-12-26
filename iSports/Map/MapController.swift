@@ -20,6 +20,16 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var selectedPlace: GMSPlace?
     var results: [Activity] = []
     
+    var selectedType: String? {
+        didSet {
+            var selected: [Activity] = []
+            for result in results where result.type == selectedType {
+                selected.append(result)
+            }
+            self.view.addSubview(self.setMap(activities: selected))
+        }
+    }
+    
     let searchView = MapSearchController()
     
     var isShowed = false
@@ -42,7 +52,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
             if error == nil {
                 self.results = results!
-                self.view.addSubview(self.setMap())
+                self.view.addSubview(self.setMap(activities: self.results))
             }
         })
     }
@@ -64,14 +74,14 @@ class MapController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    func setMap() -> GMSMapView {
+    func setMap(activities: [Activity]) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
         let mapView = GMSMapView.map(withFrame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: view.frame.width, height: UIScreen.main.bounds.height)), camera: camera)
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
 
-        for court in self.results {
+        for court in activities {
             var iconName: String = ""
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude)!, longitude: Double(court.place.placeLongitude)!)

@@ -11,20 +11,19 @@ import UIKit
 class MapSearchCell: UITableViewCell {
 
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var typeButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        typeButton.backgroundColor = myGreen
-        typeButton.tintColor = myBlack
-        typeButton.layer.cornerRadius = 8
+        typeLabel.backgroundColor = myRed
+        typeLabel.tintColor = myWhite
+        typeLabel.layer.masksToBounds = true
+        typeLabel.layer.cornerRadius = 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+//        super.setSelected(selected, animated: false)
 
-        // Configure the view for the selected state
     }
 
 }
