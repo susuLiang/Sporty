@@ -463,6 +463,7 @@
                             <constraint firstItem="HGc-qf-zOh" firstAttribute="centerY" secondItem="ZSj-XV-2GP" secondAttribute="centerY" id="7Va-tX-v4f"/>
                             <constraint firstItem="HGc-qf-zOh" firstAttribute="centerX" secondItem="ZSj-XV-2GP" secondAttribute="centerX" id="G4F-ka-p5D"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q76-xM-5Nv"/>
                     </view>
                     <connections>
                         <outlet property="buttonA" destination="Eaj-hM-gsN" id="93V-Fs-vvZ"/>
@@ -547,6 +548,7 @@
                             <constraint firstAttribute="bottom" secondItem="THz-bu-dW6" secondAttribute="bottom" id="p2J-vd-Dg6"/>
                             <constraint firstAttribute="trailing" secondItem="THz-bu-dW6" secondAttribute="trailing" id="rDA-9d-npK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OUY-X2-U1I"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="THz-bu-dW6" id="zw2-Lg-JZr"/>
@@ -568,11 +570,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" id="yDx-fR-a0c" customClass="CityAndTimeSettingCell" customModule="iSports" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" rowHeight="98" id="yDx-fR-a0c" customClass="CityAndTimeSettingCell" customModule="iSports" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yDx-fR-a0c" id="Qkm-5P-sl8" customClass="CityAndTimeSettingCell" customModule="iSports" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="97.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -590,6 +592,7 @@
                             <constraint firstAttribute="bottom" secondItem="yk0-S8-Pb4" secondAttribute="bottom" id="jw7-Gt-hq2"/>
                             <constraint firstItem="yk0-S8-Pb4" firstAttribute="top" secondItem="9dr-XJ-CUq" secondAttribute="top" id="kFS-fa-fLL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="7zU-mJ-FX1"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="yk0-S8-Pb4" id="OTh-kb-Ovk"/>
@@ -597,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36F-lZ-S1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-404" y="-469"/>
+            <point key="canvasLocation" x="-404" y="-469.1154422788606"/>
         </scene>
     </scenes>
 </document>

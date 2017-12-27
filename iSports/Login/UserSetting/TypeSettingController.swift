@@ -67,8 +67,10 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tableView called")
         self.selectedType = typeArray[indexPath.row]
-        self.delegate?.preferenceType(.shared, type: self.selectedType)
+        print("self.delegate: \(TypeSettingController.shared.delegate)")
+        TypeSettingController.shared.delegate?.preferenceType(.shared, type: self.selectedType)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

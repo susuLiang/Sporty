@@ -52,6 +52,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch controllerType {
         case .city:
+            print(city)
             return city.count
         case .time:
             return time.count

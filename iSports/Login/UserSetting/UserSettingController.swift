@@ -21,7 +21,7 @@ class UserSettingController: UIViewController, TypeSettingDelegate, LevelSetting
     
     var isCity = false
     
-    var setting: Preference? = nil
+    var setting = Preference(id: "", type: "", level: nil, city: "",time: "")
     
     var keyChain = KeychainSwift()
     
@@ -35,7 +35,7 @@ class UserSettingController: UIViewController, TypeSettingDelegate, LevelSetting
             firstTitle.text = "3 / 4 City"
             subTitle.text = "Where you live in ?"
             levelSetting.isHidden = true
-            CityAndTimeSettingController.shared.controllerType = .city
+//            CityAndTimeSettingController.shared.controllerType = .city
             isCity = true
         } else if isCity {
             firstTitle.text = "4 / 4 Time"
@@ -46,7 +46,7 @@ class UserSettingController: UIViewController, TypeSettingDelegate, LevelSetting
             
             print(self.setting)
             
-            let value = ["type": setting?.type, "level": setting?.level?.rawValue, "city": setting?.city, "time": setting?.time]
+            let value = ["type": setting.type, "level": setting.level?.rawValue, "city": setting.city, "time": setting.time]
       
                 if let userUid = keyChain.get("uid") {
                     
@@ -64,7 +64,12 @@ class UserSettingController: UIViewController, TypeSettingDelegate, LevelSetting
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        typeSetting.isHidden = false
+        cityAndTimeSetting.isHidden = true
+        levelSetting.isHidden = false
+        
         TypeSettingController.shared.delegate = self
+        print(TypeSettingController.shared.delegate)
         LevelSettingController.shared.delegate = self
         CityAndTimeSettingController.shared.delegate = self
         
@@ -85,19 +90,20 @@ class UserSettingController: UIViewController, TypeSettingDelegate, LevelSetting
     }
     
     func cityPreference(_ city: CityAndTimeSettingController, selectedCity: String) {
-        self.setting?.city = selectedCity
+        self.setting.city = selectedCity
     }
     
     func timePreference(_ city: CityAndTimeSettingController, selectedTime: String) {
-        self.setting?.time = selectedTime
+        self.setting.time = selectedTime
     }
     
     func levelPreference(_ levelSetting: LevelSettingController, selectedLevel: String) {
-        self.setting?.level = Level(rawValue: selectedLevel)
+        self.setting.level = Level(rawValue: selectedLevel)
     }
     
     func preferenceType(_ typeSetting: TypeSettingController, type: String) {
-        self.setting?.type = type
+        self.setting.type = type
+        print(self.setting.type)
     }
     
 }
