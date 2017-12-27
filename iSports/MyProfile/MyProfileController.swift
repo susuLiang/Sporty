@@ -22,13 +22,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var userImage = UIImage()
     
-    var userSetting: UserSetting? {
-        didSet {
-            if userSetting?.urlString != nil {
-                loadUserPhoto()
-            }
-        }
-    }
+    var userSetting: UserSetting? = nil
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -84,10 +78,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
         
-        if userSetting?.urlString != nil {
-            loadUserPhoto()
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +88,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
             if error == nil {
                 self.userSetting = userSetting
+                self.nameTextField.text = self.userSetting?.name
+                if userSetting?.urlString != nil {
+                    Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
+                    self.userPhoto.contentMode = .scaleAspectFill
+                }
             }
         })
     }

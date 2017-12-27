@@ -54,7 +54,6 @@ class ListsCell: UITableViewCell {
         
     }
 
-    
     override func prepareForReuse() {
         
         super.prepareForReuse()
