@@ -1,76 +1,43 @@
 //
-//  LoginController.swift
+//  SignController.swift
 //  iSports
 //
-//  Created by Susu Liang on 2017/12/13.
+//  Created by Susu Liang on 2017/12/27.
 //  Copyright © 2017年 Susu Liang. All rights reserved.
 //
 
 import UIKit
-import Firebase
-import KeychainSwift
-import SCLAlertView
 
 class LoginController: UIViewController {
-    
-    let keyChain = KeychainSwift()
 
-    @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var emailText: UITextField!
-    @IBAction func signIn(_ sender: Any) {
-        guard let email = emailText.text,
-            let password = passwordText.text
-            else {
-                print("Form is not valid.")
-                return
+    @IBAction func signInOrUp(_ sender: Any) {
+        if !goSignUp {
+            signInPage.isHidden = false
+            signUpPage.isHidden = true
+            signButton.setTitle("Sign up now", for: .normal)
+            goSignUp = true
+        } else {
+            signInPage.isHidden = true
+            signUpPage.isHidden = false
+            signButton.setTitle("Back to sign in", for: .normal)
+            goSignUp = false
         }
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil {
-                if let errCode = AuthErrorCode(rawValue: error!._code) {
-                    var message: String = ""
-                    
-                    switch errCode {
-                    case .invalidEmail:
-                        message = NSLocalizedString("Invalid email", comment: "")
-                        break
-                    case .userNotFound:
-                        message = NSLocalizedString("Wrong email", comment: "")
-                        break
-                    case .wrongPassword:
-                        message = NSLocalizedString("Wrong password", comment: "")
-                        break
-                    default:
-                        print("Create User Error: \(error!)")
-                    }
-                    
-                    SCLAlertView().showWarning("Error", subTitle: message)
-                    
-                }
-                return
-            }
-                        
-            let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-            tabBarController.selectedIndex = 1
-            self.present(tabBarController, animated: true, completion: nil)
-        })
     }
+    @IBOutlet weak var signUpPage: UIView!
+    @IBOutlet weak var signInPage: UIView!
+    @IBOutlet weak var signButton: UIButton!
+    var goSignUp = true
     
-    @IBAction func signUp(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let signUpController = storyboard.instantiateViewController(withIdentifier: "signUpController")
-        self.present(signUpController, animated: true, completion: nil)
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = myWhite
-        logInButton.layer.cornerRadius = 10
-        logInButton.layer.shadowRadius = 10
+        signInPage.isHidden = false
+        signUpPage.isHidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 }

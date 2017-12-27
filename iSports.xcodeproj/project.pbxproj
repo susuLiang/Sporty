@@ -11,7 +11,7 @@
 		1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */; };
 		1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */; };
 		1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */; };
-		1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* LoginController.swift */; };
+		1F6CE5D91FE12A28006D6AAD /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* SignInController.swift */; };
 		1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F705F121FEA0AED0010963E /* MyActivitiesController.swift */; };
 		1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */; };
 		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
@@ -30,6 +30,7 @@
 		1F8627971FF24FDA00D82614 /* LevelSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627961FF24FDA00D82614 /* LevelSettingController.swift */; };
 		1F8627991FF2596E00D82614 /* CityAndTimeSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */; };
 		1F86279B1FF2606900D82614 /* CityAndTimeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */; };
+		1F8627A11FF32C1400D82614 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627A01FF32C1400D82614 /* LoginController.swift */; };
 		1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */; };
 		1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */; };
 		1FB1081A1FEBF80900D2B4BF /* MapInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108191FEBF80900D2B4BF /* MapInfo.xib */; };
@@ -71,7 +72,7 @@
 		1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F6CE5CE1FE11BFC006D6AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F6CE5D01FE11BFC006D6AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F6CE5D81FE12A28006D6AAD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1F6CE5D81FE12A28006D6AAD /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		1F705F121FEA0AED0010963E /* MyActivitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesController.swift; sourceTree = "<group>"; };
 		1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 		1F8627961FF24FDA00D82614 /* LevelSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSettingController.swift; sourceTree = "<group>"; };
 		1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAndTimeSettingController.swift; sourceTree = "<group>"; };
 		1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAndTimeSettingCell.swift; sourceTree = "<group>"; };
+		1F8627A01FF32C1400D82614 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
 		1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileController.xib; sourceTree = "<group>"; };
 		1FB108191FEBF80900D2B4BF /* MapInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapInfo.xib; sourceTree = "<group>"; };
@@ -312,7 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
-				1F6CE5D81FE12A28006D6AAD /* LoginController.swift */,
+				1F8627A01FF32C1400D82614 /* LoginController.swift */,
+				1F6CE5D81FE12A28006D6AAD /* SignInController.swift */,
 				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
 				1F8627921FF2441E00D82614 /* TypeSettingController.swift */,
 				1F8627941FF2445D00D82614 /* TypeSettingCell.swift */,
@@ -550,7 +553,7 @@
 				1F8627971FF24FDA00D82614 /* LevelSettingController.swift in Sources */,
 				1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
-				1F6CE5D91FE12A28006D6AAD /* LoginController.swift in Sources */,
+				1F6CE5D91FE12A28006D6AAD /* SignInController.swift in Sources */,
 				1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */,
 				1FB1081C1FEBF86C00D2B4BF /* MapInfo.swift in Sources */,
 				1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */,
@@ -560,6 +563,7 @@
 				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
 				1F8627991FF2596E00D82614 /* CityAndTimeSettingController.swift in Sources */,
+				1F8627A11FF32C1400D82614 /* LoginController.swift in Sources */,
 				1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */,
 				1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */,
 				1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */,

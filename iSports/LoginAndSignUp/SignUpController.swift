@@ -14,14 +14,12 @@ import SCLAlertView
 class SignUpController: UIViewController {
     
     let keyChain = KeychainSwift()
-
+    
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var nameText: UITextField!
-    @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
     
     @IBAction func signUp(_ sender: Any) {
         
