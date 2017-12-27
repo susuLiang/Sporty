@@ -22,15 +22,13 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var userImage = UIImage()
     
-//    var nameFromFirebase: String? = {
-//        var name: String = ""
-//        Database.database().reference().child("users").child(keyChain.get("uid")!).child("name").observe(.value) {(snapshot) in
-//            if let value = snapshot.value as? String {
-//                name = value
-//                return name
-//            }
-//        }
-//    }()
+    var userSetting: UserSetting? {
+        didSet {
+            if userSetting?.urlString != nil {
+                loadUserPhoto()
+            }
+        }
+    }
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -69,7 +67,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getUserProfile()
         
         fusuma.delegate = self
         fusuma.cropHeightRatio = 0.6
@@ -86,11 +84,29 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
         
+        if userSetting?.urlString != nil {
+            loadUserPhoto()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func getUserProfile() {
+        FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
+            if error == nil {
+                self.userSetting = userSetting
+            }
+        })
+    }
+    
+    func loadUserPhoto() {
+        Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
+        self.userPhoto.contentMode = .scaleAspectFill
+    }
+    
     
     @objc func showBack() {
         navigationController?.popViewController(animated: true)
@@ -164,7 +180,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         }
         
     }
-    
+
+   
     func setNavigationBar() {
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))

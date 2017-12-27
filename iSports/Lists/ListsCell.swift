@@ -17,6 +17,7 @@ class ListsCell: UITableViewCell {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var imagePlaced: UIImageView!
     @IBOutlet weak var levelImage: UIImageView!
+    @IBOutlet weak var recommendImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

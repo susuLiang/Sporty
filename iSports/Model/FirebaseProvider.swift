@@ -26,7 +26,7 @@ class FirebaseProvider {
                         results.append(activity)
                     }
                     catch {
-                        print("Activity is invalid.")
+                        print("Can not get data.")
                     }
                     completion(results, nil)
                 }
@@ -35,8 +35,10 @@ class FirebaseProvider {
     }
     
     func getTypeData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
+        var results = [Activity]()
+
         Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observe(.value) { (snapshot: DataSnapshot) in
-            var results = [Activity]()
+//            var results = [Activity]()
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (id, data) in objects {
                     if let time = data["time"] as? String,
@@ -51,13 +53,13 @@ class FirebaseProvider {
                                 results.append(activity)
                             }
                             catch {
-                                print("Activity is invalid.")
+                                print("Can not query data.")
                             }
-                        completion(results, nil)
                         }
                     }
                 }
             }
+            completion(results, nil)
         }
     }
 
@@ -71,7 +73,7 @@ class FirebaseProvider {
                         results.append(activity)
                     }
                     catch {
-                        print("Activity is invalid.")
+                        print("Can not get place data.")
                     }
                 }
                 completion(results, nil)
@@ -110,12 +112,29 @@ class FirebaseProvider {
                                 posts.append(activity)
                             }
                             catch {
-                                print("Activity is invalid.")
+                                print("Can not get users activities data.")
                             }
                         }
                         completion(posts, keyUid, nil)
                     })
                 }
+            }
+        }
+    }
+    
+    func getUserProfile(completion: @escaping (UserSetting?, Error?) -> Void) {
+        var userSetting: UserSetting? = nil
+        if let userUid = keyChain.get("uid") {
+            Database.database().reference().child("users").child(userUid).observe(.value) { (snapshot: DataSnapshot) in
+                if let object = snapshot.value as? [String: AnyObject] {
+                        do {
+                            userSetting = try UserSetting(object)
+                        }
+                        catch {
+                            print("Can not get users profile.")
+                        }
+                    }
+                completion(userSetting, nil)
             }
         }
     }

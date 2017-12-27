@@ -24,6 +24,12 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    var userSetting: UserSetting? {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     var uid = Auth.auth().currentUser?.uid
     
     var ref = Database.database().reference()
@@ -54,8 +60,6 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         tableView.dataSource = self
         
-//        keyChain.set(uid!, forKey: "uid")
-        
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
         
         self.view.addSubview(tableView)
@@ -71,6 +75,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         fetch()
         
         getPosts()
+        
+        getUserProfile()
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +86,14 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     func setupTableCell() {
         let nib = UINib(nibName: "ListsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
+    }
+    
+    func getUserProfile() {
+        FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
+            if error == nil {
+                self.userSetting = userSetting
+            }
+        })
     }
 
     // MARK: - Table view data source
@@ -140,6 +154,13 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         default:
             return cell
         }
+        
+        if result.type == userSetting?.preference.type {
+            
+            cell.recommendImage.image = UIImage(named: "icon-thumb")
+        
+        }
+        
         return cell
     }
     
@@ -163,7 +184,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 140
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -220,20 +241,9 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-//        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
-//        navigationItem.leftBarButtonItems = [myProfile]
         navigationController?.navigationBar.tintColor = myWhite
     }
     
-//    
-//    @objc func showMenu() {
-//        
-//        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
-//
-//        navigationController?.pushViewController(myProfileController, animated: true)
-//        
-//    }
-//    
     func setUpAddButton() {
         addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true

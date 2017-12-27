@@ -11,6 +11,8 @@ import Foundation
 enum JSONError: Error {
     
     case jsonError
+    
+    case userSettingJsonError
 }
 
 struct Place {
@@ -124,8 +126,6 @@ let typeArray: [String] = ["棒球", "籃球", "排球", "羽球", "網球", "�
 let time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
 
 struct Preference {
-    
-    var id: String
     
     var type: String
     

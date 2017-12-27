@@ -90,20 +90,24 @@
                         </constraints>
                         <state key="normal" image="icon-join"/>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-aM-jnL">
+                        <rect key="frame" x="91" y="38" width="35" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Xbi-27-vcq" secondAttribute="trailing" constant="40" id="DzL-zb-CIs"/>
-                    <constraint firstAttribute="bottom" secondItem="eb4-Ml-3xY" secondAttribute="bottom" constant="3.5" id="F9r-tx-wgY"/>
                     <constraint firstItem="yrc-Ot-Fm9" firstAttribute="leading" secondItem="Mi8-v6-6Gk" secondAttribute="leading" constant="61" id="Li8-39-aJ7"/>
                     <constraint firstItem="KP1-5m-BSR" firstAttribute="top" secondItem="Mi8-v6-6Gk" secondAttribute="top" constant="10" id="aCr-u4-9pB"/>
                     <constraint firstItem="Xbi-27-vcq" firstAttribute="top" secondItem="Mi8-v6-6Gk" secondAttribute="top" constant="34" id="bSZ-RR-CaE"/>
                     <constraint firstItem="Ez0-b7-Iet" firstAttribute="top" secondItem="Mi8-v6-6Gk" secondAttribute="top" constant="18" id="fO2-eq-nGT"/>
                     <constraint firstItem="KP1-5m-BSR" firstAttribute="leading" secondItem="Mi8-v6-6Gk" secondAttribute="leading" constant="128" id="he5-YJ-Wzc"/>
-                    <constraint firstAttribute="bottom" secondItem="yrc-Ot-Fm9" secondAttribute="bottom" constant="3.5" id="itb-CX-Odr"/>
                     <constraint firstAttribute="trailing" secondItem="KP1-5m-BSR" secondAttribute="trailing" constant="97" id="lgv-59-8nh"/>
                     <constraint firstItem="KP1-5m-BSR" firstAttribute="leading" secondItem="Ez0-b7-Iet" secondAttribute="trailing" constant="47" id="mjV-Yb-9jc"/>
+                    <constraint firstItem="yrc-Ot-Fm9" firstAttribute="top" secondItem="Mi8-v6-6Gk" secondAttribute="top" constant="71" id="tmj-Qv-9Gg"/>
                     <constraint firstItem="Ez0-b7-Iet" firstAttribute="leading" secondItem="Mi8-v6-6Gk" secondAttribute="leading" constant="17" id="u72-EE-QNF"/>
                     <constraint firstAttribute="trailing" secondItem="eb4-Ml-3xY" secondAttribute="trailing" constant="10" id="ukE-8P-FIM"/>
+                    <constraint firstItem="eb4-Ml-3xY" firstAttribute="top" secondItem="Xbi-27-vcq" secondAttribute="bottom" constant="8" id="vBw-Wu-0Pl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -112,6 +116,7 @@
                 <outlet property="levelImage" destination="yrc-Ot-Fm9" id="wMI-W3-Qiy"/>
                 <outlet property="numLabel" destination="eb4-Ml-3xY" id="NtT-cQ-R8E"/>
                 <outlet property="placeLabel" destination="g1t-TW-gq8" id="LAf-dO-i4b"/>
+                <outlet property="recommendImage" destination="ogD-aM-jnL" id="5EF-KC-65b"/>
                 <outlet property="timeLabel" destination="Qjv-SE-SWw" id="Wdg-sU-ugz"/>
                 <outlet property="titleLabel" destination="inh-JF-zSA" id="6C5-Sf-OGI"/>
             </connections>
