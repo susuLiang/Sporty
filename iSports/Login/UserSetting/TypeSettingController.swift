@@ -10,9 +10,12 @@ import UIKit
 import Firebase
 import KeychainSwift
 
+protocol TypeSettingDelegate: class {
+    func preferenceType(_ typeSetting: TypeSettingController, type: String)
+}
+
 class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var sureButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var selectedType: String = ""
@@ -21,9 +24,12 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     
     var selectedIndexPath: IndexPath? = nil
     
+    weak var delegate: TypeSettingDelegate?
+    
+    static let shared = TypeSettingController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        sureButton.layer.cornerRadius = 10
         view.backgroundColor = myBlack
     }
 
@@ -62,29 +68,28 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedType = typeArray[indexPath.row]
-        self.selectedIndexPath = indexPath
-        let cell = tableView.cellForRow(at: indexPath)
+        self.delegate?.preferenceType(.shared, type: self.selectedType)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 116
     }
 
-    @IBAction func saveUserLikedType(_ sender: Any) {
-        
-        let value = ["type": self.selectedType]
-        
-        if let userUid = keyChain.get("uid") {
-            
-            let ref = Database.database().reference().child("users").child(userUid)
-            
-            ref.child("preference").setValue(value)
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let levelSettingController = storyboard.instantiateViewController(withIdentifier: "levelSettingController") as! LevelSettingController
-            
-            self.present(levelSettingController, animated: true, completion: nil)
-        }
-    }
+//    @IBAction func saveUserLikedType(_ sender: Any) {
+//        
+//        let value = ["type": self.selectedType]
+//        
+//        if let userUid = keyChain.get("uid") {
+//            
+//            let ref = Database.database().reference().child("users").child(userUid)
+//            
+//            ref.child("preference").setValue(value)
+//            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            
+//            let levelSettingController = storyboard.instantiateViewController(withIdentifier: "levelSettingController") as! LevelSettingController
+//            
+//            self.present(levelSettingController, animated: true, completion: nil)
+//        }
+//    }
 }

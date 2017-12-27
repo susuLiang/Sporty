@@ -40,7 +40,7 @@ class FirebaseProvider {
                     if selected != nil {
                             if (time == selected?.time || (selected?.time == "")) &&
                                 (level == selected?.level?.rawValue || (selected?.level == nil)) &&
-                                (placeName == selected?.place || (selected?.place == "")) {
+                                (placeName == selected?.city || (selected?.city == "")) {
                                 results.append(activity)
                             }
                         

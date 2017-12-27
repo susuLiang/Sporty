@@ -30,6 +30,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = myWhite
         signInPage.isHidden = false
         signUpPage.isHidden = true
         

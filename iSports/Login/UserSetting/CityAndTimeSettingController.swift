@@ -16,12 +16,18 @@ enum SettingType {
     
 }
 
+protocol CityAndTimeDelegate: class {
+    func cityPreference(_ city: CityAndTimeSettingController, selectedCity: String)
+    func timePreference(_ city: CityAndTimeSettingController, selectedTime: String)
+}
+
 class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var titleSubLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var sureButton: UIButton!
+    
+    weak var delegate: CityAndTimeDelegate?
+    
+    static let shared = CityAndTimeSettingController()
     
     let keyChain = KeychainSwift()
     
@@ -31,19 +37,8 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sureButton.layer.cornerRadius = 10
         view.backgroundColor = myBlack
         tableView.backgroundColor = myBlack
-        switch controllerType {
-        case .city:
-            titleLabel.text = "City"
-            titleSubLabel.text = "Where you live in?"
-            break
-        case .time:
-            titleLabel.text = "Time"
-            titleSubLabel.text = "When are you available?"
-        }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,8 +73,10 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         switch controllerType {
         case .city:
             self.selected = city[indexPath.row]
+            self.delegate?.cityPreference(.shared, selectedCity: city[indexPath.row])
         case .time:
             self.selected = time[indexPath.row]
+            self.delegate?.timePreference(.shared, selectedTime: time[indexPath.row])
         }
     }
 

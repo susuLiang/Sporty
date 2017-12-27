@@ -10,13 +10,20 @@ import Foundation
 import Firebase
 import KeychainSwift
 
+protocol LevelSettingDelegate: class {
+    func levelPreference(_ levelSetting: LevelSettingController, selectedLevel: String)
+}
+
 class LevelSettingController: UIViewController {
     
-    @IBOutlet weak var sureButton: UIButton!
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
     @IBOutlet weak var buttonC: UIButton!
     @IBOutlet weak var buttonD: UIButton!
+    
+    weak var delegate: LevelSettingDelegate?
+    
+    static let shared = LevelSettingController()
     
     var selectedLevel: String? = ""
     
@@ -24,7 +31,6 @@ class LevelSettingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sureButton.layer.cornerRadius = 10
         view.backgroundColor = myBlack
         setUpButtons()
     }
@@ -43,20 +49,24 @@ class LevelSettingController: UIViewController {
     @IBAction func selectButtonA(_ sender: Any) {
         buttonA.backgroundColor = myRed
         self.selectedLevel = Level.A.rawValue
+        self.delegate?.levelPreference(.shared, selectedLevel: self.selectedLevel!)
     }
     
     @IBAction func selectButtonB(_ sender: Any) {
         buttonB.backgroundColor = myRed
         self.selectedLevel = Level.B.rawValue
+        self.delegate?.levelPreference(.shared, selectedLevel: self.selectedLevel!)
     }
     
     @IBAction func selectButtonC(_ sender: Any) {
         buttonC.backgroundColor = myRed
         self.selectedLevel = Level.C.rawValue
+        self.delegate?.levelPreference(.shared, selectedLevel: self.selectedLevel!)
     }
     @IBAction func selectButtonD(_ sender: Any) {
         buttonD.backgroundColor = myRed
         self.selectedLevel = Level.D.rawValue
+        self.delegate?.levelPreference(.shared, selectedLevel: self.selectedLevel!)
     }
     
     

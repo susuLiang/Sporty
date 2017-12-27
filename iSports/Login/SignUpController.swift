@@ -83,8 +83,8 @@ class SignUpController: UIViewController {
                 self.keyChain.set(name, forKey: "name")
                 self.keyChain.set(uid, forKey: "uid")
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as! TypeSettingController
+                let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+                let userSettingController = storyboard.instantiateViewController(withIdentifier: "userSetting") as! UserSettingController
                 self.present(userSettingController, animated: true, completion: nil)
             })
         })
