@@ -50,7 +50,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
     
     func getLocation() {
-        FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
+        FirebaseProvider.shared.getData(completion: { (results, error) in
             if error == nil {
                 self.results = results!
                 self.view.addSubview(self.setMap(activities: self.results))

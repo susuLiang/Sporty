@@ -15,88 +15,70 @@ class FirebaseProvider {
     static let shared = FirebaseProvider()
     
     var keyChain = KeychainSwift()
-        
-    func parseSnapshot(snapshot: DataSnapshot, selected: Preference?) -> [Activity] {
-        var results = [Activity]()
-        if let objects = snapshot.value as? [String: AnyObject] {
-            for (id, data) in objects {
-                let id = id
-                if
-                    let name = data["name"] as? String,
-                    let type = data["type"] as? String,
-                    let time = data["time"] as? String,
-                    let placeName = data["place"] as? String,
-                    let latitude = data["latitude"] as? String,
-                    let longitude = data["longitude"] as? String,
-                    let level = data["level"] as? String,
-                    let address = data["address"] as? String,
-                    let number = data["number"] as? Int,
-                    let allNumber = data["allNumber"] as? Int,
-                    let fee = data["fee"] as? Int,
-                    let userUid = data["userUid"] as? String,
-                    let author = data["author"] as? String
-                {
-                    let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
-                    if selected != nil {
-                            if (time == selected?.time || (selected?.time == "")) &&
-                                (level == selected?.level?.rawValue || (selected?.level == nil)) &&
-                                (placeName == selected?.place || (selected?.place == "")) {
+    
+    func getData(completion: @escaping ([Activity]?, Error?) -> Void) {
+        Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
+            var results = [Activity]()
+            if let objects = snapshot.value as? [String: AnyObject] {
+                for (id, data) in objects {
+                    do {
+                        let activity = try Activity(data, id: id)
+                        results.append(activity)
+                    }
+                    catch {
+                        print("Activity is invalid.")
+                    }
+                    completion(results, nil)
+                }
+            }
+        }
+    }
+    
+    func getTypeData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
+        Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observe(.value) { (snapshot: DataSnapshot) in
+            var results = [Activity]()
+            if let objects = snapshot.value as? [String: AnyObject] {
+                for (id, data) in objects {
+                    if let time = data["time"] as? String,
+                        let level = data["level"] as? String,
+                        let place = data["place"] as? String {
+                        
+                        if (time == selected?.time || (selected?.time == "")) &&
+                            (level == selected?.level?.rawValue || (selected?.level == nil)) &&
+                            (place == selected?.place || (selected?.place == "")) {
+                            do {
+                                let activity = try Activity(data, id: id)
                                 results.append(activity)
                             }
-                        
-                    } else {
-                        results.append(activity)
+                            catch {
+                                print("Activity is invalid.")
+                            }
+                        completion(results, nil)
+                        }
                     }
                 }
             }
         }
-        return results
     }
-    
-    func getData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
-        if selected != nil {
-            Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observe(.value) { (snapshot: DataSnapshot) in
-                let results = self.parseSnapshot(snapshot: snapshot, selected: selected)
-                    completion(results, nil)
-            }
-        } else {
-            Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
-                let results = self.parseSnapshot(snapshot: snapshot, selected: selected)
-                completion(results, nil)
-            }
-        }
-    }
-    
+
     func getPlaceAllActivities(place: Place?, completion: @escaping ([Activity]?, Error?) -> Void) {
         Database.database().reference().child("activities").queryOrdered(byChild: "place").queryEqual(toValue: place?.placeName).observe(.value) { (snapshot: DataSnapshot) in
             var results = [Activity]()
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (id, data) in objects {
-                    let id = id
-                    if
-                        let name = data["name"] as? String,
-                        let type = data["type"] as? String,
-                        let time = data["time"] as? String,
-                        let placeName = data["place"] as? String,
-                        let latitude = data["latitude"] as? String,
-                        let longitude = data["longitude"] as? String,
-                        let level = data["level"] as? String,
-                        let address = data["address"] as? String,
-                        let number = data["number"] as? Int,
-                        let allNumber = data["allNumber"] as? Int,
-                        let fee = data["fee"] as? Int,
-                        let userUid = data["userUid"] as? String,
-                        let author = data["author"] as? String
-                    {
-                        let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
-                    
+                    do {
+                        let activity = try Activity(data, id: id)
                         results.append(activity)
+                    }
+                    catch {
+                        print("Activity is invalid.")
                     }
                 }
                 completion(results, nil)
             }
         }
     }
+    
     
     func getPosts(childKind: String, completion: @escaping ([Activity]?, [String]?, Error?) -> Void) {
         
@@ -105,7 +87,7 @@ class FirebaseProvider {
         var posts = [Activity]()
         
         let userCurrentUid = keyChain.get("uid")
-
+        
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
@@ -123,32 +105,20 @@ class FirebaseProvider {
                         (snapshot) in
                         if let data = snapshot.value as? [String: AnyObject] {
                             let id = snapshot.key
-                            if
-                                let name = data["name"] as? String,
-                                let type = data["type"] as? String,
-                                let time = data["time"] as? String,
-                                let placeName = data["place"] as? String,
-                                let latitude = data["latitude"] as? String,
-                                let longitude = data["longitude"] as? String,
-                                let level = data["level"] as? String,
-                                let address = data["address"] as? String,
-                                let number = data["number"] as? Int,
-                                let allNumber = data["allNumber"] as? Int,
-                                let fee = data["fee"] as? Int,
-                                let userUid = data["userUid"] as? String,
-                                let author = data["author"] as? String
-
-                            {
-                                let activity = Activity(id: id, name: name, level: Level(rawValue: level)!, place: Place(placeName: placeName, placeLatitude: latitude, placeLongitude: longitude), address: address, time: time, type: type, number: number, allNumber: allNumber, fee: fee, author: author, authorUid: userUid)
+                            do {
+                                let activity = try Activity(data, id: id)
                                 posts.append(activity)
+                            }
+                            catch {
+                                print("Activity is invalid.")
                             }
                         }
                         completion(posts, keyUid, nil)
                     })
                 }
-             }
+            }
         }
     }
-    
 }
+
 

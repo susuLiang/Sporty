@@ -195,7 +195,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func search(selected: Preference) {
-        FirebaseProvider.shared.getData(selected: selected, completion: { (results, error) in
+        FirebaseProvider.shared.getTypeData(selected: selected, completion: { (results, error) in
             if error == nil {
                 self.results = results!
                 self.tableView.reloadData()
@@ -204,7 +204,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func fetch() {
-        FirebaseProvider.shared.getData(selected: nil, completion: { (results, error) in
+        FirebaseProvider.shared.getData(completion: { (results, error) in
             if error == nil {
                 self.results = results!
                 self.tableView.reloadData()
