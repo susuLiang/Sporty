@@ -22,6 +22,16 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var userImage = UIImage()
     
+//    var nameFromFirebase: String? = {
+//        var name: String = ""
+//        Database.database().reference().child("users").child(keyChain.get("uid")!).child("name").observe(.value) {(snapshot) in
+//            if let value = snapshot.value as? String {
+//                name = value
+//                return name
+//            }
+//        }
+//    }()
+    
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var userPhoto: UIImageView!
@@ -59,6 +69,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         fusuma.delegate = self
         fusuma.cropHeightRatio = 0.6
         

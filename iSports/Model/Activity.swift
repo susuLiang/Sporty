@@ -34,6 +34,7 @@ struct Activity {
 
     let authorUid: String
     
+    
 }
 
 struct Place {

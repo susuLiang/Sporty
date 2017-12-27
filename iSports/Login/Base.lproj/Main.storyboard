@@ -146,6 +146,7 @@
                                             <constraints>
                                                 <constraint firstItem="anm-Uc-TJN" firstAttribute="top" secondItem="pBL-RM-P6B" secondAttribute="top" constant="10" id="Z33-T7-EbY"/>
                                                 <constraint firstAttribute="trailing" secondItem="anm-Uc-TJN" secondAttribute="trailing" constant="4" id="ZxQ-Cu-aBY"/>
+                                                <constraint firstAttribute="bottom" secondItem="anm-Uc-TJN" secondAttribute="bottom" constant="10.5" id="ac6-TD-qPQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Oh5-sh-1Gl" secondAttribute="trailing" constant="4" id="bP9-t8-eNw"/>
                                                 <constraint firstAttribute="bottom" secondItem="Oh5-sh-1Gl" secondAttribute="bottom" constant="20.5" id="mv1-PD-05d"/>
                                                 <constraint firstItem="anm-Uc-TJN" firstAttribute="leading" secondItem="pBL-RM-P6B" secondAttribute="leading" constant="10" id="oMu-VO-dXK"/>
@@ -393,7 +394,7 @@
                                         <color key="value" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.0" green="0.31884269506264507" blue="0.66102871192893398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
@@ -404,6 +405,9 @@
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientRotation">
                                         <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
@@ -564,7 +568,7 @@
                                         <color key="value" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
