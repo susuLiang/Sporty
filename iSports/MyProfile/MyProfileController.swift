@@ -11,12 +11,16 @@ import Firebase
 import KeychainSwift
 import SkyFloatingLabelTextField
 import Fusuma
+import SCLAlertView
+import Nuke
 
 class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate {
    
     let keyChain = KeychainSwift()
     
     let fusuma = FusumaViewController()
+    
+    var userImage = UIImage()
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
@@ -87,21 +91,66 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         userPhoto.image = image
+        self.userImage = image
         userPhoto.contentMode = .scaleAspectFill
     }
     
     @objc func edit() {
-        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(saveIt))
+        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
         navigationItem.rightBarButtonItem = saveIcon
         nameTextField.isEnabled = true
         pickPhotoButton.isEnabled = true
     }
     
-    @objc func saveIt() {
+    @objc func showAlert() {
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
         navigationItem.rightBarButtonItem = editIt
         nameTextField.isEnabled = false
         pickPhotoButton.isEnabled = false
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("SURE", action: self.saveIt)
+        alertView.addButton("NO") {
+            
+        }
+        alertView.showWarning("Sure to save it ?", subTitle: "")
+        
+    }
+    
+    func saveIt() {
+        
+        guard let editedName = nameTextField.text, let userUid = keyChain.get("uid") else { return }
+        
+        var data = Data()
+        
+        data = UIImageJPEGRepresentation(userPhoto.image!, 1)!
+        
+        let ref = Database.database().reference()
+        
+        let storageRef = Storage.storage().reference()
+        
+        let metadata = StorageMetadata()
+        
+        
+        metadata.contentType = "image/jpg"
+        
+        storageRef.child(userUid).putData(data,metadata: metadata) { (metadata, error) in
+            
+            guard let metadata = metadata else {
+                
+                // Todo: error handling
+                
+                return
+            }
+            
+            let downloadURL = metadata.downloadURL()?.absoluteString
+            
+            let value = ["name": editedName, "imageURL": downloadURL]
+
+            ref.child("users").child(userUid).updateChildValues(value)
+        
+        }
+        
     }
     
     func setNavigationBar() {
