@@ -191,7 +191,7 @@
 				1F8627761FEEB04200D82614 /* MyProfile */,
 				1F705F111FEA0ACB0010963E /* My */,
 				1F705F101FEA0A9F0010963E /* Map */,
-				1FFA2F291FE9196600E485F1 /* LoginAndSignUp */,
+				1FFA2F291FE9196600E485F1 /* Login */,
 				1F70C5091FE3CE1500DDAF03 /* Activity */,
 				1FFC9DF61FE18060003071B9 /* Lists */,
 				1F8627751FEE9C9300D82614 /* Search */,
@@ -256,6 +256,18 @@
 			path = MyProfile;
 			sourceTree = "<group>";
 		};
+		1F8627A81FF387B400D82614 /* UserSetting */ = {
+			isa = PBXGroup;
+			children = (
+				1F8627921FF2441E00D82614 /* TypeSettingController.swift */,
+				1F8627941FF2445D00D82614 /* TypeSettingCell.swift */,
+				1F8627961FF24FDA00D82614 /* LevelSettingController.swift */,
+				1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */,
+				1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */,
+			);
+			path = UserSetting;
+			sourceTree = "<group>";
+		};
 		1FFA2EF41FE8AD3400E485F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,20 +322,16 @@
 			path = "Google-Maps-iOS-Utils";
 			sourceTree = "<group>";
 		};
-		1FFA2F291FE9196600E485F1 /* LoginAndSignUp */ = {
+		1FFA2F291FE9196600E485F1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F8627A01FF32C1400D82614 /* LoginController.swift */,
 				1F6CE5D81FE12A28006D6AAD /* SignInController.swift */,
 				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
-				1F8627921FF2441E00D82614 /* TypeSettingController.swift */,
-				1F8627941FF2445D00D82614 /* TypeSettingCell.swift */,
-				1F8627961FF24FDA00D82614 /* LevelSettingController.swift */,
-				1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */,
-				1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */,
+				1F8627A81FF387B400D82614 /* UserSetting */,
 			);
-			path = LoginAndSignUp;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		1FFC9DDE1FE137A7003071B9 /* Tab Bar */ = {
@@ -460,6 +468,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-iSports/Pods-iSports-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
+				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -478,6 +487,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",

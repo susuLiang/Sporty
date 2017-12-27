@@ -9,9 +9,19 @@
 import UIKit
 import Firebase
 import KeychainSwift
+import SkyFloatingLabelTextField
+import Fusuma
 
-class MyProfileController: UIViewController {
+class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate {
+   
+    let keyChain = KeychainSwift()
+    
+    let fusuma = FusumaViewController()
+    
     @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var userPhoto: UIImageView!
+    @IBOutlet weak var pickPhotoButton: UIButton!
     @IBAction func logOut(_ sender: Any) {
         
         let alertController = UIAlertController(title: "Log out", message: "Be sure to log out?", preferredStyle: .alert)
@@ -28,7 +38,6 @@ class MyProfileController: UIViewController {
             }
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
             self.present(loginController, animated: true, completion: nil)
             
@@ -38,17 +47,29 @@ class MyProfileController: UIViewController {
         
     }
     
-    @IBOutlet weak var userNameLabel: UILabel!
+
+    @IBAction func pickPhoto(_ sender: Any) {
+        self.present(fusuma, animated: true, completion: nil)
+    }
     
-    let keyChain = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fusuma.delegate = self
+        fusuma.cropHeightRatio = 0.6
         
-        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
-        navigationItem.leftBarButtonItems = [myProfile]
-        userNameLabel.text = keyChain.get("name")
+        setNavigationBar()
         setLogOutButton()
+        
+        nameTextField.delegate = self
+        nameTextField.isEnabled = false
+        
+        pickPhotoButton.isEnabled = false
+        
+        nameTextField.text = keyChain.get("name")
+        userPhoto.layer.cornerRadius = 100
+        userPhoto.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +83,42 @@ class MyProfileController: UIViewController {
     func setLogOutButton() {
         logOutButton.layer.cornerRadius = 20
         logOutButton.layer.shadowRadius = 5
+    }
+    
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        userPhoto.image = image
+        userPhoto.contentMode = .scaleAspectFill
+    }
+    
+    @objc func edit() {
+        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(saveIt))
+        navigationItem.rightBarButtonItem = saveIcon
+        nameTextField.isEnabled = true
+        pickPhotoButton.isEnabled = true
+    }
+    
+    @objc func saveIt() {
+        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
+        navigationItem.rightBarButtonItem = editIt
+        nameTextField.isEnabled = false
+        pickPhotoButton.isEnabled = false
+    }
+    
+    func setNavigationBar() {
+        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
+        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
+        navigationItem.leftBarButtonItems = [myProfile]
+        navigationItem.rightBarButtonItem = editIt
+    }
+    
+    
+    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
+    }
+    
+    func fusumaVideoCompleted(withFileURL fileURL: URL) {
+    }
+    
+    func fusumaCameraRollUnauthorized() {
     }
 
 }

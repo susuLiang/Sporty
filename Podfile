@@ -23,6 +23,7 @@ target 'iSports' do
   pod 'IQKeyboardManagerSwift'
   pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift', :branch => 'master'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'Fusuma'
 
 
 end

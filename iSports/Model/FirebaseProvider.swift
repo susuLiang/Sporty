@@ -109,12 +109,14 @@ class FirebaseProvider {
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
+                keyUid = [String]()
                 for (key, data) in objects {
                     keyUid.append(key)
                     if let postId = data[childKind] as? String {
                         results.append(postId)
                     }
                 }
+                print(keyUid)
                 posts = [Activity]()
                 for result in results {
                     Database.database().reference().child("activities").child(result).observe(.value, with: {

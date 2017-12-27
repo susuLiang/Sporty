@@ -50,7 +50,12 @@ class SignInController: UIViewController {
                 }
                 return
             }
-                        
+            
+            let uid = Auth.auth().currentUser?.uid
+
+            self.keyChain.set(uid!, forKey: "uid")
+            self.keyChain.set(email, forKey: "email")
+
             let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
             tabBarController.selectedIndex = 1
             self.present(tabBarController, animated: true, completion: nil)

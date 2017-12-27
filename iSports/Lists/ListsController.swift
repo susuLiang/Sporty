@@ -54,7 +54,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         tableView.dataSource = self
         
-        keyChain.set(uid!, forKey: "uid")
+//        keyChain.set(uid!, forKey: "uid")
         
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
         
@@ -220,20 +220,20 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
-        navigationItem.leftBarButtonItems = [myProfile]
+//        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showMenu))
+//        navigationItem.leftBarButtonItems = [myProfile]
         navigationController?.navigationBar.tintColor = myWhite
     }
     
-    
-    @objc func showMenu() {
-        
-        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
-
-        navigationController?.pushViewController(myProfileController, animated: true)
-        
-    }
-    
+//    
+//    @objc func showMenu() {
+//        
+//        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
+//
+//        navigationController?.pushViewController(myProfileController, animated: true)
+//        
+//    }
+//    
     func setUpAddButton() {
         addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true

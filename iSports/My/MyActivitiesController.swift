@@ -62,7 +62,19 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
+        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showProfile))
+        navigationItem.leftBarButtonItems = [myProfile]
         navigationController?.navigationBar.tintColor = myWhite
     }
 
+    @objc func showProfile() {
+        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
+        navigationController?.pushViewController(myProfileController, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        settings.style.buttonBarHeight = 0
+    }
+    
 }

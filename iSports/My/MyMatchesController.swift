@@ -82,7 +82,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         case .C: cell.levelImage.image = UIImage(named: "labelC")
         case .D: cell.levelImage.image = UIImage(named: "labelD")
         }
-        let iconQuit =
         cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
         cell.joinButton.tintColor = myRed
         cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
@@ -135,8 +134,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let ref = Database.database().reference()
             
             ref.child("user_joinId").child(uid).removeValue()
-            
-            self.keyUid.remove(at: indexPath.row)
             
         }))
         
