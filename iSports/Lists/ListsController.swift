@@ -195,7 +195,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @objc func showSearchView() {
         searchView.mainViewController = self
-        searchView.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (self.navigationController?.navigationBar.frame.height)! + 20, width: 150, height: UIScreen.main.bounds.height)
         
         if !isShowed {
             self.addChildViewController(searchView)
@@ -216,10 +216,10 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func search(selected: Preference) {
-        FirebaseProvider.shared.getTypeData(selected: selected, completion: { (results, error) in
+        FirebaseProvider.shared.getTypeData(selected: selected, completion: { [weak self] (results, error) in
             if error == nil {
-                self.results = results!
-                self.tableView.reloadData()
+                self?.results = results!
+                self?.tableView.reloadData()
             }
         })
     }

@@ -76,9 +76,11 @@
                             <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
                         </connections>
                     </button>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="AKa-FL-bIL" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                        <rect key="frame" x="87" y="357" width="200" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="AKa-FL-bIL" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                        <rect key="frame" x="87" y="357" width="200" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="oXF-54-XwT"/>
+                        </constraints>
                         <color key="textColor" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <textInputTraits key="textInputTraits"/>
@@ -105,9 +107,11 @@
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="344" id="9IF-gB-hsi"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="9dQ-Y0-wFQ"/>
                     <constraint firstItem="gW6-as-Dcn" firstAttribute="centerX" secondItem="RLI-rK-reA" secondAttribute="centerX" id="I8o-Bh-Hm9"/>
+                    <constraint firstItem="AKa-FL-bIL" firstAttribute="centerX" secondItem="sTJ-Kh-Oxe" secondAttribute="centerX" id="Y1C-qH-4n1"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" id="fnG-1V-XR3"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" constant="31" id="hdt-QJ-nMf"/>
                     <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="mxm-RY-PYh"/>
+                    <constraint firstItem="AKa-FL-bIL" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" constant="34" id="obw-CC-25v"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="szL-hz-seN"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="gW6-as-Dcn" secondAttribute="trailing" constant="88" id="ynJ-op-p4S"/>
                 </constraints>

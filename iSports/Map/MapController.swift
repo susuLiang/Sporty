@@ -93,8 +93,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    
-    
     func setLocationManager() {
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -112,8 +110,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
         navigationController?.navigationBar.tintColor = myWhite
     }
     
-    
-    
 }
 
 extension MapController {
@@ -127,8 +123,6 @@ extension MapController {
                 self.results = results!
                 
                 self.setMarker(activities: self.results)
-                
-//                self.view.addSubview(self.setMap(activities: self.results))
                 
             }
         })
@@ -189,8 +183,6 @@ extension MapController {
         return true
     }
     
-    
-    
 }
 
 extension MapController: CLLocationManagerDelegate {
@@ -204,11 +196,7 @@ extension MapController: CLLocationManagerDelegate {
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
         
-        let marker = GMSMarker()
-        
-        marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        
-        marker.map = mapView
+   
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

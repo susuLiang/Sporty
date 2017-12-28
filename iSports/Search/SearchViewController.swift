@@ -8,13 +8,11 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
 
 class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var sureButton: UIButton!
     
     @IBOutlet weak var typeTF: UITextField!
     @IBOutlet weak var levelTF: UITextField!
@@ -26,6 +24,10 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func sureButton(_ sender: Any) {
+        if typeTF.text == "" {
+            SCLAlertView().showWarning("Warning", subTitle: "Should enter sports type")
+            return
+        }
         guard let type = typeTF.text,
             let level = levelTF.text,
             let city = placeTF.text,
@@ -54,7 +56,10 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerDelegate()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.95)
+        view.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height)
+        
+        sureButton.layer.cornerRadius = 10
         
         typeTF.inputView = typePicker
         levelTF.inputView = levelPicker

@@ -134,10 +134,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: self.saveIt)
         alertView.addButton("NO") {
-            
         }
         alertView.showWarning("Sure to save it ?", subTitle: "")
-        
     }
     
     func saveIt() {
@@ -146,7 +144,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         
         var data = Data()
         
-        data = UIImageJPEGRepresentation(userPhoto.image!, 1)!
+        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
         
         let ref = Database.database().reference()
         

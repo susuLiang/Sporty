@@ -25,7 +25,7 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
         
         tableView.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height - 30)
         
-        tableView.alpha = 0.95
+        tableView.alpha = 0.8
         
         tableView.delegate = self
         
