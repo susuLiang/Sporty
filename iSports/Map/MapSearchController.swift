@@ -40,7 +40,8 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-        func setupTableCell() {
+    
+    func setupTableCell() {
         let nib = UINib(nibName: "MapSearchCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "mapSearchCell")
     }

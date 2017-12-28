@@ -19,6 +19,8 @@
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
 		1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */; };
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
+		1F74D7321FF50D6700B746E6 /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */; };
+		1F74D7331FF50D6700B746E6 /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */; };
 		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
 		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
 		1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627821FF0D82000D82614 /* MapSearchController.swift */; };
@@ -80,6 +82,8 @@
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
+		1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileCell.xib; sourceTree = "<group>"; };
 		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
 		1F8627821FF0D82000D82614 /* MapSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */,
+				1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */,
+				1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */,
 				1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */,
 			);
 			path = MyProfile;
@@ -447,6 +453,7 @@
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */,
+				1F74D7331FF50D6700B746E6 /* MyProfileCell.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
 				1F86278D1FF0EB7600D82614 /* MapSearchCell.xib in Resources */,
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
@@ -554,6 +561,7 @@
 				1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */,
 				1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */,
 				1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */,
+				1F74D7321FF50D6700B746E6 /* MyProfileCell.swift in Sources */,
 				1FFA2EF11FE8A6D100E485F1 /* LoadingIndicator.swift in Sources */,
 				1F8627951FF2445D00D82614 /* TypeSettingCell.swift in Sources */,
 				1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */,
