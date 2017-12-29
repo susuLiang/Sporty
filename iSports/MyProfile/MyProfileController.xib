@@ -37,7 +37,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-ES-FCJ">
                                 <rect key="frame" x="98" y="216" width="178" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkA-I6-H7d">
@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.87009006076388884" green="0.99156358506944442" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="djA-bF-fOd" secondAttribute="height" multiplier="375:256" id="4Yf-EX-u5F"/>
                             <constraint firstAttribute="trailing" secondItem="bg1-ES-FCJ" secondAttribute="trailing" constant="99" id="4u7-je-GEZ"/>
@@ -88,32 +88,67 @@
                             <outlet property="delegate" destination="I6e-n9-55K" id="4rU-YV-uUn"/>
                         </connections>
                     </tableView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-as-Dcn">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubJ-zi-XIM" customClass="LGButton" customModule="LGButton">
                         <rect key="frame" x="87" y="583" width="200" height="45"/>
-                        <color key="backgroundColor" red="0.11688167601823807" green="1" blue="0.76015704870223999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="8eb-dS-3Xb"/>
-                            <constraint firstAttribute="width" secondItem="gW6-as-Dcn" secondAttribute="height" multiplier="40:9" id="xjs-mu-Vsd"/>
+                            <constraint firstAttribute="width" secondItem="ubJ-zi-XIM" secondAttribute="height" multiplier="40:9" id="DFB-yW-mFk"/>
+                            <constraint firstAttribute="width" constant="200" id="UEF-K5-JkZ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
-                        <state key="normal" title="Log out">
-                            <color key="titleColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
-                        </connections>
-                    </button>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                <color key="value" red="0.18823529410000001" green="0.66274509800000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                <color key="value" red="0.16862745098039217" green="0.81586468440000004" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32r-mX-yjr">
+                        <rect key="frame" x="87" y="583" width="200" height="45"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-as-Dcn">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
+                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gW6-as-Dcn" secondAttribute="trailing" id="3CM-Rh-z4l"/>
+                            <constraint firstItem="gW6-as-Dcn" firstAttribute="width" secondItem="32r-mX-yjr" secondAttribute="width" id="B4b-tN-d2a"/>
+                            <constraint firstItem="gW6-as-Dcn" firstAttribute="height" secondItem="32r-mX-yjr" secondAttribute="height" id="Chj-Eu-HQe"/>
+                            <constraint firstItem="gW6-as-Dcn" firstAttribute="top" secondItem="32r-mX-yjr" secondAttribute="top" id="RmU-ce-hqt"/>
+                            <constraint firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" id="coG-bJ-Gdx"/>
+                            <constraint firstAttribute="width" secondItem="32r-mX-yjr" secondAttribute="height" multiplier="40:9" id="iKd-NQ-eE8"/>
+                            <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="32r-mX-yjr" secondAttribute="leading" id="mCc-1w-1aX"/>
+                            <constraint firstAttribute="width" constant="200" id="wbp-Xl-hSi"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" id="2Qr-2z-0LC"/>
+                    <constraint firstItem="ubJ-zi-XIM" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="569-t1-riV"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="32r-mX-yjr" secondAttribute="trailing" constant="88" id="FOx-mw-NDp"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="HXC-sJ-ms0"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" constant="39" id="U8J-5d-4wS"/>
+                    <constraint firstItem="32r-mX-yjr" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="RzJ-Vh-W7Z"/>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="WDC-hP-CqC"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="X0i-bv-ce9"/>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="ZtX-k5-8B0"/>
-                    <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="ioJ-Ug-1bF"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="gW6-as-Dcn" secondAttribute="trailing" constant="88" id="pVa-68-Gsv"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="ubJ-zi-XIM" secondAttribute="trailing" constant="88" id="jmd-9M-y7B"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="ubJ-zi-XIM" secondAttribute="bottom" constant="39" id="sP5-la-9Fj"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="32r-mX-yjr" secondAttribute="bottom" constant="39" id="sUz-ym-itS"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" id="xs6-V5-XjO"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="sTJ-Kh-Oxe"/>

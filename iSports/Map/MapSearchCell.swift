@@ -16,7 +16,7 @@ class MapSearchCell: UITableViewCell {
         super.awakeFromNib()
         
         typeLabel.backgroundColor = myRed
-        typeLabel.tintColor = myWhite
+        typeLabel.tintColor = .white
         typeLabel.layer.masksToBounds = true
         typeLabel.layer.cornerRadius = 8
     }

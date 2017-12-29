@@ -18,24 +18,19 @@ class ListsCell: UITableViewCell {
     @IBOutlet weak var imagePlaced: UIImageView!
     @IBOutlet weak var levelImage: UIImageView!
     @IBOutlet weak var recommendImage: UIImageView!
-    
-    @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var picView: UIView!
+    @IBOutlet weak var backView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = .clear
-        
         setFont()
         
-        picView.layer.shadowRadius = 10
-        
-        picView.backgroundColor = myWhite
-        
-        detailView.backgroundColor = myRed.withAlphaComponent(0.3)
-        
-        
+        backView.layer.shadowColor = UIColor.gray.cgColor
+        backView.layer.shadowRadius = 10
+        backView.layer.shadowOpacity = 0.5
+        backView.layer.shadowOffset = CGSize(width: 10, height: 10)
+        backView.layer.cornerRadius = 5
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -53,22 +48,19 @@ class ListsCell: UITableViewCell {
         
         // timeLabel
         timeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
-        timeLabel.tintColor = myWhite
+        timeLabel.tintColor = .white
         
         //placeLabel
         placeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
-        placeLabel.tintColor = myWhite
+        placeLabel.tintColor = .white
         
         //numLabel
-        numLabel.tintColor = myWhite
+        numLabel.tintColor = .white
         
     }
 
     override func prepareForReuse() {
-        
         super.prepareForReuse()
-        
         recommendImage?.image = nil
-        
     }
 }

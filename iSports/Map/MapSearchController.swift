@@ -21,7 +21,7 @@ class MapSearchController: UIViewController, UITableViewDataSource, UITableViewD
         
         view.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height)
         
-        view.backgroundColor = mySkyBlue
+        view.backgroundColor = .white
         
         tableView.frame = CGRect(x: 0, y: 0, width: 150, height: UIScreen.main.bounds.height - 30)
         

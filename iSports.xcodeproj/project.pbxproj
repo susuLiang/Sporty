@@ -24,6 +24,7 @@
 		1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */; };
 		1F74D73B1FF5E14400B746E6 /* FadeInOutTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */; };
 		1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */; };
+		1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D73E1FF653A400B746E6 /* ActivityController.xib */; };
 		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
 		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
 		1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627821FF0D82000D82614 /* MapSearchController.swift */; };
@@ -90,6 +91,7 @@
 		1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
 		1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutTransition.swift; sourceTree = "<group>"; };
 		1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
+		1F74D73E1FF653A400B746E6 /* ActivityController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityController.xib; sourceTree = "<group>"; };
 		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
 		1F8627821FF0D82000D82614 /* MapSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
 				1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */,
+				1F74D73E1FF653A400B746E6 /* ActivityController.xib */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
 				1F86278D1FF0EB7600D82614 /* MapSearchCell.xib in Resources */,
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
+				1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */,
 				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
 				1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,

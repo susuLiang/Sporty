@@ -13,7 +13,7 @@ class CityAndTimeSettingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = myBlack
-        textLabel?.textColor = myWhite
+        textLabel?.textColor = .white
         textLabel?.textAlignment = .center
     }
 

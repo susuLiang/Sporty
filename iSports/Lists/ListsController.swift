@@ -43,7 +43,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
-        button.tintColor = myRed
+        button.tintColor = myPurple
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -132,7 +132,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
                 cell.joinButton.setImage(joinIcon, for: .normal)
-                cell.joinButton.tintColor = myGreen
+                cell.joinButton.tintColor = myRed
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false
@@ -158,9 +158,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         if result.type == userSetting?.preference.type {
-            
             cell.recommendImage.image = UIImage(named: "icon-thumb")
-        
         }
         
         return cell
@@ -243,7 +241,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        navigationController?.navigationBar.tintColor = mySkyBlue
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setUpAddButton() {

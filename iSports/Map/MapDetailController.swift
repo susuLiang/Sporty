@@ -98,7 +98,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         let downArrowIcon = UIImage(named: "icon-down-arrow")?.withRenderingMode(.alwaysTemplate)
         button.frame = CGRect(x: 0, y: 0, width: headerView.frame.width, height: 32)
         headerView.addSubview(button)
-        button.backgroundColor = myBlack
+        button.backgroundColor = myLightBlue
         button.setImage(downArrowIcon, for: .normal)
         button.contentMode = .scaleAspectFit
         button.imageView?.tintColor = mySkyBlue
