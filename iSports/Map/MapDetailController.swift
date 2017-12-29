@@ -101,7 +101,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         button.backgroundColor = myBlack
         button.setImage(downArrowIcon, for: .normal)
         button.contentMode = .scaleAspectFit
-        button.imageView?.tintColor = myWhite
+        button.imageView?.tintColor = mySkyBlue
         button.addTarget(self, action: #selector(close), for: .touchUpInside)
         return headerView
     }

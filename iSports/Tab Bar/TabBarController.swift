@@ -52,7 +52,7 @@ class TabBarController: UITabBarController {
         tabBar.isTranslucent = false
         
         // Todo: palette
-        tabBar.tintColor = myWhite
+        tabBar.tintColor = mySkyBlue
         
         tabBar.barTintColor = myBlack
         

@@ -30,8 +30,6 @@ class SignUpController: UIViewController {
         
         guard let name = nameText.text, !name.isEmpty else {
             SCLAlertView().showWarning("Error", subTitle: "Must enter name")
-
-//            showAlert(title: "Error", message: "Must enter name", dismiss: nil)
             return
         }
         
@@ -58,9 +56,6 @@ class SignUpController: UIViewController {
                     }
                     
                     SCLAlertView().showWarning("Error", subTitle: message)
-
-//                    self.showAlert(title: "Error", message: message, dismiss: nil)
-                    
                     return
                 }
             }
@@ -93,7 +88,6 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         keyChain.clear()
         super.viewDidLoad()
-        view.backgroundColor = myWhite
         signUpButton.layer.cornerRadius = 10
         signUpButton.layer.shadowRadius = 10
     }

@@ -67,6 +67,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         let nib = UINib(nibName: "ListsCell", bundle: nil)
         
         tableView.register(nib, forCellReuseIdentifier: "cell")
+        
+        tableView.separatorStyle = .none
                 
     }
 

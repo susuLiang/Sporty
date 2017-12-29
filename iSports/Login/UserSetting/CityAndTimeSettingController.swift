@@ -83,6 +83,15 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch controllerType {
+        case .city:
+            return 44
+        case .time:
+            return 60
+        }
+    }
+    
     @IBAction func saveUserCity(_ sender: Any) {
         
         switch controllerType {

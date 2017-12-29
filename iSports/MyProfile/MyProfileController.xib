@@ -90,13 +90,15 @@
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-as-Dcn">
                         <rect key="frame" x="87" y="583" width="200" height="45"/>
-                        <color key="backgroundColor" red="0.11938482034106634" green="1" blue="0.75988307144894418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.11688167601823807" green="1" blue="0.76015704870223999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="8eb-dS-3Xb"/>
                             <constraint firstAttribute="width" secondItem="gW6-as-Dcn" secondAttribute="height" multiplier="40:9" id="xjs-mu-Vsd"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
-                        <state key="normal" title="Log out"/>
+                        <state key="normal" title="Log out">
+                            <color key="titleColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
                         <connections>
                             <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
                         </connections>

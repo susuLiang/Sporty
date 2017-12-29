@@ -107,7 +107,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         navigationItem.title = "Map"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
-        navigationController?.navigationBar.tintColor = myWhite
+        navigationController?.navigationBar.tintColor = .white
     }
     
 }

@@ -37,7 +37,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
                         
         setupTableCell()
         
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
                 
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
@@ -51,6 +51,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         let nib = UINib(nibName: "ListsCell", bundle: nil)
         
         tableView.register(nib, forCellReuseIdentifier: "cell")
+        
+        tableView.separatorStyle = .none
         
     }
 

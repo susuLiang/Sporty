@@ -66,9 +66,10 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadingIndicator.start()
         getUserProfile()
-        
+        loadingIndicator.stop()
+
         setupTableCell()
         
         fusuma.delegate = self
@@ -93,9 +94,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
                 self.userSetting = userSetting
                 self.nameLabel.text = self.userSetting?.name
                 if userSetting?.urlString != nil {
-                    self.loadingIndicator.start()
                     self.loadUserPhoto()
-                    self.loadingIndicator.stop()
                 }
             }
         })

@@ -41,21 +41,21 @@ class LevelSettingController: UIViewController {
     }
     
     @IBAction func selectButtonA(_ sender: Any) {
-        buttonA.backgroundColor = myRed
+        buttonA.backgroundColor = mySkyBlue
         self.selectedLevel = Level.A.rawValue
     }
     
     @IBAction func selectButtonB(_ sender: Any) {
-        buttonB.backgroundColor = myRed
+        buttonB.backgroundColor = mySkyBlue
         self.selectedLevel = Level.B.rawValue
     }
     
     @IBAction func selectButtonC(_ sender: Any) {
-        buttonC.backgroundColor = myRed
+        buttonC.backgroundColor = mySkyBlue
         self.selectedLevel = Level.C.rawValue
     }
     @IBAction func selectButtonD(_ sender: Any) {
-        buttonD.backgroundColor = myRed
+        buttonD.backgroundColor = mySkyBlue
         self.selectedLevel = Level.D.rawValue
     }
     

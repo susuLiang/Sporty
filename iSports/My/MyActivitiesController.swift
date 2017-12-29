@@ -64,7 +64,7 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: self, action: nil)
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showProfile))
         navigationItem.leftBarButtonItems = [myProfile]
-        navigationController?.navigationBar.tintColor = myWhite
+        navigationController?.navigationBar.tintColor = .white
     }
 
     @objc func showProfile() {

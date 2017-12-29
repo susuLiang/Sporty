@@ -243,7 +243,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        navigationController?.navigationBar.tintColor = myWhite
+        navigationController?.navigationBar.tintColor = mySkyBlue
     }
     
     func setUpAddButton() {
