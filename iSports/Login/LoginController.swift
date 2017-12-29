@@ -28,8 +28,10 @@ class LoginController: UIViewController {
     @IBOutlet weak var signButton: UIButton!
     var goSignUp = true
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backgroundImage.alpha = 0.5
         signInPage.isHidden = false
         signUpPage.isHidden = true
         

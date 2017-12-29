@@ -34,19 +34,19 @@
                                     <constraint firstAttribute="width" constant="200" id="ef2-Vv-w1f"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REQ-9S-26P">
-                                <rect key="frame" x="87" y="8" width="200" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="pickPhoto:" destination="I6e-n9-55K" eventType="touchUpInside" id="xEH-vV-EHu"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-ES-FCJ">
                                 <rect key="frame" x="98" y="216" width="178" height="23.5"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkA-I6-H7d">
+                                <rect key="frame" x="87" y="8" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="pickPhoto:" destination="I6e-n9-55K" eventType="touchUpInside" id="rqm-65-ZKC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -119,7 +119,7 @@
             <connections>
                 <outlet property="logOutButton" destination="gW6-as-Dcn" id="AwF-Ka-76Y"/>
                 <outlet property="nameLabel" destination="bg1-ES-FCJ" id="XJC-iQ-xSq"/>
-                <outlet property="pickPhotoButton" destination="REQ-9S-26P" id="u8o-Gx-ene"/>
+                <outlet property="photoPickButton" destination="vkA-I6-H7d" id="Qup-vY-kJy"/>
                 <outlet property="tableView" destination="MDL-fQ-mNH" id="n0e-s9-Iqn"/>
                 <outlet property="userPhoto" destination="XDs-Rc-jRq" id="FQN-QB-kTe"/>
             </connections>

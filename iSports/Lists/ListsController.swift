@@ -54,13 +54,15 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         super.viewDidLoad()
         
-        view.backgroundColor = myWhite
+        view.backgroundColor = .clear
                 
         tableView.delegate = self
         
         tableView.dataSource = self
         
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
+        
+        tableView.separatorStyle = .none
         
         self.view.addSubview(tableView)
         

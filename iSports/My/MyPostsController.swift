@@ -42,7 +42,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
         super.viewDidLoad()
         
-        view.backgroundColor = myWhite
+        view.backgroundColor = .white
         
         setupTableCell()
         
@@ -67,7 +67,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         let nib = UINib(nibName: "ListsCell", bundle: nil)
         
         tableView.register(nib, forCellReuseIdentifier: "cell")
-        
+                
     }
 
     // MARK: - Table view data source

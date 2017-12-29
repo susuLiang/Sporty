@@ -39,6 +39,8 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tableView.dataSource = self
         
+        tableView.separatorStyle = .none
+        
         setupTableCell()
         
         view.addSubview(tableView)
@@ -88,7 +90,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 140
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

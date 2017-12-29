@@ -19,12 +19,22 @@ class ListsCell: UITableViewCell {
     @IBOutlet weak var levelImage: UIImageView!
     @IBOutlet weak var recommendImage: UIImageView!
     
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var picView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = myWhite
+        backgroundColor = .clear
         
         setFont()
+        
+        picView.layer.shadowRadius = 10
+        
+        picView.backgroundColor = myWhite
+        
+        detailView.backgroundColor = myRed.withAlphaComponent(0.3)
+        
         
     }
 

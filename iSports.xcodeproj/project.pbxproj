@@ -21,6 +21,9 @@
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
 		1F74D7321FF50D6700B746E6 /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */; };
 		1F74D7331FF50D6700B746E6 /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */; };
+		1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */; };
+		1F74D73B1FF5E14400B746E6 /* FadeInOutTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */; };
+		1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */; };
 		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
 		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
 		1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627821FF0D82000D82614 /* MapSearchController.swift */; };
@@ -84,6 +87,9 @@
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
 		1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileCell.xib; sourceTree = "<group>"; };
+		1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
+		1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutTransition.swift; sourceTree = "<group>"; };
+		1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
 		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
 		1F8627821FF0D82000D82614 /* MapSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
@@ -188,9 +194,12 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
+				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
+				1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
+				1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1F8627761FEEB04200D82614 /* MyProfile */,
 				1F705F111FEA0ACB0010963E /* My */,
@@ -589,6 +598,7 @@
 				1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */,
 				1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */,
 				1FFA2F151FE8EB8300E485F1 /* GMUDefaultClusterRenderer.m in Sources */,
+				1F74D73B1FF5E14400B746E6 /* FadeInOutTransition.swift in Sources */,
 				1FFA2F241FE908E100E485F1 /* SignUpController.swift in Sources */,
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
 				1FFA2F131FE8EB8300E485F1 /* GMUClusterManager.m in Sources */,
@@ -598,11 +608,13 @@
 				1F86278B1FF0E8BD00D82614 /* MapSearchCell.swift in Sources */,
 				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
+				1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */,
 				1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */,
 				1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */,
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
+				1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

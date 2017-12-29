@@ -27,6 +27,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="Y2M-km-KEn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zM-wb-bad">
                                 <rect key="frame" x="36" y="47" width="303" height="368"/>
                                 <constraints>
@@ -67,8 +70,12 @@
                             <constraint firstItem="AX1-IX-Ie6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="dcP-L2-Huc" secondAttribute="leading" constant="96" id="Ho4-El-aEw"/>
                             <constraint firstItem="2zM-wb-bad" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" constant="36" id="IvB-QG-pVV"/>
                             <constraint firstItem="AX1-IX-Ie6" firstAttribute="centerX" secondItem="dcP-L2-Huc" secondAttribute="centerX" id="Qhr-9g-UO2"/>
+                            <constraint firstItem="Y2M-km-KEn" firstAttribute="bottom" secondItem="4pI-lr-AB9" secondAttribute="bottom" id="SBy-WE-Ha9"/>
                             <constraint firstItem="AX1-IX-Ie6" firstAttribute="top" secondItem="yIp-Io-l3I" secondAttribute="bottom" constant="25" id="W5X-u0-ifR"/>
+                            <constraint firstItem="Y2M-km-KEn" firstAttribute="trailing" secondItem="4pI-lr-AB9" secondAttribute="trailing" id="cqE-LV-RvI"/>
+                            <constraint firstItem="Y2M-km-KEn" firstAttribute="top" secondItem="dcP-L2-Huc" secondAttribute="top" id="dQp-87-exV"/>
                             <constraint firstItem="2zM-wb-bad" firstAttribute="top" secondItem="4pI-lr-AB9" secondAttribute="top" constant="27" id="dSW-sh-JeZ"/>
+                            <constraint firstItem="Y2M-km-KEn" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" id="diO-OR-aJE"/>
                             <constraint firstItem="yIp-Io-l3I" firstAttribute="top" secondItem="4pI-lr-AB9" secondAttribute="top" constant="27" id="fOI-Cv-qEd"/>
                             <constraint firstItem="4pI-lr-AB9" firstAttribute="trailing" secondItem="yIp-Io-l3I" secondAttribute="trailing" constant="36" id="rwv-DU-pV8"/>
                             <constraint firstItem="4pI-lr-AB9" firstAttribute="trailing" secondItem="2zM-wb-bad" secondAttribute="trailing" constant="36" id="zXF-ru-fAL"/>
@@ -76,6 +83,7 @@
                         <viewLayoutGuide key="safeArea" id="4pI-lr-AB9"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="Y2M-km-KEn" id="JZ5-Cd-r3N"/>
                         <outlet property="signButton" destination="AX1-IX-Ie6" id="BUE-8Z-6jl"/>
                         <outlet property="signInPage" destination="2zM-wb-bad" id="c8N-nj-exn"/>
                         <outlet property="signUpPage" destination="yIp-Io-l3I" id="8Ug-KS-sJS"/>
@@ -772,4 +780,7 @@
             <point key="canvasLocation" x="816.79999999999995" y="-434.48275862068971"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backgroundImage" width="1686" height="3000"/>
+    </resources>
 </document>

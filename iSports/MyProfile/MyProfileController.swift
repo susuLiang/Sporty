@@ -13,9 +13,11 @@ import SkyFloatingLabelTextField
 import Fusuma
 import SCLAlertView
 import Nuke
-
+import NVActivityIndicatorView
 
 class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate, UITableViewDelegate, UITableViewDataSource {
+ 
+    var loadingIndicator = LoadingIndicator()
    
     let keyChain = KeychainSwift()
     
@@ -31,13 +33,20 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var isExpanded = false
     
+    var isEdit = false
+    
     var selectedIndex = -1
     
+    var selectedIndexPath: IndexPath?
+    
+     @IBAction func pickPhoto(_ sender: Any) {
+        self.present(fusuma, animated: true, completion: nil)
+    }
+    @IBOutlet weak var photoPickButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var pickPhotoButton: UIButton!
     @IBAction func logOut(_ sender: Any) {
         let alertController = UIAlertController(title: "Log out", message: "Be sure to log out?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -54,13 +63,10 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         }))
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    @IBAction func pickPhoto(_ sender: Any) {
-        self.present(fusuma, animated: true, completion: nil)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getUserProfile()
         
         setupTableCell()
@@ -70,8 +76,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         
         setNavigationBar()
         setLogOutButton()
-    
-        pickPhotoButton.isEnabled = false
         
         nameLabel.text = keyChain.get("name")
         userPhoto.layer.cornerRadius = 100
@@ -89,8 +93,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
                 self.userSetting = userSetting
                 self.nameLabel.text = self.userSetting?.name
                 if userSetting?.urlString != nil {
-                    Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
-                    self.userPhoto.contentMode = .scaleAspectFill
+                    self.loadingIndicator.start()
+                    self.loadUserPhoto()
+                    self.loadingIndicator.stop()
                 }
             }
         })
@@ -100,7 +105,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
         self.userPhoto.contentMode = .scaleAspectFill
     }
-    
     
     @objc func showBack() {
         navigationController?.popViewController(animated: true)
@@ -120,22 +124,25 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     @objc func edit() {
         let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
         navigationItem.rightBarButtonItem = saveIcon
-        pickPhotoButton.isEnabled = true
+        photoPickButton.isEnabled = true
+        photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
+        isEdit = true
     }
-    
+
     @objc func showAlert() {
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
+        isEdit = false
         navigationItem.rightBarButtonItem = editIt
-        pickPhotoButton.isEnabled = false
+
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: self.saveIt)
+        alertView.addButton("SURE", action: self.savePhoto)
         alertView.addButton("NO") {
         }
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
     
-    func saveIt() {
+    func savePhoto() {
         
         guard let userUid = keyChain.get("uid") else { return }
         
@@ -171,6 +178,16 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         
     }
     
+    @objc func saveName() {
+        guard let userUid = keyChain.get("uid") else { return }
+        if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
+            cell.nameSettimgTextField.isEnabled = false
+            let name = cell.nameSettimgTextField.text
+            let value = ["name": name]
+            Database.database().reference().child("users").child(userUid).updateChildValues(value)
+        }
+    }
+    
     func setupTableCell() {
         let nib = UINib(nibName: "MyProfileCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
@@ -188,6 +205,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
             fatalError("Invalid profile cell") }
+        
         cell.cellLabel?.text = settingType[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
@@ -195,14 +213,31 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         
         if indexPath.row == 1 && isExpanded {
             cell.preferenceView.isHidden = false
+            cell.profileView.isHidden = true
             cell.typeSettingTextField.text = self.userSetting?.preference.type
             cell.levelSettingTextField.text = self.userSetting?.preference.level?.rawValue
             cell.citySettingTextField.text = self.userSetting?.preference.place
             cell.timeSettingTextField.text = self.userSetting?.preference.time
         } else if indexPath.row == 0 && isExpanded {
             cell.profileView.isHidden = false
+            cell.preferenceView.isHidden = true
             cell.nameSettimgTextField.text = self.userSetting?.name
         }
+        
+        if isEdit {
+            cell.nameSettimgTextField.isEnabled = true
+            cell.citySettingTextField.isEnabled = true
+            cell.typeSettingTextField.isEnabled = true
+            cell.timeSettingTextField.isEnabled = true
+            cell.levelSettingTextField.isEnabled = true
+        } else {
+            cell.nameSettimgTextField.isEnabled = false
+            cell.citySettingTextField.isEnabled = false
+            cell.typeSettingTextField.isEnabled = false
+            cell.timeSettingTextField.isEnabled = false
+            cell.levelSettingTextField.isEnabled = false
+        }
+        
         return cell
     }
     
@@ -217,11 +252,13 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndex = indexPath.row
+        self.selectedIndexPath = indexPath
         self.isExpanded = !isExpanded
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
     }
+    
     
     func setNavigationBar() {
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
