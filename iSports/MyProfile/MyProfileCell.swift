@@ -44,4 +44,10 @@ class MyProfileCell: UITableViewCell {
         // Configure the view for the selected state
     }
  
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        preferenceView.isHidden = true
+        profileView.isHidden = true
+        
+    }
 }

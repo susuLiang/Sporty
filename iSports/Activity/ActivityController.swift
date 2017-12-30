@@ -15,44 +15,34 @@ import KeychainSwift
 
 class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var placeLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var feeLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var authorName: UILabel!
-    
     @IBOutlet weak var mapPlacedView: UIView!
     
-    @IBOutlet weak var addNameTextField: UITextField!
-    @IBOutlet weak var addCityTextField: UITextField!
-    @IBOutlet weak var addLevelTextField: UITextField!
-    @IBOutlet weak var addTimeTextField: UITextField!
-    @IBOutlet weak var addPlaceTextField: UITextField!
-    @IBOutlet weak var addNumberTextField: UITextField!
-    @IBOutlet weak var addFeeTextField: UITextField!
-    @IBOutlet weak var addTypeTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var levelTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var courtTextField: UITextField!
+    @IBOutlet weak var numberTextField: UITextField!
+    @IBOutlet weak var feeTextField: UITextField!
+    @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var allNumberTextField: UITextField!
     
     var selectedActivity: Activity?  {
         didSet {
             navigationItem.rightBarButtonItem = nil
             navigationItem.title = selectedActivity?.name
-            addNameTextField.text = selectedActivity?.name
-            authorName.text = selectedActivity?.author
-            addTypeTextField.text = selectedActivity?.type
-            addLevelTextField.text = selectedActivity?.level.rawValue
-            addTimeTextField.text = selectedActivity?.time
-            addPlaceTextField.text = selectedActivity?.place.placeName
+            nameTextField.text = selectedActivity?.name
+            typeTextField.text = selectedActivity?.type
+            levelTextField.text = selectedActivity?.level.rawValue
+            timeTextField.text = selectedActivity?.time
+            courtTextField.text = selectedActivity?.place.placeName
             if let number = selectedActivity?.number,
                 let allNumber = selectedActivity?.allNumber,
                 let fee = selectedActivity?.fee
             {
-                addNumberTextField.text = "\(number) / \(allNumber)"
-                addFeeTextField.text = "\(fee)"
+                numberTextField.text = "\(number)"
+                allNumberTextField.text = "\(allNumber)"
+                feeTextField.text = "\(fee)"
             }
             if let lat = selectedActivity?.place.placeLatitude, let lng = selectedActivity?.place.placeLongitude{
                 mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
@@ -91,10 +81,9 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabels()
-        addTypeTextField.inputView = typePicker
-        addCityTextField.inputView = cityPicker
-        addPlaceTextField.inputView = courtPicker
+        typeTextField.inputView = typePicker
+        cityTextField.inputView = cityPicker
+        courtTextField.inputView = courtPicker
         pickerDelegate()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-check"), style: .plain, target: self, action: #selector(save))
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
@@ -115,11 +104,11 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
             return 1
         case courtPicker:
             courtPicker.isHidden = true
-            if (addTypeTextField.text == "") || (addCityTextField.text == "") {
+            if (typeTextField.text == "") || (cityTextField.text == "") {
                 let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
-                    self.addPlaceTextField.endEditing(true)
-                    self.addTypeTextField.becomeFirstResponder()
+                    self.courtTextField.endEditing(true)
+                    self.typeTextField.becomeFirstResponder()
                 })
                 alert.addAction(defaultAction)
                 if self.presentedViewController == nil {
@@ -168,22 +157,22 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case typePicker:
-            addTypeTextField.text = typeArray[row]
-            if addCityTextField.text != "" {
-                if let type = addTypeTextField.text, let place = addCityTextField.text {
+            typeTextField.text = typeArray[row]
+            if cityTextField.text != "" {
+                if let type = typeTextField.text, let place = cityTextField.text {
                     getLocation(city: place, gym: type)
                 }
             }
             
         case cityPicker:
-            addCityTextField.text = city[row]
-            if addTypeTextField.text != "" {
-                if let type = addTypeTextField.text, let place = addCityTextField.text {
+            cityTextField.text = city[row]
+            if typeTextField.text != "" {
+                if let type = typeTextField.text, let place = cityTextField.text {
                     getLocation(city: place, gym: type)
                 }
             }
         case courtPicker:
-            addPlaceTextField.text = courts![row].name
+            courtTextField.text = courts![row].name
             self.nowPlace = (courts![row].latitude, courts![row].longitude, courts![row].address)
         default: return
         }
@@ -208,7 +197,7 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
     
     @objc func save() {
         
-        if (addTypeTextField.text?.isEmpty)! && (addCityTextField.text?.isEmpty)! {
+        if (typeTextField.text?.isEmpty)! && (cityTextField.text?.isEmpty)! {
             let alert = UIAlertController(title: "No text", message: "Please Enter Text In The Box", preferredStyle: .alert)
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(defaultAction)
@@ -216,13 +205,13 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
         }
         
         guard
-            let level = addLevelTextField.text,
-            let num = addNumberTextField.text,
-            let fee = addFeeTextField.text,
-            let place = addPlaceTextField.text,
-            let name = addNameTextField.text,
-            let type = addTypeTextField.text,
-            let time = addTimeTextField.text
+            let level = levelTextField.text,
+            let num = numberTextField.text,
+            let fee = feeTextField.text,
+            let place = courtTextField.text,
+            let name = nameTextField.text,
+            let type = typeTextField.text,
+            let time = timeTextField.text
             else {
                 print("Form is not valid")
                 return
@@ -274,19 +263,19 @@ class ActivityController: UIViewController, UITextFieldDelegate, UIPickerViewDel
 }
 
 extension ActivityController {
-    func setLabels() {
-        nameLabel.text = "Name"
-        authorLabel.text = "Author"
-        typeLabel.text = "Type"
-        levelLabel.text = "Level*"
-        timeLabel.text = "Time"
-        placeLabel.text = "Place"
-        numberLabel.text = "Number*"
-        feeLabel.text = "Fee*"
-        cityLabel.text = "City"
-        let name = keyChain.get("name")
-        authorName.text = name
-    }
+//    func setLabels() {
+//        nameLabel.text = "Name"
+//        authorLabel.text = "Author"
+//        typeLabel.text = "Type"
+//        levelLabel.text = "Level*"
+//        timeLabel.text = "Time"
+//        placeLabel.text = "Place"
+//        numberLabel.text = "Number*"
+//        feeLabel.text = "Fee*"
+//        cityLabel.text = "City"
+//        let name = keyChain.get("name")
+//        authorName.text = name
+//    }
 }
 
 extension ActivityController {

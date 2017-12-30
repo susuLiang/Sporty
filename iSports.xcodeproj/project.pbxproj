@@ -17,7 +17,6 @@
 		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
 		1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */; };
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
-		1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */; };
 		1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C50A1FE3D3D600DDAF03 /* Activity.swift */; };
 		1F74D7321FF50D6700B746E6 /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */; };
 		1F74D7331FF50D6700B746E6 /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */; };
@@ -84,7 +83,6 @@
 		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		1F70C50A1FE3D3D600DDAF03 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
 		1F74D7311FF50D6700B746E6 /* MyProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileCell.xib; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
-				1F70C5071FE3CE1100DDAF03 /* ActivityView.xib */,
 				1F74D73E1FF653A400B746E6 /* ActivityController.xib */,
 			);
 			path = Activity;
@@ -471,7 +468,6 @@
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
 				1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */,
 				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
-				1F70C5081FE3CE1100DDAF03 /* ActivityView.xib in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

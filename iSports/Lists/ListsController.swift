@@ -188,7 +188,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
         activityView.selectedActivity = results[indexPath.row]
         navigationController?.pushViewController(activityView, animated: true)
     }
@@ -211,7 +211,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @objc func showAddView() {
-        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
         navigationController?.pushViewController(activityView, animated: true)
     }
     

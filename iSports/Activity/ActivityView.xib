@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="HxB-pz-3xD" customClass="ActivityController" customModule="iSports" customModuleProvider="target">
+        <viewController id="HxB-pz-3xD">
             <view key="view" contentMode="scaleToFill" id="0hS-gE-WWP">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,25 +153,25 @@
                 <viewLayoutGuide key="safeArea" id="b4p-Ts-90Q"/>
             </view>
             <connections>
-                <outlet property="addCityTextField" destination="Ix1-Kd-AkG" id="nct-dZ-2cF"/>
-                <outlet property="addFeeTextField" destination="9pT-2h-6N8" id="qgs-9X-BTa"/>
-                <outlet property="addLevelTextField" destination="PM5-Tc-FAY" id="5WO-Yy-QRW"/>
-                <outlet property="addNameTextField" destination="lQs-Y5-bN1" id="PlX-gh-2uS"/>
-                <outlet property="addNumberTextField" destination="tbk-Q7-4mJ" id="w9s-DQ-k62"/>
-                <outlet property="addPlaceTextField" destination="HzR-wU-2yI" id="dbv-cQ-Uzw"/>
-                <outlet property="addTimeTextField" destination="WAD-n0-Lej" id="YOt-2R-dHx"/>
-                <outlet property="addTypeTextField" destination="4Vf-xW-sZU" id="PcI-9W-7FU"/>
                 <outlet property="authorLabel" destination="rIz-BS-x6R" id="Rmt-9P-wxX"/>
                 <outlet property="authorName" destination="vfC-EH-2G4" id="1fX-Vt-scn"/>
                 <outlet property="cityLabel" destination="DI8-UZ-ZHX" id="asi-4l-LUs"/>
+                <outlet property="cityTextField" destination="Ix1-Kd-AkG" id="nct-dZ-2cF"/>
+                <outlet property="courtTextField" destination="HzR-wU-2yI" id="dbv-cQ-Uzw"/>
                 <outlet property="feeLabel" destination="cxP-5F-hrJ" id="AkZ-ly-PWH"/>
+                <outlet property="feeTextField" destination="9pT-2h-6N8" id="qgs-9X-BTa"/>
                 <outlet property="levelLabel" destination="GRf-vd-5U8" id="f3x-iN-Alq"/>
+                <outlet property="levelTextField" destination="PM5-Tc-FAY" id="5WO-Yy-QRW"/>
                 <outlet property="mapPlacedView" destination="cLz-vY-EFt" id="eoC-DW-dcc"/>
                 <outlet property="nameLabel" destination="ohM-em-1BD" id="aZx-0e-sp3"/>
+                <outlet property="nameTextField" destination="lQs-Y5-bN1" id="PlX-gh-2uS"/>
                 <outlet property="numberLabel" destination="KPG-7d-OdJ" id="r1g-EI-Yh9"/>
+                <outlet property="numberTextField" destination="tbk-Q7-4mJ" id="w9s-DQ-k62"/>
                 <outlet property="placeLabel" destination="yxu-fV-6yK" id="cOQ-uu-UWa"/>
                 <outlet property="timeLabel" destination="OsS-Gk-a4d" id="ruD-Yv-2W2"/>
+                <outlet property="timeTextField" destination="WAD-n0-Lej" id="YOt-2R-dHx"/>
                 <outlet property="typeLabel" destination="cPU-8C-sWx" id="env-rg-kyn"/>
+                <outlet property="typeTextField" destination="4Vf-xW-sZU" id="PcI-9W-7FU"/>
             </connections>
             <point key="canvasLocation" x="-144.5" y="86.5"/>
         </viewController>

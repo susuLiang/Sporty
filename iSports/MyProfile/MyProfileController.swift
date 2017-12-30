@@ -31,11 +31,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var settingIconName = ["profile-user", "profile-setting"]
     
-    var isExpanded = false
-    
     var isEdit = false
     
-    var selectedIndex = -1
+    var isExpanded = [false, false]
     
     var selectedIndexPath: IndexPath?
     
@@ -193,36 +191,37 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingType.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
             fatalError("Invalid profile cell") }
-        
-        cell.cellLabel?.text = settingType[indexPath.row]
+        cell.cellLabel?.text = settingType[indexPath.section]
         cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
-        cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.row])")
-        
-        if indexPath.row == 1 && isExpanded {
-            cell.preferenceView.isHidden = false
-            cell.profileView.isHidden = true
-            cell.typeSettingTextField.text = self.userSetting?.preference.type
-            cell.levelSettingTextField.text = self.userSetting?.preference.level?.rawValue
-            cell.citySettingTextField.text = self.userSetting?.preference.place
-            cell.timeSettingTextField.text = self.userSetting?.preference.time
-        } else if indexPath.row == 0 && isExpanded {
-            cell.profileView.isHidden = false
-            cell.preferenceView.isHidden = true
-            cell.nameSettimgTextField.text = self.userSetting?.name
+        cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
+        cell.typeSettingTextField.text = self.userSetting?.preference.type
+        cell.levelSettingTextField.text = self.userSetting?.preference.level?.rawValue
+        cell.citySettingTextField.text = self.userSetting?.preference.place
+        cell.timeSettingTextField.text = self.userSetting?.preference.time
+        cell.nameSettimgTextField.text = self.userSetting?.name
+
+        if isExpanded[indexPath.section] {
+            switch indexPath.section {
+            case indexPath.section:
+                cell.profileView.isHidden = !isExpanded[0]
+                cell.preferenceView.isHidden = !isExpanded[1]
+            default:
+                cell.profileView.isHidden = true
+                cell.preferenceView.isHidden = true
+            }
         }
-        
+
         if isEdit {
             cell.nameSettimgTextField.isEnabled = true
             cell.citySettingTextField.isEnabled = true
@@ -241,20 +240,31 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isExpanded && self.selectedIndex == indexPath.row {
+        if isExpanded[indexPath.section] {
             return 192
         }
         else {
             return 68
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedIndex = indexPath.row
-        self.selectedIndexPath = indexPath
-        self.isExpanded = !isExpanded
+        selectedIndexPath = indexPath
+        switch indexPath.section {
+        case 0:
+            isExpanded[0] = !isExpanded[0]
+            isExpanded[1] = false
+            break
+        case 1:
+            isExpanded[1] = !isExpanded[1]
+            isExpanded[0] = false
+            break
+        default:
+            break
+        }
         self.tableView.beginUpdates()
-        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        self.tableView.reloadData()
+//        self.tableView.reloadRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
     }
     
