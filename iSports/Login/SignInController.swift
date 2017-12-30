@@ -64,7 +64,6 @@ class SignInController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         logInButton.layer.cornerRadius = 10
         logInButton.layer.shadowRadius = 10
     }
