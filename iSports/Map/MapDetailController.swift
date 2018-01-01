@@ -114,5 +114,11 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     @objc func close() {
         self.view.removeFromSuperview()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+        activityView.selectedActivity = selectedPlaceActivities[indexPath.row]
+        self.navigationController?.pushViewController(activityView, animated: true)
+    }
 
 }

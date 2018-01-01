@@ -32,10 +32,10 @@ class MyProfileCell: UITableViewCell {
         preferenceView.isHidden = true
         profileView.isHidden = true
         
-        typeSettingTextField.inputView = typePicker
-        levelSettingTextField.inputView = levelPicker
-        citySettingTextField.inputView = cityPicker
-        timeSettingTextField.inputView = timePicker
+//        typeSettingTextField.inputView = typePicker
+//        levelSettingTextField.inputView = levelPicker
+//        citySettingTextField.inputView = cityPicker
+//        timeSettingTextField.inputView = timePicker
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,5 +49,14 @@ class MyProfileCell: UITableViewCell {
         preferenceView.isHidden = true
         profileView.isHidden = true
         
+    }
+    
+    func set(userSetting: UserSetting) {
+        
+        typeSettingTextField.text = userSetting.preference.type
+        levelSettingTextField.text = userSetting.preference.level?.rawValue
+        citySettingTextField.text = userSetting.preference.place
+        timeSettingTextField.text = userSetting.preference.time
+        nameSettimgTextField.text = userSetting.name
     }
 }

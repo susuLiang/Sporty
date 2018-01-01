@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vJ-e1-LYV">
-                                        <rect key="frame" x="0.0" y="540" width="343" height="260"/>
+                                        <rect key="frame" x="24" y="564" width="300" height="236"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YIZ-qt-DvM">
@@ -37,7 +37,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="eS6-Cp-3GW"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Name"/>
@@ -66,7 +66,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="7T8-uW-5Wd"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type"/>
@@ -95,7 +95,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="OKQ-if-rEu"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="City"/>
@@ -123,7 +123,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="ApA-am-GeI"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Level"/>
@@ -151,7 +151,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="px2-eI-YxC"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Time"/>
@@ -179,7 +179,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="7iy-cA-cAZ"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Court"/>
@@ -207,7 +207,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="OTT-hJ-iTR"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Fee"/>
@@ -238,7 +238,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="ebt-tc-UMq"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Number"/>
@@ -266,7 +266,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="fmv-1J-BSU"/>
                                                         </constraints>
                                                         <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="AllNumber"/>
@@ -324,14 +324,13 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YIZ-qt-DvM" secondAttribute="trailing" constant="19" id="3kU-3R-O9g"/>
-                                    <constraint firstAttribute="trailing" secondItem="6vJ-e1-LYV" secondAttribute="trailing" id="IBg-Vu-Sp5"/>
-                                    <constraint firstAttribute="bottom" secondItem="6vJ-e1-LYV" secondAttribute="bottom" id="Rci-wK-6Zk"/>
+                                    <constraint firstAttribute="trailing" secondItem="6vJ-e1-LYV" secondAttribute="trailing" constant="19" id="EA6-pz-Yj1"/>
+                                    <constraint firstAttribute="bottom" secondItem="6vJ-e1-LYV" secondAttribute="bottom" id="IDU-L1-sEe"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" constant="24" id="Kvp-dh-rlq"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="24" id="Y4C-1A-daa"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" id="iQX-ZW-uV5"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="24" id="fMu-KR-zlC"/>
                                     <constraint firstAttribute="height" constant="800" id="l1V-NC-86M"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="top" secondItem="iM1-KZ-LBI" secondAttribute="top" id="qHi-x6-HWc"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" id="tlj-cJ-Ww3"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" id="tsa-7u-sZo"/>
                                     <constraint firstAttribute="width" constant="343" id="zRg-Y2-LAe"/>
                                 </constraints>
                             </view>

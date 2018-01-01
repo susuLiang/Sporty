@@ -37,6 +37,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     var selectedIndexPath: IndexPath?
     
+    var typePicker = UIPickerView()
+    var timePicker = UIPickerView()
+    var levelPicker = UIPickerView()
+    var cityPicker = UIPickerView()
+    
      @IBAction func pickPhoto(_ sender: Any) {
         self.present(fusuma, animated: true, completion: nil)
     }
@@ -64,6 +69,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerDelegate()
         loadingIndicator.start()
         getUserProfile()
         loadingIndicator.stop()
@@ -141,11 +147,13 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     
     func savePhoto() {
         
+        self.saveName()
+        
         guard let userUid = keyChain.get("uid") else { return }
         
         var data = Data()
         
-        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
+        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)! 
         
         let ref = Database.database().reference()
         
@@ -205,11 +213,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
         cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
-        cell.typeSettingTextField.text = self.userSetting?.preference.type
-        cell.levelSettingTextField.text = self.userSetting?.preference.level?.rawValue
-        cell.citySettingTextField.text = self.userSetting?.preference.place
-        cell.timeSettingTextField.text = self.userSetting?.preference.time
-        cell.nameSettimgTextField.text = self.userSetting?.name
+        cell.set(userSetting: userSetting!)
+        
+        cell.typeSettingTextField.inputView = typePicker
+        cell.levelSettingTextField.inputView = levelPicker
+        cell.citySettingTextField.inputView = cityPicker
+        cell.timeSettingTextField.inputView = timePicker
 
         if isExpanded[indexPath.section] {
             switch indexPath.section {
@@ -264,7 +273,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         }
         self.tableView.beginUpdates()
         self.tableView.reloadData()
-//        self.tableView.reloadRows(at: [indexPath], with: .automatic)
         self.tableView.endUpdates()
     }
     
@@ -286,4 +294,67 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     func fusumaCameraRollUnauthorized() {
     }
 
+}
+
+extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func pickerDelegate() {
+        typePicker.delegate = self
+        typePicker.dataSource = self
+        levelPicker.delegate = self
+        levelPicker.dataSource = self
+        timePicker.delegate = self
+        timePicker.dataSource = self
+        cityPicker.delegate = self
+        cityPicker.dataSource = self
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case typePicker: return Sportstype.count
+        case cityPicker: return city.count
+        case timePicker: return time.count
+        case levelPicker: return Level.D.hashValue + 1
+            
+        default:
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case typePicker: return typeArray[row]
+        case cityPicker: return city[row]
+        case timePicker: return time[row]
+        case levelPicker: return Level.D.rawValue
+        default:
+            return ""
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? MyProfileCell else {
+            fatalError("Invalid profile cell") }
+        switch pickerView {
+        case typePicker:
+            cell.typeSettingTextField.text = typeArray[row]
+
+            
+        case cityPicker:
+            cell.citySettingTextField.text = city[row]
+            
+        case levelPicker:
+            cell.levelSettingTextField.text = Level.D.rawValue
+            
+        case timePicker:
+            cell.timeSettingTextField.text = time[row]
+            
+        default: return
+        }
+    }
 }

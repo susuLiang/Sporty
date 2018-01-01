@@ -95,7 +95,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
         activityView.selectedActivity = myMatches[indexPath.row]
         navigationController?.pushViewController(activityView, animated: true)
     }

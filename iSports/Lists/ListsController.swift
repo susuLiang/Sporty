@@ -26,6 +26,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var userSetting: UserSetting? {
         didSet {
+            keyChain.set((userSetting?.name)!, forKey: "name")
             self.tableView.reloadData()
         }
     }
@@ -79,6 +80,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
         getPosts()
         
         getUserProfile()
+        
     }
 
     override func didReceiveMemoryWarning() {

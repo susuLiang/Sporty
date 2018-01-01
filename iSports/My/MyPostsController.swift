@@ -122,8 +122,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityView") as! ActivityController
-        activityView.selectedActivity = myPosts[indexPath.row]
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+        activityView.myPost = myPosts[indexPath.row]
         self.navigationController?.pushViewController(activityView, animated: true)
     }
     
