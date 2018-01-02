@@ -122,9 +122,15 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
-        activityView.myPost = myPosts[indexPath.row]
-        self.navigationController?.pushViewController(activityView, animated: true)
+        let whoJoinView = WhoJoinController()
+//        whoJoinView.myPost = myPosts[indexPath.row]
+//        whoJoinView.joinButton.isHidden = true
+        whoJoinView.thisActivity = myPosts[indexPath.row]
+        self.navigationController?.pushViewController(whoJoinView, animated: true)
+//        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+//        activityView.myPost = myPosts[indexPath.row]
+//        activityView.joinButton.isHidden = true
+//        self.navigationController?.pushViewController(activityView, animated: true)
     }
     
     @objc func deleteIt(_ sender: UIButton) {

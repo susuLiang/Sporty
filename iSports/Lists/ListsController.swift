@@ -26,7 +26,9 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var userSetting: UserSetting? {
         didSet {
-            keyChain.set((userSetting?.name)!, forKey: "name")
+            if let name = userSetting?.name {
+                keyChain.set(name, forKey: "name")
+            }
             self.tableView.reloadData()
         }
     }

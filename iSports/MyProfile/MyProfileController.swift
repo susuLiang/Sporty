@@ -16,7 +16,8 @@ import Nuke
 import NVActivityIndicatorView
 
 class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate, UITableViewDelegate, UITableViewDataSource {
- 
+    var cell: MyProfileCell?
+    
     var loadingIndicator = LoadingIndicator()
    
     let keyChain = KeychainSwift()
@@ -68,21 +69,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to log out ?", subTitle: "")
-        
-//        let alertController = UIAlertController(title: "Log out", message: "Be sure to log out?", preferredStyle: .alert)
-//        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-//        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
-//            self.keyChain.clear()
-//            do {
-//                try Auth.auth().signOut()
-//            } catch let logoutError {
-//                print(logoutError)
-//            }
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-//            self.present(loginController, animated: true, completion: nil)
-//        }))
-//        self.present(alertController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -157,14 +143,30 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: self.savePhoto)
+        alertView.addButton("SURE", action: self.save)
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
     
-    func savePhoto() {
-        self.saveName()
+    func save() {
         guard let userUid = keyChain.get("uid") else { return }
+        
+        let userRef = Database.database().reference().child("users").child(userUid)
+        
+        if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
+//            cell.nameSettimgTextField.isEnabled = false
+            isEdit = false
+            let name = cell.nameSettimgTextField.text
+            let type = cell.typeSettingTextField.text
+            let city = cell.citySettingTextField.text
+            let level = cell.levelSettingTextField.text
+            let time = cell.timeSettingTextField.text
+            let value = ["name": name]
+            let preferenceValue = ["type": type, "city": city, "level": level, "time": time]
+            userRef.updateChildValues(value)
+            userRef.child("preference").updateChildValues(preferenceValue)
+        }
+
         var data = Data()
         data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
         let ref = Database.database().reference()
@@ -179,16 +181,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
             let downloadURL = metadata.downloadURL()?.absoluteString
             let value = ["imageURL": downloadURL]
             ref.child("users").child(userUid).updateChildValues(value)
-        }
-    }
-    
-    func saveName() {
-        guard let userUid = keyChain.get("uid") else { return }
-        if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
-            cell.nameSettimgTextField.isEnabled = false
-            let name = cell.nameSettimgTextField.text
-            let value = ["name": name]
-            Database.database().reference().child("users").child(userUid).updateChildValues(value)
         }
     }
     
@@ -208,6 +200,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
             fatalError("Invalid profile cell") }
+        self.cell = cell
+        print(cell)
         cell.cellLabel?.text = settingType[indexPath.section]
         cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
@@ -339,21 +333,23 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? MyProfileCell else {
-            fatalError("Invalid profile cell") }
         switch pickerView {
         case typePicker:
-            cell.typeSettingTextField.text = typeArray[row]
+            cell?.typeSettingTextField.text = typeArray[row]
+            break
 
         case cityPicker:
-            cell.citySettingTextField.text = city[row]
+            cell?.citySettingTextField.text = city[row]
+            break
             
         case levelPicker:
-            cell.levelSettingTextField.text = levelArray[row]
+            cell?.levelSettingTextField.text = levelArray[row]
+            break
             
         case timePicker:
-            cell.timeSettingTextField.text = time[row]
-            
+            cell?.timeSettingTextField.text = time[row]
+            break
+
         default: return
         }
     }

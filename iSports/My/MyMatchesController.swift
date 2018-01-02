@@ -43,6 +43,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!
+            self.tableView.reloadData()
         })
     }
     
@@ -114,8 +115,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let ref = Database.database().reference()
             let activityUid = self.myMatches[indexPath.row].id
             let newValue = self.myMatches[indexPath.row].number - 1
-            ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
             ref.child("user_joinId").child(uid).removeValue()
+            ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to quit ?", subTitle: "")

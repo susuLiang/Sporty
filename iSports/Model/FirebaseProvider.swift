@@ -89,6 +89,7 @@ class FirebaseProvider {
         let userCurrentUid = keyChain.get("uid")
         
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
+            print("changed")
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
                 keyUid = [String]()
@@ -99,8 +100,9 @@ class FirebaseProvider {
                     }
                 }
                 posts = [Activity]()
+                print("results.count: ", results.count)
                 for result in results {
-                    Database.database().reference().child("activities").child(result).observe(.value, with: {
+                    Database.database().reference().child("activities").child(result).observeSingleEvent(of: .value, with: {
                         (snapshot) in
                         if let data = snapshot.value as? [String: AnyObject] {
                             let id = snapshot.key
@@ -112,10 +114,14 @@ class FirebaseProvider {
                                 print("Can not get users activities data.")
                             }
                         }
-                        print(posts)
+                        print("posts.count: ", posts.count)
                         completion(posts, keyUid, nil)
                     })
                 }
+            } else {
+                posts = [Activity]()
+                keyUid = [String]()
+                completion(posts, keyUid, nil)
             }
         }
     }
@@ -133,6 +139,38 @@ class FirebaseProvider {
                         }
                     }
                 completion(userSetting, nil)
+            }
+        }
+    }
+    
+    func getWhoJoin(activityId: String, completion: @escaping ([UserSetting]?, Error?) -> Void) {
+        var usersId = [String]()
+        var usersInfo = [UserSetting]()
+        
+        Database.database().reference().child("user_joinId").queryOrdered(byChild: "joinId").queryEqual(toValue: activityId).observe(.value) { (snapshot: DataSnapshot) in
+            if let objects = snapshot.value as? [String: AnyObject] {
+                usersId = [String]()
+                for (key, data) in objects {
+                    if let user = data["user"] as? String {
+                        usersId.append(user)
+                    }
+                }
+                usersInfo = [UserSetting]()
+                for user in usersId {
+                    Database.database().reference().child("users").child(user).observe(.value, with: {
+                        (snapshot) in
+                        if let data = snapshot.value as? [String: AnyObject] {
+                            do {
+                                let userInfo = try UserSetting(data)
+                                usersInfo.append(userInfo)
+                            }
+                            catch {
+                                print("Can not get users activities data.")
+                            }
+                        }
+                        completion(usersInfo, nil)
+                    })
+                }
             }
         }
     }
