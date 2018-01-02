@@ -18,7 +18,7 @@ import SCLAlertView
 class ActivityController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var mapPlacedView: UIView!
-    
+    @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var cityTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var levelTextField: SkyFloatingLabelTextField!
@@ -29,10 +29,25 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var typeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var allNumberTextField: SkyFloatingLabelTextField!
     
+    @IBAction func join(_ sender: UIButton) {
+        sender.tintColor = UIColor.gray
+        let ref = Database.database().reference()
+        if let selected = selectedActivity {
+            let joinId = selected.id
+            let newVaule = selected.number + 1
+            
+            ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
+            ref.child("activities").child(joinId).child("number").setValue(newVaule)
+        }
+    }
+    
+    var myMatches = [Activity]()
+
     var selectedActivity: Activity?  {
         didSet {
             if let selectedActivity = selectedActivity {
                 setText(selectedActivity, isEnable: false, disabledColor: myBlack)
+                setJoinButton()
                 navigationItem.rightBarButtonItem = nil
                 cityTextField.title = "address"
             }
@@ -59,6 +74,8 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     
     let loadingIndicator = LoadingIndicator()
     
+    let getPostIndicator = LoadingIndicator()
+    
     let keyChain = KeychainSwift()
     
     var locationManager = CLLocationManager()
@@ -68,12 +85,14 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
     
+    var uid = Auth.auth().currentUser?.uid
+    
     var typePicker = UIPickerView()
     var cityPicker = UIPickerView()
     var courtPicker = UIPickerView()
     var timePicker = UIPickerView()
+    
     var courts: [Court]? {
-
         didSet {
             courtPicker.reloadAllComponents()
         }
@@ -81,6 +100,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getPosts()
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
         courtTextField.inputView = courtPicker
@@ -146,6 +166,42 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 self.loadingIndicator.stop()
             })
 
+        }
+    }
+    
+    func getPosts() {
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
+            self.myMatches = posts!
+            self.setJoinButton()
+        })
+    }
+    
+    func setJoinButton() {
+        let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
+        var isMyMatch = false
+        
+        if let selected = selectedActivity {
+
+            if selected.authorUid != uid {
+                for myMatch in myMatches where myMatch.id == selected.id {
+                    isMyMatch = true
+                }
+                if selected.number < selected.allNumber && !isMyMatch {
+                    joinButton.isEnabled = true
+                    joinButton.setImage(joinIcon, for: .normal)
+                    joinButton.tintColor = myRed
+                    joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
+                } else {
+                    joinButton.isEnabled = false
+                    joinButton.setImage(joinIcon, for: .normal)
+                    joinButton.tintColor = UIColor.gray
+                }
+                
+            } else {
+                joinButton.isEnabled = false
+                joinButton.setImage(joinIcon, for: .normal)
+                joinButton.tintColor = UIColor.clear
+            }
         }
     }
     

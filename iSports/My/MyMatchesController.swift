@@ -10,6 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import Firebase
 import KeychainSwift
+import SCLAlertView
 
 class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     
@@ -42,18 +43,13 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!
-            self.tableView.reloadData()
         })
     }
     
     func setupTableCell() {
-        
         let nib = UINib(nibName: "ListsCell", bundle: nil)
-        
         tableView.register(nib, forCellReuseIdentifier: "cell")
-        
         tableView.separatorStyle = .none
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -100,46 +96,54 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         navigationController?.pushViewController(activityView, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        let uid = keyUid[indexPath.row]
-        
-        if editingStyle == .delete {
-            
-            let ref = Database.database().reference()
-            ref.child("user_joinId").child(uid).removeValue()
-            
-        }
-    }
-    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
     
     @objc func deleteIt(_ sender: UIButton) {
-        
         guard let cell = sender.superview?.superview as? ListsCell,
-        
             let indexPath = tableView.indexPath(for: cell) else {
                 print("It's not a cell.")
                 return
         }
         
-        let alertController = UIAlertController(title: "Quit now", message: "Be sure to quit?", preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        
-        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
-            
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("SURE", action: {
             let uid = self.keyUid[indexPath.row]
-
             let ref = Database.database().reference()
-            
+            let activityUid = self.myMatches[indexPath.row].id
+            let newValue = self.myMatches[indexPath.row].number - 1
+            ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
             ref.child("user_joinId").child(uid).removeValue()
-            
-        }))
+        })
+        alertView.addButton("NO") {}
+        alertView.showWarning("Sure to quit ?", subTitle: "")
         
-        self.present(alertController, animated: true, completion: nil)
+//        guard let cell = sender.superview?.superview as? ListsCell,
+//
+//            let indexPath = tableView.indexPath(for: cell) else {
+//                print("It's not a cell.")
+//                return
+//        }
+//
+//        let alertController = UIAlertController(title: "Quit now", message: "Be sure to quit?", preferredStyle: .alert)
+//
+//        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//
+//        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
+//
+//            let uid = self.keyUid[indexPath.row]
+//
+//            let ref = Database.database().reference()
+//
+//            ref.child("user_joinId").child(uid).removeValue()
+//
+//
+//
+//        }))
+//
+//        self.present(alertController, animated: true, completion: nil)
         
     }
     

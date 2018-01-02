@@ -112,6 +112,7 @@ class FirebaseProvider {
                                 print("Can not get users activities data.")
                             }
                         }
+                        print(posts)
                         completion(posts, keyUid, nil)
                     })
                 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -342,11 +343,24 @@
                             <constraint firstAttribute="bottom" secondItem="iM1-KZ-LBI" secondAttribute="bottom" id="wz1-tO-vyk"/>
                         </constraints>
                     </scrollView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbS-mG-iC8">
+                        <rect key="frame" x="309" y="30" width="66" height="66"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="66" id="bga-Y8-wYn"/>
+                            <constraint firstAttribute="width" secondItem="cbS-mG-iC8" secondAttribute="height" multiplier="1:1" id="osl-nG-VGu"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="icon-join-big"/>
+                        <connections>
+                            <action selector="join:" destination="JPd-Hd-TF3" eventType="touchUpInside" id="A7u-zs-B6B"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="bottom" secondItem="sIA-fD-mbH" secondAttribute="bottom" constant="30" id="DJE-zw-tTx"/>
+                    <constraint firstItem="cbS-mG-iC8" firstAttribute="trailing" secondItem="BNE-rK-p7L" secondAttribute="trailing" id="XJe-dR-ez9"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="leading" secondItem="BNE-rK-p7L" secondAttribute="leading" constant="16" id="bPr-24-zE1"/>
+                    <constraint firstItem="cbS-mG-iC8" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="10" id="cIC-Ev-Ez3"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="10" id="mYw-cM-Xfn"/>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="trailing" secondItem="sIA-fD-mbH" secondAttribute="trailing" constant="16" id="ukJ-fZ-O2A"/>
                 </constraints>
@@ -358,6 +372,7 @@
                 <outlet property="cityTextField" destination="QUJ-i7-NWJ" id="kme-xr-9c8"/>
                 <outlet property="courtTextField" destination="ojN-6b-sJn" id="79V-w9-WrC"/>
                 <outlet property="feeTextField" destination="scg-0j-rGX" id="kjk-1a-uqC"/>
+                <outlet property="joinButton" destination="cbS-mG-iC8" id="aUY-Eh-kro"/>
                 <outlet property="levelTextField" destination="mTB-KN-C0f" id="GNZ-zh-1f6"/>
                 <outlet property="mapPlacedView" destination="6vJ-e1-LYV" id="BEb-vd-mCC"/>
                 <outlet property="nameTextField" destination="1kz-6d-CKM" id="vvo-Yq-EO1"/>
@@ -368,4 +383,7 @@
             <point key="canvasLocation" x="-3.5" y="32"/>
         </viewController>
     </objects>
+    <resources>
+        <image name="icon-join-big" width="64" height="64"/>
+    </resources>
 </document>
