@@ -132,6 +132,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
         navigationItem.rightBarButtonItem = saveIcon
         photoPickButton.isEnabled = true
+        isEdit = true
+        tableView.reloadData()
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
         isEdit = true
     }
@@ -139,12 +141,17 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     @objc func showAlert() {
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
         isEdit = false
+        tableView.reloadData()
         navigationItem.rightBarButtonItem = editIt
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: self.save)
-        alertView.addButton("NO") {}
+        alertView.addButton("NO") {
+            let saveIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(self.edit))
+            self.isEdit = true
+            self.navigationItem.rightBarButtonItem = saveIt
+        }
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
     

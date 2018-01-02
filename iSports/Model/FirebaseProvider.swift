@@ -89,7 +89,6 @@ class FirebaseProvider {
         let userCurrentUid = keyChain.get("uid")
         
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
-            print("changed")
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
                 keyUid = [String]()
@@ -100,7 +99,6 @@ class FirebaseProvider {
                     }
                 }
                 posts = [Activity]()
-                print("results.count: ", results.count)
                 for result in results {
                     Database.database().reference().child("activities").child(result).observeSingleEvent(of: .value, with: {
                         (snapshot) in
@@ -114,7 +112,6 @@ class FirebaseProvider {
                                 print("Can not get users activities data.")
                             }
                         }
-                        print("posts.count: ", posts.count)
                         completion(posts, keyUid, nil)
                     })
                 }
