@@ -16,6 +16,7 @@ import Nuke
 import NVActivityIndicatorView
 
 class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     var cell: MyProfileCell?
     
     var loadingIndicator = LoadingIndicator()

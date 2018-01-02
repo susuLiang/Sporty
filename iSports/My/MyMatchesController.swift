@@ -11,6 +11,7 @@ import XLPagerTabStrip
 import Firebase
 import KeychainSwift
 import SCLAlertView
+import TimelineTableViewCell
 
 class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     
@@ -48,9 +49,14 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
     
     func setupTableCell() {
-        let nib = UINib(nibName: "ListsCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
+//        let nib = UINib(nibName: "ListsCell", bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
+        let bundle = Bundle(for: TimelineTableViewCell.self)
+        let nibUrl = bundle.url(forResource: "TimelineTableViewCell", withExtension: "bundle")
+        let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell",
+                                             bundle: Bundle(url: nibUrl!)!)
+        tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,35 +66,73 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.myMatches.count
+        switch section {
+        case section:
+            var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+                myMatch.time == time[section]
+            })
+            return timeMatchs.count
+        default:
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
-        let result = myMatches[indexPath.row]
-        
-        cell.titleLabel.text = result.name
-        cell.timeLabel.text = result.time
-        cell.placeLabel.text = result.place.placeName
-        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-        switch result.level {
-        case .A: cell.levelImage.image = UIImage(named: "labelA")
-        case .B: cell.levelImage.image = UIImage(named: "labelB")
-        case .C: cell.levelImage.image = UIImage(named: "labelC")
-        case .D: cell.levelImage.image = UIImage(named: "labelD")
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell",
+                                                       for: indexPath) as? TimelineTableViewCell
+            else { fatalError() }
+//        var mondayMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+//            myMatch.time == time[section]
+//        })
+        switch indexPath.section {
+        case indexPath.section:
+            cell.titleLabel.text = time[indexPath.section]
+            var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+                myMatch.time == time[indexPath.section]
+            })
+            print(timeMatchs)
+            cell.descriptionLabel.text = timeMatchs[indexPath.row].name
+            switch timeMatchs[indexPath.row].type {
+            case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
+            case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
+            case "籃球": cell.thumbnailImageView.image = UIImage(named: "basketball")!
+            case "排球": cell.thumbnailImageView.image = UIImage(named: "volleyball")!
+            case "網球": cell.thumbnailImageView.image = UIImage(named: "tennis")!
+            case "足球": cell.thumbnailImageView.image = UIImage(named: "soccer")!
+            default:
+                return cell
+            }
+//            cell.thumbnailImageView.image = UIImage(named: "icon-edit")
+        default:
+            break
         }
-        cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
-        cell.joinButton.tintColor = myRed
-        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+//        cell.titleLabel.text = time[indexPath.row]
+//        cell.descriptionLabel.text = myMatches[indexPath.row].name
+//        let result = myMatches[indexPath.row]
+//
+//        cell.titleLabel.text = result.name
+//        cell.timeLabel.text = result.time
+//        cell.placeLabel.text = result.place.placeName
+//        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+//        switch result.level {
+//        case .A: cell.levelImage.image = UIImage(named: "labelA")
+//        case .B: cell.levelImage.image = UIImage(named: "labelB")
+//        case .C: cell.levelImage.image = UIImage(named: "labelC")
+//        case .D: cell.levelImage.image = UIImage(named: "labelD")
+//        }
+//        cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
+//        cell.joinButton.tintColor = myRed
+//        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 120
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

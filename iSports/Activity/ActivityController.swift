@@ -17,6 +17,8 @@ import SCLAlertView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapPlacedView: UIView!
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!

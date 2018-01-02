@@ -27,7 +27,7 @@ class ListsCell: UITableViewCell {
         
         backView.layer.shadowColor = UIColor.gray.cgColor
         backView.layer.shadowRadius = 10
-        backView.layer.shadowOpacity = 0.5
+        backView.layer.shadowOpacity = 1
         backView.layer.shadowOffset = CGSize(width: 10, height: 10)
         backView.layer.cornerRadius = 5
        

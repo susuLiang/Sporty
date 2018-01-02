@@ -31,6 +31,7 @@ class WhoJoinController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Your Partners"
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         tableView.delegate = self
         tableView.dataSource = self
