@@ -51,9 +51,10 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userPhoto: UIImageView!
     @IBAction func logOut(_ sender: Any) {
-        let alertController = UIAlertController(title: "Log out", message: "Be sure to log out?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
+        
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("SURE", action: {
             self.keyChain.clear()
             do {
                 try Auth.auth().signOut()
@@ -63,8 +64,25 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
             self.present(loginController, animated: true, completion: nil)
-        }))
-        self.present(alertController, animated: true, completion: nil)
+            
+        })
+        alertView.addButton("NO") {}
+        alertView.showWarning("Sure to log out ?", subTitle: "")
+        
+//        let alertController = UIAlertController(title: "Log out", message: "Be sure to log out?", preferredStyle: .alert)
+//        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
+//            self.keyChain.clear()
+//            do {
+//                try Auth.auth().signOut()
+//            } catch let logoutError {
+//                print(logoutError)
+//            }
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
+//            self.present(loginController, animated: true, completion: nil)
+//        }))
+//        self.present(alertController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -140,50 +158,31 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: self.savePhoto)
-        alertView.addButton("NO") {
-        }
+        alertView.addButton("NO") {}
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
     
     func savePhoto() {
-        
         self.saveName()
-        
         guard let userUid = keyChain.get("uid") else { return }
-        
         var data = Data()
-        
-        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)! 
-        
+        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
         let ref = Database.database().reference()
-        
         let storageRef = Storage.storage().reference()
-        
         let metadata = StorageMetadata()
-        
-        
         metadata.contentType = "image/jpg"
-        
         storageRef.child(userUid).putData(data,metadata: metadata) { (metadata, error) in
-            
             guard let metadata = metadata else {
-                
                 // Todo: error handling
-                
                 return
             }
-            
             let downloadURL = metadata.downloadURL()?.absoluteString
-            
             let value = ["imageURL": downloadURL]
-
             ref.child("users").child(userUid).updateChildValues(value)
-        
         }
-        
     }
     
-    @objc func saveName() {
+    func saveName() {
         guard let userUid = keyChain.get("uid") else { return }
         if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
             cell.nameSettimgTextField.isEnabled = false
@@ -213,7 +212,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
         cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
-        cell.set(userSetting: userSetting!)
+        loadingIndicator.start()
+        if let user = userSetting {
+            cell.set(userSetting: user)
+        }
+        loadingIndicator.stop()
         
         cell.typeSettingTextField.inputView = typePicker
         cell.levelSettingTextField.inputView = levelPicker
@@ -276,7 +279,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         self.tableView.endUpdates()
     }
     
-    
     func setNavigationBar() {
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
@@ -318,8 +320,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         case typePicker: return Sportstype.count
         case cityPicker: return city.count
         case timePicker: return time.count
-        case levelPicker: return Level.D.hashValue + 1
-            
+        case levelPicker: return levelArray.count
         default:
             return 1
         }
@@ -330,7 +331,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         case typePicker: return typeArray[row]
         case cityPicker: return city[row]
         case timePicker: return time[row]
-        case levelPicker: return Level.D.rawValue
+        case levelPicker: return levelArray[row]
         default:
             return ""
         }
@@ -344,12 +345,11 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         case typePicker:
             cell.typeSettingTextField.text = typeArray[row]
 
-            
         case cityPicker:
             cell.citySettingTextField.text = city[row]
             
         case levelPicker:
-            cell.levelSettingTextField.text = Level.D.rawValue
+            cell.levelSettingTextField.text = levelArray[row]
             
         case timePicker:
             cell.timeSettingTextField.text = time[row]

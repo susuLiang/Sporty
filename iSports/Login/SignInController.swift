@@ -50,7 +50,7 @@ class SignInController: UIViewController {
                 }
                 return
             }
-            
+                        
             let uid = Auth.auth().currentUser?.uid
 
             self.keyChain.set(uid!, forKey: "uid")

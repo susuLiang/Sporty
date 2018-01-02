@@ -17,7 +17,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     var mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
     
-//    var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
@@ -33,7 +32,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
                 selected.append(result)
             }
             self.setMarker(activities: selected)
-//            self.view.addSubview(self.setMap(activities: selected))
         }
     }
     
@@ -62,8 +60,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     func setMapView() {
         
-//        let camera = GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0)
-//
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
         
         view.addSubview(mapView)
@@ -89,6 +85,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
             searchView.willMove(toParentViewController: nil)
             searchView.view.removeFromSuperview()
             searchView.removeFromParentViewController()
+            self.getLocation()
             isShowed = false
         }
     }
@@ -174,7 +171,7 @@ extension MapController {
         let detailView = MapDetailController()
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
-        detailView.view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        detailView.view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 400)
         
         self.addChildViewController(detailView)
         

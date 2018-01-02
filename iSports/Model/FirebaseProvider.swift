@@ -35,10 +35,8 @@ class FirebaseProvider {
     }
     
     func getTypeData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
-        var results = [Activity]()
-
         Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
-//            var results = [Activity]()
+            var results = [Activity]()
             if let objects = snapshot.value as? [String: AnyObject] {
                 for (id, data) in objects {
                     if let time = data["time"] as? String,
@@ -100,7 +98,6 @@ class FirebaseProvider {
                         results.append(postId)
                     }
                 }
-                print(keyUid)
                 posts = [Activity]()
                 for result in results {
                     Database.database().reference().child("activities").child(result).observe(.value, with: {

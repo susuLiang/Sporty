@@ -34,7 +34,6 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             let time = timeTF.text else {
             return
         }
-        
         mainViewController?.selectedPreference = Preference(type: type, level: Level(rawValue: level), place: city, time: time)
         self.view.removeFromSuperview()
     }

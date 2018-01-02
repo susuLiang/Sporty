@@ -208,6 +208,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             searchView.willMove(toParentViewController: nil)
             searchView.view.removeFromSuperview()
             searchView.removeFromParentViewController()
+            self.fetch()
             isShowed = false
         }
     }
@@ -236,10 +237,8 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func setNavigation() {
-//        navigationItem.title = "Title"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
-        let allButton = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(fetch))
-        navigationItem.rightBarButtonItems = [searchButton, allButton]
+        navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)

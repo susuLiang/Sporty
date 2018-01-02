@@ -21,21 +21,11 @@ class MyProfileCell: UITableViewCell {
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var nameSettimgTextField: UITextField!
     
-    var typePicker = UIPickerView()
-    var levelPicker = UIPickerView()
-    var cityPicker = UIPickerView()
-    var timePicker = UIPickerView()
-
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         preferenceView.isHidden = true
         profileView.isHidden = true
         
-//        typeSettingTextField.inputView = typePicker
-//        levelSettingTextField.inputView = levelPicker
-//        citySettingTextField.inputView = cityPicker
-//        timeSettingTextField.inputView = timePicker
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,11 +38,9 @@ class MyProfileCell: UITableViewCell {
         super.prepareForReuse()
         preferenceView.isHidden = true
         profileView.isHidden = true
-        
     }
     
     func set(userSetting: UserSetting) {
-        
         typeSettingTextField.text = userSetting.preference.type
         levelSettingTextField.text = userSetting.preference.level?.rawValue
         citySettingTextField.text = userSetting.preference.place
