@@ -48,7 +48,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var selectedActivity: Activity?  {
         didSet {
             if let selectedActivity = selectedActivity {
-                setText(selectedActivity, isEnable: false, disabledColor: myBlack)
+                setText(selectedActivity, isEnable: false)
                 setJoinButton()
                 navigationItem.rightBarButtonItem = nil
                 cityTextField.title = "address"
@@ -59,7 +59,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var myPost: Activity?  {
         didSet {
             if let myPost = myPost {
-                setText(myPost, isEnable: true, disabledColor: myBlue)
+                setText(myPost, isEnable: true)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
                 cityTextField.title = "address"
             }
@@ -121,7 +121,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func setText(_ activity: Activity, isEnable: Bool, disabledColor: UIColor) {
+    func setText(_ activity: Activity, isEnable: Bool) {
         navigationItem.title = activity.name
         nameTextField.text = activity.name
         typeTextField.text = activity.type
@@ -143,16 +143,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         numberTextField.isEnabled = isEnable
         allNumberTextField.isEnabled = isEnable
         feeTextField.isEnabled = isEnable
-        
-        nameTextField.disabledColor = disabledColor
-        typeTextField.disabledColor = disabledColor
-        levelTextField.disabledColor = disabledColor
-        timeTextField.disabledColor = disabledColor
-        courtTextField.disabledColor = disabledColor
-        cityTextField.disabledColor = disabledColor
-        numberTextField.disabledColor = disabledColor
-        allNumberTextField.disabledColor = disabledColor
-        feeTextField.disabledColor = disabledColor
     }
     
     func getLocation(city: String, gym: String) {
@@ -179,6 +169,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
     
     func setJoinButton() {
+        loadingIndicator.start()
         let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
         var isMyMatch = false
         
@@ -191,7 +182,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 if selected.number < selected.allNumber && !isMyMatch {
                     joinButton.isEnabled = true
                     joinButton.setImage(joinIcon, for: .normal)
-                    joinButton.tintColor = myRed
+                    joinButton.tintColor = myIndigo
                     joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
                 } else {
                     joinButton.isEnabled = false
@@ -205,6 +196,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 joinButton.tintColor = UIColor.clear
             }
         }
+        loadingIndicator.stop()
     }
     
     @objc func showAlert() {
@@ -278,7 +270,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         let lat = nowPlace?.latitude
         let lng = nowPlace?.longitude
         let address = nowPlace?.address
-        let value = ["name": name, "level": level, "time": "星期二",
+        let value = ["name": name, "level": level, "time": time,
                      "place": place, "number": Int(num), "fee": Int(fee),
                      "author": authorName, "type": type, "allNumber": 8,
                      "address": address, "userUid": uid, "latitude": lat,
@@ -421,13 +413,8 @@ extension ActivityController: CLLocationManagerDelegate {
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocation = locations.last!
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-        
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         marker.map = mapView
-        
     }
 }

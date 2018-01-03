@@ -136,7 +136,7 @@ class ListsController: UIViewController, UITableViewDelegate, UITableViewDataSou
             if result.number < result.allNumber && !isMyMatch {
                 cell.joinButton.isEnabled = true
                 cell.joinButton.setImage(joinIcon, for: .normal)
-                cell.joinButton.tintColor = myRed
+                cell.joinButton.tintColor = myIndigo
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
             } else {
                 cell.joinButton.isEnabled = false

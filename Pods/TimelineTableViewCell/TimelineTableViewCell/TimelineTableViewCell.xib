@@ -43,7 +43,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWm-f0-Lj3">
                         <rect key="frame" x="81" y="61" width="278" height="15.5"/>
-                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -62,11 +62,11 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2K-xg-hrK">
-                        <rect key="frame" x="181" y="61" width="115" height="15"/>
+                        <rect key="frame" x="181" y="61" width="160" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="115" id="f0r-i9-a6f"/>
+                            <constraint firstAttribute="width" constant="160" id="f0r-i9-a6f"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="14"/>
                         <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

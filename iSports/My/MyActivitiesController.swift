@@ -23,8 +23,8 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         // change selected bar color
         settings.style.buttonBarBackgroundColor = myBlack
         settings.style.buttonBarItemBackgroundColor = myBlack
-        settings.style.selectedBarBackgroundColor = myRed
-        settings.style.buttonBarItemFont = UIFont(name: "HelveticaNeue-Light", size:14) ?? UIFont.systemFont(ofSize: 14)
+        settings.style.selectedBarBackgroundColor = myPurple
+        settings.style.buttonBarItemFont = UIFont(name: "ArialHebrew-Bold", size:16) ?? UIFont.systemFont(ofSize: 16)
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black

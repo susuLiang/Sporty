@@ -39,23 +39,15 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         view.backgroundColor = .white
-        
         setupTableCell()
-        
         getPosts()
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
-        
         getPosts()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,11 +55,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     func setupTableCell() {
-        
-        let nib = UINib(nibName: "ListsCell", bundle: nil)
-        
+        let nib = UINib(nibName: "MyPostsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
-        
         tableView.separatorStyle = .none
                 
     }
@@ -83,28 +72,47 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyPostsCell else { fatalError() }
         
         let result = myPosts[indexPath.row]
-        cell.titleLabel.text = result.name
-        cell.timeLabel.text = result.time
-        cell.placeLabel.text = result.place.placeName
-        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-        switch result.level {
-        case .A: cell.levelImage.image = UIImage(named: "labelA")
-        case .B: cell.levelImage.image = UIImage(named: "labelB")
-        case .C: cell.levelImage.image = UIImage(named: "labelC")
-        case .D: cell.levelImage.image = UIImage(named: "labelD")
-        }
-        cell.joinButton.setImage(UIImage(named: "icon-delete"), for: .normal)
-        cell.joinButton.tintColor = UIColor.red
-        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+        cell.nameLabel.text = result.name
         
+        switch result.type {
+        case "羽球": cell.typeImage.image = UIImage(named: "badminton")!
+        case "棒球": cell.typeImage.image = UIImage(named: "baseball")!
+        case "籃球": cell.typeImage.image = UIImage(named: "basketball")!
+        case "排球": cell.typeImage.image = UIImage(named: "volleyball")!
+        case "網球": cell.typeImage.image = UIImage(named: "tennis")!
+        case "足球": cell.typeImage.image = UIImage(named: "soccer")!
+        default:
+            return cell
+        }
+        
+        cell.seeWhoButton.addTarget(self, action: #selector(seeWhoJoin), for: .touchUpInside)
+        cell.editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+   
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
+//
+//        let result = myPosts[indexPath.row]
+//        cell.titleLabel.text = result.name
+//        cell.timeLabel.text = result.time
+//        cell.placeLabel.text = result.place.placeName
+//        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+//        switch result.level {
+//        case .A: cell.levelImage.image = UIImage(named: "labelA")
+//        case .B: cell.levelImage.image = UIImage(named: "labelB")
+//        case .C: cell.levelImage.image = UIImage(named: "labelC")
+//        case .D: cell.levelImage.image = UIImage(named: "labelD")
+//        }
+//        cell.joinButton.setImage(UIImage(named: "icon-delete"), for: .normal)
+//        cell.joinButton.tintColor = UIColor.red
+//        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+//
         return cell
     }
     
     func getPosts() {
-        
         FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, keyUid, error) in
             self.myPosts = posts!
             self.keyUid = keyUid!
@@ -113,20 +121,45 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
     
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 90
+//    }
+//    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @objc func seeWhoJoin(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview?.superview?.superview as? MyPostsCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not the right cell.")
+                return
+        }
         let whoJoinView = WhoJoinController()
-//        whoJoinView.myPost = myPosts[indexPath.row]
-//        whoJoinView.joinButton.isHidden = true
         whoJoinView.thisActivity = myPosts[indexPath.row]
         self.navigationController?.pushViewController(whoJoinView, animated: true)
+    }
+    
+    @objc func edit(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview?.superview?.superview as? MyPostsCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not the right cell.")
+                return
+        }
+        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+        activityView.myPost = myPosts[indexPath.row]
+        activityView.joinButton.isHidden = true
+        self.navigationController?.pushViewController(activityView, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let whoJoinView = WhoJoinController()
+//        whoJoinView.thisActivity = myPosts[indexPath.row]
+//        self.navigationController?.pushViewController(whoJoinView, animated: true)
+        
+//        whoJoinView.myPost = myPosts[indexPath.row]
+//        whoJoinView.joinButton.isHidden = true
 //        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
 //        activityView.myPost = myPosts[indexPath.row]
 //        activityView.joinButton.isHidden = true
@@ -135,10 +168,9 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     
     @objc func deleteIt(_ sender: UIButton) {
         
-        guard let cell = sender.superview?.superview as? ListsCell,
-            
+        guard let cell = sender.superview?.superview?.superview?.superview as? MyPostsCell,
             let indexPath = tableView.indexPath(for: cell) else {
-                print("It's not a cell.")
+                print("It's not the right cell.")
                 return
         }
         

@@ -104,28 +104,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             default:
                 return cell
             }
-            
-//            cell.thumbnailImageView.image = UIImage(named: "icon-edit")
         default:
             break
         }
-//        cell.titleLabel.text = time[indexPath.row]
-//        cell.descriptionLabel.text = myMatches[indexPath.row].name
-//        let result = myMatches[indexPath.row]
-//
-//        cell.titleLabel.text = result.name
-//        cell.timeLabel.text = result.time
-//        cell.placeLabel.text = result.place.placeName
-//        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-//        switch result.level {
-//        case .A: cell.levelImage.image = UIImage(named: "labelA")
-//        case .B: cell.levelImage.image = UIImage(named: "labelB")
-//        case .C: cell.levelImage.image = UIImage(named: "labelC")
-//        case .D: cell.levelImage.image = UIImage(named: "labelD")
-//        }
-//        cell.joinButton.setImage(UIImage(named: "icon-quit"), for: .normal)
-//        cell.joinButton.tintColor = myRed
-//        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
         return cell
     }
     
@@ -136,6 +117,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
         activityView.selectedActivity = myMatches[indexPath.row]
+        activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
     

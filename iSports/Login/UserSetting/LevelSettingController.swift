@@ -72,14 +72,12 @@ class LevelSettingController: UIViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let cityAndTimeSettingController = storyboard.instantiateViewController(withIdentifier: "cityAndTimeSettingController") as! CityAndTimeSettingController
+            if let cityAndTimeSettingController = storyboard.instantiateViewController(withIdentifier: "cityAndTimeSettingController") as? CityAndTimeSettingController {
             
-            cityAndTimeSettingController.controllerType = .city
-            
-            self.present(cityAndTimeSettingController, animated: true, completion: nil)
-        
+                cityAndTimeSettingController.controllerType = .city
+                
+                self.present(cityAndTimeSettingController, animated: true, completion: nil)
+            }
         }
     }
-    
-    
 }

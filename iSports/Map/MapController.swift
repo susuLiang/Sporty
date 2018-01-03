@@ -41,35 +41,22 @@ class MapController: UIViewController, GMSMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setMapView()
-        
         setLocationManager()
-        
         setNavigationBar()
-        
         getLocation()
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-
-    
     func setMapView() {
-        
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
-        
         view.addSubview(mapView)
-        
         mapView.delegate = self
-        
         mapView.isMyLocationEnabled = true
-        
         mapView.settings.myLocationButton = true
-        
     }
 
     @objc func search() {

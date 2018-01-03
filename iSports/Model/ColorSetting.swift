@@ -18,7 +18,8 @@ let myBlack = UIColor(red: 3/255, green: 65/255, blue: 117/255, alpha: 1)
 
 let myGreen = UIColor(red: 30/255, green: 255/255, blue: 194/255, alpha: 1)
 
-let myLightBlue = UIColor(red: 220/255, green: 240/255, blue: 255/255, alpha: 1)
+let myLightBlue = UIColor(red: 219/255, green: 254/255, blue: 254/255, alpha: 1)
 
-let myPurple = UIColor(red: 144/255, green: 19/255, blue: 254/255, alpha: 1)
+let myPurple = UIColor(red: 190/255, green: 46/255, blue: 116/255, alpha: 1)
 
+let myIndigo = UIColor(red: 89/255, green: 122/255, blue: 254/255, alpha: 1)
