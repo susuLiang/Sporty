@@ -28,8 +28,8 @@ class FirebaseProvider {
                     catch {
                         print("Can not get data.")
                     }
-                    completion(results, nil)
                 }
+                completion(results, nil)
             }
         }
     }

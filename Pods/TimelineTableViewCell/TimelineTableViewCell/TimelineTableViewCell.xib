@@ -12,6 +12,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="ArialHB.ttc">
+            <string>ArialHebrew</string>
             <string>ArialHebrew-Bold</string>
         </array>
     </customFonts>
@@ -60,27 +61,55 @@
                             <constraint firstAttribute="width" secondItem="aFP-zW-cVP" secondAttribute="height" multiplier="1:1" id="aMd-vc-LxB"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2K-xg-hrK">
+                        <rect key="frame" x="181" y="61" width="115" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="f0r-i9-a6f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="12"/>
+                        <color key="textColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fR-8z-bCk">
+                        <rect key="frame" x="39" y="25.5" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="1fR-8z-bCk" secondAttribute="height" multiplier="1:1" id="OuT-0w-XTh"/>
+                            <constraint firstAttribute="width" constant="16" id="mRT-U5-PKZ"/>
+                        </constraints>
+                        <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                        <state key="normal">
+                            <color key="titleColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="2Rz-dN-Xtc" firstAttribute="leading" secondItem="4Od-hl-ENS" secondAttribute="trailing" constant="18" id="1cR-v5-lWY"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="top" secondItem="2Rz-dN-Xtc" secondAttribute="bottom" constant="12" id="3rS-ql-g6Q"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="centerY" secondItem="2Rz-dN-Xtc" secondAttribute="centerY" id="6P6-hc-aYO"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="h2K-xg-hrK" secondAttribute="bottom" constant="1" id="7N4-3P-Cdy"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="top" secondItem="aFP-zW-cVP" secondAttribute="top" id="SE8-4Y-Rsb"/>
+                    <constraint firstItem="1fR-8z-bCk" firstAttribute="centerY" secondItem="4Od-hl-ENS" secondAttribute="centerY" id="V8j-pv-aeK"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="leading" secondItem="W66-Ck-wDF" secondAttribute="trailing" constant="26" id="Vam-zR-XmD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="LWm-f0-Lj3" secondAttribute="bottom" constant="0.5" id="XMs-7H-S0s"/>
                     <constraint firstItem="2Rz-dN-Xtc" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="8" id="Xh2-mj-c44"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="centerY" secondItem="W66-Ck-wDF" secondAttribute="centerY" id="aeo-Ux-Iwh"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="leading" secondItem="aFP-zW-cVP" secondAttribute="trailing" constant="33" id="ajE-HI-VcB"/>
+                    <constraint firstItem="h2K-xg-hrK" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="50" id="mTJ-wM-fKw"/>
+                    <constraint firstItem="1fR-8z-bCk" firstAttribute="top" secondItem="4Od-hl-ENS" secondAttribute="top" id="mi4-jS-a9S"/>
                     <constraint firstItem="W66-Ck-wDF" firstAttribute="leading" secondItem="HxZ-h8-hOq" secondAttribute="leading" constant="8" id="ngi-V5-gD4"/>
                     <constraint firstItem="aFP-zW-cVP" firstAttribute="trailing" secondItem="W66-Ck-wDF" secondAttribute="trailing" id="o7X-wK-V0y"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="trailing" secondItem="HxZ-h8-hOq" secondAttribute="trailingMargin" id="oYD-h6-WyT"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="centerY" secondItem="aFP-zW-cVP" secondAttribute="centerY" id="pek-Dw-jRh"/>
+                    <constraint firstItem="1fR-8z-bCk" firstAttribute="trailing" secondItem="W66-Ck-wDF" secondAttribute="trailing" id="tKc-MI-gsi"/>
+                    <constraint firstItem="h2K-xg-hrK" firstAttribute="leading" secondItem="LWm-f0-Lj3" secondAttribute="leading" constant="100" id="xEP-0T-baA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="cancelButton" destination="1fR-8z-bCk" id="MQ3-14-NYd"/>
                 <outlet property="descriptionLabel" destination="LWm-f0-Lj3" id="fpE-cB-Cup"/>
                 <outlet property="illustrationImageView" destination="aFP-zW-cVP" id="9AD-3h-Weg"/>
                 <outlet property="lineInfoLabel" destination="W66-Ck-wDF" id="WZr-av-HnT"/>
+                <outlet property="placeLabel" destination="h2K-xg-hrK" id="aWF-6L-5gE"/>
                 <outlet property="thumbnailImageView" destination="2Rz-dN-Xtc" id="hFp-fW-txb"/>
                 <outlet property="titleLabel" destination="4Od-hl-ENS" id="Zc2-fd-i6t"/>
             </connections>

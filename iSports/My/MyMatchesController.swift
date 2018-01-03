@@ -82,21 +82,18 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell",
-                                                       for: indexPath) as? TimelineTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as? TimelineTableViewCell
             else { fatalError() }
-//        var mondayMatchs = self.myMatches.filter({ (myMatch) -> Bool in
-//            myMatch.time == time[section]
-//        })
         switch indexPath.section {
         case indexPath.section:
             cell.titleLabel.text = time[indexPath.section]
             var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
                 myMatch.time == time[indexPath.section]
             })
-            print(timeMatchs)
+            cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
             cell.descriptionLabel.text = timeMatchs[indexPath.row].name
+            cell.cancelButton.setImage(UIImage(named: "icon-quit"), for: .normal)
+            cell.cancelButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
             switch timeMatchs[indexPath.row].type {
             case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
             case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
@@ -107,6 +104,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             default:
                 return cell
             }
+            
 //            cell.thumbnailImageView.image = UIImage(named: "icon-edit")
         default:
             break
@@ -146,9 +144,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
     
     @objc func deleteIt(_ sender: UIButton) {
-        guard let cell = sender.superview?.superview as? ListsCell,
+        guard let cell = sender.superview?.superview as? TimelineTableViewCell,
             let indexPath = tableView.indexPath(for: cell) else {
-                print("It's not a cell.")
+                print("It's not the right cell.")
                 return
         }
         

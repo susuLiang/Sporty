@@ -14,7 +14,7 @@ class WhoJoinCell: UITableViewCell {
     @IBOutlet weak var userPhoto: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        userPhoto.layer.cornerRadius = 50
+        userPhoto.layer.cornerRadius = userPhoto.frame.width / 2
         userPhoto.clipsToBounds = true
     }
     
