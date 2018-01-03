@@ -20,5 +20,4 @@ class LoadingIndicator {
     func stop() {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }
-
 }

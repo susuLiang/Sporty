@@ -169,7 +169,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
 
     func setJoinButton() {
-        loadingIndicator.start()
         let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
         var isMyMatch = false
 
@@ -196,7 +195,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 joinButton.tintColor = UIColor.clear
             }
         }
-        loadingIndicator.stop()
     }
 
     @objc func showAlert() {

@@ -10,6 +10,7 @@ import UIKit
 import XLPagerTabStrip
 import KeychainSwift
 import Firebase
+import WCLShineButton
 
 class MyPostsController: UITableViewController, IndicatorInfoProvider {
 

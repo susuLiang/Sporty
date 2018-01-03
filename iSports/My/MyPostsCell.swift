@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WCLShineButton
 
 class MyPostsCell: UITableViewCell {
 

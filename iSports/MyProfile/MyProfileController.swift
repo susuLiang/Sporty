@@ -47,6 +47,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
      @IBAction func pickPhoto(_ sender: Any) {
         self.present(fusuma, animated: true, completion: nil)
     }
+
+    @IBOutlet weak var blurBackView: UIImageView!
     @IBOutlet weak var photoPickButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -74,10 +76,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
+        self.loadingIndicator.start()
+
         pickerDelegate()
-        loadingIndicator.start()
         getUserProfile()
-        loadingIndicator.stop()
 
         setupTableCell()
 
@@ -91,6 +94,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
 
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = blurBackView.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurBackView.addSubview(blurEffectView)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,6 +108,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
 
     func getUserProfile() {
         FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
+            self.loadingIndicator.start()
             if error == nil {
                 self.userSetting = userSetting
                 self.nameLabel.text = self.userSetting?.name
@@ -110,7 +120,15 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
     }
 
     func loadUserPhoto() {
-        Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
+        Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto,
+                       handler: { (response, _) in
+            self.userPhoto?.image = response.value
+        })
+        Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.blurBackView,
+                       handler: { (response, _) in
+            self.blurBackView?.image = response.value
+            self.loadingIndicator.stop()
+        })
         self.userPhoto.contentMode = .scaleAspectFill
     }
 
@@ -152,20 +170,25 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         guard let userUid = keyChain.get("uid") else { return }
 
         let userRef = Database.database().reference().child("users").child(userUid)
+        if selectedIndexPath != nil {
+            if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
+                cell.nameSettimgTextField.isEnabled = false
+                cell.typeSettingTextField.isEnabled = false
+                cell.citySettingTextField.isEnabled = false
+                cell.levelSettingTextField.isEnabled = false
+                cell.timeSettingTextField.isEnabled = false
 
-        if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
-            isEdit = false
-            let name = cell.nameSettimgTextField.text
-            let type = cell.typeSettingTextField.text
-            let city = cell.citySettingTextField.text
-            let level = cell.levelSettingTextField.text
-            let time = cell.timeSettingTextField.text
-            let value = ["name": name]
-            let preferenceValue = ["type": type, "city": city, "level": level, "time": time]
-            userRef.updateChildValues(value)
-            userRef.child("preference").updateChildValues(preferenceValue)
+                let name = cell.nameSettimgTextField.text
+                let type = cell.typeSettingTextField.text
+                let city = cell.citySettingTextField.text
+                let level = cell.levelSettingTextField.text
+                let time = cell.timeSettingTextField.text
+                let value = ["name": name]
+                let preferenceValue = ["type": type, "city": city, "level": level, "time": time]
+                userRef.updateChildValues(value)
+                userRef.child("preference").updateChildValues(preferenceValue)
+            }
         }
-
         var data = Data()
         data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
         let ref = Database.database().reference()
@@ -180,6 +203,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             let downloadURL = metadata.downloadURL()?.absoluteString
             let value = ["imageURL": downloadURL]
             ref.child("users").child(userUid).updateChildValues(value)
+            self.photoPickButton.isEnabled = false
+            self.isEdit = false
+            self.tableView.reloadData()
         }
     }
 
@@ -203,11 +229,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         cell.cellLabel?.text = settingType[indexPath.section]
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
         cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
-        loadingIndicator.start()
         if let user = userSetting {
             cell.set(userSetting: user)
         }
-        loadingIndicator.stop()
 
         cell.typeSettingTextField.inputView = typePicker
         cell.levelSettingTextField.inputView = levelPicker
@@ -282,8 +306,10 @@ extension MyProfileController: FusumaDelegate {
 
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         userPhoto.image = image
+        blurBackView.image = image
         self.userImage = image
         userPhoto.contentMode = .scaleAspectFill
+        blurBackView.contentMode = .scaleAspectFill
     }
 
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
@@ -341,19 +367,15 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         switch pickerView {
         case typePicker:
             cell?.typeSettingTextField.text = typeArray[row]
-            break
 
         case cityPicker:
             cell?.citySettingTextField.text = city[row]
-            break
 
         case levelPicker:
             cell?.levelSettingTextField.text = levelArray[row]
-            break
 
         case timePicker:
             cell?.timeSettingTextField.text = time[row]
-            break
 
         default: return
         }

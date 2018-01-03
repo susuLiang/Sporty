@@ -26,4 +26,5 @@ target 'iSports' do
   pod 'Fusuma'
   pod "TimelineTableViewCell"
   pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :tag => '2.0'
+  pod 'WCLShineButton'
 end

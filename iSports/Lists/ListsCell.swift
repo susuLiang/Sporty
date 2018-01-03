@@ -28,9 +28,8 @@ class ListsCell: UITableViewCell {
         backView.layer.shadowColor = UIColor.gray.cgColor
         backView.layer.shadowRadius = 6
         backView.layer.shadowOpacity = 1
-//        backView.layer.shadowOffset = CGSize(width: 10, height: 10)
+        backView.layer.shadowOffset = CGSize(width: 0, height: 0)
         backView.layer.cornerRadius = 5
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

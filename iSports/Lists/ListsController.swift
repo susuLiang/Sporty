@@ -100,8 +100,6 @@ class ListsController: UIViewController {
         })
     }
 
-    
-
     @objc func join(sender: UIButton) {
         sender.tintColor = UIColor.gray
         if let cell = sender.superview?.superview as? ListsCell,
@@ -120,8 +118,6 @@ class ListsController: UIViewController {
             self.tableView.reloadData()
         })
     }
-
-    
 
     @objc func showSearchView() {
         guard let searchView = UINib.load(nibName: "SearchView") as? SearchViewController else {
@@ -192,27 +188,27 @@ class ListsController: UIViewController {
 
 extension ListsController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.results.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else {
             fatalError("Invalid ListsCell")
         }
         let result = results[indexPath.row]
-        
+
         cell.titleLabel.text = result.name
         cell.timeLabel.text = result.time
         cell.placeLabel.text = result.place.placeName
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
         var isMyMatch = false
-        
+
         switch result.level {
         case "A": cell.levelImage.image = UIImage(named: "labelA")
         case "B": cell.levelImage.image = UIImage(named: "labelB")
@@ -221,7 +217,7 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
+
         if result.authorUid != uid {
             for myMatch in myMatches where myMatch.id == result.id {
                 isMyMatch = true
@@ -236,13 +232,13 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
                 cell.joinButton.setImage(joinIcon, for: .normal)
                 cell.joinButton.tintColor = UIColor.gray
             }
-            
+
         } else {
             cell.joinButton.isEnabled = false
             cell.joinButton.setImage(joinIcon, for: .normal)
             cell.joinButton.tintColor = UIColor.clear
         }
-        
+
         switch result.type {
         case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
         case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
@@ -253,18 +249,18 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
         default:
             return cell
         }
-        
+
         if result.type == userSetting?.preference.type {
             cell.recommendImage.image = UIImage(named: "icon-thumb")
         }
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
             print("ActivityController invalid")

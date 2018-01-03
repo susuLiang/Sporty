@@ -101,7 +101,7 @@
                 <outlet property="deleteButton" destination="bnE-3l-JSH" id="M1U-ih-S7d"/>
                 <outlet property="editButton" destination="yND-g2-Vgl" id="6Pb-oY-667"/>
                 <outlet property="nameLabel" destination="i4e-Kw-kZx" id="3JA-rn-RaQ"/>
-                <outlet property="seeWhoButton" destination="sV6-Sk-KpA" id="xAQ-F9-5cb"/>
+                <outlet property="seeWhoButton" destination="sV6-Sk-KpA" id="1MA-cz-zX2"/>
                 <outlet property="typeImage" destination="2za-0c-DuW" id="qJS-Sc-OOt"/>
             </connections>
             <point key="canvasLocation" x="123.5" y="86"/>
