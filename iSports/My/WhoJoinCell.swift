@@ -8,21 +8,21 @@
 
 import UIKit
 
-class WhoJoinCell: UITableViewCell {
+class WhoJoinCell: UICollectionViewCell {
 
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPhoto: UIImageView!
+    @IBOutlet weak var cancelButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         userPhoto.layer.cornerRadius = userPhoto.frame.width / 2
         userPhoto.clipsToBounds = true
+        
+        backView.layer.cornerRadius = 20
+        backView.layer.shadowRadius = 5
+        backView.layer.shadowOffset = CGSize(width: 2, height: 5)
+        backView.layer.shadowOpacity = 0.7
     }
     
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

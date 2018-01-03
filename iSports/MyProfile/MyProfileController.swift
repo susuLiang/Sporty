@@ -15,7 +15,7 @@ import SCLAlertView
 import Nuke
 import NVActivityIndicatorView
 
-class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate, UITableViewDelegate, UITableViewDataSource {
+class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var cell: MyProfileCell?
     
@@ -123,11 +123,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         logOutButton.layer.shadowRadius = 5
     }
     
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        userPhoto.image = image
-        self.userImage = image
-        userPhoto.contentMode = .scaleAspectFill
-    }
     
     @objc func edit() {
         let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
@@ -136,13 +131,10 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         isEdit = true
         tableView.reloadData()
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
-        isEdit = true
     }
 
     @objc func showAlert() {
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
-        isEdit = false
-        tableView.reloadData()
         navigationItem.rightBarButtonItem = editIt
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
@@ -157,12 +149,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
     }
     
     func save() {
+
         guard let userUid = keyChain.get("uid") else { return }
         
         let userRef = Database.database().reference().child("users").child(userUid)
         
         if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
-//            cell.nameSettimgTextField.isEnabled = false
             isEdit = false
             let name = cell.nameSettimgTextField.text
             let type = cell.typeSettingTextField.text
@@ -209,9 +201,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
             fatalError("Invalid profile cell") }
         self.cell = cell
-        print(cell)
         cell.cellLabel?.text = settingType[indexPath.section]
-        cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
         cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
         loadingIndicator.start()
@@ -288,6 +278,17 @@ class MyProfileController: UIViewController, UITextFieldDelegate, FusumaDelegate
         navigationItem.rightBarButtonItem = editIt
     }
     
+    
+    
+}
+
+extension MyProfileController: FusumaDelegate {
+    
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        userPhoto.image = image
+        self.userImage = image
+        userPhoto.contentMode = .scaleAspectFill
+    }
     
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
     }

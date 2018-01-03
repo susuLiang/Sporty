@@ -91,24 +91,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         cell.seeWhoButton.addTarget(self, action: #selector(seeWhoJoin), for: .touchUpInside)
         cell.editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
-   
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else { fatalError() }
-//
-//        let result = myPosts[indexPath.row]
-//        cell.titleLabel.text = result.name
-//        cell.timeLabel.text = result.time
-//        cell.placeLabel.text = result.place.placeName
-//        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-//        switch result.level {
-//        case .A: cell.levelImage.image = UIImage(named: "labelA")
-//        case .B: cell.levelImage.image = UIImage(named: "labelB")
-//        case .C: cell.levelImage.image = UIImage(named: "labelC")
-//        case .D: cell.levelImage.image = UIImage(named: "labelD")
-//        }
-//        cell.joinButton.setImage(UIImage(named: "icon-delete"), for: .normal)
-//        cell.joinButton.tintColor = UIColor.red
-//        cell.joinButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
-//
         return cell
     }
     
@@ -121,11 +103,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         
     }
     
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 90
-//    }
-//    
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
@@ -137,6 +114,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
                 return
         }
         let whoJoinView = WhoJoinController()
+        
         whoJoinView.thisActivity = myPosts[indexPath.row]
         self.navigationController?.pushViewController(whoJoinView, animated: true)
     }
@@ -151,19 +129,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         activityView.myPost = myPosts[indexPath.row]
         activityView.joinButton.isHidden = true
         self.navigationController?.pushViewController(activityView, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let whoJoinView = WhoJoinController()
-//        whoJoinView.thisActivity = myPosts[indexPath.row]
-//        self.navigationController?.pushViewController(whoJoinView, animated: true)
-        
-//        whoJoinView.myPost = myPosts[indexPath.row]
-//        whoJoinView.joinButton.isHidden = true
-//        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
-//        activityView.myPost = myPosts[indexPath.row]
-//        activityView.joinButton.isHidden = true
-//        self.navigationController?.pushViewController(activityView, animated: true)
     }
     
     @objc func deleteIt(_ sender: UIButton) {
@@ -193,7 +158,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
             ref.child("user_postId").child(uid).removeValue()
        
         
-        }))
+        })) 
         
         self.present(alertController, animated: true, completion: nil)
         
