@@ -9,7 +9,7 @@
 import Foundation
 
 struct Court {
-    
+
     var courtID: Int
     var name: String
     var tel: String?
@@ -18,11 +18,11 @@ struct Court {
     var gymFuncList: String
     var latitude: String
     var longitude: String
-    
+
     init(courtID: Int, name: String, tel: String?,
          address: String, rateCount: Int,
          gymFuncList: String, latitude: String, longitude: String) {
-        
+
         self.courtID = courtID
         self.name = name
         self.tel = tel
@@ -33,4 +33,3 @@ struct Court {
         self.longitude = longitude
     }
 }
-

@@ -14,13 +14,13 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var sureButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+
     var selectedType: String = ""
-    
+
     let keyChain = KeychainSwift()
-    
-    var selectedIndexPath: IndexPath? = nil
-    
+
+    var selectedIndexPath: IndexPath?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sureButton.layer.cornerRadius = 10
@@ -30,17 +30,19 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return typeArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "typeCell", for: indexPath) as! TypeSettingCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "typeCell", for: indexPath) as? TypeSettingCell else {
+            fatalError("Invalid TypeSettingCell")
+        }
         let type = typeArray[indexPath.row]
         cell.typeLabel.text = type
         var iconName: String = ""
@@ -59,31 +61,34 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedType = typeArray[indexPath.row]
         self.selectedIndexPath = indexPath
         let cell = tableView.cellForRow(at: indexPath)
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 116
     }
 
     @IBAction func saveUserLikedType(_ sender: Any) {
-        
+
         let value = ["type": self.selectedType]
-        
+
         if let userUid = keyChain.get("uid") {
-            
+
             let ref = Database.database().reference().child("users").child(userUid)
-            
+
             ref.child("preference").setValue(value)
-            
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
-            let levelSettingController = storyboard.instantiateViewController(withIdentifier: "levelSettingController") as! LevelSettingController
-            
+
+            guard let levelSettingController = storyboard.instantiateViewController(withIdentifier: "levelSettingController") as? LevelSettingController else {
+                print("TypeSettingController invalid")
+                return
+            }
+
             self.present(levelSettingController, animated: true, completion: nil)
         }
     }

@@ -13,14 +13,14 @@ class TypeSettingCell: UITableViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var typeImage: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         typeImage.layer.cornerRadius = 20
         typeImage.clipsToBounds = true
         backView.alpha = 0.7
         backgroundColor = myBlack
-        
+
         // Initialization code
     }
 

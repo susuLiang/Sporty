@@ -11,9 +11,9 @@ import Firebase
 import KeychainSwift
 
 enum SettingType {
-    
+
     case city, time
-    
+
 }
 
 class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -22,13 +22,13 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sureButton: UIButton!
-    
+
     let keyChain = KeychainSwift()
-    
+
     var selected: String? = ""
-    
+
     var controllerType: SettingType = .city
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sureButton.layer.cornerRadius = 10
@@ -49,11 +49,11 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch controllerType {
         case .city:
@@ -62,9 +62,11 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
             return time.count
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as! CityAndTimeSettingCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityAndTimeSettingCell else {
+            fatalError("CityAndTimeSettingCell invalid")
+        }
         switch controllerType {
         case .city:
             cell.textLabel?.text = city[indexPath.row]
@@ -73,7 +75,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch controllerType {
         case .city:
@@ -91,47 +93,50 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
             return 60
         }
     }
-    
+
     @IBAction func saveUserCity(_ sender: Any) {
-        
+
         switch controllerType {
         case .city:
-            
+
             let value = self.selected
-            
+
             if let userUid = keyChain.get("uid") {
-                
+
                 let ref = Database.database().reference().child("users").child(userUid)
-                
+
                 ref.child("preference").child("city").setValue(value)
-                
+
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                
-                let cityAndTimeSettingController = storyboard.instantiateViewController(withIdentifier: "cityAndTimeSettingController") as! CityAndTimeSettingController
-                
+
+                guard let cityAndTimeSettingController = storyboard.instantiateViewController(withIdentifier: "cityAndTimeSettingController") as? CityAndTimeSettingController else {
+                    print("CityAndTimeSettingController invalid")
+                    return
+                }
+
                 cityAndTimeSettingController.controllerType = .time
-                
+
                 self.present(cityAndTimeSettingController, animated: true, completion: nil)
             }
             break
         case .time:
                 let value = self.selected
-                
+
                 if let userUid = keyChain.get("uid") {
-                    
+
                     let ref = Database.database().reference().child("users").child(userUid)
-                    
+
                     ref.child("preference").child("time").setValue(value)
-                    
+
                     let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-                    
+
                     tabBarController.selectedIndex = 1
-                    
+
                     self.present(tabBarController, animated: true, completion: nil)
-                    
+
                     break
             }
-       
+
         }
     }
 }

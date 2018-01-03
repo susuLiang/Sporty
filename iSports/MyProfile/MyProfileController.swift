@@ -16,34 +16,34 @@ import Nuke
 import NVActivityIndicatorView
 
 class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
-    
+
     var cell: MyProfileCell?
-    
+
     var loadingIndicator = LoadingIndicator()
-   
+
     let keyChain = KeychainSwift()
-    
+
     let fusuma = FusumaViewController()
-    
+
     var userImage = UIImage()
-    
-    var userSetting: UserSetting? = nil
-    
+
+    var userSetting: UserSetting?
+
     var settingType = ["Profile", "Preference"]
-    
+
     var settingIconName = ["profile-user", "profile-setting"]
-    
+
     var isEdit = false
-    
+
     var isExpanded = [false, false]
-    
+
     var selectedIndexPath: IndexPath?
-    
+
     var typePicker = UIPickerView()
     var timePicker = UIPickerView()
     var levelPicker = UIPickerView()
     var cityPicker = UIPickerView()
-    
+
      @IBAction func pickPhoto(_ sender: Any) {
         self.present(fusuma, animated: true, completion: nil)
     }
@@ -53,7 +53,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var userPhoto: UIImageView!
     @IBAction func logOut(_ sender: Any) {
-        
+
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: {
@@ -66,7 +66,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
             self.present(loginController, animated: true, completion: nil)
-            
+
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to log out ?", subTitle: "")
@@ -80,23 +80,23 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         loadingIndicator.stop()
 
         setupTableCell()
-        
+
         fusuma.delegate = self
         fusuma.cropHeightRatio = 0.6
-        
+
         setNavigationBar()
         setLogOutButton()
-        
+
         nameLabel.text = keyChain.get("name")
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func getUserProfile() {
         FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
             if error == nil {
@@ -108,22 +108,21 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             }
         })
     }
-    
+
     func loadUserPhoto() {
         Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto)
         self.userPhoto.contentMode = .scaleAspectFill
     }
-    
+
     @objc func showBack() {
         navigationController?.popViewController(animated: true)
     }
-    
+
     func setLogOutButton() {
         logOutButton.layer.cornerRadius = 20
         logOutButton.layer.shadowRadius = 5
     }
-    
-    
+
     @objc func edit() {
         let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
         navigationItem.rightBarButtonItem = saveIcon
@@ -147,13 +146,13 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         }
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
-    
+
     func save() {
 
         guard let userUid = keyChain.get("uid") else { return }
-        
+
         let userRef = Database.database().reference().child("users").child(userUid)
-        
+
         if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
             isEdit = false
             let name = cell.nameSettimgTextField.text
@@ -173,7 +172,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         let storageRef = Storage.storage().reference()
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpg"
-        storageRef.child(userUid).putData(data,metadata: metadata) { (metadata, error) in
+        storageRef.child(userUid).putData(data, metadata: metadata) { (metadata, error) in
             guard let metadata = metadata else {
                 // Todo: error handling
                 return
@@ -183,23 +182,23 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             ref.child("users").child(userUid).updateChildValues(value)
         }
     }
-    
+
     func setupTableCell() {
         let nib = UINib(nibName: "MyProfileCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return settingType.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
-            fatalError("Invalid profile cell") }
+            fatalError("Invalid MyProfileCell") }
         self.cell = cell
         cell.cellLabel?.text = settingType[indexPath.section]
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
@@ -209,7 +208,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             cell.set(userSetting: user)
         }
         loadingIndicator.stop()
-        
+
         cell.typeSettingTextField.inputView = typePicker
         cell.levelSettingTextField.inputView = levelPicker
         cell.citySettingTextField.inputView = cityPicker
@@ -239,15 +238,14 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             cell.timeSettingTextField.isEnabled = false
             cell.levelSettingTextField.isEnabled = false
         }
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded[indexPath.section] {
             return 192
-        }
-        else {
+        } else {
             return 68
         }
     }
@@ -270,39 +268,37 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         self.tableView.reloadData()
         self.tableView.endUpdates()
     }
-    
+
     func setNavigationBar() {
         let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
         navigationItem.leftBarButtonItems = [myProfile]
         navigationItem.rightBarButtonItem = editIt
     }
-    
-    
-    
+
 }
 
 extension MyProfileController: FusumaDelegate {
-    
+
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
         userPhoto.image = image
         self.userImage = image
         userPhoto.contentMode = .scaleAspectFill
     }
-    
+
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
     }
-    
+
     func fusumaVideoCompleted(withFileURL fileURL: URL) {
     }
-    
+
     func fusumaCameraRollUnauthorized() {
     }
 
 }
 
 extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
+
     func pickerDelegate() {
         typePicker.delegate = self
         typePicker.dataSource = self
@@ -313,11 +309,11 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         cityPicker.delegate = self
         cityPicker.dataSource = self
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case typePicker: return Sportstype.count
@@ -328,7 +324,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
             return 1
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case typePicker: return typeArray[row]
@@ -338,9 +334,9 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         default:
             return ""
         }
-        
+
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
         case typePicker:
@@ -350,11 +346,11 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
         case cityPicker:
             cell?.citySettingTextField.text = city[row]
             break
-            
+
         case levelPicker:
             cell?.levelSettingTextField.text = levelArray[row]
             break
-            
+
         case timePicker:
             cell?.timeSettingTextField.text = time[row]
             break

@@ -18,11 +18,11 @@ class WhoJoinCell: UICollectionViewCell {
         super.awakeFromNib()
         userPhoto.layer.cornerRadius = userPhoto.frame.width / 2
         userPhoto.clipsToBounds = true
-        
+
         backView.layer.cornerRadius = 20
         backView.layer.shadowRadius = 5
         backView.layer.shadowOffset = CGSize(width: 2, height: 5)
         backView.layer.shadowOpacity = 0.7
     }
-    
+
 }

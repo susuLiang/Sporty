@@ -11,11 +11,11 @@ import Firebase
 import KeychainSwift
 
 class FirebaseProvider {
-    
+
     static let shared = FirebaseProvider()
-    
+
     var keyChain = KeychainSwift()
-    
+
     func getData(completion: @escaping ([Activity]?, Error?) -> Void) {
         Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
             var results = [Activity]()
@@ -24,8 +24,7 @@ class FirebaseProvider {
                     do {
                         let activity = try Activity(data, id: id)
                         results.append(activity)
-                    }
-                    catch {
+                    } catch {
                         print("Can not get data.")
                     }
                 }
@@ -33,7 +32,7 @@ class FirebaseProvider {
             }
         }
     }
-    
+
     func getTypeData(selected: Preference?, completion: @escaping ([Activity]?, Error?) -> Void) {
         Database.database().reference().child("activities").queryOrdered(byChild: "type").queryEqual(toValue: selected!.type).observeSingleEvent(of: .value) { (snapshot: DataSnapshot) in
             var results = [Activity]()
@@ -42,15 +41,14 @@ class FirebaseProvider {
                     if let time = data["time"] as? String,
                         let level = data["level"] as? String,
                         let place = data["place"] as? String {
-                        
+
                         if (time == selected?.time || (selected?.time == "")) &&
-                            (level == selected?.level?.rawValue || (selected?.level == nil)) &&
+                            (level == selected?.level || (selected?.level == nil)) &&
                             (place == selected?.place || (selected?.place == "")) {
                             do {
                                 let activity = try Activity(data, id: id)
                                 results.append(activity)
-                            }
-                            catch {
+                            } catch {
                                 print("Can not query data.")
                             }
                         }
@@ -69,8 +67,7 @@ class FirebaseProvider {
                     do {
                         let activity = try Activity(data, id: id)
                         results.append(activity)
-                    }
-                    catch {
+                    } catch {
                         print("Can not get place data.")
                     }
                 }
@@ -78,16 +75,15 @@ class FirebaseProvider {
             }
         }
     }
-    
-    
+
     func getPosts(childKind: String, completion: @escaping ([Activity]?, [String]?, Error?) -> Void) {
-        
+
         var keyUid = [String]()
         var results = [String]()
         var posts = [Activity]()
-        
+
         let userCurrentUid = keyChain.get("uid")
-        
+
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 results = [String]()
@@ -107,8 +103,7 @@ class FirebaseProvider {
                             do {
                                 let activity = try Activity(data, id: id)
                                 posts.append(activity)
-                            }
-                            catch {
+                            } catch {
                                 print("Can not get users activities data.")
                             }
                         }
@@ -122,7 +117,7 @@ class FirebaseProvider {
             }
         }
     }
-    
+
     func getUserProfile(completion: @escaping (UserSetting?, Error?) -> Void) {
         var userSetting: UserSetting? = nil
         if let userUid = keyChain.get("uid") {
@@ -130,8 +125,7 @@ class FirebaseProvider {
                 if let object = snapshot.value as? [String: AnyObject] {
                         do {
                             userSetting = try UserSetting(object)
-                        }
-                        catch {
+                        } catch {
                             print("Can not get users profile.")
                         }
                     }
@@ -139,11 +133,11 @@ class FirebaseProvider {
             }
         }
     }
-    
+
     func getWhoJoin(activityId: String, completion: @escaping ([UserSetting]?, Error?) -> Void) {
         var usersId = [String]()
         var usersInfo = [UserSetting]()
-        
+
         Database.database().reference().child("user_joinId").queryOrdered(byChild: "joinId").queryEqual(toValue: activityId).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 usersId = [String]()
@@ -160,8 +154,7 @@ class FirebaseProvider {
                             do {
                                 let userInfo = try UserSetting(data)
                                 usersInfo.append(userInfo)
-                            }
-                            catch {
+                            } catch {
                                 print("Can not get users activities data.")
                             }
                         }
@@ -172,5 +165,3 @@ class FirebaseProvider {
         }
     }
 }
-
-

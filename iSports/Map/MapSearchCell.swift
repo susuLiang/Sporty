@@ -11,10 +11,10 @@ import UIKit
 class MapSearchCell: UITableViewCell {
 
     @IBOutlet weak var typeLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         typeLabel.backgroundColor = myRed
         typeLabel.tintColor = .white
         typeLabel.layer.masksToBounds = true

@@ -13,34 +13,33 @@ import SCLAlertView
 import TKSubmitTransition
 
 class SignUpController: UIViewController {
-    
+
     let keyChain = KeychainSwift()
-    
+
     @IBOutlet weak var signUpButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var nameText: UITextField!
 
-    
     @IBAction func signUp(_ sender: Any) {
         signUpButton.startLoadingAnimation()
         guard let email = emailText.text,
             let password = passwordText.text else {
             return
         }
-        
+
         guard let name = nameText.text, !name.isEmpty else {
             SCLAlertView().showWarning("Error", subTitle: "Must enter name")
             return
         }
-        
+
         Auth.auth().createUser(withEmail: email, password: password, completion: {(user, error) in
-            
+
             if error != nil {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
 
                     var message: String = ""
-                    
+
                     switch errCode {
                     case .invalidEmail:
                         message = NSLocalizedString("Invalid email", comment: "")
@@ -50,21 +49,21 @@ class SignUpController: UIViewController {
                         message = NSLocalizedString("Password should be greater than six digits", comment: "")
                     case .missingEmail:
                         message = NSLocalizedString("Must enter email", comment: "")
-                   
+
                     default:
                         print("Create User Error: \(error!)")
-                        
+
                     }
                     self.signUpButton.startFinishAnimation(0.2, completion: nil)
                     SCLAlertView().showWarning("Error", subTitle: message)
                     return
                 }
             }
-            
+
             guard let uid = user?.uid else {
                 return
             }
-            
+
             let ref = Database.database().reference()
             let userReference = ref.child("users").child(uid)
             let value = ["name": name, "email": email]
@@ -78,16 +77,19 @@ class SignUpController: UIViewController {
                 self.keyChain.set(password, forKey: "password")
                 self.keyChain.set(name, forKey: "name")
                 self.keyChain.set(uid, forKey: "uid")
-                
-                self.signUpButton.startFinishAnimation(0.2 , completion: {
+
+                self.signUpButton.startFinishAnimation(0.2, completion: {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as! TypeSettingController
+                    guard let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as? TypeSettingController else {
+                        print("TypeSettingController invalid")
+                        return
+                    }
                     self.present(userSettingController, animated: true, completion: nil)
                 })
             })
         })
     }
-   
+
     override func viewDidLoad() {
         keyChain.clear()
         super.viewDidLoad()
@@ -98,26 +100,26 @@ class SignUpController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     typealias ShowAlertDismissHandler = () -> Void
-    
+
     func showAlert(title: String?, message: String?, dismiss handler: ShowAlertDismissHandler?) {
-        
+
         let alert = UIAlertController(
             title: title,
             message: message,
             preferredStyle: .alert
         )
-        
+
         let ok = UIAlertAction(
             title: NSLocalizedString("OK", comment: ""),
             style: .cancel,
             handler: { _ in handler?() }
         )
-        
+
         alert.addAction(ok)
-        
+
         present(alert, animated: true, completion: nil)
-        
+
     }
 }

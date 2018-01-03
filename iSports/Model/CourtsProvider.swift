@@ -15,9 +15,9 @@ enum GetCourtError: Error {
 }
 
 class CourtsProvider {
-    
+
     static let shared = CourtsProvider()
-    
+
     func getApiData(city: String, gymType: String, completion: @escaping ([Court]?, Error?) -> Void) {
         let urlString = "https://iplay.sa.gov.tw/api/GymSearchAllList?$format=application/json;odata.metadata=none&City=\(city)&GymType=\(gymType)"
         var courts = [Court]()
@@ -33,11 +33,11 @@ class CourtsProvider {
                         let gymFuncList = result["GymFuncList"] as? String,
                         let latLng = result["LatLng"] as? String
                     else { return }
-                    
+
                     var latitudeAndLongitude = latLng.components(separatedBy: ",")
                     var latitude = ""
                     var longitude = ""
-                    
+
                     // MARK: Get latitude and longitude
                     if latitudeAndLongitude.count == 2 {
                         latitude = latitudeAndLongitude[0]
@@ -45,9 +45,9 @@ class CourtsProvider {
                     } else {
                         print("=== The Latitude and Longitude are wrong -> Court: \(name)")
                     }
-                    
+
                     let court = Court(courtID: gymID, name: name, tel: operationTel, address: address, rateCount: rateCount, gymFuncList: gymFuncList, latitude: latitude, longitude: longitude)
-                    
+
                     courts.append(court)
                 }
                 // todo: 過濾球場
@@ -56,6 +56,3 @@ class CourtsProvider {
         }
     }
 }
-
-
-

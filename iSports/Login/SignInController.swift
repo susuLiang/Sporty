@@ -13,9 +13,9 @@ import SCLAlertView
 import TKSubmitTransition
 
 class SignInController: UIViewController {
-    
+
     let keyChain = KeychainSwift()
-    
+
     @IBOutlet weak var logInButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -28,11 +28,11 @@ class SignInController: UIViewController {
                 return
         }
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            
+
             if error != nil {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     var message: String = ""
-                    
+
                     switch errCode {
                     case .invalidEmail:
                         message = NSLocalizedString("Invalid email", comment: "")
@@ -48,11 +48,11 @@ class SignInController: UIViewController {
                     }
                     self.logInButton.startFinishAnimation(0.2, completion: nil)
                     SCLAlertView().showWarning("Error", subTitle: message)
-                    
+
                 }
                 return
             }
-                        
+
             let uid = Auth.auth().currentUser?.uid
 
             self.keyChain.set(uid!, forKey: "uid")
@@ -62,10 +62,10 @@ class SignInController: UIViewController {
                 tabBarController.selectedIndex = 1
                 self.present(tabBarController, animated: true, completion: nil)
                 })
-            
+
         })
     }
- 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logInButton.layer.cornerRadius = 10

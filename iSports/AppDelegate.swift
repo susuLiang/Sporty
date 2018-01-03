@@ -18,24 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
         FirebaseApp.configure()
-        
+
         GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
         GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
-        
+
         IQKeyboardManager.sharedManager().enable = true
-        
+
         let rootViewController = makeEntryController()
-        
+
         let window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         window.rootViewController = rootViewController
-        
+
         window.makeKeyAndVisible()
-        
+
         self.window = window
-        
+
         return true
     }
 
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
     }
-    
+
     func makeEntryController() -> UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -66,4 +66,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-

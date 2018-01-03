@@ -11,20 +11,19 @@ import GoogleMaps
 import GooglePlaces
 
 class MapController: UIViewController, GMSMapViewDelegate {
-        
+
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    
+
     var mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
-    
+
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     var selectedPlace: GMSPlace?
-    
+
     var results: [Activity] = []
-    
-    var selectedType: String?
-    {
+
+    var selectedType: String? {
         didSet {
             self.mapView.clear()
             var selected: [Activity] = []
@@ -34,11 +33,11 @@ class MapController: UIViewController, GMSMapViewDelegate {
             self.setMarker(activities: selected)
         }
     }
-    
+
     let searchView = MapSearchController()
-    
+
     var isShowed = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setMapView()
@@ -50,7 +49,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setMapView() {
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
         view.addSubview(mapView)
@@ -76,7 +75,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
             isShowed = false
         }
     }
-    
+
     func setLocationManager() {
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
@@ -86,48 +85,48 @@ class MapController: UIViewController, GMSMapViewDelegate {
         self.locationManager.delegate = self
         self.placesClient = GMSPlacesClient.shared()
     }
-    
+
     func setNavigationBar() {
         navigationItem.title = "Map"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.tintColor = .white
     }
-    
+
 }
 
 extension MapController {
-    
+
     func getLocation() {
-        
+
         FirebaseProvider.shared.getData(completion: { (results, error) in
-            
+
             if error == nil {
-                
+
                 self.results = results!
-                
+
                 self.setMarker(activities: self.results)
-                
+
             }
         })
     }
-    
+
     func setMarker(activities: [Activity]) {
-      
+
         for court in activities {
-            
+
             var iconName: String = ""
-            
+
             let marker = GMSMarker()
-            
+
             marker.position = CLLocationCoordinate2D(
                 latitude: Double(court.place.placeLatitude)!,
                 longitude: Double(court.place.placeLongitude)!
             )
-            
+
             marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
             marker.title = court.id
-            
+
             switch court.type {
             case "羽球": iconName = "badmintonMarker"
             case "棒球": iconName = "baseballMarker"
@@ -136,57 +135,56 @@ extension MapController {
             case "網球": iconName = "tennisMarker"
             case "足球": iconName = "soccerMarker"
             default: ""
-                
+
             }
             marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
-            
+
             marker.map = mapView
 
         }
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         var selectedActivity: Activity?
-        
+
         for activity in results {
             if activity.id == marker.title {
                 selectedActivity = activity
                 break
             }
         }
-        
+
         let detailView = MapDetailController()
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
         detailView.view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 400)
-        
+
         self.addChildViewController(detailView)
-        
+
         self.view.addSubview(detailView.view)
-        
+
         return true
     }
-    
+
 }
 
 extension MapController: CLLocationManagerDelegate {
-    
+
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+
         let location: CLLocation = locations.last!
-        
+
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
-        
-   
+
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+
         locationManager.stopUpdatingLocation()
-        
+
         print("Error: \(error)")
     }
 }

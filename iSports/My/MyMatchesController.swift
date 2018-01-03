@@ -14,40 +14,40 @@ import SCLAlertView
 import TimelineTableViewCell
 
 class MyMatchesController: UITableViewController, IndicatorInfoProvider {
-    
+
     var itemInfo = IndicatorInfo(title: "MyMatches")
-    
+
     let userUid = KeychainSwift().get("uid")
-    
+
     var myMatches = [Activity]()
-    
+
     var keyUid = [String]()
 
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-        
+
         self.itemInfo = itemInfo
-        
+
         super.init(style: style)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-                        
+
         setupTableCell()
-        
+
         view.backgroundColor = .white
-                
+
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
             self.myMatches = posts!
             self.keyUid = keyUid!
             self.tableView.reloadData()
         })
     }
-    
+
     func setupTableCell() {
 //        let nib = UINib(nibName: "ListsCell", bundle: nil)
 //        tableView.register(nib, forCellReuseIdentifier: "cell")
@@ -109,29 +109,32 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         }
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
+            print("ActivityController invalid")
+            return
+        }
         activityView.selectedActivity = myMatches[indexPath.row]
         activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
-    
+
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
-    
+
     @objc func deleteIt(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? TimelineTableViewCell,
             let indexPath = tableView.indexPath(for: cell) else {
                 print("It's not the right cell.")
                 return
         }
-        
+
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: {
@@ -144,7 +147,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to quit ?", subTitle: "")
-        
+
 //        guard let cell = sender.superview?.superview as? ListsCell,
 //
 //            let indexPath = tableView.indexPath(for: cell) else {
@@ -169,7 +172,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
 //        }))
 //
 //        self.present(alertController, animated: true, completion: nil)
-        
+
     }
-    
+
 }

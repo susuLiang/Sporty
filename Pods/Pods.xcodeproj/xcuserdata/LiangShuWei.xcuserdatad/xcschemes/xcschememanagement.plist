@@ -46,6 +46,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>JTMaterialTransition.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>

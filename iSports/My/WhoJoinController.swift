@@ -10,25 +10,25 @@ import UIKit
 import Nuke
 
 class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+
     var collectionView: UICollectionView!
-    
+
     var thisActivity: Activity? {
-        didSet{
-            FirebaseProvider.shared.getWhoJoin(activityId: (thisActivity?.id)!, completion: {(users ,error) in
+        didSet {
+            FirebaseProvider.shared.getWhoJoin(activityId: (thisActivity?.id)!, completion: {(users, error) in
                 if error == nil, let users = users {
                     self.joinUsers = users
                 }
             })
         }
     }
-    
+
     var joinUsers: [UserSetting] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
-  
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Your Partners"
@@ -41,21 +41,21 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "WhoJoinCell", bundle: nil) , forCellWithReuseIdentifier: "cell")
+        collectionView.register(UINib(nibName: "WhoJoinCell", bundle: nil), forCellWithReuseIdentifier: "cell")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return joinUsers.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WhoJoinCell else {
             fatalError()
@@ -72,5 +72,5 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
         }
         return cell
     }
-    
+
 }

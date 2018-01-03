@@ -23,15 +23,15 @@ class MyPostsCell: UITableViewCell {
         backView.layer.shadowRadius = 5
         backView.layer.shadowOffset = CGSize(width: -5, height: 5)
         backView.layer.shadowOpacity = 0.7
-        
+
         let editIcon = UIImage(named: "icon-edit")?.withRenderingMode(.alwaysTemplate)
         editButton.setImage(editIcon, for: .normal)
         editButton.tintColor = myRed
-        
+
         let seeWhoIcon = UIImage(named: "icon-group")?.withRenderingMode(.alwaysTemplate)
         seeWhoButton.setImage(seeWhoIcon, for: .normal)
         seeWhoButton.tintColor = UIColor(red: 249/255, green: 69/255, blue: 46/255, alpha: 1)
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,5 +39,5 @@ class MyPostsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

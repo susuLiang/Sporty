@@ -10,13 +10,13 @@ import Foundation
 import NVActivityIndicatorView
 
 class LoadingIndicator {
-    
+
     var activityData = ActivityData(type: .ballPulseSync)
-    
+
     func start() {
         NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
     }
-    
+
     func stop() {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
     }

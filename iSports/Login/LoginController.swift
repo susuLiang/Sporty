@@ -30,17 +30,17 @@ class LoginController: UIViewController {
     @IBOutlet weak var signInPage: UIView!
     @IBOutlet weak var signButton: UIButton!
     var goSignUp = true
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         logInLabel.text = "Sign In"
         signInPage.isHidden = false
         signUpPage.isHidden = true
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
 }

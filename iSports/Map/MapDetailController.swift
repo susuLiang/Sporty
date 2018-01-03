@@ -9,17 +9,17 @@
 import UIKit
 
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+
     var tableView = UITableView()
-    
+
     var selectedPlaceActivities = [Activity]()
-    
+
     var mainViewController: MapController?
-    
+
     var headerView = UITableViewHeaderFooterView()
-    
+
     var selectedPlace: Place? {
-        
+
         didSet {
             FirebaseProvider.shared.getPlaceAllActivities(place: selectedPlace, completion: { (results, error) in
                 self.selectedPlaceActivities = results!
@@ -27,41 +27,43 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             })
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: 300)
-                
+
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300)
 
         tableView.delegate = self
-        
+
         tableView.dataSource = self
-        
+
         tableView.separatorStyle = .none
-        
+
         setupTableCell()
-        
+
         view.addSubview(tableView)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.selectedPlaceActivities.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListsCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else {
+            fatalError("Invalid ListsCell")
+        }
         let result = selectedPlaceActivities[indexPath.row]
             cell.titleLabel.text = result.name
             cell.timeLabel.text = result.time
@@ -79,20 +81,22 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         default:
             return cell
         }
-        
+
         switch result.level {
-        case .A: cell.levelImage.image = UIImage(named: "labelA")
-        case .B: cell.levelImage.image = UIImage(named: "labelB")
-        case .C: cell.levelImage.image = UIImage(named: "labelC")
-        case .D: cell.levelImage.image = UIImage(named: "labelD")
+        case "A": cell.levelImage.image = UIImage(named: "labelA")
+        case "B": cell.levelImage.image = UIImage(named: "labelB")
+        case "C": cell.levelImage.image = UIImage(named: "labelC")
+        case "D": cell.levelImage.image = UIImage(named: "labelD")
+        default:
+            break
         }
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
         let downArrowIcon = UIImage(named: "icon-down-arrow")?.withRenderingMode(.alwaysTemplate)
@@ -105,18 +109,21 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         button.addTarget(self, action: #selector(close), for: .touchUpInside)
         return headerView
     }
-    
+
     func setupTableCell() {
         let nib = UINib(nibName: "ListsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
     }
-    
+
     @objc func close() {
         self.view.removeFromSuperview()
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let activityView = UINib.load(nibName: "ActivityController") as! ActivityController
+        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
+            print("MapDetailController invalid")
+            return
+        }
         activityView.selectedActivity = selectedPlaceActivities[indexPath.row]
         self.navigationController?.pushViewController(activityView, animated: true)
     }

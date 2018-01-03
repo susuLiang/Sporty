@@ -11,15 +11,15 @@ import XLPagerTabStrip
 import Firebase
 
 class MyActivitiesController: ButtonBarPagerTabStripViewController {
-    
+
     @IBOutlet weak var shadowView: UIView!
-    
+
     let graySpotifyColor = UIColor(red: 21/255.0, green: 21/255.0, blue: 24/255.0, alpha: 1.0)
     let darkGraySpotifyColor = UIColor(red: 19/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
-        
+
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isTranslucent = false
-        
+
         // change selected bar color
         settings.style.buttonBarBackgroundColor = myBlack
         settings.style.buttonBarItemBackgroundColor = myBlack
@@ -29,10 +29,10 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarMinimumLineSpacing = 0
         settings.style.buttonBarItemTitleColor = .black
         settings.style.buttonBarItemsShouldFillAvailableWidth = true
-        
+
         settings.style.buttonBarLeftContentInset = 20
         settings.style.buttonBarRightContentInset = 20
-        
+
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
             oldCell?.label.textColor = UIColor(red: 138/255.0, green: 138/255.0, blue: 144/255.0, alpha: 1.0)
@@ -41,21 +41,21 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
         setNavigationItem()
     }
-    
+
     // MARK: - PagerTabStripDataSource
-    
+
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let child_1 = MyMatchesController(style: .plain, itemInfo: IndicatorInfo(title: "Join"))
         let child_2 = MyPostsController(style: .plain, itemInfo: IndicatorInfo(title: "MyPosts"))
         return [child_1, child_2]
     }
-    
+
     // MARK: - Actions
-    
+
     @IBAction func closeAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     func setNavigationItem() {
         navigationItem.title = "My Activities"
         navigationController?.navigationBar.barTintColor = myBlue
@@ -68,13 +68,16 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     }
 
     @objc func showProfile() {
-        let myProfileController = UINib.load(nibName: "MyProfileController") as! MyProfileController
+        guard let myProfileController = UINib.load(nibName: "MyProfileController") as? MyProfileController else {
+            print("MyProfileController invalid")
+            return
+        }
         navigationController?.pushViewController(myProfileController, animated: true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         settings.style.buttonBarHeight = 0
     }
-    
+
 }
