@@ -10,19 +10,20 @@ import UIKit
 import Firebase
 import KeychainSwift
 import SCLAlertView
+import TKSubmitTransition
 
 class SignUpController: UIViewController {
     
     let keyChain = KeychainSwift()
     
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var signUpButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var nameText: UITextField!
 
     
     @IBAction func signUp(_ sender: Any) {
-        
+        signUpButton.startLoadingAnimation()
         guard let email = emailText.text,
             let password = passwordText.text else {
             return
@@ -54,7 +55,7 @@ class SignUpController: UIViewController {
                         print("Create User Error: \(error!)")
                         
                     }
-                    
+                    self.signUpButton.startFinishAnimation(0.2, completion: nil)
                     SCLAlertView().showWarning("Error", subTitle: message)
                     return
                 }
@@ -78,9 +79,11 @@ class SignUpController: UIViewController {
                 self.keyChain.set(name, forKey: "name")
                 self.keyChain.set(uid, forKey: "uid")
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as! TypeSettingController
-                self.present(userSettingController, animated: true, completion: nil)
+                self.signUpButton.startFinishAnimation(0.2 , completion: {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as! TypeSettingController
+                    self.present(userSettingController, animated: true, completion: nil)
+                })
             })
         })
     }

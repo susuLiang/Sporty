@@ -10,15 +10,17 @@ import UIKit
 import Firebase
 import KeychainSwift
 import SCLAlertView
+import TKSubmitTransition
 
 class SignInController: UIViewController {
     
     let keyChain = KeychainSwift()
     
-    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var logInButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBAction func signIn(_ sender: Any) {
+        logInButton.startLoadingAnimation()
         guard let email = emailText.text,
             let password = passwordText.text
             else {
@@ -44,7 +46,7 @@ class SignInController: UIViewController {
                     default:
                         print("Create User Error: \(error!)")
                     }
-                    
+                    self.logInButton.startFinishAnimation(0.2, completion: nil)
                     SCLAlertView().showWarning("Error", subTitle: message)
                     
                 }
@@ -55,10 +57,12 @@ class SignInController: UIViewController {
 
             self.keyChain.set(uid!, forKey: "uid")
             self.keyChain.set(email, forKey: "email")
-
-            let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-            tabBarController.selectedIndex = 1
-            self.present(tabBarController, animated: true, completion: nil)
+            self.logInButton.startFinishAnimation(0.2, completion: {
+                let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
+                tabBarController.selectedIndex = 1
+                self.present(tabBarController, animated: true, completion: nil)
+                })
+            
         })
     }
  

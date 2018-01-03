@@ -55,26 +55,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func makeEntryController() -> UIViewController {
-        
         if Auth.auth().currentUser?.uid == nil {
-                        
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-   
             return loginController
-        
         } else {
-            
             let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-            
             tabBarController.selectedIndex = 1
- 
             return tabBarController
         }
-        
     }
-
-
 }
 

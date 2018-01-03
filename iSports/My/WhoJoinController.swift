@@ -29,7 +29,6 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
         }
     }
   
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Your Partners"
@@ -63,42 +62,15 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
         }
         let joinUser = joinUsers[indexPath.row]
         cell.userName.text = joinUser.name
-        DispatchQueue.main.async {
-            // todo: !
-            Nuke.loadImage(with: URL(string: joinUser.urlString!)!, into: cell.userPhoto)
-
+        if let url = joinUser.urlString {
+            DispatchQueue.main.async {
+                // todo: !
+                Nuke.loadImage(with: URL(string: url)!, into: cell.userPhoto)
+            }
+        } else {
+            cell.userPhoto.backgroundColor = myRed
         }
         return cell
     }
-    
-//    func setupTableCell() {
-//        let nib = UINib(nibName: "WhoJoinCell", bundle: nil)
-//        collectionView.register(nib, forCellReuseIdentifier: "cell")
-//    }
-
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return joinUsers.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? WhoJoinCell else {
-//            fatalError("Invalid profile cell") }
-//        let joinUser = joinUsers[indexPath.row]
-//        cell.userName.text = joinUser.name
-//        DispatchQueue.main.async {
-//            // todo: !
-//            Nuke.loadImage(with: URL(string: joinUser.urlString!)!, into: cell.userPhoto)
-//
-//        }
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
     
 }

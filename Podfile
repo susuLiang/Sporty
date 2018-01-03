@@ -25,5 +25,5 @@ target 'iSports' do
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'Fusuma'
   pod "TimelineTableViewCell"
-
+  pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :tag => '2.0'
 end
