@@ -14,6 +14,7 @@ import Fusuma
 import SCLAlertView
 import Nuke
 import NVActivityIndicatorView
+import LGButton
 
 class MyProfileController: UIViewController, UITextFieldDelegate {
 
@@ -52,11 +53,28 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var photoPickButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var editButton: LGButton!
+    @IBOutlet weak var saveButton: LGButton!
     @IBOutlet weak var userPhoto: UIImageView!
+
+    @IBAction func save(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("SURE", action: self.sureSave)
+        alertView.addButton("NO") { }
+        alertView.addButton("QUIT") {
+            self.userPhoto.layer.borderWidth = 0
+            self.isEdit = false
+            self.tableView.reloadData()
+            self.editButton.isHidden = false
+            self.saveButton.isHidden = true
+        }
+        alertView.showWarning("Sure to save it ?", subTitle: "")
+        
+    }
     @IBAction func edit(_ sender: Any) {
-        editButton.setTitle("Save", for: .normal)
-        editButton.addTarget(self, action: #selector(showSaveAlert), for: .touchUpInside)
+        editButton.isHidden = true
+        saveButton.isHidden = false
         photoPickButton.isEnabled = true
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = myBlack.cgColor
@@ -64,11 +82,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         tableView.reloadData()
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadingIndicator.start()
-
+        
+        saveButton.isHidden = true
         pickerDelegate()
         getUserProfile()
 
@@ -122,7 +140,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         })
         self.userPhoto.contentMode = .scaleAspectFill
     }
-    
+
     @objc func logout() {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
@@ -136,7 +154,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
             self.present(loginController, animated: true, completion: nil)
-            
+
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to log out ?", subTitle: "")
@@ -147,22 +165,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         editButton.layer.shadowRadius = 5
     }
 
-    @objc func showSaveAlert() {
-        editButton.setTitle("Edit", for: .normal)
-        editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
-
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
-        let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: self.save)
-        alertView.addButton("NO") {
-            let saveIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(self.edit))
-            self.isEdit = true
-            self.navigationItem.rightBarButtonItem = saveIt
-        }
-        alertView.showWarning("Sure to save it ?", subTitle: "")
-    }
-
-    func save() {
+    func sureSave() {
         userPhoto.layer.borderWidth = 0
 
         guard let userUid = keyChain.get("uid") else { return }
@@ -170,11 +173,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         let userRef = Database.database().reference().child("users").child(userUid)
         if selectedIndexPath != nil {
             if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
-                cell.nameSettimgTextField.isEnabled = false
-                cell.typeSettingTextField.isEnabled = false
-                cell.citySettingTextField.isEnabled = false
-                cell.levelSettingTextField.isEnabled = false
-                cell.timeSettingTextField.isEnabled = false
 
                 let name = cell.nameSettimgTextField.text
                 let type = cell.typeSettingTextField.text
@@ -204,13 +202,14 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
                 ref.child("users").child(userUid).updateChildValues(value)
             }
         }
+        editButton.isHidden = false
+        saveButton.isHidden = true
         self.photoPickButton.isEnabled = false
         self.isEdit = false
         self.tableView.reloadData()
     }
 
     func setNavigationBar() {
-//        navigationController?.navigationBar.tintColor = UIColor.white
         let logout = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-logout"), style: .plain, target: self, action: #selector(self.logout))
         navigationItem.rightBarButtonItem = logout
         navigationItem.title = "Profile"

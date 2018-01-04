@@ -36,7 +36,7 @@ extension TabBarItemType {
         case .my:
 
             return NSLocalizedString("My", comment: "")
-            
+
         case .setting:
             return NSLocalizedString("Setting", comment: "")
 
@@ -65,7 +65,7 @@ extension TabBarItemType {
         case .my:
 
             return #imageLiteral(resourceName: "icon-my").withRenderingMode(.alwaysTemplate)
-            
+
         case .setting:
             return #imageLiteral(resourceName: "icon-setting").withRenderingMode(.alwaysTemplate)
 

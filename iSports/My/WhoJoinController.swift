@@ -40,7 +40,7 @@ class WhoJoinController: UIViewController {
         view.backgroundColor = .white
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: 175, height: 209)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 2 - 30), height: 209)
         collectionView = UICollectionView(frame: CGRect(x: 10, y: 0, width: UIScreen.main.bounds.width - 10, height: UIScreen.main.bounds.height), collectionViewLayout: layout)
         view.addSubview(collectionView)
         collectionView.backgroundColor = .white

@@ -50,7 +50,7 @@ class BlueNavigationController: UINavigationController {
             UIImage(),
             for: .default
         )
-        
+
         navigationBar.tintColor = UIColor.white
 
         navigationBar.shadowImage = UIImage()

@@ -105,9 +105,7 @@ class TabBarController: UITabBarController {
             return navigationController
 
         case .setting:
-            
-            
-            
+
             guard let myProfileController = UINib.load(nibName: "MyProfileController") as? MyProfileController else {
                 fatalError("Can not found MyProfileController")
             }

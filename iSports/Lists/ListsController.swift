@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import KeychainSwift
 import WCLShineButton
+import SCLAlertView
 
 class ListsController: UIViewController {
 
@@ -65,7 +66,7 @@ class ListsController: UIViewController {
         tableView.dataSource = self
 
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
+
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         tableView.separatorStyle = .none
@@ -109,6 +110,7 @@ class ListsController: UIViewController {
         sender.tintColor = UIColor.gray
         if let cell = sender.superview?.superview as? ListsCell,
             let indexPath = tableView.indexPath(for: cell) {
+            cell.numLabel.textColor = UIColor.gray
             let joinId = results[indexPath.row].id
             let newVaule = results[indexPath.row].number + 1
 
@@ -161,6 +163,9 @@ class ListsController: UIViewController {
     func search(selected: Preference) {
         FirebaseProvider.shared.getTypeData(selected: selected, completion: { [weak self] (results, error) in
             if error == nil {
+                if results?.count == 0 {
+                    SCLAlertView().showNotice("Not found any activity.", subTitle: "")
+                }
                 self?.results = results!
                 self?.tableView.reloadData()
             }
@@ -238,6 +243,7 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
                 cell.joinButton.isEnabled = false
                 cell.joinButton.setImage(joinIcon, for: .normal)
                 cell.joinButton.tintColor = UIColor.gray
+                cell.numLabel.textColor = UIColor.gray
             }
 
         } else {

@@ -60,6 +60,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         didSet {
             if let myPost = myPost {
                 setText(myPost, isEnable: true)
+                self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
                 cityTextField.title = "address"
             }
@@ -91,6 +92,10 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var courtPicker = UIPickerView()
     var timePicker = UIPickerView()
     var levelPicker = UIPickerView()
+    
+    var thisTime = ""
+    var thisHour = ""
+    var thisMinute = ""
 
     var courts: [Court]? {
         didSet {
@@ -409,9 +414,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
             levelTextField.text = levelArray[row]
 
         case timePicker:
-            var thisTime = ""
-            var thisHour = ""
-            var thisMinute = ""
+            
             if component == 0 {
                 thisTime = time[row]
             } else if component == 1 {

@@ -38,7 +38,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-ES-FCJ">
-                                <rect key="frame" x="98" y="216" width="178" height="23.5"/>
+                                <rect key="frame" x="98" y="216" width="178" height="24"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="22"/>
                                 <color key="textColor" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -111,58 +111,79 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Edit"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="titleFontName" value="ArialHebrew-Bold"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="edit:" destination="-1" eventType="touchUpInside" id="4U5-wj-M2B"/>
+                        </connections>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32r-mX-yjr">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmk-zT-dEZ" customClass="LGButton" customModule="LGButton">
                         <rect key="frame" x="87" y="583" width="200" height="45"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gW6-as-Dcn">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
-                                <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Edit">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="edit:" destination="I6e-n9-55K" eventType="touchUpInside" id="EvJ-EZ-2PH"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gW6-as-Dcn" secondAttribute="trailing" id="3CM-Rh-z4l"/>
-                            <constraint firstItem="gW6-as-Dcn" firstAttribute="width" secondItem="32r-mX-yjr" secondAttribute="width" id="B4b-tN-d2a"/>
-                            <constraint firstItem="gW6-as-Dcn" firstAttribute="height" secondItem="32r-mX-yjr" secondAttribute="height" id="Chj-Eu-HQe"/>
-                            <constraint firstItem="gW6-as-Dcn" firstAttribute="top" secondItem="32r-mX-yjr" secondAttribute="top" id="RmU-ce-hqt"/>
-                            <constraint firstAttribute="bottom" secondItem="gW6-as-Dcn" secondAttribute="bottom" id="coG-bJ-Gdx"/>
-                            <constraint firstAttribute="width" secondItem="32r-mX-yjr" secondAttribute="height" multiplier="40:9" id="iKd-NQ-eE8"/>
-                            <constraint firstItem="gW6-as-Dcn" firstAttribute="leading" secondItem="32r-mX-yjr" secondAttribute="leading" id="mCc-1w-1aX"/>
-                            <constraint firstAttribute="width" constant="200" id="wbp-Xl-hSi"/>
+                            <constraint firstAttribute="width" secondItem="Rmk-zT-dEZ" secondAttribute="height" multiplier="40:9" id="XuP-ea-PSa"/>
+                            <constraint firstAttribute="width" constant="200" id="jEQ-q2-yhm"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                <color key="value" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                <color key="value" red="0.95775669813156128" green="0.93111544847488403" blue="0.82240438461303711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="YES"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Save"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="titleFontSize">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="titleFontName" value="ArialHebrew-Bold"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="save:" destination="-1" eventType="touchUpInside" id="95R-zy-3s5"/>
+                        </connections>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" id="2Qr-2z-0LC"/>
                     <constraint firstItem="ubJ-zi-XIM" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="569-t1-riV"/>
-                    <constraint firstItem="gW6-as-Dcn" firstAttribute="top" secondItem="MDL-fQ-mNH" secondAttribute="bottom" constant="26" id="8AI-6C-gzX"/>
+                    <constraint firstItem="Rmk-zT-dEZ" firstAttribute="width" secondItem="ubJ-zi-XIM" secondAttribute="width" id="BmQ-VV-s3x"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="HXC-sJ-ms0"/>
-                    <constraint firstItem="32r-mX-yjr" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="RzJ-Vh-W7Z"/>
+                    <constraint firstItem="ubJ-zi-XIM" firstAttribute="top" secondItem="MDL-fQ-mNH" secondAttribute="bottom" constant="26" id="NeV-Cc-TuT"/>
+                    <constraint firstItem="Rmk-zT-dEZ" firstAttribute="centerX" secondItem="ubJ-zi-XIM" secondAttribute="centerX" id="QXI-bJ-fcV"/>
+                    <constraint firstItem="Rmk-zT-dEZ" firstAttribute="width" secondItem="Rmk-zT-dEZ" secondAttribute="height" multiplier="40:9" id="S2I-DI-e43"/>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="WDC-hP-CqC"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="X0i-bv-ce9"/>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="ZtX-k5-8B0"/>
+                    <constraint firstItem="Rmk-zT-dEZ" firstAttribute="centerY" secondItem="ubJ-zi-XIM" secondAttribute="centerY" id="g2J-7B-IsX"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="ubJ-zi-XIM" secondAttribute="trailing" constant="88" id="jmd-9M-y7B"/>
+                    <constraint firstItem="Rmk-zT-dEZ" firstAttribute="height" secondItem="ubJ-zi-XIM" secondAttribute="height" id="obd-xY-U5D"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="ubJ-zi-XIM" secondAttribute="bottom" constant="39" id="sP5-la-9Fj"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="32r-mX-yjr" secondAttribute="bottom" constant="39" id="sUz-ym-itS"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" id="xs6-V5-XjO"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="sTJ-Kh-Oxe"/>
             </view>
             <connections>
                 <outlet property="blurBackView" destination="SSm-MS-6j6" id="D9l-zv-LJV"/>
-                <outlet property="editButton" destination="gW6-as-Dcn" id="yMr-L7-CRC"/>
+                <outlet property="editButton" destination="ubJ-zi-XIM" id="b0M-4g-RgW"/>
                 <outlet property="nameLabel" destination="bg1-ES-FCJ" id="XJC-iQ-xSq"/>
                 <outlet property="photoPickButton" destination="vkA-I6-H7d" id="Qup-vY-kJy"/>
+                <outlet property="saveButton" destination="Rmk-zT-dEZ" id="puG-OE-Amx"/>
                 <outlet property="tableView" destination="MDL-fQ-mNH" id="n0e-s9-Iqn"/>
                 <outlet property="userPhoto" destination="XDs-Rc-jRq" id="FQN-QB-kTe"/>
             </connections>

@@ -53,13 +53,11 @@ class ListsCell: UITableViewCell {
         placeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
         placeLabel.tintColor = .white
 
-        //numLabel
-        numLabel.tintColor = .white
-
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         recommendImage?.image = nil
+        numLabel.textColor = myIndigo
     }
 }
