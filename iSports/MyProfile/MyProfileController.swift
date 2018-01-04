@@ -15,7 +15,7 @@ import SCLAlertView
 import Nuke
 import NVActivityIndicatorView
 
-class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class MyProfileController: UIViewController, UITextFieldDelegate {
 
     var cell: MyProfileCell?
 
@@ -76,7 +76,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         self.loadingIndicator.start()
 
         pickerDelegate()
@@ -116,6 +115,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
                     self.loadUserPhoto()
                 }
             }
+            self.loadingIndicator.stop()
         })
     }
 
@@ -142,9 +142,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
     }
 
     @objc func edit() {
-        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showAlert))
+        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
         navigationItem.rightBarButtonItem = saveIcon
         photoPickButton.isEnabled = true
+        userPhoto.layer.borderWidth = 3
+        userPhoto.layer.borderColor = myBlack.cgColor
         isEdit = true
         tableView.reloadData()
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
@@ -166,6 +168,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
     }
 
     func save() {
+        userPhoto.layer.borderWidth = 0
 
         guard let userUid = keyChain.get("uid") else { return }
 
@@ -190,25 +193,37 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             }
         }
         var data = Data()
-        data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
-        let ref = Database.database().reference()
-        let storageRef = Storage.storage().reference()
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpg"
-        storageRef.child(userUid).putData(data, metadata: metadata) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Todo: error handling
-                return
+        if userPhoto.image != nil {
+            data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
+            let ref = Database.database().reference()
+            let storageRef = Storage.storage().reference()
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            storageRef.child(userUid).putData(data, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    // Todo: error handling
+                    return
+                }
+                let downloadURL = metadata.downloadURL()?.absoluteString
+                let value = ["imageURL": downloadURL]
+                ref.child("users").child(userUid).updateChildValues(value)
             }
-            let downloadURL = metadata.downloadURL()?.absoluteString
-            let value = ["imageURL": downloadURL]
-            ref.child("users").child(userUid).updateChildValues(value)
-            self.photoPickButton.isEnabled = false
-            self.isEdit = false
-            self.tableView.reloadData()
         }
+        self.photoPickButton.isEnabled = false
+        self.isEdit = false
+        self.tableView.reloadData()
     }
 
+    func setNavigationBar() {
+        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
+        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
+        navigationItem.leftBarButtonItems = [myProfile]
+        navigationItem.rightBarButtonItem = editIt
+    }
+
+}
+
+extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
     func setupTableCell() {
         let nib = UINib(nibName: "MyProfileCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
@@ -227,6 +242,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
             fatalError("Invalid MyProfileCell") }
         self.cell = cell
         cell.cellLabel?.text = settingType[indexPath.section]
+        cell.accessoryType = .disclosureIndicator
         cell.cellLabel?.font = UIFont(name: "ArialHebrew-Bold", size: 18)
         cell.lableImage?.image = UIImage(named: "\(settingIconName[indexPath.section])")
         if let user = userSetting {
@@ -291,13 +307,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate, UITableViewDel
         self.tableView.beginUpdates()
         self.tableView.reloadData()
         self.tableView.endUpdates()
-    }
-
-    func setNavigationBar() {
-        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
-        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
-        navigationItem.leftBarButtonItems = [myProfile]
-        navigationItem.rightBarButtonItem = editIt
     }
 
 }

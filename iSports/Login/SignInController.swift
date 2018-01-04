@@ -36,13 +36,13 @@ class SignInController: UIViewController {
                     switch errCode {
                     case .invalidEmail:
                         message = NSLocalizedString("Invalid email", comment: "")
-                        
+
                     case .userNotFound:
                         message = NSLocalizedString("Wrong email", comment: "")
-                        
+
                     case .wrongPassword:
                         message = NSLocalizedString("Wrong password", comment: "")
-                        
+
                     default:
                         print("Create User Error: \(error!)")
                     }
@@ -56,7 +56,7 @@ class SignInController: UIViewController {
 
             self.keyChain.set(uid!, forKey: "uid")
             self.keyChain.set(email, forKey: "email")
-            
+
             self.logInButton.startFinishAnimation(0.2, completion: {
                 let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
                 tabBarController.selectedIndex = 1

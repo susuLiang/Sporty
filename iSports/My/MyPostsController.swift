@@ -11,6 +11,7 @@ import XLPagerTabStrip
 import KeychainSwift
 import Firebase
 import WCLShineButton
+import SCLAlertView
 
 class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
@@ -33,9 +34,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
 
     required init?(coder aDecoder: NSCoder) {
-
         fatalError("init(coder:) has not been implemented")
-
     }
 
     override func viewDidLoad() {
@@ -94,11 +93,17 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+
     func getPosts() {
         FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, keyUid, error) in
-            self.myPosts = posts!
-            self.keyUid = keyUid!
-            self.tableView.reloadData()
+            if error == nil {
+                self.myPosts = posts!
+                self.keyUid = keyUid!
+                self.tableView.reloadData()
+            }
         })
 
     }
@@ -142,27 +147,21 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
                 return
         }
 
-        let alertController = UIAlertController(title: "Delete now", message: "Be sure to delete?", preferredStyle: .alert)
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
 
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-
-        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
-
+        alertView.addButton("SURE", action: {
             let uid = self.keyUid[indexPath.row]
-
             let postId = self.myPosts[indexPath.row].id
-
             let ref = Database.database().reference()
-
             self.keyUid.remove(at: indexPath.row)
-
             ref.child("activities").child(postId).removeValue()
-
             ref.child("user_postId").child(uid).removeValue()
+        })
 
-        }))
+        alertView.addButton("NO") {
+        }
 
-        self.present(alertController, animated: true, completion: nil)
-
+        alertView.showWarning("Sure to delete it ?", subTitle: "")
     }
 }
