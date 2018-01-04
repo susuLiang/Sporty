@@ -83,11 +83,10 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDL-fQ-mNH">
-                        <rect key="frame" x="0.0" y="276" width="375" height="220"/>
+                        <rect key="frame" x="0.0" y="276" width="375" height="281"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="375" id="2Cb-az-Ue4"/>
-                            <constraint firstAttribute="width" secondItem="MDL-fQ-mNH" secondAttribute="height" multiplier="75:44" id="UWn-vq-pKQ"/>
                         </constraints>
                         <connections>
                             <outlet property="dataSource" destination="I6e-n9-55K" id="Mx0-zE-nC3"/>
@@ -121,11 +120,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="45"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Log out">
+                                <state key="normal" title="Edit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="logOut:" destination="-1" eventType="touchUpInside" id="ghJ-qn-QOR"/>
+                                    <action selector="edit:" destination="I6e-n9-55K" eventType="touchUpInside" id="EvJ-EZ-2PH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -146,7 +145,7 @@
                 <constraints>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="top" secondItem="djA-bF-fOd" secondAttribute="bottom" id="2Qr-2z-0LC"/>
                     <constraint firstItem="ubJ-zi-XIM" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="569-t1-riV"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="32r-mX-yjr" secondAttribute="trailing" constant="88" id="FOx-mw-NDp"/>
+                    <constraint firstItem="gW6-as-Dcn" firstAttribute="top" secondItem="MDL-fQ-mNH" secondAttribute="bottom" constant="26" id="8AI-6C-gzX"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" id="HXC-sJ-ms0"/>
                     <constraint firstItem="32r-mX-yjr" firstAttribute="leading" secondItem="sTJ-Kh-Oxe" secondAttribute="leading" constant="87" id="RzJ-Vh-W7Z"/>
                     <constraint firstItem="MDL-fQ-mNH" firstAttribute="trailing" secondItem="sTJ-Kh-Oxe" secondAttribute="trailing" id="WDC-hP-CqC"/>
@@ -161,7 +160,7 @@
             </view>
             <connections>
                 <outlet property="blurBackView" destination="SSm-MS-6j6" id="D9l-zv-LJV"/>
-                <outlet property="logOutButton" destination="gW6-as-Dcn" id="AwF-Ka-76Y"/>
+                <outlet property="editButton" destination="gW6-as-Dcn" id="yMr-L7-CRC"/>
                 <outlet property="nameLabel" destination="bg1-ES-FCJ" id="XJC-iQ-xSq"/>
                 <outlet property="photoPickButton" destination="vkA-I6-H7d" id="Qup-vY-kJy"/>
                 <outlet property="tableView" destination="MDL-fQ-mNH" id="n0e-s9-Iqn"/>

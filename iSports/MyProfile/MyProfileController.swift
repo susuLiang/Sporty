@@ -52,26 +52,17 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var photoPickButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var userPhoto: UIImageView!
-    @IBAction func logOut(_ sender: Any) {
-
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
-        let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: {
-            self.keyChain.clear()
-            do {
-                try Auth.auth().signOut()
-            } catch let logoutError {
-                print(logoutError)
-            }
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-            self.present(loginController, animated: true, completion: nil)
-
-        })
-        alertView.addButton("NO") {}
-        alertView.showWarning("Sure to log out ?", subTitle: "")
+    @IBAction func edit(_ sender: Any) {
+        editButton.setTitle("Save", for: .normal)
+        editButton.addTarget(self, action: #selector(showSaveAlert), for: .touchUpInside)
+        photoPickButton.isEnabled = true
+        userPhoto.layer.borderWidth = 3
+        userPhoto.layer.borderColor = myBlack.cgColor
+        isEdit = true
+        tableView.reloadData()
+        photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
     }
 
     override func viewDidLoad() {
@@ -87,7 +78,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         fusuma.cropHeightRatio = 0.6
 
         setNavigationBar()
-        setLogOutButton()
+        setEditButton()
 
         nameLabel.text = keyChain.get("name")
         userPhoto.layer.cornerRadius = 100
@@ -131,30 +122,34 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         })
         self.userPhoto.contentMode = .scaleAspectFill
     }
-
-    @objc func showBack() {
-        navigationController?.popViewController(animated: true)
+    
+    @objc func logout() {
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("SURE", action: {
+            self.keyChain.clear()
+            do {
+                try Auth.auth().signOut()
+            } catch let logoutError {
+                print(logoutError)
+            }
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
+            self.present(loginController, animated: true, completion: nil)
+            
+        })
+        alertView.addButton("NO") {}
+        alertView.showWarning("Sure to log out ?", subTitle: "")
     }
 
-    func setLogOutButton() {
-        logOutButton.layer.cornerRadius = 20
-        logOutButton.layer.shadowRadius = 5
-    }
-
-    @objc func edit() {
-        let saveIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
-        navigationItem.rightBarButtonItem = saveIcon
-        photoPickButton.isEnabled = true
-        userPhoto.layer.borderWidth = 3
-        userPhoto.layer.borderColor = myBlack.cgColor
-        isEdit = true
-        tableView.reloadData()
-        photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
+    func setEditButton() {
+        editButton.layer.cornerRadius = 20
+        editButton.layer.shadowRadius = 5
     }
 
     @objc func showSaveAlert() {
-        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
-        navigationItem.rightBarButtonItem = editIt
+        editButton.setTitle("Edit", for: .normal)
+        editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
@@ -215,10 +210,10 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func setNavigationBar() {
-        let myProfile = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-menu"), style: .plain, target: self, action: #selector(showBack))
-        let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
-        navigationItem.leftBarButtonItems = [myProfile]
-        navigationItem.rightBarButtonItem = editIt
+//        navigationController?.navigationBar.tintColor = UIColor.white
+        let logout = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-logout"), style: .plain, target: self, action: #selector(self.logout))
+        navigationItem.rightBarButtonItem = logout
+        navigationItem.title = "Profile"
     }
 
 }

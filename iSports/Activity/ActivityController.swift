@@ -300,8 +300,10 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView {
-        case typePicker, cityPicker, timePicker, levelPicker:
+        case typePicker, cityPicker, levelPicker:
             return 1
+        case timePicker:
+            return 3
         case courtPicker:
             if (typeTextField.text == "") || (cityTextField.text == "") {
 //                if self.presentedViewController == nil {
@@ -339,7 +341,14 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
         switch pickerView {
         case typePicker: return Sportstype.count
         case cityPicker: return city.count
-        case timePicker: return time.count
+        case timePicker:
+            switch component {
+            case 0: return time.count
+            case 1: return hour.count
+            case 2: return minute.count
+            default:
+                return 0
+            }
         case levelPicker: return levelArray.count
         case courtPicker:
             if courts != nil {
@@ -354,7 +363,14 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
         switch pickerView {
         case typePicker: return typeArray[row]
         case cityPicker: return city[row]
-        case timePicker: return time[row]
+        case timePicker:
+            switch component {
+            case 0: return time[row]
+            case 1: return String(hour[row])
+            case 2: return String(minute[row])
+            default:
+            return ""
+        }
         case levelPicker: return levelArray[row]
         case courtPicker:
             if courts != nil {
@@ -393,7 +409,17 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
             levelTextField.text = levelArray[row]
 
         case timePicker:
-            timeTextField.text = time[row]
+            var thisTime = ""
+            var thisHour = ""
+            var thisMinute = ""
+            if component == 0 {
+                thisTime = time[row]
+            } else if component == 1 {
+                thisHour = String(hour[row])
+            } else {
+                thisMinute = String(minute[row])
+            }
+            timeTextField.text = "\(thisTime) \(thisHour) : \(thisMinute)"
         default: return
         }
     }

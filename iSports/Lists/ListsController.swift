@@ -46,8 +46,9 @@ class ListsController: UIViewController {
         let button = UIButton(type: .system)
         button.addTarget(self, action: #selector(showAddView), for: .touchUpInside)
         button.setImage(UIImage(named: "icon-add"), for: .normal)
-        button.tintColor = myPurple
+        button.tintColor = myGreen
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.shadowRadius = 10
         return button
     }()
 

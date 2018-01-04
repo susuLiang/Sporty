@@ -37,7 +37,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         setUpTabBar()
-        self.selectedIndex = 1
+        self.selectedIndex = 0
 
     }
 
@@ -104,6 +104,20 @@ class TabBarController: UITabBarController {
 
             return navigationController
 
+        case .setting:
+            
+            
+            
+            guard let myProfileController = UINib.load(nibName: "MyProfileController") as? MyProfileController else {
+                fatalError("Can not found MyProfileController")
+            }
+            let navigationController = BlueNavigationController(
+                rootViewController: myProfileController
+            )
+            navigationController.tabBarItem = TabBarItem(
+                itemType: itemType
+            )
+            return navigationController
         }
 
     }

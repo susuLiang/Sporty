@@ -60,8 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
             return loginController
         } else {
-            let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-            tabBarController.selectedIndex = 1
+            let tabBarController = TabBarController(itemTypes: [ .home, .map, .my, .setting])
+            tabBarController.selectedIndex = 0
             return tabBarController
         }
     }
