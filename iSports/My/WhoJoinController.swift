@@ -8,13 +8,17 @@
 
 import UIKit
 import Nuke
+import NVActivityIndicatorView
 
-class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class WhoJoinController: UIViewController {
+
+    var loadingIndicator = LoadingIndicator()
 
     var collectionView: UICollectionView!
 
     var thisActivity: Activity? {
         didSet {
+            loadingIndicator.start()
             FirebaseProvider.shared.getWhoJoin(activityId: (thisActivity?.id)!, completion: {(users, error) in
                 if error == nil, let users = users {
                     self.joinUsers = users
@@ -47,6 +51,9 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
+
+extension WhoJoinController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -64,11 +71,11 @@ class WhoJoinController: UIViewController, UICollectionViewDelegate, UICollectio
         cell.userName.text = joinUser.name
         if let url = joinUser.urlString {
             DispatchQueue.main.async {
-                // todo: !
-                Nuke.loadImage(with: URL(string: url)!, into: cell.userPhoto)
+                Nuke.loadImage(with: URL(string: url)!, into: cell.userPhoto) { response, _ in
+                    cell.userPhoto.image = response.value
+                    self.loadingIndicator.stop()
+                }
             }
-        } else {
-            cell.userPhoto.backgroundColor = myRed
         }
         return cell
     }

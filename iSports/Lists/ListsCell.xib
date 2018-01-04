@@ -126,7 +126,7 @@
             <connections>
                 <outlet property="backView" destination="9Aq-4B-yX0" id="M84-6W-hSV"/>
                 <outlet property="imagePlaced" destination="Ez0-b7-Iet" id="3gL-7P-V5e"/>
-                <outlet property="joinButton" destination="Xbi-27-vcq" id="DCI-jA-cRb"/>
+                <outlet property="joinButton" destination="Xbi-27-vcq" id="JjH-vi-OrN"/>
                 <outlet property="levelImage" destination="yrc-Ot-Fm9" id="wMI-W3-Qiy"/>
                 <outlet property="numLabel" destination="eb4-Ml-3xY" id="NtT-cQ-R8E"/>
                 <outlet property="placeLabel" destination="g1t-TW-gq8" id="LAf-dO-i4b"/>

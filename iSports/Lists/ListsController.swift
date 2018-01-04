@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import KeychainSwift
+import WCLShineButton
 
 class ListsController: UIViewController {
 
@@ -39,6 +40,7 @@ class ListsController: UIViewController {
 
     var myMatches = [Activity]()
     var tableView = UITableView()
+    var thisSearchView: SearchViewController?
 
     lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
@@ -130,15 +132,17 @@ class ListsController: UIViewController {
 
         if !isShowed {
             self.addChildViewController(searchView)
+            self.thisSearchView = searchView
             self.view.addSubview(searchView.view)
             searchView.didMove(toParentViewController: self)
             isShowed = true
         } else {
-            searchView.willMove(toParentViewController: nil)
-            searchView.view.removeFromSuperview()
-            searchView.removeFromParentViewController()
+            thisSearchView?.willMove(toParentViewController: nil)
+            thisSearchView?.view.removeFromSuperview()
+            thisSearchView?.removeFromParentViewController()
             self.fetch()
             isShowed = false
+
         }
     }
 

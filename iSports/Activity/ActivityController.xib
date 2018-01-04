@@ -411,7 +411,7 @@
                 <outlet property="cityTextField" destination="QUJ-i7-NWJ" id="kme-xr-9c8"/>
                 <outlet property="courtTextField" destination="ojN-6b-sJn" id="79V-w9-WrC"/>
                 <outlet property="feeTextField" destination="scg-0j-rGX" id="kjk-1a-uqC"/>
-                <outlet property="joinButton" destination="cbS-mG-iC8" id="aUY-Eh-kro"/>
+                <outlet property="joinButton" destination="cbS-mG-iC8" id="qPl-ja-oUh"/>
                 <outlet property="levelTextField" destination="mTB-KN-C0f" id="GNZ-zh-1f6"/>
                 <outlet property="mapPlacedView" destination="6vJ-e1-LYV" id="BEb-vd-mCC"/>
                 <outlet property="nameTextField" destination="1kz-6d-CKM" id="vvo-Yq-EO1"/>

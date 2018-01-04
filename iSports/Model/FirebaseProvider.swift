@@ -43,7 +43,7 @@ class FirebaseProvider {
                         let place = data["place"] as? String {
 
                         if (time == selected?.time || (selected?.time == "")) &&
-                            (level == selected?.level || (selected?.level == nil)) &&
+                            (level == selected?.level || (selected?.level == "")) &&
                             (place == selected?.place || (selected?.place == "")) {
                             do {
                                 let activity = try Activity(data, id: id)

@@ -18,6 +18,7 @@ class WhoJoinCell: UICollectionViewCell {
         super.awakeFromNib()
         userPhoto.layer.cornerRadius = userPhoto.frame.width / 2
         userPhoto.clipsToBounds = true
+        userPhoto.backgroundColor = myRed
 
         backView.layer.cornerRadius = 20
         backView.layer.shadowRadius = 5

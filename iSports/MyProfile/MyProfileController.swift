@@ -152,7 +152,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
     }
 
-    @objc func showAlert() {
+    @objc func showSaveAlert() {
         let editIt = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-edit"), style: .plain, target: self, action: #selector(edit))
         navigationItem.rightBarButtonItem = editIt
 
@@ -224,6 +224,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 }
 
 extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
+
     func setupTableCell() {
         let nib = UINib(nibName: "MyProfileCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
