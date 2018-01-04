@@ -124,9 +124,7 @@ extension MapController {
     }
 
     func setMarker(activities: [Activity]) {
-        
-        
-
+  
         for court in activities {
 
             var iconName: String = ""
@@ -186,7 +184,7 @@ extension MapController {
         self.detailView = detailView
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
-        detailView.view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 400)
+//        detailView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
         self.addChildViewController(detailView)
 

@@ -27,13 +27,23 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             })
         }
     }
+    
+    lazy var backButton: UIButton = {
+       let button = UIButton(type: .system)
+        button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(close), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: 300)
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        view.addSubview(backButton)
 
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300)
+        tableView.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: 300)
 
         tableView.delegate = self
 
@@ -45,7 +55,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
 
         view.addSubview(tableView)
 
-    }
+    } 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,11 +75,8 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             fatalError("Invalid ListsCell")
         }
         let result = selectedPlaceActivities[indexPath.row]
-            cell.titleLabel.text = result.name
-            cell.timeLabel.text = result.time
-            cell.placeLabel.text = result.place.placeName
-            cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-            cell.joinButton.isHidden = true
+        cell.setCell(result)
+        cell.joinButton.isHidden = true
 
         switch result.type {
         case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
@@ -98,15 +105,14 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let button = UIButton()
-        let downArrowIcon = UIImage(named: "icon-down-arrow")?.withRenderingMode(.alwaysTemplate)
-        button.frame = CGRect(x: 0, y: 0, width: headerView.frame.width, height: 32)
-        headerView.addSubview(button)
-        button.backgroundColor = myLightBlue
-        button.setImage(downArrowIcon, for: .normal)
-        button.contentMode = .scaleAspectFit
-        button.imageView?.tintColor = mySkyBlue
-        button.addTarget(self, action: #selector(close), for: .touchUpInside)
+        let headerWidth = headerView.frame.width
+        let headerHeight = headerView.frame.height
+        let placeLabel = UILabel()
+        placeLabel.frame = CGRect(x: 0, y: 0, width: headerWidth, height: headerHeight)
+        placeLabel.text = selectedPlace?.placeName
+        placeLabel.textAlignment = .center
+        placeLabel.backgroundColor = myLightBlue
+        headerView.addSubview(placeLabel)
         return headerView
     }
 

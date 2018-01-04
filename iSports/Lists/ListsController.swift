@@ -215,10 +215,7 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
         }
         let result = results[indexPath.row]
 
-        cell.titleLabel.text = result.name
-        cell.timeLabel.text = result.time
-        cell.placeLabel.text = result.place.placeName
-        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+        cell.setCell(result)
         var isMyMatch = false
 
         switch result.level {
