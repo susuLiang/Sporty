@@ -214,7 +214,9 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             let court = self.courtTextField.text,
             let name = self.nameTextField.text,
             let type = self.typeTextField.text,
-            let time = self.timeTextField.text
+            let time = self.timeTextField.text,
+            let allnum = allNumberTextField.text
+
             else {
                 print("Form is not valid")
                 return
@@ -231,7 +233,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             }
         let value = ["name": name, "level": level, "time": time,
                  "place": court, "number": Int(num), "fee": Int(fee),
-                 "author": authorName, "type": type, "allNumber": 8,
+                 "author": authorName, "type": type, "allNumber": Int(allnum),
                  "address": address, "userUid": uid, "latitude": lat,
                  "longitude": lng] as [String: Any]
         refChild.child(activityUid).updateChildValues(value)
@@ -269,7 +271,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         let address = nowPlace?.address
         let value = ["name": name, "level": level, "time": time,
                      "place": place, "number": Int(num), "fee": Int(fee),
-                     "author": authorName, "type": type, "allNumber": allnum,
+                     "author": authorName, "type": type, "allNumber": Int(allnum),
                      "address": address, "userUid": uid, "latitude": lat,
                      "longitude": lng] as [String: Any]
         let childRef = refChild.childByAutoId()

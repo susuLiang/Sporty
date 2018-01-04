@@ -23,6 +23,7 @@ class WhoJoinController: UIViewController {
                 if error == nil, let users = users {
                     self.joinUsers = users
                 }
+                self.loadingIndicator.stop()
             })
         }
     }
@@ -60,7 +61,11 @@ extension WhoJoinController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return joinUsers.count
+        if joinUsers.count == 0 {
+            return 0
+        } else {
+            return joinUsers.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,6 +82,7 @@ extension WhoJoinController: UICollectionViewDelegate, UICollectionViewDataSourc
                 }
             }
         }
+        loadingIndicator.stop()
         return cell
     }
 

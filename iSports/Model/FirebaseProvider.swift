@@ -161,6 +161,9 @@ class FirebaseProvider {
                         completion(usersInfo, nil)
                     })
                 }
+            } else {
+                usersInfo = [UserSetting]()
+                completion(usersInfo, nil)
             }
         }
     }

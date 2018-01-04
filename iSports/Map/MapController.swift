@@ -38,20 +38,32 @@ class MapController: UIViewController, GMSMapViewDelegate {
 
     var isShowed = false
 
+    var detailView: MapDetailController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setMapView()
         setLocationManager()
         setNavigationBar()
         getLocation()
+
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
+//        mapView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+//    @objc func close() {
+//        detailView?.removeFromParentViewController()
+//        detailView?.view.removeFromSuperview()
+//    }
+
     func setMapView() {
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
+//        mapView.addGestureRecognizer(tap)
         view.addSubview(mapView)
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
@@ -155,6 +167,7 @@ extension MapController {
         }
 
         let detailView = MapDetailController()
+        self.detailView = detailView
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
         detailView.view.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 400)

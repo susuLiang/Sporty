@@ -28,6 +28,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -63,7 +63,9 @@ class ListsController: UIViewController {
 
         tableView.dataSource = self
 
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
+        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         tableView.separatorStyle = .none
 
