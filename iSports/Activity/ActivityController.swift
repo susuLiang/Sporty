@@ -92,7 +92,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     var courtPicker = UIPickerView()
     var timePicker = UIPickerView()
     var levelPicker = UIPickerView()
-    
+
     var thisTime = ""
     var thisHour = ""
     var thisMinute = ""
@@ -414,7 +414,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
             levelTextField.text = levelArray[row]
 
         case timePicker:
-            
+
             if component == 0 {
                 thisTime = time[row]
             } else if component == 1 {

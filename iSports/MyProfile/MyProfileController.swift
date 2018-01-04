@@ -62,16 +62,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("SURE", action: self.sureSave)
         alertView.addButton("NO") { }
-        alertView.addButton("QUIT") {
-            self.userPhoto.layer.borderWidth = 0
-            self.isEdit = false
-            self.tableView.reloadData()
-            self.editButton.isHidden = false
-            self.saveButton.isHidden = true
-        }
         alertView.showWarning("Sure to save it ?", subTitle: "")
-        
     }
+    
     @IBAction func edit(_ sender: Any) {
         editButton.isHidden = true
         saveButton.isHidden = false
@@ -81,11 +74,25 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         isEdit = true
         tableView.reloadData()
         photoPickButton.addTarget(self, action: #selector(pickPhoto), for: .touchUpInside)
+
+        let cancel = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-quit"), style: .plain, target: self, action: #selector(self.cancelEdit))
+        navigationItem.leftBarButtonItem = cancel
     }
+
+    @objc func cancelEdit() {
+        userPhoto.layer.borderWidth = 0
+        isEdit = false
+        tableView.reloadData()
+        editButton.isHidden = false
+        saveButton.isHidden = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadingIndicator.start()
-        
+
         saveButton.isHidden = true
         pickerDelegate()
         getUserProfile()
@@ -166,6 +173,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func sureSave() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
+
         userPhoto.layer.borderWidth = 0
 
         guard let userUid = keyChain.get("uid") else { return }

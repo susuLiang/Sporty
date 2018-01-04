@@ -128,9 +128,9 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
 
                     ref.child("preference").child("time").setValue(value)
 
-                    let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
+                    let tabBarController = TabBarController(itemTypes: [ .home, .map,  .my, .setting])
 
-                    tabBarController.selectedIndex = 1
+                    tabBarController.selectedIndex = 0
 
                     self.present(tabBarController, animated: true, completion: nil)
 

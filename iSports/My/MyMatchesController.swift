@@ -49,8 +49,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
 
     func setupTableCell() {
-//        let nib = UINib(nibName: "ListsCell", bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.separatorStyle = .none
         let bundle = Bundle(for: TimelineTableViewCell.self)
         let nibUrl = bundle.url(forResource: "TimelineTableViewCell", withExtension: "bundle")
@@ -92,7 +90,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             })
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
             cell.descriptionLabel.text = timeMatchs[indexPath.row].name
-            cell.cancelButton.setImage(UIImage(named: "icon-quit"), for: .normal)
+            let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)
+            cell.cancelButton.setImage(quitIcon, for: .normal)
+            cell.cancelButton.tintColor = .red
             cell.cancelButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
             switch timeMatchs[indexPath.row].type {
             case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!

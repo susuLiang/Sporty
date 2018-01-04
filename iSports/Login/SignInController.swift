@@ -58,8 +58,8 @@ class SignInController: UIViewController {
             self.keyChain.set(email, forKey: "email")
 
             self.logInButton.startFinishAnimation(0.2, completion: {
-                let tabBarController = TabBarController(itemTypes: [ .map, .home, .my])
-                tabBarController.selectedIndex = 1
+                let tabBarController = TabBarController(itemTypes: [ .home, .map,  .my, .setting])
+                tabBarController.selectedIndex = 0
                 self.present(tabBarController, animated: true, completion: nil)
                 })
 
