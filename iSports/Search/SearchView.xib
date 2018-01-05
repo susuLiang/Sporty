@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -32,7 +32,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kz-uH-Gq4">
-                        <rect key="frame" x="16" y="403" width="120" height="33"/>
+                        <rect key="frame" x="16" y="432" width="120" height="33"/>
                         <color key="backgroundColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <state key="normal" title="確定">
@@ -43,7 +43,7 @@
                         </connections>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2cM-AZ-PVd">
-                        <rect key="frame" x="15" y="36" width="120" height="300"/>
+                        <rect key="frame" x="15" y="65" width="120" height="300"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vNv-ba-XWB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="45"/>
@@ -54,7 +54,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type(optional)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Type"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,7 +73,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Level(optional)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Level"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Level"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,7 +92,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="City(optional)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="City"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="City"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -111,7 +111,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Time(optional)"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Time"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Time"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,12 +130,21 @@
                             <constraint firstItem="rzW-5o-auh" firstAttribute="width" secondItem="2cM-AZ-PVd" secondAttribute="width" id="zRT-Ps-vQP"/>
                         </constraints>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選填" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T85-Vd-7OQ">
+                        <rect key="frame" x="50.5" y="26" width="49" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="1" green="0.59577731040000004" blue="0.54418881990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="T85-Vd-7OQ" firstAttribute="centerX" secondItem="Klu-9g-G2k" secondAttribute="centerX" id="6eI-FP-RrA"/>
+                    <constraint firstItem="T85-Vd-7OQ" firstAttribute="top" secondItem="pln-BK-Qs8" secondAttribute="top" constant="6" id="EN6-NN-uH8"/>
                     <constraint firstItem="2cM-AZ-PVd" firstAttribute="width" secondItem="Klu-9g-G2k" secondAttribute="width" multiplier="120/150" id="Ndu-xn-YQN"/>
                     <constraint firstItem="1kz-uH-Gq4" firstAttribute="top" secondItem="qQ0-Gh-DEZ" secondAttribute="bottom" constant="67" id="ei9-2r-0B6"/>
-                    <constraint firstItem="2cM-AZ-PVd" firstAttribute="top" secondItem="pln-BK-Qs8" secondAttribute="top" constant="16" id="kl0-Ln-V2a"/>
+                    <constraint firstItem="2cM-AZ-PVd" firstAttribute="top" secondItem="T85-Vd-7OQ" secondAttribute="bottom" constant="20" id="gB3-SM-58A"/>
+                    <constraint firstItem="2cM-AZ-PVd" firstAttribute="top" secondItem="pln-BK-Qs8" secondAttribute="top" constant="45" id="kl0-Ln-V2a"/>
                     <constraint firstItem="pln-BK-Qs8" firstAttribute="trailing" secondItem="1kz-uH-Gq4" secondAttribute="trailing" constant="14" id="rwv-7e-8fF"/>
                     <constraint firstItem="2cM-AZ-PVd" firstAttribute="centerX" secondItem="pln-BK-Qs8" secondAttribute="centerX" id="vA5-aa-1yC"/>
                     <constraint firstItem="1kz-uH-Gq4" firstAttribute="leading" secondItem="pln-BK-Qs8" secondAttribute="leading" constant="16" id="wrW-gu-BHA"/>

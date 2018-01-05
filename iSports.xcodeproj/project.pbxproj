@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
+		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
 		1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */; };
 		1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */; };
 		1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */; };
@@ -42,7 +43,6 @@
 		1F86279B1FF2606900D82614 /* CityAndTimeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */; };
 		1F8627A11FF32C1400D82614 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627A01FF32C1400D82614 /* LoginController.swift */; };
 		1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */; };
-		1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */; };
 		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
 		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
@@ -78,6 +78,8 @@
 /* Begin PBXFileReference section */
 		1F290B611FFF4C0500A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileCell.xib; sourceTree = "<group>"; };
 		1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileCell.strings"; sourceTree = "<group>"; };
+		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
+		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
 		1F6CE5C11FE11BFC006D6AAD /* iSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6CE5C91FE11BFC006D6AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,7 +116,6 @@
 		1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAndTimeSettingCell.swift; sourceTree = "<group>"; };
 		1F8627A01FF32C1400D82614 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
-		1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyProfileController.xib; sourceTree = "<group>"; };
 		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
 		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
 		1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
@@ -284,7 +285,7 @@
 				1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */,
 				1F74D7301FF50D6700B746E6 /* MyProfileCell.swift */,
 				1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */,
-				1FB108151FEBA7D000D2B4BF /* MyProfileController.xib */,
+				1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -481,7 +482,7 @@
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
-				1FB108171FEBA7D000D2B4BF /* MyProfileController.xib in Resources */,
+				1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */,
 				1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
 				1F74D7431FFB6BD200B746E6 /* WhoJoinCell.xib in Resources */,
@@ -688,6 +689,15 @@
 				1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */,
 			);
 			name = MyProfileCell.xib;
+			sourceTree = "<group>";
+		};
+		1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F290B661FFF5C8600A4DA5A /* Base */,
+				1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */,
+			);
+			name = MyProfileController.xib;
 			sourceTree = "<group>";
 		};
 		1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */ = {

@@ -171,6 +171,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     func setEditButton() {
         editButton.layer.cornerRadius = 20
         editButton.layer.shadowRadius = 5
+        saveButton.layer.cornerRadius = 20
+        saveButton.layer.shadowRadius = 5
+        
     }
 
     func sureSave() {
