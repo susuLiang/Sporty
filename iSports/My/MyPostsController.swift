@@ -74,7 +74,8 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
         let result = myPosts[indexPath.row]
         cell.nameLabel.text = result.name
-
+        cell.numLabel.text = "\(result.number) / \(result.allNumber)"
+        
         switch result.type {
         case "羽球": cell.typeImage.image = UIImage(named: "badminton")!
         case "棒球": cell.typeImage.image = UIImage(named: "baseball")!

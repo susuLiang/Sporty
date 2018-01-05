@@ -232,21 +232,18 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
                 isMyMatch = true
             }
             if result.number < result.allNumber && !isMyMatch {
-                cell.joinButton.isEnabled = true
-                cell.joinButton.setImage(joinIcon, for: .normal)
-                cell.joinButton.tintColor = myIndigo
+                cell.setJoinButtonStatus(isEnable: true, image: joinIcon!, tintColor: myIndigo, labelTextColor: myIndigo, statusText: "可參加")
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
-            } else {
-                cell.joinButton.isEnabled = false
-                cell.joinButton.setImage(joinIcon, for: .normal)
-                cell.joinButton.tintColor = UIColor.gray
-                cell.numLabel.textColor = UIColor.gray
-            }
 
+            } else if isMyMatch {
+                cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .gray, labelTextColor: .gray, statusText: "已參加")
+
+            } else if result.number == result.allNumber {
+                cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .gray, labelTextColor: .gray, statusText: "人數已滿")
+
+            }
         } else {
-            cell.joinButton.isEnabled = false
-            cell.joinButton.setImage(joinIcon, for: .normal)
-            cell.joinButton.tintColor = UIColor.clear
+            cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .clear, labelTextColor: myIndigo, statusText: "招募中")
         }
 
         switch result.type {

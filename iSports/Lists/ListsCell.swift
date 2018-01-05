@@ -10,6 +10,7 @@ import UIKit
 
 class ListsCell: UITableViewCell {
 
+    @IBOutlet weak var buttonStatusLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
@@ -67,4 +68,14 @@ class ListsCell: UITableViewCell {
         placeLabel.text = activity.place.placeName
         numLabel.text = "\(activity.number) / \(activity.allNumber)"
     }
+    
+    func setJoinButtonStatus(isEnable: Bool, image: UIImage, tintColor: UIColor, labelTextColor: UIColor, statusText: String) {
+        joinButton.isEnabled = isEnable
+        joinButton.setImage(image, for: .normal)
+        joinButton.tintColor = tintColor
+        numLabel.textColor = labelTextColor
+        buttonStatusLabel.text = statusText
+        buttonStatusLabel.textColor = labelTextColor
+    }
+
 }
