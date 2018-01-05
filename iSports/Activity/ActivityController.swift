@@ -243,7 +243,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                  "longitude": lng] as [String: Any]
         refChild.child(activityUid).updateChildValues(value)
 
-        self.navigationController?.popToRootViewController(animated: true)
+        SCLAlertView().showSuccess("Saved !", subTitle: "")
     }
 
     @objc func save() {
@@ -414,13 +414,18 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
             levelTextField.text = levelArray[row]
 
         case timePicker:
+            switch component {
+            case 0: thisTime = time[row]
+            case 1: thisHour = String(hour[row])
+            case 2:
+                if minute[row] == 0 {
+                    thisMinute = "00"
+                } else {
+                    thisMinute = String(minute[row])
+                }
 
-            if component == 0 {
-                thisTime = time[row]
-            } else if component == 1 {
-                thisHour = String(hour[row])
-            } else {
-                thisMinute = String(minute[row])
+            default:
+                break
             }
             timeTextField.text = "\(thisTime) \(thisHour) : \(thisMinute)"
         default: return

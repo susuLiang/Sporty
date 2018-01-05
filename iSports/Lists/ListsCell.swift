@@ -60,7 +60,7 @@ class ListsCell: UITableViewCell {
         recommendImage?.image = nil
         numLabel.textColor = myIndigo
     }
-    
+
     func setCell(_ activity: Activity) {
         titleLabel.text = activity.name
         timeLabel.text = activity.time

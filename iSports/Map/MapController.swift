@@ -124,7 +124,7 @@ extension MapController {
     }
 
     func setMarker(activities: [Activity]) {
-  
+
         for court in activities {
 
             var iconName: String = ""
@@ -146,23 +146,30 @@ extension MapController {
             case "排球": iconName = "volleyballMarker"
             case "網球": iconName = "tennisMarker"
             case "足球": iconName = "soccerMarker"
-            default: ""
-
+            default: break
             }
-            var iconImage = UIImageView()
-            iconImage.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            
+            let iconImage = UIImageView()
+            iconImage.frame = CGRect(x: 0, y: 0, width: 38, height: 38)
             iconImage.image = UIImage(named: iconName)
+            iconImage.contentMode = .center
             iconImage.layer.shadowColor = UIColor.black.cgColor
             iconImage.layer.shadowRadius = 0.5
             iconImage.layer.shadowOffset = CGSize(width: 0, height: 0)
             iconImage.layer.shadowOpacity = 1
 
-            var backView = UIView()
+            let backView = UIView()
             backView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             backView.backgroundColor = .clear
             backView.addSubview(iconImage)
+
+            backView.layer.cornerRadius = 10
+            backView.layer.shadowOpacity = 0.5
+            backView.layer.shadowRadius = 0.5
+            backView.clipsToBounds = true
+
             marker.iconView = backView
-            
+
 //            marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
 
             marker.map = mapView
@@ -173,21 +180,17 @@ extension MapController {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         var selectedActivity: Activity?
 
-        for activity in results {
-            if activity.id == marker.title {
-                selectedActivity = activity
-                break
-            }
+        for activity in results where activity.id == marker.title {
+            selectedActivity = activity
+            break
         }
 
         let detailView = MapDetailController()
         self.detailView = detailView
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
-//        detailView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
         self.addChildViewController(detailView)
-
         self.view.addSubview(detailView.view)
 
         return true
@@ -209,9 +212,7 @@ extension MapController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-
         locationManager.stopUpdatingLocation()
-
         print("Error: \(error)")
     }
 }

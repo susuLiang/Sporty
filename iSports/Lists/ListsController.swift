@@ -108,7 +108,7 @@ class ListsController: UIViewController {
 
     @objc func join(sender: UIButton) {
         sender.tintColor = UIColor.gray
-        if let cell = sender.superview?.superview as? ListsCell,
+        if let cell = sender.superview?.superview?.superview as? ListsCell,
             let indexPath = tableView.indexPath(for: cell) {
             cell.numLabel.textColor = UIColor.gray
             let joinId = results[indexPath.row].id

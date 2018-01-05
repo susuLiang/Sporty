@@ -14,25 +14,20 @@ import SCLAlertView
 import TimelineTableViewCell
 
 class MyMatchesController: UITableViewController, IndicatorInfoProvider {
-
-    var itemInfo = IndicatorInfo(title: "MyMatches")
-
-    let userUid = KeychainSwift().get("uid")
-
-    var myMatches = [Activity]()
-
-    var keyUid = [String]()
-
+    
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-
         self.itemInfo = itemInfo
-
         super.init(style: style)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    var itemInfo = IndicatorInfo(title: "MyMatches")
+    let userUid = KeychainSwift().get("uid")
+    var myMatches = [Activity]()
+    var keyUid = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +37,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         view.backgroundColor = .white
 
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
+//            posts?.sorted() { $0.time > $1.time }
             self.myMatches = posts!
+            self.myMatches.sorted() { $0.time > $1.time }
             self.keyUid = keyUid!
             self.tableView.reloadData()
         })
@@ -70,8 +67,11 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case section:
-            var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
-                myMatch.time == time[section]
+            let timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+                let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+                let matchWeek = myMatch.time[..<matchIndex]
+                
+                return matchWeek == time[section]
             })
             return timeMatchs.count
         default:
@@ -86,7 +86,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         case indexPath.section:
             cell.titleLabel.text = time[indexPath.section]
             var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
-                myMatch.time == time[indexPath.section]
+                let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+                let matchWeek = myMatch.time[..<matchIndex]
+                return matchWeek == time[indexPath.section]
             })
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
             cell.descriptionLabel.text = timeMatchs[indexPath.row].name
@@ -119,7 +121,15 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             print("ActivityController invalid")
             return
         }
-        activityView.selectedActivity = myMatches[indexPath.row]
+        
+        let thatWeek = self.myMatches.filter({ (myMatch) -> Bool in
+            let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+            let matchWeek = myMatch.time[..<matchIndex]
+            return matchWeek == time[indexPath.section]
+        })
+        
+        
+        activityView.selectedActivity = thatWeek[indexPath.row]
         activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
@@ -147,32 +157,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         })
         alertView.addButton("NO") {}
         alertView.showWarning("Sure to quit ?", subTitle: "")
-
-//        guard let cell = sender.superview?.superview as? ListsCell,
-//
-//            let indexPath = tableView.indexPath(for: cell) else {
-//                print("It's not a cell.")
-//                return
-//        }
-//
-//        let alertController = UIAlertController(title: "Quit now", message: "Be sure to quit?", preferredStyle: .alert)
-//
-//        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-//
-//        alertController.addAction(UIAlertAction(title: "Sure", style: .default, handler: { (action) in
-//
-//            let uid = self.keyUid[indexPath.row]
-//
-//            let ref = Database.database().reference()
-//
-//            ref.child("user_joinId").child(uid).removeValue()
-//
-//
-//
-//        }))
-//
-//        self.present(alertController, animated: true, completion: nil)
-
     }
 
 }

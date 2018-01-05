@@ -64,7 +64,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         alertView.addButton("NO") { }
         alertView.showWarning("Sure to save it ?", subTitle: "")
     }
-    
+
     @IBAction func edit(_ sender: Any) {
         editButton.isHidden = true
         saveButton.isHidden = false
@@ -85,6 +85,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         tableView.reloadData()
         editButton.isHidden = false
         saveButton.isHidden = true
+        photoPickButton.isEnabled = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
     }
@@ -176,7 +177,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
         userPhoto.layer.borderWidth = 0
-
+        photoPickButton.isEnabled = false
+        
         guard let userUid = keyChain.get("uid") else { return }
 
         let userRef = Database.database().reference().child("users").child(userUid)
@@ -213,7 +215,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         }
         editButton.isHidden = false
         saveButton.isHidden = true
-        self.photoPickButton.isEnabled = false
         self.isEdit = false
         self.tableView.reloadData()
     }

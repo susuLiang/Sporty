@@ -27,7 +27,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             })
         }
     }
-    
+
     lazy var backButton: UIButton = {
        let button = UIButton(type: .system)
         button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -40,10 +40,10 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
 
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        
+
         view.addSubview(backButton)
 
-        tableView.frame = CGRect(x: 0, y: 400, width: UIScreen.main.bounds.width, height: 300)
+        tableView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 300, width: UIScreen.main.bounds.width, height: 300)
 
         tableView.delegate = self
 
@@ -55,7 +55,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
 
         view.addSubview(tableView)
 
-    } 
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
