@@ -36,12 +36,11 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         tableView.backgroundColor = myBlack
         switch controllerType {
         case .city:
-            titleLabel.text = "3 / 4 City"
-            titleSubLabel.text = "Where you live in?"
-            break
+            titleLabel.text = NSLocalizedString("3 / 4 City", comment: "")
+            titleSubLabel.text = NSLocalizedString("Where you live in?", comment: "")
         case .time:
-            titleLabel.text = "4 / 4 Time"
-            titleSubLabel.text = "When are you available?"
+            titleLabel.text = NSLocalizedString("4 / 4 Time", comment: "")
+            titleSubLabel.text = NSLocalizedString("When are you available?", comment: "")
         }
 
     }

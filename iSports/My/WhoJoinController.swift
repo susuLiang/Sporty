@@ -36,7 +36,7 @@ class WhoJoinController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Your Partners"
+        navigationItem.title = NSLocalizedString("Your Partners", comment: "")
         view.backgroundColor = .white
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)

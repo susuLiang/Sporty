@@ -198,7 +198,7 @@
                 <outlet property="citySettingTextField" destination="dGf-Gp-Pfa" id="QaQ-5r-tQE"/>
                 <outlet property="lableImage" destination="XYD-9b-4lh" id="HaB-dH-SCc"/>
                 <outlet property="levelSettingTextField" destination="uca-g8-xbV" id="e19-MB-2Ih"/>
-                <outlet property="nameSettimgTextField" destination="Mjd-NE-8yi" id="PSo-DD-okK"/>
+                <outlet property="nameSettimgTextField" destination="Mjd-NE-8yi" id="vWj-Na-Nmv"/>
                 <outlet property="preferenceView" destination="AD4-bh-Bkt" id="lNm-dc-hUP"/>
                 <outlet property="profileView" destination="VNo-81-13m" id="Vnj-Jg-R0f"/>
                 <outlet property="timeSettingTextField" destination="CDF-P3-lxg" id="iLM-dS-VzT"/>

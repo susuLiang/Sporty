@@ -26,15 +26,12 @@ extension TabBarItemType {
         switch self {
 
         case .home:
-
             return NSLocalizedString("Home", comment: "")
 
         case .map:
-
             return NSLocalizedString("Map", comment: "")
 
         case .my:
-
             return NSLocalizedString("My", comment: "")
 
         case .setting:

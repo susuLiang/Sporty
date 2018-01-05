@@ -15,14 +15,14 @@ class LoginController: UIViewController {
         if !goSignUp {
             signInPage.isHidden = false
             signUpPage.isHidden = true
-            logInLabel.text = "Sign In"
-            signButton.setTitle("Sign up now", for: .normal)
+            logInLabel.text = NSLocalizedString("Sign In", comment: "")
+            signButton.setTitle(NSLocalizedString("Sign up now", comment: ""), for: .normal)
             goSignUp = true
         } else {
             signInPage.isHidden = true
             signUpPage.isHidden = false
-            logInLabel.text = "Sign Up"
-            signButton.setTitle("Back to sign in", for: .normal)
+            logInLabel.text = NSLocalizedString("Sign Up", comment: "")
+            signButton.setTitle(NSLocalizedString("Back to sign in", comment: ""), for: .normal)
             goSignUp = false
         }
     }
@@ -33,7 +33,7 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        logInLabel.text = "Sign In"
+        logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true
 

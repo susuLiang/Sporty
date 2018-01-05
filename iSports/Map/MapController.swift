@@ -99,7 +99,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
 
     func setNavigationBar() {
-        navigationItem.title = "Map"
+        navigationItem.title = NSLocalizedString("Map", comment: "")
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.tintColor = .white
@@ -148,7 +148,7 @@ extension MapController {
             case "足球": iconName = "soccerMarker"
             default: break
             }
-            
+
             let iconImage = UIImageView()
             iconImage.frame = CGRect(x: 0, y: 0, width: 38, height: 38)
             iconImage.image = UIImage(named: iconName)

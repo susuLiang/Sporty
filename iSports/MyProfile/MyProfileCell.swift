@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class MyProfileCell: UITableViewCell {
 
@@ -19,7 +20,7 @@ class MyProfileCell: UITableViewCell {
     @IBOutlet weak var lableImage: UIImageView!
     @IBOutlet weak var preferenceView: UIView!
     @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var nameSettimgTextField: UITextField!
+    @IBOutlet weak var nameSettimgTextField: SkyFloatingLabelTextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

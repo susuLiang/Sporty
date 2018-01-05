@@ -75,7 +75,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         let result = myPosts[indexPath.row]
         cell.nameLabel.text = result.name
         cell.numLabel.text = "\(result.number) / \(result.allNumber)"
-        
+
         switch result.type {
         case "羽球": cell.typeImage.image = UIImage(named: "badminton")!
         case "棒球": cell.typeImage.image = UIImage(named: "baseball")!
@@ -150,7 +150,7 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
 
-        alertView.addButton("SURE", action: {
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
             let uid = self.keyUid[indexPath.row]
             let postId = self.myPosts[indexPath.row].id
             let ref = Database.database().reference()
@@ -159,9 +159,9 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
             ref.child("user_postId").child(uid).removeValue()
         })
 
-        alertView.addButton("NO") {
+        alertView.addButton(NSLocalizedString("NO", comment: "")) {
         }
 
-        alertView.showWarning("Sure to delete it ?", subTitle: "")
+        alertView.showWarning(NSLocalizedString("Sure to delete it ?", comment: ""), subTitle: "")
     }
 }

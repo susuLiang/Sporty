@@ -12,7 +12,7 @@ import KeychainSwift
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView = UITableView()
-    
+
 //    var keyChain = KeychainSwift()
 
     var selectedPlaceActivities = [Activity]()
@@ -20,7 +20,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     var mainViewController: MapController?
 
     var headerView = UITableViewHeaderFooterView()
-    
+
     var selectedPlace: Place? {
 
         didSet {
@@ -78,7 +78,7 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             fatalError("Invalid ListsCell")
         }
         let result = selectedPlaceActivities[indexPath.row]
-        
+
         cell.setCell(result)
         cell.joinButton.isHidden = true
         cell.buttonStatusLabel.isHidden = true

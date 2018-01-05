@@ -20,9 +20,8 @@ class ListsCell: UITableViewCell {
     @IBOutlet weak var levelImage: UIImageView!
     @IBOutlet weak var recommendImage: UIImageView!
     @IBOutlet weak var backView: UIView!
-    
-    var joinIcon = UIImage(named: "icon-join")?.withRenderingMode(.alwaysTemplate)
 
+    var joinIcon = UIImage(named: "icon-join")?.withRenderingMode(.alwaysTemplate)
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,7 +69,7 @@ class ListsCell: UITableViewCell {
         timeLabel.text = activity.time
         placeLabel.text = activity.place.placeName
         numLabel.text = "\(activity.number) / \(activity.allNumber)"
-        
+
         var name: String = ""
         switch activity.type {
         case "羽球": name = "badminton"
@@ -82,7 +81,7 @@ class ListsCell: UITableViewCell {
         default:  break
         }
         imagePlaced.image = UIImage(named: name)
-        
+
         var thisLevel: String = ""
         switch activity.level {
         case "A": thisLevel = "labelA"
@@ -93,7 +92,7 @@ class ListsCell: UITableViewCell {
         }
         levelImage.image = UIImage(named: thisLevel)
     }
-    
+
     func setJoinButtonStatus(isEnable: Bool, tintColor: UIColor, labelTextColor: UIColor, statusText: String) {
         joinButton.isEnabled = isEnable
         joinButton.setImage(joinIcon, for: .normal)

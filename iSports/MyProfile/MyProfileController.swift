@@ -60,9 +60,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     @IBAction func save(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: self.sureSave)
-        alertView.addButton("NO") { }
-        alertView.showWarning("Sure to save it ?", subTitle: "")
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: self.sureSave)
+        alertView.addButton(NSLocalizedString("NO", comment: "")) { }
+        alertView.showWarning(NSLocalizedString("Sure to save it ?", comment: ""), subTitle: "")
     }
 
     @IBAction func edit(_ sender: Any) {
@@ -152,7 +152,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     @objc func logout() {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: {
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
             self.keyChain.clear()
             do {
                 try Auth.auth().signOut()
@@ -164,8 +164,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
             self.present(loginController, animated: true, completion: nil)
 
         })
-        alertView.addButton("NO") {}
-        alertView.showWarning("Sure to log out ?", subTitle: "")
+        alertView.addButton(NSLocalizedString("NO", comment: "")) {}
+        alertView.showWarning(NSLocalizedString("Sure to log out ?", comment: ""), subTitle: "")
     }
 
     func setEditButton() {
@@ -178,7 +178,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
         userPhoto.layer.borderWidth = 0
         photoPickButton.isEnabled = false
-        
+
         guard let userUid = keyChain.get("uid") else { return }
 
         let userRef = Database.database().reference().child("users").child(userUid)
@@ -222,7 +222,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     func setNavigationBar() {
         let logout = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-logout"), style: .plain, target: self, action: #selector(self.logout))
         navigationItem.rightBarButtonItem = logout
-        navigationItem.title = "Profile"
+        navigationItem.title = NSLocalizedString("Profile", comment: "")
     }
 
 }

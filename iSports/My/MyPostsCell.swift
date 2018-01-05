@@ -17,7 +17,7 @@ class MyPostsCell: UITableViewCell {
     @IBOutlet weak var seeWhoButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var numLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 30

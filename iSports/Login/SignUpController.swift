@@ -29,7 +29,7 @@ class SignUpController: UIViewController {
         }
 
         guard let name = nameText.text, !name.isEmpty else {
-            SCLAlertView().showWarning("Error", subTitle: "Must enter name")
+            SCLAlertView().showWarning("Error", subTitle: NSLocalizedString("Must enter name", comment: ""))
             return
         }
 

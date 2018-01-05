@@ -106,6 +106,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonStatusLabel.isHidden = true
         getPosts()
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
@@ -197,7 +198,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
+
     func setJoinStatus(isEnabled: Bool, tintColor: UIColor, statusText: String) {
         let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
         joinButton.isEnabled = isEnabled
@@ -205,7 +206,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         joinButton.tintColor = tintColor
         buttonStatusLabel.text = statusText
         buttonStatusLabel.textColor = tintColor
-        
+
     }
 
     @objc func showSaveAlert() {

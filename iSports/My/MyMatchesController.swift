@@ -14,12 +14,12 @@ import SCLAlertView
 import TimelineTableViewCell
 
 class MyMatchesController: UITableViewController, IndicatorInfoProvider {
-    
+
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
         super.init(style: style)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -70,7 +70,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
                 let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                 let matchWeek = myMatch.time[..<matchIndex]
-                
+
                 return matchWeek == time[section]
             })
             return timeMatchs.count
@@ -121,15 +121,15 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             print("ActivityController invalid")
             return
         }
-        
+
         let thatWeek = self.myMatches.filter({ (myMatch) -> Bool in
             let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
             let matchWeek = myMatch.time[..<matchIndex]
             return matchWeek == time[indexPath.section]
         })
-        
-        
+
         activityView.selectedActivity = thatWeek[indexPath.row]
+        activityView.buttonStatusLabel.isHidden = true
         activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
@@ -147,7 +147,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: {
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
             let uid = self.keyUid[indexPath.row]
             let ref = Database.database().reference()
             let activityUid = self.myMatches[indexPath.row].id
@@ -155,8 +155,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             ref.child("user_joinId").child(uid).removeValue()
             ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
         })
-        alertView.addButton("NO") {}
-        alertView.showWarning("Sure to quit ?", subTitle: "")
+        alertView.addButton(NSLocalizedString("NO", comment: "")) {}
+        alertView.showWarning(NSLocalizedString("Sure to quit ?", comment: ""), subTitle: "")
     }
 
 }
