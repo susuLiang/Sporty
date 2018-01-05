@@ -1,4 +1,7 @@
 /* (No Comment) */
+"NSCameraUsageDescription" = "使用相機功能";
+
+/* (No Comment) */
 "NSLocationAlwaysUsageDescription" = "取得目前所在地";
 
 /* (No Comment) */

@@ -30,7 +30,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
     var userSetting: UserSetting?
 
-    var settingType = ["Profile", "Preference"]
+    var settingType = [NSLocalizedString("Profile", comment: ""), NSLocalizedString("Preference", comment: "")]
 
     var settingIconName = ["profile-user", "profile-setting"]
 

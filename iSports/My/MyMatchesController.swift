@@ -24,7 +24,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var itemInfo = IndicatorInfo(title: "MyMatches")
+    var itemInfo = IndicatorInfo(title: "Join")
     let userUid = KeychainSwift().get("uid")
     var myMatches = [Activity]()
     var keyUid = [String]()

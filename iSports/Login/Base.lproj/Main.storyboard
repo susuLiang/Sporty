@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rcT-tI-T02">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rcT-tI-T02">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -137,16 +137,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 / 4 Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWM-E7-XNo">
-                                <rect key="frame" x="16" y="26" width="146" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 4 Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWM-E7-XNo">
+                                <rect key="frame" x="16" y="26" width="199" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XWM-E7-XNo" secondAttribute="height" multiplier="199:41" id="4wa-Fw-TkD"/>
+                                    <constraint firstAttribute="width" constant="199" id="f9K-u3-nQB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select your favorite type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysr-Py-aJ1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your favorite type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysr-Py-aJ1">
                                 <rect key="frame" x="16" y="69" width="310" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ysr-Py-aJ1" secondAttribute="height" multiplier="155:13" id="qPy-Qt-ogJ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -224,13 +229,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="OeJ-B3-mhg" firstAttribute="top" secondItem="Ysr-Py-aJ1" secondAttribute="bottom" constant="10" id="7bz-Cu-GXD"/>
                             <constraint firstItem="OeJ-B3-mhg" firstAttribute="trailing" secondItem="LGG-lm-sJ8" secondAttribute="trailing" id="BU3-6J-eX1"/>
                             <constraint firstItem="LGG-lm-sJ8" firstAttribute="bottom" secondItem="2nc-1U-Ijm" secondAttribute="bottom" constant="13" id="E5H-QB-fIp"/>
                             <constraint firstItem="OeJ-B3-mhg" firstAttribute="height" secondItem="bop-P1-vUg" secondAttribute="height" multiplier="511/667" id="JEj-ql-HSb"/>
+                            <constraint firstItem="XWM-E7-XNo" firstAttribute="leading" secondItem="LGG-lm-sJ8" secondAttribute="leading" constant="16" id="MNz-pK-Rqa"/>
                             <constraint firstItem="OeJ-B3-mhg" firstAttribute="leading" secondItem="LGG-lm-sJ8" secondAttribute="leading" id="Nud-a6-27k"/>
                             <constraint firstItem="2nc-1U-Ijm" firstAttribute="width" secondItem="bop-P1-vUg" secondAttribute="width" multiplier="100/375" id="PwT-LE-qnV"/>
+                            <constraint firstItem="Ysr-Py-aJ1" firstAttribute="top" secondItem="XWM-E7-XNo" secondAttribute="bottom" constant="2" id="UuM-YY-QAL"/>
                             <constraint firstItem="LGG-lm-sJ8" firstAttribute="bottom" secondItem="OeJ-B3-mhg" secondAttribute="bottom" constant="51" id="YCb-Dq-IqE"/>
                             <constraint firstItem="2nc-1U-Ijm" firstAttribute="centerX" secondItem="bop-P1-vUg" secondAttribute="centerX" id="egc-sw-fgy"/>
+                            <constraint firstItem="XWM-E7-XNo" firstAttribute="top" secondItem="LGG-lm-sJ8" secondAttribute="top" constant="6" id="reT-cG-DNJ"/>
+                            <constraint firstItem="XWM-E7-XNo" firstAttribute="top" secondItem="LGG-lm-sJ8" secondAttribute="top" constant="6" id="wJS-CP-MJH"/>
+                            <constraint firstItem="Ysr-Py-aJ1" firstAttribute="leading" secondItem="LGG-lm-sJ8" secondAttribute="leading" constant="16" id="y9w-ab-NtP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LGG-lm-sJ8"/>
                     </view>
@@ -241,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vM-DO-oHa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="180"/>
+            <point key="canvasLocation" x="104.8" y="179.46026986506749"/>
         </scene>
         <!--Level Setting Controller-->
         <scene sceneID="z5b-0d-WKW">
@@ -251,16 +262,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 / 4 Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-gN-7e3">
-                                <rect key="frame" x="16" y="26" width="146" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 / 4 Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-gN-7e3">
+                                <rect key="frame" x="16" y="26" width="207" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IOZ-gN-7e3" secondAttribute="height" multiplier="207:41" id="Li5-LA-AK1"/>
+                                    <constraint firstAttribute="width" constant="207" id="pGI-I9-BOB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please choose your level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
                                 <rect key="frame" x="16" y="69" width="310" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UTe-A7-N7X" secondAttribute="height" multiplier="155:13" id="2Nu-Wa-bi7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -327,9 +343,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cLJ-vw-4g8" firstAttribute="centerX" secondItem="eYt-cT-hea" secondAttribute="centerX" id="3Cw-0o-bMb"/>
+                            <constraint firstItem="IOZ-gN-7e3" firstAttribute="leading" secondItem="hX2-3A-Cto" secondAttribute="leading" constant="16" id="Ah3-SZ-zWP"/>
+                            <constraint firstItem="UTe-A7-N7X" firstAttribute="leading" secondItem="hX2-3A-Cto" secondAttribute="leading" constant="16" id="Buh-R0-UoV"/>
                             <constraint firstItem="SNX-nZ-dLj" firstAttribute="centerX" secondItem="eYt-cT-hea" secondAttribute="centerX" id="GSi-of-Owk"/>
                             <constraint firstItem="SNX-nZ-dLj" firstAttribute="centerY" secondItem="eYt-cT-hea" secondAttribute="centerY" id="LWP-Z4-TWp"/>
+                            <constraint firstItem="UTe-A7-N7X" firstAttribute="top" secondItem="IOZ-gN-7e3" secondAttribute="bottom" constant="2" id="MYv-id-hsB"/>
                             <constraint firstItem="cLJ-vw-4g8" firstAttribute="width" secondItem="cLJ-vw-4g8" secondAttribute="height" multiplier="10:3" id="PZH-nT-YKU"/>
+                            <constraint firstItem="SNX-nZ-dLj" firstAttribute="top" secondItem="UTe-A7-N7X" secondAttribute="bottom" constant="38" id="bbi-4Q-4O2"/>
+                            <constraint firstItem="IOZ-gN-7e3" firstAttribute="top" secondItem="hX2-3A-Cto" secondAttribute="top" constant="6" id="rHx-wV-om9"/>
                             <constraint firstItem="hX2-3A-Cto" firstAttribute="bottom" secondItem="cLJ-vw-4g8" secondAttribute="bottom" constant="20" id="yI8-Zg-CqR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hX2-3A-Cto"/>
@@ -344,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gez-gO-O2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="184"/>
+            <point key="canvasLocation" x="773.60000000000002" y="183.95802098950526"/>
         </scene>
         <!--City And Time Setting Controller-->
         <scene sceneID="bqy-im-BHG">
@@ -354,16 +375,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9D-3a-JrS">
-                                <rect key="frame" x="16" y="26" width="146" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9D-3a-JrS">
+                                <rect key="frame" x="16" y="26" width="210" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="Lqm-yM-qOc"/>
+                                    <constraint firstAttribute="width" secondItem="H9D-3a-JrS" secondAttribute="height" multiplier="210:41" id="OYD-1T-Mch"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please choose your city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9By-4q-XU2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9By-4q-XU2">
                                 <rect key="frame" x="16" y="69" width="310" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9By-4q-XU2" secondAttribute="height" multiplier="155:13" id="jDJ-9i-vd3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -402,13 +428,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="9By-4q-XU2" firstAttribute="top" secondItem="H9D-3a-JrS" secondAttribute="bottom" constant="2" id="2vB-HR-iSr"/>
                             <constraint firstItem="RWU-SY-emh" firstAttribute="trailing" secondItem="Wj1-Wd-NYB" secondAttribute="trailing" id="IUD-pw-Gq9"/>
                             <constraint firstItem="RWU-SY-emh" firstAttribute="leading" secondItem="Wj1-Wd-NYB" secondAttribute="leading" id="PVT-Vj-tPp"/>
                             <constraint firstItem="Wj1-Wd-NYB" firstAttribute="bottom" secondItem="ofX-hF-yjb" secondAttribute="bottom" constant="13" id="RfO-cG-VAd"/>
                             <constraint firstItem="RWU-SY-emh" firstAttribute="height" secondItem="gUj-ju-nCH" secondAttribute="height" multiplier="511/667" id="TYs-Ts-b54"/>
+                            <constraint firstItem="RWU-SY-emh" firstAttribute="top" secondItem="9By-4q-XU2" secondAttribute="bottom" constant="10" id="VD1-Xf-6YP"/>
                             <constraint firstItem="Wj1-Wd-NYB" firstAttribute="bottom" secondItem="RWU-SY-emh" secondAttribute="bottom" constant="51" id="hjR-pk-bcB"/>
+                            <constraint firstItem="H9D-3a-JrS" firstAttribute="top" secondItem="Wj1-Wd-NYB" secondAttribute="top" constant="6" id="htJ-1d-tXZ"/>
+                            <constraint firstItem="H9D-3a-JrS" firstAttribute="leading" secondItem="Wj1-Wd-NYB" secondAttribute="leading" constant="16" id="o7R-eg-Eez"/>
                             <constraint firstItem="ofX-hF-yjb" firstAttribute="centerX" secondItem="gUj-ju-nCH" secondAttribute="centerX" id="qrl-u9-HAe"/>
                             <constraint firstItem="ofX-hF-yjb" firstAttribute="width" secondItem="ofX-hF-yjb" secondAttribute="height" multiplier="10:3" id="uSp-vd-bqr"/>
+                            <constraint firstItem="9By-4q-XU2" firstAttribute="leading" secondItem="Wj1-Wd-NYB" secondAttribute="leading" constant="16" id="xbd-b5-WhL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wj1-Wd-NYB"/>
                     </view>
@@ -421,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyp-Uq-wcp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="184"/>
+            <point key="canvasLocation" x="1445.5999999999999" y="183.95802098950526"/>
         </scene>
         <!--Sign In Controller-->
         <scene sceneID="5Oj-32-Zdw">

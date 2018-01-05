@@ -1,4 +1,13 @@
 /* No comment provided by engineer. */
+"3 / 4 City" = "3 / 4 城市";
+
+/* No comment provided by engineer. */
+"4 / 4 Time" = "4 / 4 時間";
+
+/* No comment provided by engineer. */
+"Back to sign in" = "回到登入";
+
+/* No comment provided by engineer. */
 "Email already in use" = "Email已被使用";
 
 /* No comment provided by engineer. */
@@ -8,10 +17,16 @@
 "Invalid email" = "Email不存在";
 
 /* No comment provided by engineer. */
+"Join" = "已參加";
+
+/* No comment provided by engineer. */
 "Map" = "地圖";
 
 /* No comment provided by engineer. */
 "Must enter email" = "Email須輸入";
+
+/* No comment provided by engineer. */
+"Must enter name" = "名字須輸入";
 
 /* No comment provided by engineer. */
 "My" = "我的活動";
@@ -20,16 +35,55 @@
 "My Activities" = "我的活動";
 
 /* No comment provided by engineer. */
-"OK" = "OK";
+"MyPosts" = "已發起";
+
+/* No comment provided by engineer. */
+"NO" = "不";
+
+/* No comment provided by engineer. */
+"OK" = "好的";
 
 /* No comment provided by engineer. */
 "Password should be greater than six digits" = "密碼須大於六位數";
 
 /* No comment provided by engineer. */
+"Preference" = "喜好設定";
+
+/* No comment provided by engineer. */
 "Profile" = "個人資料";
 
 /* No comment provided by engineer. */
+"SURE" = "確定";
+
+/* No comment provided by engineer. */
 "Setting" = "個人設定";
+
+/* No comment provided by engineer. */
+"Sign In" = "登入";
+
+/* No comment provided by engineer. */
+"Sign Up" = "註冊";
+
+/* No comment provided by engineer. */
+"Sign up now" = "註冊帳號";
+
+/* No comment provided by engineer. */
+"Sure to delete it ?" = "確定刪除？";
+
+/* No comment provided by engineer. */
+"Sure to log out ?" = "確定登出？";
+
+/* No comment provided by engineer. */
+"Sure to quit ?" = "確定取消？";
+
+/* No comment provided by engineer. */
+"Sure to save it ?" = "確定儲存？";
+
+/* No comment provided by engineer. */
+"When are you available?" = "哪個時間方便運動？";
+
+/* No comment provided by engineer. */
+"Where you live in?" = "居住於哪個城市？";
 
 /* No comment provided by engineer. */
 "Wrong email" = "Email有誤";
