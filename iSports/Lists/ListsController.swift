@@ -153,7 +153,6 @@ class ListsController: UIViewController {
             print("ActivityController invalid")
             return
         }
-        activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
 

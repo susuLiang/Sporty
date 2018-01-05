@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0FB-vh-MmT">
-                        <rect key="frame" x="0.0" y="20" width="375" height="170"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="202"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="0FB-vh-MmT" secondAttribute="height" multiplier="75:34" id="HGe-RG-tLU"/>
+                            <constraint firstAttribute="width" secondItem="0FB-vh-MmT" secondAttribute="height" multiplier="375:202" id="s3r-Zi-nbj"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-d0-XdG" customClass="LGButton" customModule="LGButton">
@@ -78,7 +78,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Def-L6-se5">
-                        <rect key="frame" x="0.0" y="190" width="375" height="392"/>
+                        <rect key="frame" x="0.0" y="222" width="375" height="360"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
                 </subviews>

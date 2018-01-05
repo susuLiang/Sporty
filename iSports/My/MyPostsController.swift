@@ -135,7 +135,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
             return
         }
         activityView.myPost = myPosts[indexPath.row]
-        activityView.joinButton.isHidden = true
         self.navigationController?.pushViewController(activityView, animated: true)
     }
 

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -365,9 +364,10 @@
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="XXB-QD-oDU"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="centerX" secondItem="iM1-KZ-LBI" secondAttribute="centerX" id="fJV-Zy-Ukb"/>
                                     <constraint firstItem="6vJ-e1-LYV" firstAttribute="centerX" secondItem="iM1-KZ-LBI" secondAttribute="centerX" id="gUt-GD-402"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="kGK-C5-W1y"/>
                                     <constraint firstAttribute="height" constant="800" id="l1V-NC-86M"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="width" secondItem="YIZ-qt-DvM" secondAttribute="width" id="lPx-Z7-M4M"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="top" secondItem="iM1-KZ-LBI" secondAttribute="top" id="qHi-x6-HWc"/>
+                                    <constraint firstAttribute="trailing" secondItem="6vJ-e1-LYV" secondAttribute="trailing" constant="20" id="wIR-0O-03Y"/>
                                     <constraint firstAttribute="width" constant="343" id="zRg-Y2-LAe"/>
                                 </constraints>
                             </view>
@@ -380,35 +380,14 @@
                             <constraint firstAttribute="bottom" secondItem="iM1-KZ-LBI" secondAttribute="bottom" id="wz1-tO-vyk"/>
                         </constraints>
                     </scrollView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbS-mG-iC8">
-                        <rect key="frame" x="309" y="30" width="66" height="66"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="66" id="bga-Y8-wYn"/>
-                            <constraint firstAttribute="width" secondItem="cbS-mG-iC8" secondAttribute="height" multiplier="1:1" id="osl-nG-VGu"/>
-                        </constraints>
-                        <state key="normal" title="Button" image="icon-join-big"/>
-                        <connections>
-                            <action selector="join:" destination="JPd-Hd-TF3" eventType="touchUpInside" id="A7u-zs-B6B"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-BV-Act">
-                        <rect key="frame" x="323.66666666666669" y="101" width="37.333333333333314" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="bottom" secondItem="sIA-fD-mbH" secondAttribute="bottom" constant="30" id="DJE-zw-tTx"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="centerX" secondItem="bhq-ZG-iuW" secondAttribute="centerX" id="Gww-0M-1Ib"/>
-                    <constraint firstItem="k3o-BV-Act" firstAttribute="centerX" secondItem="cbS-mG-iC8" secondAttribute="centerX" id="UKx-5H-P36"/>
-                    <constraint firstItem="cbS-mG-iC8" firstAttribute="trailing" secondItem="BNE-rK-p7L" secondAttribute="trailing" id="XJe-dR-ez9"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="leading" secondItem="BNE-rK-p7L" secondAttribute="leading" constant="16" id="bPr-24-zE1"/>
-                    <constraint firstItem="cbS-mG-iC8" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="10" id="cIC-Ev-Ez3"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="10" id="mYw-cM-Xfn"/>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="trailing" secondItem="sIA-fD-mbH" secondAttribute="trailing" constant="16" id="ukJ-fZ-O2A"/>
-                    <constraint firstItem="k3o-BV-Act" firstAttribute="top" secondItem="cbS-mG-iC8" secondAttribute="bottom" constant="5" id="zn6-Ts-6L9"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="BNE-rK-p7L"/>
             </view>
@@ -416,11 +395,9 @@
             <connections>
                 <outlet property="allNumberTextField" destination="Ttk-nc-Nje" id="Eeb-ms-DIE"/>
                 <outlet property="backView" destination="iM1-KZ-LBI" id="Pna-dE-j8w"/>
-                <outlet property="buttonStatusLabel" destination="k3o-BV-Act" id="6T1-Ih-AA4"/>
                 <outlet property="cityTextField" destination="QUJ-i7-NWJ" id="kme-xr-9c8"/>
                 <outlet property="courtTextField" destination="ojN-6b-sJn" id="79V-w9-WrC"/>
                 <outlet property="feeTextField" destination="scg-0j-rGX" id="kjk-1a-uqC"/>
-                <outlet property="joinButton" destination="cbS-mG-iC8" id="qPl-ja-oUh"/>
                 <outlet property="levelTextField" destination="mTB-KN-C0f" id="GNZ-zh-1f6"/>
                 <outlet property="mapPlacedView" destination="6vJ-e1-LYV" id="BEb-vd-mCC"/>
                 <outlet property="nameTextField" destination="1kz-6d-CKM" id="vvo-Yq-EO1"/>
@@ -432,7 +409,4 @@
             <point key="canvasLocation" x="-3.5" y="32"/>
         </viewController>
     </objects>
-    <resources>
-        <image name="icon-join-big" width="64" height="64"/>
-    </resources>
 </document>

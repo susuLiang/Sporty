@@ -17,11 +17,9 @@ import SCLAlertView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var buttonStatusLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapPlacedView: UIView!
-    @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var cityTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var levelTextField: SkyFloatingLabelTextField!
@@ -32,30 +30,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var typeTextField: SkyFloatingLabelTextField!
     @IBOutlet weak var allNumberTextField: SkyFloatingLabelTextField!
 
-    @IBAction func join(_ sender: UIButton) {
-        sender.tintColor = UIColor.gray
-        let ref = Database.database().reference()
-        if let selected = selectedActivity {
-            let joinId = selected.id
-            let newVaule = selected.number + 1
-
-            ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
-            ref.child("activities").child(joinId).child("number").setValue(newVaule)
-        }
-    }
-
     var myMatches = [Activity]()
-
-    var selectedActivity: Activity? {
-        didSet {
-            if let selectedActivity = selectedActivity {
-                setText(selectedActivity, isEnable: false)
-                setJoinButton()
-                navigationItem.rightBarButtonItem = nil
-                cityTextField.title = NSLocalizedString("address", comment: "")
-            }
-        }
-    }
 
     var myPost: Activity? {
         didSet {
@@ -106,8 +81,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonStatusLabel.isHidden = true
-        getPosts()
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
         courtTextField.inputView = courtPicker
@@ -164,50 +137,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 self.loadingIndicator.stop()
             })
         }
-    }
-
-    func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
-            if error == nil {
-                self.myMatches = posts!
-                self.setJoinButton()
-            }
-        })
-    }
-
-    func setJoinButton() {
-        var isMyMatch = false
-        buttonStatusLabel.isHidden = false
-
-        if let selected = selectedActivity {
-
-            if selected.authorUid != uid {
-                for myMatch in myMatches where myMatch.id == selected.id {
-                    isMyMatch = true
-                }
-                if selected.number < selected.allNumber && !isMyMatch {
-                    setJoinStatus(isEnabled: true, tintColor: myIndigo, statusText: "參加")
-                    joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
-                } else if isMyMatch {
-                    setJoinStatus(isEnabled: false, tintColor: .gray, statusText: "已參加")
-                } else if selected.number == selected.allNumber {
-                    setJoinStatus(isEnabled: false, tintColor: .gray, statusText: "人數已滿")
-                }
-
-            } else {
-                setJoinStatus(isEnabled: false, tintColor: .clear, statusText: "")
-            }
-        }
-    }
-
-    func setJoinStatus(isEnabled: Bool, tintColor: UIColor, statusText: String) {
-        let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
-        joinButton.isEnabled = isEnabled
-        joinButton.setImage(joinIcon, for: .normal)
-        joinButton.tintColor = tintColor
-        buttonStatusLabel.text = statusText
-        buttonStatusLabel.textColor = tintColor
-
     }
 
     @objc func showSaveAlert() {

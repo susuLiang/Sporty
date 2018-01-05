@@ -121,8 +121,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
-            print("ActivityController invalid")
+        guard let activityView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
+            print("ShowDetailController invalid")
             return
         }
 
@@ -133,8 +133,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         })
 
         activityView.selectedActivity = thatWeek[indexPath.row]
-        activityView.buttonStatusLabel.isHidden = true
-        activityView.joinButton.isHidden = true
         navigationController?.pushViewController(activityView, animated: true)
     }
 

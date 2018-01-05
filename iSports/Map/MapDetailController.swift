@@ -111,12 +111,12 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
-            print("MapDetailController invalid")
+        guard let showDetailView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
+            print("ShowDetailController invalid")
             return
         }
-        activityView.selectedActivity = selectedPlaceActivities[indexPath.row]
-        self.navigationController?.pushViewController(activityView, animated: true)
+        showDetailView.selectedActivity = selectedPlaceActivities[indexPath.row]
+        self.navigationController?.pushViewController(showDetailView, animated: true)
     }
 
 }
