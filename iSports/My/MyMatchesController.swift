@@ -84,12 +84,16 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             else { fatalError() }
         switch indexPath.section {
         case indexPath.section:
-            cell.titleLabel.text = time[indexPath.section]
             var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
                 let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                 let matchWeek = myMatch.time[..<matchIndex]
                 return matchWeek == time[indexPath.section]
             })
+
+            timeMatchs.sort(by: {$0.time < $1.time})
+
+            cell.titleLabel.text = timeMatchs[indexPath.row].time
+
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
             cell.descriptionLabel.text = timeMatchs[indexPath.row].name
             let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)

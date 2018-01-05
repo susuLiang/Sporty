@@ -20,7 +20,7 @@ class MyProfileCell: UITableViewCell {
     @IBOutlet weak var lableImage: UIImageView!
     @IBOutlet weak var preferenceView: UIView!
     @IBOutlet weak var profileView: UIView!
-    @IBOutlet weak var nameSettimgTextField: SkyFloatingLabelTextField! 
+    @IBOutlet weak var nameSettimgTextField: SkyFloatingLabelTextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
