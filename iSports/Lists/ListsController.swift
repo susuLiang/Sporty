@@ -130,7 +130,7 @@ class ListsController: UIViewController {
             return
         }
         searchView.mainViewController = self
-        searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (self.navigationController?.navigationBar.frame.height)! + 20,
+        searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (self.navigationController?.navigationBar.frame.height)! + UIApplication.shared.statusBarFrame.height,
                                        width: 150, height: UIScreen.main.bounds.height)
 
         if !isShowed {

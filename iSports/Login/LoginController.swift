@@ -10,6 +10,7 @@ import UIKit
 
 class LoginController: UIViewController {
 
+    @IBOutlet weak var loginIcon: UIImageView!
     @IBOutlet weak var logInLabel: UILabel!
     @IBAction func signInOrUp(_ sender: Any) {
         if !goSignUp {
@@ -36,6 +37,11 @@ class LoginController: UIViewController {
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true
+        
+        loginIcon.layer.cornerRadius = 10
+        loginIcon.clipsToBounds = true
+        loginIcon.layer.shadowRadius = 5
+        loginIcon.layer.shadowOffset = CGSize(width: 1, height: 3)
 
     }
 
