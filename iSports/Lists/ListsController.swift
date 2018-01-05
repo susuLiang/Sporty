@@ -13,7 +13,7 @@ import WCLShineButton
 import SCLAlertView
 
 class ListsController: UIViewController {
-
+    // Property
     var isShowed = false
 
     var keyChain = KeychainSwift()
@@ -52,9 +52,7 @@ class ListsController: UIViewController {
         button.layer.shadowRadius = 10
         return button
     }()
-
-    var joinIcon = UIImage(named: "icon-join")?.withRenderingMode(.alwaysTemplate)
-
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -147,7 +145,6 @@ class ListsController: UIViewController {
             thisSearchView?.removeFromParentViewController()
             self.fetch()
             isShowed = false
-
         }
     }
 
@@ -218,43 +215,23 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
         cell.setCell(result)
         var isMyMatch = false
 
-        switch result.level {
-        case "A": cell.levelImage.image = UIImage(named: "labelA")
-        case "B": cell.levelImage.image = UIImage(named: "labelB")
-        case "C": cell.levelImage.image = UIImage(named: "labelC")
-        case "D": cell.levelImage.image = UIImage(named: "labelD")
-        default:
-            break
-        }
-
         if result.authorUid != uid {
             for myMatch in myMatches where myMatch.id == result.id {
                 isMyMatch = true
             }
             if result.number < result.allNumber && !isMyMatch {
-                cell.setJoinButtonStatus(isEnable: true, image: joinIcon!, tintColor: myIndigo, labelTextColor: myIndigo, statusText: "可參加")
+                cell.setJoinButtonStatus(isEnable: true, tintColor: myIndigo, labelTextColor: myIndigo, statusText: "可參加")
                 cell.joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
 
             } else if isMyMatch {
-                cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .gray, labelTextColor: .gray, statusText: "已參加")
+                cell.setJoinButtonStatus(isEnable: false, tintColor: .gray, labelTextColor: .gray, statusText: "已參加")
 
             } else if result.number == result.allNumber {
-                cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .gray, labelTextColor: .gray, statusText: "人數已滿")
+                cell.setJoinButtonStatus(isEnable: false, tintColor: .gray, labelTextColor: .gray, statusText: "人數已滿")
 
             }
         } else {
-            cell.setJoinButtonStatus(isEnable: false, image: joinIcon!, tintColor: .clear, labelTextColor: myIndigo, statusText: "招募中")
-        }
-
-        switch result.type {
-        case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
-        case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
-        case "籃球": cell.imagePlaced.image = UIImage(named: "basketball")!
-        case "排球": cell.imagePlaced.image = UIImage(named: "volleyball")!
-        case "網球": cell.imagePlaced.image = UIImage(named: "tennis")!
-        case "足球": cell.imagePlaced.image = UIImage(named: "soccer")!
-        default:
-            return cell
+            cell.setJoinButtonStatus(isEnable: false, tintColor: .clear, labelTextColor: myIndigo, statusText: "招募中")
         }
 
         if result.type == userSetting?.preference.type {

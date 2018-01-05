@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView = UITableView()
+    
+//    var keyChain = KeychainSwift()
 
     var selectedPlaceActivities = [Activity]()
 
     var mainViewController: MapController?
 
     var headerView = UITableViewHeaderFooterView()
-
+    
     var selectedPlace: Place? {
 
         didSet {
@@ -75,28 +78,10 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             fatalError("Invalid ListsCell")
         }
         let result = selectedPlaceActivities[indexPath.row]
+        
         cell.setCell(result)
         cell.joinButton.isHidden = true
-
-        switch result.type {
-        case "羽球": cell.imagePlaced.image = UIImage(named: "badminton")!
-        case "棒球": cell.imagePlaced.image = UIImage(named: "baseball")!
-        case "籃球": cell.imagePlaced.image = UIImage(named: "basketball")!
-        case "排球": cell.imagePlaced.image = UIImage(named: "volleyball")!
-        case "網球": cell.imagePlaced.image = UIImage(named: "tennis")!
-        case "足球": cell.imagePlaced.image = UIImage(named: "soccer")!
-        default:
-            return cell
-        }
-
-        switch result.level {
-        case "A": cell.levelImage.image = UIImage(named: "labelA")
-        case "B": cell.levelImage.image = UIImage(named: "labelB")
-        case "C": cell.levelImage.image = UIImage(named: "labelC")
-        case "D": cell.levelImage.image = UIImage(named: "labelD")
-        default:
-            break
-        }
+        cell.buttonStatusLabel.isHidden = true
         return cell
     }
 

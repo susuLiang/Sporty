@@ -17,6 +17,7 @@ import SCLAlertView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var buttonStatusLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapPlacedView: UIView!
@@ -174,7 +175,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
 
     func setJoinButton() {
-        let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
         var isMyMatch = false
 
         if let selected = selectedActivity {
@@ -184,22 +184,28 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                     isMyMatch = true
                 }
                 if selected.number < selected.allNumber && !isMyMatch {
-                    joinButton.isEnabled = true
-                    joinButton.setImage(joinIcon, for: .normal)
-                    joinButton.tintColor = myIndigo
+                    setJoinStatus(isEnabled: true, tintColor: myIndigo, statusText: "可參加")
                     joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
-                } else {
-                    joinButton.isEnabled = false
-                    joinButton.setImage(joinIcon, for: .normal)
-                    joinButton.tintColor = UIColor.gray
+                } else if isMyMatch {
+                    setJoinStatus(isEnabled: false, tintColor: .gray, statusText: "已參加")
+                } else if selected.number == selected.allNumber {
+                    setJoinStatus(isEnabled: false, tintColor: .gray, statusText: "人數已滿")
                 }
 
             } else {
-                joinButton.isEnabled = false
-                joinButton.setImage(joinIcon, for: .normal)
-                joinButton.tintColor = UIColor.clear
+                setJoinStatus(isEnabled: false, tintColor: .clear, statusText: "")
             }
         }
+    }
+    
+    func setJoinStatus(isEnabled: Bool, tintColor: UIColor, statusText: String) {
+        let joinIcon = UIImage(named: "icon-join-big")?.withRenderingMode(.alwaysTemplate)
+        joinButton.isEnabled = isEnabled
+        joinButton.setImage(joinIcon, for: .normal)
+        joinButton.tintColor = tintColor
+        buttonStatusLabel.text = statusText
+        buttonStatusLabel.textColor = tintColor
+        
     }
 
     @objc func showSaveAlert() {
@@ -247,7 +253,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func save() {
-
         guard
             let level = levelTextField.text,
             let num = numberTextField.text,
