@@ -161,7 +161,7 @@ class ListsController: UIViewController {
         FirebaseProvider.shared.getTypeData(selected: selected, completion: { [weak self] (results, error) in
             if error == nil {
                 if results?.count == 0 {
-                    SCLAlertView().showNotice("Not found any activity.", subTitle: "")
+                    SCLAlertView().showNotice(NSLocalizedString("Not found any activity.", comment: ""), subTitle: "")
                 }
                 self?.results = results!
                 self?.tableView.reloadData()
@@ -246,11 +246,11 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
-            print("ActivityController invalid")
+        guard let detailView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
+            print("ShowDetailController invalid")
             return
         }
-        activityView.selectedActivity = results[indexPath.row]
-        navigationController?.pushViewController(activityView, animated: true)
+        detailView.selectedActivity = results[indexPath.row]
+        navigationController?.pushViewController(detailView, animated: true)
     }
 }

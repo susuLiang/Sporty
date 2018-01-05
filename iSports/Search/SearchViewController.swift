@@ -25,7 +25,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
 
     @IBAction func sureButton(_ sender: Any) {
         if typeTF.text == "" {
-            SCLAlertView().showWarning("Warning", subTitle: "Should enter sports type")
+            SCLAlertView().showWarning(NSLocalizedString("Warning", comment: ""), subTitle: NSLocalizedString("Should enter sports type", comment: ""))
             return
         }
         guard let type = typeTF.text,

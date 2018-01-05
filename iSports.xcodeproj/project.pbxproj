@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
 		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
+		1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6776611FFF8BFB00011404 /* ShowDetailController.swift */; };
+		1F6776641FFF8BFB00011404 /* ShowDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6776621FFF8BFB00011404 /* ShowDetailController.xib */; };
+		1F6776671FFF9CBC00011404 /* ShowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6776651FFF9CBC00011404 /* ShowDetailCell.swift */; };
+		1F6776681FFF9CBC00011404 /* ShowDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6776661FFF9CBC00011404 /* ShowDetailCell.xib */; };
 		1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */; };
 		1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */; };
 		1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */; };
@@ -80,6 +84,10 @@
 		1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileCell.strings"; sourceTree = "<group>"; };
 		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
 		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
+		1F6776611FFF8BFB00011404 /* ShowDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailController.swift; sourceTree = "<group>"; };
+		1F6776621FFF8BFB00011404 /* ShowDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailController.xib; sourceTree = "<group>"; };
+		1F6776651FFF9CBC00011404 /* ShowDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailCell.swift; sourceTree = "<group>"; };
+		1F6776661FFF9CBC00011404 /* ShowDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailCell.xib; sourceTree = "<group>"; };
 		1F6CE5C11FE11BFC006D6AAD /* iSports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F6CE5C91FE11BFC006D6AAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -266,6 +274,10 @@
 			children = (
 				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
 				1F74D73E1FF653A400B746E6 /* ActivityController.xib */,
+				1F6776611FFF8BFB00011404 /* ShowDetailController.swift */,
+				1F6776621FFF8BFB00011404 /* ShowDetailController.xib */,
+				1F6776651FFF9CBC00011404 /* ShowDetailCell.swift */,
+				1F6776661FFF9CBC00011404 /* ShowDetailCell.xib */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -479,12 +491,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F6776641FFF8BFB00011404 /* ShowDetailController.xib in Resources */,
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */,
 				1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
+				1F6776681FFF9CBC00011404 /* ShowDetailCell.xib in Resources */,
 				1F74D7431FFB6BD200B746E6 /* WhoJoinCell.xib in Resources */,
 				1F86278D1FF0EB7600D82614 /* MapSearchCell.xib in Resources */,
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
@@ -636,6 +650,7 @@
 				1FFC9DE71FE16CB7003071B9 /* UIViewExtensions.swift in Sources */,
 				1FFA2F011FE8EB6D00E485F1 /* GQTPointQuadTree.m in Sources */,
 				1F8627971FF24FDA00D82614 /* LevelSettingController.swift in Sources */,
+				1F6776671FFF9CBC00011404 /* ShowDetailCell.swift in Sources */,
 				1FFA2F121FE8EB8300E485F1 /* GMUDefaultClusterIconGenerator.m in Sources */,
 				1F70C50B1FE3D3D600DDAF03 /* Activity.swift in Sources */,
 				1F6CE5D91FE12A28006D6AAD /* SignInController.swift in Sources */,
@@ -666,6 +681,7 @@
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
 				1F74D7411FFB6B6500B746E6 /* WhoJoinController.swift in Sources */,
 				1F86278B1FF0E8BD00D82614 /* MapSearchCell.swift in Sources */,
+				1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */,
 				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */,

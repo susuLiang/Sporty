@@ -52,7 +52,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 setText(selectedActivity, isEnable: false)
                 setJoinButton()
                 navigationItem.rightBarButtonItem = nil
-                cityTextField.title = "address"
+                cityTextField.title = NSLocalizedString("address", comment: "")
             }
         }
     }
@@ -177,6 +177,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     func setJoinButton() {
         var isMyMatch = false
+        buttonStatusLabel.isHidden = false
 
         if let selected = selectedActivity {
 
@@ -185,7 +186,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                     isMyMatch = true
                 }
                 if selected.number < selected.allNumber && !isMyMatch {
-                    setJoinStatus(isEnabled: true, tintColor: myIndigo, statusText: "可參加")
+                    setJoinStatus(isEnabled: true, tintColor: myIndigo, statusText: "參加")
                     joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
                 } else if isMyMatch {
                     setJoinStatus(isEnabled: false, tintColor: .gray, statusText: "已參加")
@@ -212,10 +213,10 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @objc func showSaveAlert() {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("SURE", action: self.change)
-        alertView.addButton("NO") {
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: self.change)
+        alertView.addButton(NSLocalizedString("NO", comment: "")) {
         }
-        alertView.showWarning("Sure to save it ?", subTitle: "")
+        alertView.showWarning(NSLocalizedString("Sure to save it ?", comment: ""), subTitle: "")
     }
 
     func change() {
@@ -250,7 +251,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                  "longitude": lng] as [String: Any]
         refChild.child(activityUid).updateChildValues(value)
 
-        SCLAlertView().showSuccess("Saved !", subTitle: "")
+        SCLAlertView().showSuccess(NSLocalizedString("Saved !", comment: ""), subTitle: "")
     }
 
     @objc func save() {
@@ -269,7 +270,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             }
 
         if level == "" || num == "" || fee == "" || place == "" || name == "" || type == "" || time == "" || allnum == "" {
-           SCLAlertView().showError("Please fill up the blank.", subTitle: "")
+           SCLAlertView().showError(NSLocalizedString("Please fill up the blank.", comment: ""), subTitle: "")
             return
         }
 
@@ -326,7 +327,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
 //                    })
 //                    alertView.showWarning("Please choose the type and city first.", subTitle: "")
 //                }
-                let alert = UIAlertController(title: "No text", message: "Please choose the type and city first.", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("No text", comment: ""), message: NSLocalizedString("Please choose the type and city first.", comment: ""), preferredStyle: .alert)
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: { _ in
                     self.courtTextField.endEditing(true)
                     self.typeTextField.becomeFirstResponder()

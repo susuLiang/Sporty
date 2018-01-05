@@ -83,7 +83,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDL-fQ-mNH">
-                        <rect key="frame" x="0.0" y="276" width="375" height="281"/>
+                        <rect key="frame" x="0.0" y="276" width="375" height="300"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="375" id="2Cb-az-Ue4"/>
@@ -94,7 +94,7 @@
                         </connections>
                     </tableView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubJ-zi-XIM" customClass="LGButton" customModule="LGButton">
-                        <rect key="frame" x="87" y="583" width="200" height="45"/>
+                        <rect key="frame" x="87" y="602" width="200" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ubJ-zi-XIM" secondAttribute="height" multiplier="40:9" id="DFB-yW-mFk"/>
@@ -126,7 +126,7 @@
                         </connections>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rmk-zT-dEZ" customClass="LGButton" customModule="LGButton">
-                        <rect key="frame" x="87" y="583" width="200" height="45"/>
+                        <rect key="frame" x="87" y="602" width="200" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Rmk-zT-dEZ" secondAttribute="height" multiplier="40:9" id="XuP-ea-PSa"/>
@@ -173,7 +173,7 @@
                     <constraint firstItem="Rmk-zT-dEZ" firstAttribute="centerY" secondItem="ubJ-zi-XIM" secondAttribute="centerY" id="g2J-7B-IsX"/>
                     <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="trailing" secondItem="ubJ-zi-XIM" secondAttribute="trailing" constant="88" id="jmd-9M-y7B"/>
                     <constraint firstItem="Rmk-zT-dEZ" firstAttribute="height" secondItem="ubJ-zi-XIM" secondAttribute="height" id="obd-xY-U5D"/>
-                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="ubJ-zi-XIM" secondAttribute="bottom" constant="39" id="sP5-la-9Fj"/>
+                    <constraint firstItem="sTJ-Kh-Oxe" firstAttribute="bottom" secondItem="ubJ-zi-XIM" secondAttribute="bottom" constant="20" id="sP5-la-9Fj"/>
                     <constraint firstItem="djA-bF-fOd" firstAttribute="top" secondItem="sTJ-Kh-Oxe" secondAttribute="top" id="xs6-V5-XjO"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="sTJ-Kh-Oxe"/>

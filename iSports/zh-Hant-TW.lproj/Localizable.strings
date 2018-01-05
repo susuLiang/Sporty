@@ -8,6 +8,9 @@
 "Back to sign in" = "回到登入";
 
 /* No comment provided by engineer. */
+"Edit" = "編輯";
+
+/* No comment provided by engineer. */
 "Email already in use" = "Email已被使用";
 
 /* No comment provided by engineer. */
@@ -41,10 +44,19 @@
 "NO" = "不";
 
 /* No comment provided by engineer. */
+"No text" = "尚未選擇";
+
+/* No comment provided by engineer. */
 "OK" = "好的";
 
 /* No comment provided by engineer. */
 "Password should be greater than six digits" = "密碼須大於六位數";
+
+/* No comment provided by engineer. */
+"Please choose the type and city first." = "請先選擇類型及城市";
+
+/* No comment provided by engineer. */
+"Please fill up the blank." = "請填滿所有空格";
 
 /* No comment provided by engineer. */
 "Preference" = "喜好設定";
@@ -54,6 +66,9 @@
 
 /* No comment provided by engineer. */
 "SURE" = "確定";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
 
 /* No comment provided by engineer. */
 "Setting" = "個人設定";
@@ -94,3 +109,20 @@
 /* No comment provided by engineer. */
 "Your Partners" = "你的夥伴";
 
+/* No comment provided by engineer. */
+"Saved !" = "儲存 !";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
+"Should enter sports type" = "須選擇一類別";
+
+/* No comment provided by engineer. */
+"Warning" = "注意";
+
+/* No comment provided by engineer. */
+"Not found any activity." = "沒有符合的活動";
+
+/* No comment provided by engineer. */
+"address" = "地址";

@@ -95,6 +95,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         self.loadingIndicator.start()
 
         saveButton.isHidden = true
+        saveButton.titleString = NSLocalizedString("Save", comment: "")
+        editButton.titleString = NSLocalizedString("Edit", comment: "")
+
         pickerDelegate()
         getUserProfile()
 
@@ -173,7 +176,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         editButton.layer.shadowRadius = 5
         saveButton.layer.cornerRadius = 20
         saveButton.layer.shadowRadius = 5
-        
+
     }
 
     func sureSave() {

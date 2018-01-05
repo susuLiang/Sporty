@@ -42,8 +42,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Name"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Name"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -75,8 +75,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Type"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="類型"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="類型"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -108,8 +108,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="City"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="City"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="城市"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="城市"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -140,8 +140,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Level"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Level"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="等級"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="等級"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -172,8 +172,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Time"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Time"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="時間"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="時間"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -204,8 +204,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Court"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Court"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="場地"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="場地"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -236,8 +236,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Fee"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Fee"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="費用"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="費用"/>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
@@ -271,8 +271,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Number"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Number"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="目前人數"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="目前人數"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
@@ -303,8 +303,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="AllNumber"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="AllNumber"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="總需求人數"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="總需求人數"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
