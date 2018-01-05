@@ -1,0 +1,9 @@
+/* (No Comment) */
+"NSLocationAlwaysUsageDescription" = "取得目前所在地";
+
+/* (No Comment) */
+"NSLocationWhenInUseUsageDescription" = "取得目前所在地";
+
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "取得相簿內照片";
+

@@ -1,0 +1,57 @@
+/* Class = "UILabel"; text = "Label"; ObjectID = "0W5-b7-gkM"; */
+"0W5-b7-gkM.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "2nc-1U-Ijm"; */
+"2nc-1U-Ijm.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Please choose your city"; ObjectID = "9By-4q-XU2"; */
+"9By-4q-XU2.text" = "請選擇您的所在城市";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "886-Qf-Yy3"; */
+"886-Qf-Yy3.placeholder" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Sign Up Now"; ObjectID = "AX1-IX-Ie6"; */
+"AX1-IX-Ie6.normalTitle" = "馬上註冊";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "BkC-qz-HHr"; */
+"BkC-qz-HHr.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "City"; ObjectID = "H9D-3a-JrS"; */
+"H9D-3a-JrS.text" = "所在城市";
+
+/* Class = "UILabel"; text = "2 / 4 Level"; ObjectID = "IOZ-gN-7e3"; */
+"IOZ-gN-7e3.text" = "2 / 4 等級";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "KyK-B9-mLb"; */
+"KyK-B9-mLb.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "MNl-gG-dQ2"; */
+"MNl-gG-dQ2.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Please choose your level"; ObjectID = "UTe-A7-N7X"; */
+"UTe-A7-N7X.text" = "請選擇您的等級程度";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WiP-Zc-TCa"; */
+"WiP-Zc-TCa.text" = "Label";
+
+/* Class = "UILabel"; text = "1 / 4 Type"; ObjectID = "XWM-E7-XNo"; */
+"XWM-E7-XNo.text" = "1 / 4 運動類型";
+
+/* Class = "UILabel"; text = "Please select your favorite type"; ObjectID = "Ysr-Py-aJ1"; */
+"Ysr-Py-aJ1.text" = "請選擇您最喜歡的運動類型";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "Zbz-A7-mlV"; */
+"Zbz-A7-mlV.placeholder" = "密碼";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "cLJ-vw-4g8"; */
+"cLJ-vw-4g8.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "fLd-EC-KOA"; */
+"fLd-EC-KOA.normalTitle" = "註冊";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "ofX-hF-yjb"; */
+"ofX-hF-yjb.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "wVM-we-XuC"; */
+"wVM-we-XuC.normalTitle" = "Log in";
+
