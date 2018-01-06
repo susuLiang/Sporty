@@ -95,6 +95,23 @@
                                     <action selector="signInOrUp:" destination="rcT-tI-T02" eventType="touchUpInside" id="31h-Zl-1jY"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcJ-WT-YXV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bhG-S3-qvq">
+                                        <rect key="frame" x="67" y="213.5" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bhG-S3-qvq" secondAttribute="height" multiplier="1:1" id="1po-Ww-h6G"/>
+                                            <constraint firstAttribute="width" constant="240" id="a2g-n5-Zlf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bhG-S3-qvq" firstAttribute="centerX" secondItem="rcJ-WT-YXV" secondAttribute="centerX" id="fqI-ZI-JFE"/>
+                                    <constraint firstItem="bhG-S3-qvq" firstAttribute="centerY" secondItem="rcJ-WT-YXV" secondAttribute="centerY" id="pIj-FW-qjW"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -102,15 +119,19 @@
                             <constraint firstItem="yIp-Io-l3I" firstAttribute="top" secondItem="Ddd-Ze-c0X" secondAttribute="bottom" constant="-70" id="1tV-Nb-nPK"/>
                             <constraint firstItem="2zM-wb-bad" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" constant="36" id="2TL-ph-Le8"/>
                             <constraint firstItem="4pI-lr-AB9" firstAttribute="trailing" secondItem="yIp-Io-l3I" secondAttribute="trailing" constant="36" id="5SN-Fg-OTP"/>
+                            <constraint firstItem="rcJ-WT-YXV" firstAttribute="trailing" secondItem="4pI-lr-AB9" secondAttribute="trailing" id="89q-Ld-NlR"/>
+                            <constraint firstItem="rcJ-WT-YXV" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" id="EJz-0p-hQM"/>
                             <constraint firstItem="92V-7U-7sf" firstAttribute="centerX" secondItem="dcP-L2-Huc" secondAttribute="centerX" id="JCn-BH-58J"/>
                             <constraint firstItem="AX1-IX-Ie6" firstAttribute="centerX" secondItem="dcP-L2-Huc" secondAttribute="centerX" id="Jce-tJ-l78"/>
                             <constraint firstItem="Ddd-Ze-c0X" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" id="LeJ-va-GTx"/>
                             <constraint firstItem="0W5-b7-gkM" firstAttribute="centerX" secondItem="dcP-L2-Huc" secondAttribute="centerX" id="MnD-pa-TW6"/>
+                            <constraint firstItem="rcJ-WT-YXV" firstAttribute="top" secondItem="dcP-L2-Huc" secondAttribute="top" id="OG7-hr-gOr"/>
                             <constraint firstItem="Ddd-Ze-c0X" firstAttribute="top" secondItem="dcP-L2-Huc" secondAttribute="top" id="Vyt-eC-njb"/>
                             <constraint firstItem="2zM-wb-bad" firstAttribute="top" secondItem="0W5-b7-gkM" secondAttribute="bottom" constant="11" id="dRP-XW-d5W"/>
                             <constraint firstItem="4pI-lr-AB9" firstAttribute="bottom" secondItem="AX1-IX-Ie6" secondAttribute="bottom" constant="40" id="l01-Vu-M9E"/>
                             <constraint firstItem="2zM-wb-bad" firstAttribute="top" secondItem="Ddd-Ze-c0X" secondAttribute="bottom" constant="-70" id="leW-GC-grW"/>
                             <constraint firstItem="Ddd-Ze-c0X" firstAttribute="width" secondItem="dcP-L2-Huc" secondAttribute="width" id="o1P-JA-Q0X"/>
+                            <constraint firstItem="rcJ-WT-YXV" firstAttribute="bottom" secondItem="4pI-lr-AB9" secondAttribute="bottom" id="ou5-VJ-Qxu"/>
                             <constraint firstItem="0W5-b7-gkM" firstAttribute="top" secondItem="92V-7U-7sf" secondAttribute="bottom" constant="2" id="r6J-vQ-TJl"/>
                             <constraint firstItem="4pI-lr-AB9" firstAttribute="trailing" secondItem="2zM-wb-bad" secondAttribute="trailing" constant="36" id="yNz-U2-bMP"/>
                             <constraint firstItem="yIp-Io-l3I" firstAttribute="leading" secondItem="4pI-lr-AB9" secondAttribute="leading" constant="36" id="yZt-d5-aMg"/>
@@ -118,6 +139,8 @@
                         <viewLayoutGuide key="safeArea" id="4pI-lr-AB9"/>
                     </view>
                     <connections>
+                        <outlet property="gifImage" destination="bhG-S3-qvq" id="R2V-Gv-MRW"/>
+                        <outlet property="gifView" destination="rcJ-WT-YXV" id="q5W-oK-nIq"/>
                         <outlet property="logInLabel" destination="0W5-b7-gkM" id="Gpl-C4-X4g"/>
                         <outlet property="loginIcon" destination="92V-7U-7sf" id="maj-q8-Ttn"/>
                         <outlet property="signButton" destination="AX1-IX-Ie6" id="BUE-8Z-6jl"/>

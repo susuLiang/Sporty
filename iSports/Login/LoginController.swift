@@ -10,6 +10,9 @@ import UIKit
 
 class LoginController: UIViewController {
 
+    @IBOutlet weak var gifView: UIView!
+
+    @IBOutlet weak var gifImage: UIImageView!
     @IBOutlet weak var loginIcon: UIImageView!
     @IBOutlet weak var logInLabel: UILabel!
     @IBAction func signInOrUp(_ sender: Any) {
@@ -34,11 +37,20 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        
+        let thisGif = UIImage.gifImageWithName("sporty")
+        self.gifImage.image = thisGif
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
+            self.gifImage.isHidden = true
+            self.gifView.isHidden = true
+        }
+        
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true
-        
+
         loginIcon.layer.cornerRadius = 10
         loginIcon.clipsToBounds = true
         loginIcon.layer.shadowRadius = 5

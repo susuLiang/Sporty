@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
 		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
+		1F3897B52000BDB000910B10 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3897B42000BDB000910B10 /* iOSDevCenters+GIF.swift */; };
+		1F3897BB2000CD9000910B10 /* sporty.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F3897BA2000CD9000910B10 /* sporty.gif */; };
 		1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6776611FFF8BFB00011404 /* ShowDetailController.swift */; };
 		1F6776641FFF8BFB00011404 /* ShowDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F6776621FFF8BFB00011404 /* ShowDetailController.xib */; };
 		1F6776671FFF9CBC00011404 /* ShowDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6776651FFF9CBC00011404 /* ShowDetailCell.swift */; };
@@ -84,6 +86,8 @@
 		1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileCell.strings"; sourceTree = "<group>"; };
 		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
 		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
+		1F3897B42000BDB000910B10 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		1F3897BA2000CD9000910B10 /* sporty.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sporty.gif; sourceTree = "<group>"; };
 		1F6776611FFF8BFB00011404 /* ShowDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailController.swift; sourceTree = "<group>"; };
 		1F6776621FFF8BFB00011404 /* ShowDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailController.xib; sourceTree = "<group>"; };
 		1F6776651FFF9CBC00011404 /* ShowDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailCell.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				1FDB88E41FFF49920069E024 /* InfoPlist.strings */,
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
+				1F3897B42000BDB000910B10 /* iOSDevCenters+GIF.swift */,
 				1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
@@ -373,6 +378,7 @@
 			children = (
 				1F6CE5C81FE11BFC006D6AAD /* Main.storyboard */,
 				1F8627A01FF32C1400D82614 /* LoginController.swift */,
+				1F3897BA2000CD9000910B10 /* sporty.gif */,
 				1F6CE5D81FE12A28006D6AAD /* SignInController.swift */,
 				1FFA2F231FE908E100E485F1 /* SignUpController.swift */,
 				1F8627A81FF387B400D82614 /* UserSetting */,
@@ -507,6 +513,7 @@
 				1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */,
 				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
+				1F3897BB2000CD9000910B10 /* sporty.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +695,7 @@
 				1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */,
 				1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */,
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
+				1F3897B52000BDB000910B10 /* iOSDevCenters+GIF.swift in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */,

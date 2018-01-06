@@ -21,10 +21,10 @@ class ShowDetailController: UIViewController {
     @IBOutlet weak var mapPlacedView: UIImageView!
     @IBOutlet weak var joinButton: LGButton!
     @IBOutlet weak var tableView: UITableView!
-    
+
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
-    
+
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
@@ -53,7 +53,7 @@ class ShowDetailController: UIViewController {
             }
         }
     }
-    
+
     var myMatches = [Activity]()
 
     var nowPlace: (latitude: String, longitude: String, address: String)? {
@@ -72,7 +72,7 @@ class ShowDetailController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        
+
         getPosts()
 
         setupTableCell()
@@ -124,7 +124,7 @@ class ShowDetailController: UIViewController {
             }
         }
     }
-    
+
     @objc func join(_ sender: LGButton) {
         joinButton.isHidden = true
         unJoinButton.isHidden = false
@@ -134,7 +134,7 @@ class ShowDetailController: UIViewController {
         if let selected = selectedActivity {
             let joinId = selected.id
             let newVaule = selected.number + 1
-            
+
             ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
             ref.child("activities").child(joinId).child("number").setValue(newVaule)
         }
