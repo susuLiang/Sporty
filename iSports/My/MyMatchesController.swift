@@ -91,11 +91,12 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             })
 
             timeMatchs.sort(by: {$0.time < $1.time})
-
+            
+            
             cell.titleLabel.text = timeMatchs[indexPath.row].time
 
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
-            cell.descriptionLabel.text = timeMatchs[indexPath.row].name
+            cell.newTitleLabel.text = timeMatchs[indexPath.row].name
             let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)
             cell.cancelButton.setImage(quitIcon, for: .normal)
             cell.cancelButton.tintColor = .red
