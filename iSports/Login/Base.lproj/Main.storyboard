@@ -41,10 +41,12 @@
                                         <color key="value" red="0.18823529411764706" green="0.81568627450980391" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="gradientHorizontal" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showTouchFeedback" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginicon" translatesAutoresizingMaskIntoConstraints="NO" id="92V-7U-7sf">
                                 <rect key="frame" x="123" y="50" width="128" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="92V-7U-7sf" secondAttribute="height" multiplier="1:1" id="JtW-rF-JK2"/>
                                     <constraint firstAttribute="width" constant="128" id="jkV-9m-aZ3"/>
@@ -270,10 +272,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
-                                <rect key="frame" x="16" y="69" width="310" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your level The best is A." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
+                                <rect key="frame" x="16" y="69" width="324" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="UTe-A7-N7X" secondAttribute="height" multiplier="155:13" id="2Nu-Wa-bi7"/>
+                                    <constraint firstAttribute="width" constant="324" id="qdJ-OE-bcf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -347,7 +349,7 @@
                             <constraint firstItem="SNX-nZ-dLj" firstAttribute="centerY" secondItem="eYt-cT-hea" secondAttribute="centerY" id="LWP-Z4-TWp"/>
                             <constraint firstItem="UTe-A7-N7X" firstAttribute="top" secondItem="IOZ-gN-7e3" secondAttribute="bottom" constant="2" id="MYv-id-hsB"/>
                             <constraint firstItem="cLJ-vw-4g8" firstAttribute="width" secondItem="cLJ-vw-4g8" secondAttribute="height" multiplier="10:3" id="PZH-nT-YKU"/>
-                            <constraint firstItem="SNX-nZ-dLj" firstAttribute="top" secondItem="UTe-A7-N7X" secondAttribute="bottom" constant="38" id="bbi-4Q-4O2"/>
+                            <constraint firstItem="SNX-nZ-dLj" firstAttribute="top" secondItem="UTe-A7-N7X" secondAttribute="bottom" constant="19" id="bbi-4Q-4O2"/>
                             <constraint firstItem="IOZ-gN-7e3" firstAttribute="top" secondItem="hX2-3A-Cto" secondAttribute="top" constant="6" id="rHx-wV-om9"/>
                             <constraint firstItem="hX2-3A-Cto" firstAttribute="bottom" secondItem="cLJ-vw-4g8" secondAttribute="bottom" constant="20" id="yI8-Zg-CqR"/>
                         </constraints>

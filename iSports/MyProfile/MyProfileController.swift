@@ -92,6 +92,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
         self.loadingIndicator.start()
 
         saveButton.isHidden = true
@@ -295,9 +296,9 @@ extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded[indexPath.section] {
-            return 192
+            return 175
         } else {
-            return 68
+            return 50
         }
     }
 
