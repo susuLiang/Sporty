@@ -302,8 +302,8 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="總需求人數"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="總需求人數"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="總人數"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="總人數"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>

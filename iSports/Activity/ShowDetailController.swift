@@ -185,8 +185,8 @@ extension ShowDetailController: UITableViewDelegate, UITableViewDataSource {
             cell.setCell(title: "時間", detail: result.time)
         case "目前人數":
             cell.setCell(title: "目前人數", detail: result.number)
-        case "總需求人數":
-            cell.setCell(title: "總需求人數", detail: result.allNumber)
+        case "總人數":
+            cell.setCell(title: "總人數", detail: result.allNumber)
         default: break
         }
         return cell
@@ -223,5 +223,5 @@ enum ActivityTitle: String {
     case fee = "費用"
     case time = "時間"
     case num = "目前人數"
-    case allNum = "總需求人數"
+    case allNum = "總人數"
 }

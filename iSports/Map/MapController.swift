@@ -47,23 +47,15 @@ class MapController: UIViewController, GMSMapViewDelegate {
         setNavigationBar()
         getLocation()
 
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
-//        mapView.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-//    @objc func close() {
-//        detailView?.removeFromParentViewController()
-//        detailView?.view.removeFromSuperview()
-//    }
-
     func setMapView() {
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(close))
-//        mapView.addGestureRecognizer(tap)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
         view.addSubview(mapView)
         mapView.delegate = self
         mapView.isMyLocationEnabled = true
@@ -171,7 +163,6 @@ extension MapController {
             marker.iconView = backView
 
 //            marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
-
             marker.map = mapView
 
         }
