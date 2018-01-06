@@ -302,9 +302,9 @@ extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isExpanded[indexPath.section] {
-            return 175
+            return 176
         } else {
-            return 50
+            return 51
         }
     }
 

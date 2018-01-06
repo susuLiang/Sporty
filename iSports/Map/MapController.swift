@@ -53,7 +53,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
         super.didReceiveMemoryWarning()
     }
     func setMapView() {
-        mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height - (tabBarController?.tabBar.frame.height)!)
+        mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         view.addSubview(mapView)
