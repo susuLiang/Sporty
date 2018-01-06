@@ -373,9 +373,7 @@ extension ActivityController: CLLocationManagerDelegate {
 
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: mapPlacedView.frame.width, height: mapPlacedView.frame.height), camera: camera)
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: courtTextField.frame.width, height: mapPlacedView.frame.height), camera: camera)
 
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)

@@ -39,13 +39,13 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         
-        let thisGif = UIImage.gifImageWithName("sporty")
-        self.gifImage.image = thisGif
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
-            self.gifImage.isHidden = true
-            self.gifView.isHidden = true
-        }
+//        let thisGif = UIImage.gifImageWithName("sporty")
+//        self.gifImage.image = thisGif
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//            self.gifImage.isHidden = true
+//            self.gifView.isHidden = true
+//        }
         
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false

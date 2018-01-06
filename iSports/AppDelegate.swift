@@ -25,8 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
 
         IQKeyboardManager.sharedManager().enable = true
+        
+        // swiftlint:disable force_cast
+        let gifViewController = UINib.load(nibName: "GifViewController") as! GifViewController
+        // swiftlint:enable force_cast
 
-        let rootViewController = makeEntryController()
+        let rootViewController = gifViewController
 
         let window = UIWindow(frame: UIScreen.main.bounds)
 
@@ -54,15 +58,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
     }
 
-    func makeEntryController() -> UIViewController {
-        if Auth.auth().currentUser?.uid == nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-            return loginController
-        } else {
-            let tabBarController = TabBarController(itemTypes: [ .home, .map, .my, .setting])
-            tabBarController.selectedIndex = 0
-            return tabBarController
-        }
-    }
+//    func makeEntryController() -> UIViewController {
+//        if Auth.auth().currentUser?.uid == nil {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
+//            return loginController
+//        } else {
+//            let tabBarController = TabBarController(itemTypes: [ .home, .map, .my, .setting])
+//            tabBarController.selectedIndex = 0
+//            return tabBarController
+//        }
+//    }
 }
