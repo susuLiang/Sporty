@@ -62,7 +62,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2K-xg-hrK">
-                        <rect key="frame" x="133" y="61" width="200" height="15"/>
+                        <rect key="frame" x="133" y="66" width="200" height="10"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="f0r-i9-a6f"/>
                         </constraints>
@@ -105,7 +105,7 @@
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="centerY" secondItem="W66-Ck-wDF" secondAttribute="centerY" id="aeo-Ux-Iwh"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="leading" secondItem="aFP-zW-cVP" secondAttribute="trailing" constant="33" id="ajE-HI-VcB"/>
                     <constraint firstItem="2D0-6Z-FaV" firstAttribute="top" secondItem="2Rz-dN-Xtc" secondAttribute="bottom" constant="10" id="iL7-9r-ocE"/>
-                    <constraint firstItem="h2K-xg-hrK" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="50" id="mTJ-wM-fKw"/>
+                    <constraint firstItem="h2K-xg-hrK" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="55" id="mTJ-wM-fKw"/>
                     <constraint firstItem="1fR-8z-bCk" firstAttribute="top" secondItem="4Od-hl-ENS" secondAttribute="top" id="mi4-jS-a9S"/>
                     <constraint firstItem="W66-Ck-wDF" firstAttribute="leading" secondItem="HxZ-h8-hOq" secondAttribute="leading" constant="8" id="ngi-V5-gD4"/>
                     <constraint firstItem="aFP-zW-cVP" firstAttribute="trailing" secondItem="W66-Ck-wDF" secondAttribute="trailing" id="o7X-wK-V0y"/>

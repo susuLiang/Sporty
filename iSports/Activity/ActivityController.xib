@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,6 +28,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vJ-e1-LYV">
                                         <rect key="frame" x="20" y="545" width="303" height="255"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="303" id="CdG-6h-bwU"/>
+                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YIZ-qt-DvM">
                                         <rect key="frame" x="20" y="0.0" width="303" height="505"/>
@@ -363,7 +368,7 @@
                                     <constraint firstAttribute="bottom" secondItem="6vJ-e1-LYV" secondAttribute="bottom" id="IDU-L1-sEe"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="XXB-QD-oDU"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="centerX" secondItem="iM1-KZ-LBI" secondAttribute="centerX" id="fJV-Zy-Ukb"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="centerX" secondItem="iM1-KZ-LBI" secondAttribute="centerX" id="gUt-GD-402"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="centerX" secondItem="YIZ-qt-DvM" secondAttribute="centerX" id="gUt-GD-402"/>
                                     <constraint firstItem="6vJ-e1-LYV" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="kGK-C5-W1y"/>
                                     <constraint firstAttribute="height" constant="800" id="l1V-NC-86M"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="top" secondItem="iM1-KZ-LBI" secondAttribute="top" id="qHi-x6-HWc"/>
@@ -376,7 +381,7 @@
                             <constraint firstAttribute="trailing" secondItem="iM1-KZ-LBI" secondAttribute="trailing" id="4zu-J9-g5i"/>
                             <constraint firstItem="iM1-KZ-LBI" firstAttribute="top" secondItem="sIA-fD-mbH" secondAttribute="top" id="7O9-bm-erQ"/>
                             <constraint firstItem="iM1-KZ-LBI" firstAttribute="leading" secondItem="sIA-fD-mbH" secondAttribute="leading" id="Rs9-My-J2c"/>
-                            <constraint firstItem="iM1-KZ-LBI" firstAttribute="centerX" secondItem="sIA-fD-mbH" secondAttribute="centerX" id="b6Q-I2-oiP"/>
+                            <constraint firstItem="iM1-KZ-LBI" firstAttribute="centerX" secondItem="sIA-fD-mbH" secondAttribute="centerXWithinMargins" id="b6Q-I2-oiP"/>
                             <constraint firstAttribute="bottom" secondItem="iM1-KZ-LBI" secondAttribute="bottom" id="wz1-tO-vyk"/>
                         </constraints>
                     </scrollView>
@@ -385,9 +390,7 @@
                 <constraints>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="bottom" secondItem="sIA-fD-mbH" secondAttribute="bottom" constant="30" id="DJE-zw-tTx"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="centerX" secondItem="bhq-ZG-iuW" secondAttribute="centerX" id="Gww-0M-1Ib"/>
-                    <constraint firstItem="sIA-fD-mbH" firstAttribute="leading" secondItem="BNE-rK-p7L" secondAttribute="leading" constant="16" id="bPr-24-zE1"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="10" id="mYw-cM-Xfn"/>
-                    <constraint firstItem="BNE-rK-p7L" firstAttribute="trailing" secondItem="sIA-fD-mbH" secondAttribute="trailing" constant="16" id="ukJ-fZ-O2A"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="BNE-rK-p7L"/>
             </view>
