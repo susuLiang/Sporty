@@ -272,17 +272,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your level The best is A." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
-                                <rect key="frame" x="16" y="69" width="324" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="324" id="qdJ-OE-bcf"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose your level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTe-A7-N7X">
+                                <rect key="frame" x="16" y="69" width="310" height="26"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Light" family="Arial Hebrew" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="SNX-nZ-dLj">
-                                <rect key="frame" x="152.5" y="133" width="70" height="400"/>
+                                <rect key="frame" x="153" y="133" width="70" height="400"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpt-9e-2Hp">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -344,13 +341,14 @@
                         <constraints>
                             <constraint firstItem="cLJ-vw-4g8" firstAttribute="centerX" secondItem="eYt-cT-hea" secondAttribute="centerX" id="3Cw-0o-bMb"/>
                             <constraint firstItem="IOZ-gN-7e3" firstAttribute="leading" secondItem="hX2-3A-Cto" secondAttribute="leading" constant="16" id="Ah3-SZ-zWP"/>
-                            <constraint firstItem="UTe-A7-N7X" firstAttribute="leading" secondItem="hX2-3A-Cto" secondAttribute="leading" constant="16" id="Buh-R0-UoV"/>
+                            <constraint firstItem="hX2-3A-Cto" firstAttribute="trailing" secondItem="UTe-A7-N7X" secondAttribute="trailing" constant="49" id="B7Z-9W-lPY"/>
                             <constraint firstItem="SNX-nZ-dLj" firstAttribute="centerX" secondItem="eYt-cT-hea" secondAttribute="centerX" id="GSi-of-Owk"/>
                             <constraint firstItem="SNX-nZ-dLj" firstAttribute="centerY" secondItem="eYt-cT-hea" secondAttribute="centerY" id="LWP-Z4-TWp"/>
-                            <constraint firstItem="UTe-A7-N7X" firstAttribute="top" secondItem="IOZ-gN-7e3" secondAttribute="bottom" constant="2" id="MYv-id-hsB"/>
                             <constraint firstItem="cLJ-vw-4g8" firstAttribute="width" secondItem="cLJ-vw-4g8" secondAttribute="height" multiplier="10:3" id="PZH-nT-YKU"/>
-                            <constraint firstItem="SNX-nZ-dLj" firstAttribute="top" secondItem="UTe-A7-N7X" secondAttribute="bottom" constant="19" id="bbi-4Q-4O2"/>
+                            <constraint firstItem="UTe-A7-N7X" firstAttribute="top" secondItem="IOZ-gN-7e3" secondAttribute="bottom" constant="2" id="m6J-kB-FX3"/>
                             <constraint firstItem="IOZ-gN-7e3" firstAttribute="top" secondItem="hX2-3A-Cto" secondAttribute="top" constant="6" id="rHx-wV-om9"/>
+                            <constraint firstItem="UTe-A7-N7X" firstAttribute="leading" secondItem="IOZ-gN-7e3" secondAttribute="leading" id="tKx-C0-x9i"/>
+                            <constraint firstItem="SNX-nZ-dLj" firstAttribute="top" secondItem="UTe-A7-N7X" secondAttribute="bottom" constant="38" id="wMv-sT-jbM"/>
                             <constraint firstItem="hX2-3A-Cto" firstAttribute="bottom" secondItem="cLJ-vw-4g8" secondAttribute="bottom" constant="20" id="yI8-Zg-CqR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hX2-3A-Cto"/>
@@ -501,7 +499,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="6~20 charactors"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="6~20 字元"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                 <color key="value" red="0.050980392159999999" green="0.28627450980000002" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -694,7 +692,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="6~20 字元"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
                                                 <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>

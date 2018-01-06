@@ -31,6 +31,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
         sureButton.layer.cornerRadius = 10
         view.backgroundColor = myBlack
         tableView.backgroundColor = myBlack

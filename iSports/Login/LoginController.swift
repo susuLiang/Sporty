@@ -34,6 +34,7 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true

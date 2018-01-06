@@ -67,7 +67,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
     @IBAction func edit(_ sender: Any) {
         editButton.isHidden = true
+        editButton.isEnabled = false
         saveButton.isHidden = false
+        saveButton.isEnabled = true
         photoPickButton.isEnabled = true
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = myBlack.cgColor
@@ -84,7 +86,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         isEdit = false
         tableView.reloadData()
         editButton.isHidden = false
+        editButton.isEnabled = true
         saveButton.isHidden = true
+        saveButton.isEnabled = false
         photoPickButton.isEnabled = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
@@ -221,7 +225,9 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
             }
         }
         editButton.isHidden = false
+        editButton.isEnabled = true
         saveButton.isHidden = true
+        saveButton.isEnabled = false
         self.isEdit = false
         self.tableView.reloadData()
     }
