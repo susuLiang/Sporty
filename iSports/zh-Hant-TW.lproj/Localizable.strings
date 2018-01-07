@@ -8,10 +8,25 @@
 "Back to sign in" = "回到登入";
 
 /* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Done" = "完成";
+
+/* No comment provided by engineer. */
 "Edit" = "編輯";
 
 /* No comment provided by engineer. */
+"Email" = "Email";
+
+/* No comment provided by engineer. */
 "Email already in use" = "Email已被使用";
+
+/* No comment provided by engineer. */
+"Email sent" = "Email已寄出";
+
+/* No comment provided by engineer. */
+"Enter your email" = "請輸入你的Email";
 
 /* No comment provided by engineer. */
 "Home" = "首頁";
@@ -47,13 +62,22 @@
 "No text" = "尚未選擇";
 
 /* No comment provided by engineer. */
+"Not found any activity." = "沒有符合的活動";
+
+/* No comment provided by engineer. */
 "OK" = "好的";
 
 /* No comment provided by engineer. */
 "Password should be greater than six digits" = "密碼須大於六位數";
 
 /* No comment provided by engineer. */
+"Please check your mail to reset password" = "請收信以重設密碼";
+
+/* No comment provided by engineer. */
 "Please choose the type and city first." = "請先選擇類型及城市";
+
+/* No comment provided by engineer. */
+"Please enter your email" = "請輸入你的Email";
 
 /* No comment provided by engineer. */
 "Please fill up the blank." = "請填滿所有空格";
@@ -71,7 +95,13 @@
 "Save" = "儲存";
 
 /* No comment provided by engineer. */
+"Saved !" = "儲存 !";
+
+/* No comment provided by engineer. */
 "Setting" = "個人設定";
+
+/* No comment provided by engineer. */
+"Should enter sports type" = "須選擇一類別";
 
 /* No comment provided by engineer. */
 "Sign In" = "登入";
@@ -95,6 +125,15 @@
 "Sure to save it ?" = "確定儲存？";
 
 /* No comment provided by engineer. */
+"The Email address is badly formatted" = "Email格式錯誤";
+
+/* No comment provided by engineer. */
+"User not found" = "使用者不存在";
+
+/* No comment provided by engineer. */
+"Warning" = "注意";
+
+/* No comment provided by engineer. */
 "When are you available?" = "哪個時間方便運動？";
 
 /* No comment provided by engineer. */
@@ -109,20 +148,3 @@
 /* No comment provided by engineer. */
 "Your Partners" = "你的夥伴";
 
-/* No comment provided by engineer. */
-"Saved !" = "儲存 !";
-
-/* No comment provided by engineer. */
-"Done" = "完成";
-
-/* No comment provided by engineer. */
-"Should enter sports type" = "須選擇一類別";
-
-/* No comment provided by engineer. */
-"Warning" = "注意";
-
-/* No comment provided by engineer. */
-"Not found any activity." = "沒有符合的活動";
-
-/* No comment provided by engineer. */
-"address" = "地址";

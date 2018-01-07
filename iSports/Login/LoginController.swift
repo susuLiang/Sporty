@@ -7,12 +7,48 @@
 //
 
 import UIKit
+import Firebase
+import SCLAlertView
 
 class LoginController: UIViewController {
 
-    @IBOutlet weak var gifView: UIView!
+    @IBAction func send(_ sender: Any) {
+//        let alert = SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alert = SCLAlertView(appearance: appearance)
 
-    @IBOutlet weak var gifImage: UIImageView!
+        let txt = alert.addTextField(NSLocalizedString("Email", comment: ""))
+        
+        alert.addButton(NSLocalizedString("Done", comment: "")) {
+            if let email = txt.text {
+                Auth.auth().sendPasswordReset(withEmail: email) { error in
+                    if error != nil {
+                        if let errCode = AuthErrorCode(rawValue: error!._code) {
+                            var message: String = ""
+                            
+                            switch errCode {
+                            case .userNotFound:
+                                message = NSLocalizedString("User not found", comment: "")
+                            case .missingEmail:
+                                message = NSLocalizedString("Please enter your email", comment: "")
+                            case .invalidEmail:
+                                message = NSLocalizedString("The Email address is badly formatted", comment: "")
+
+                            default:
+                                print("Email User Error: \(error!)")
+                            }
+                            SCLAlertView().showWarning("Error", subTitle: message)
+                        }
+                    }
+                    SCLAlertView().showSuccess(NSLocalizedString("Email sent", comment: ""), subTitle: NSLocalizedString("Please check your mail to reset password", comment: ""))
+                }
+            }
+        }
+        alert.addButton(NSLocalizedString("Cancel", comment: ""), action: {})
+        alert.showEdit(NSLocalizedString("Enter your email", comment: ""), subTitle: "")
+    }
     @IBOutlet weak var loginIcon: UIImageView!
     @IBOutlet weak var logInLabel: UILabel!
     @IBAction func signInOrUp(_ sender: Any) {
@@ -39,14 +75,6 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         
-//        let thisGif = UIImage.gifImageWithName("sporty")
-//        self.gifImage.image = thisGif
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//            self.gifImage.isHidden = true
-//            self.gifView.isHidden = true
-//        }
-        
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true
@@ -55,11 +83,12 @@ class LoginController: UIViewController {
         loginIcon.clipsToBounds = true
         loginIcon.layer.shadowRadius = 5
         loginIcon.layer.shadowOffset = CGSize(width: 1, height: 3)
-
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+  
 
 }
