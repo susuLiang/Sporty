@@ -50,6 +50,8 @@ struct Activity {
     let author: String
 
     let authorUid: String
+    
+    let postedTime: String
 
     init(_ json: Any, id: String) throws {
 
@@ -71,7 +73,9 @@ struct Activity {
             let allNumber = data["allNumber"] as? Int,
             let fee = data["fee"] as? Int,
             let userUid = data["userUid"] as? String,
-            let author = data["author"] as? String else { throw JSONError.jsonError }
+            let author = data["author"] as? String,
+            let postedTime = data["postedTime"] as? String
+            else { throw JSONError.jsonError }
 
         self.name = name
         self.type = type
@@ -84,6 +88,7 @@ struct Activity {
         self.fee = fee
         self.authorUid = userUid
         self.author = author
+        self.postedTime = postedTime
     }
 
 }

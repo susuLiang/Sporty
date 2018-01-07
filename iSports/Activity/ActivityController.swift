@@ -149,6 +149,12 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
 
     func change() {
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        let dateString = dateFormatter.string(from: date as Date)
+        
         guard
             let level = self.levelTextField.text,
             let num = self.numberTextField.text,
@@ -158,7 +164,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             let type = self.typeTextField.text,
             let time = self.timeTextField.text,
             let allnum = allNumberTextField.text
-
             else {
                 print("Form is not valid")
                 return
@@ -166,6 +171,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         let ref = Database.database().reference()
         let refChild = ref.child("activities")
         let uid = self.keyChain.get("uid")
+        let postedTime: String = dateString
         guard let activityUid = self.myPost?.id,
             let authorName = self.keyChain.get("name"),
             let lat = self.nowPlace?.latitude,
@@ -177,7 +183,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                  "place": court, "number": Int(num), "fee": Int(fee),
                  "author": authorName, "type": type, "allNumber": Int(allnum),
                  "address": address, "userUid": uid, "latitude": lat,
-                 "longitude": lng] as [String: Any]
+                 "longitude": lng, "postedTime": postedTime] as [String: Any]
         refChild.child(activityUid).updateChildValues(value)
 
         SCLAlertView().showSuccess(NSLocalizedString("Saved !", comment: ""), subTitle: "")
@@ -214,7 +220,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                      "place": place, "number": Int(num), "fee": Int(fee),
                      "author": authorName, "type": type, "allNumber": Int(allnum),
                      "address": address, "userUid": uid, "latitude": lat,
-                     "longitude": lng] as [String: Any]
+                     "longitude": lng, "postedTime": "\(Date())"] as [String: Any]
         let childRef = refChild.childByAutoId()
         childRef.setValue(value)
         ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
