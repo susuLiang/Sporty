@@ -28,6 +28,7 @@ class FirebaseProvider {
                         print("Can not get data.")
                     }
                 }
+                results.sort(by: { $0.postedTime > $1.postedTime })
                 completion(results, nil)
             }
         }
@@ -55,6 +56,7 @@ class FirebaseProvider {
                     }
                 }
             }
+            results.sort(by: { $0.postedTime > $1.postedTime })
             completion(results, nil)
         }
     }
@@ -71,6 +73,7 @@ class FirebaseProvider {
                         print("Can not get place data.")
                     }
                 }
+                results.sort(by: { $0.postedTime > $1.postedTime })
                 completion(results, nil)
             }
         }
@@ -107,6 +110,7 @@ class FirebaseProvider {
                                 print("Can not get users activities data.")
                             }
                         }
+                        posts.sort(by: { $0.postedTime > $1.postedTime })
                         completion(posts, keyUid, nil)
                     })
                 }
