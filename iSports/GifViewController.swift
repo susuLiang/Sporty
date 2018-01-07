@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import SwiftyGif
+
 
 class GifViewController: UIViewController {
     
@@ -15,9 +17,10 @@ class GifViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let thisGif = UIImage.gifImageWithName("sporty")
-        gifImage.image = thisGif
+        
+        let gifmanager = SwiftyGifManager(memoryLimit: 20)
+        let gif = UIImage(gifName: "sporty", levelOfIntegrity: 1)
+        self.gifImage.setGifImage(gif, manager: gifmanager, loopCount: 1)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
 

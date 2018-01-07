@@ -75,6 +75,7 @@ PODS:
   - NVActivityIndicatorView/Presenter (4.0.1)
   - SCLAlertView (0.7.0)
   - SkyFloatingLabelTextField (3.4.0)
+  - SwiftyGif (3.1.1)
   - TimelineTableViewCell (1.2)
   - TKSubmitTransition (2.0)
   - WCLShineButton (1.0.7)
@@ -102,6 +103,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`, branch `master`)
   - SkyFloatingLabelTextField (~> 3.0)
+  - SwiftyGif (from `https://github.com/kirualex/SwiftyGif/`, branch `swift4`)
   - TimelineTableViewCell
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, tag `2.0`)
   - WCLShineButton
@@ -111,6 +113,9 @@ EXTERNAL SOURCES:
   SCLAlertView:
     :branch: master
     :git: https://github.com/vikmeup/SCLAlertView-Swift
+  SwiftyGif:
+    :branch: swift4
+    :git: https://github.com/kirualex/SwiftyGif/
   TKSubmitTransition:
     :git: https://github.com/entotsu/TKSubmitTransition.git
     :tag: 2.0
@@ -119,6 +124,9 @@ CHECKOUT OPTIONS:
   SCLAlertView:
     :commit: 85329ce66c297bea79ddef92908ff2040174ccf9
     :git: https://github.com/vikmeup/SCLAlertView-Swift
+  SwiftyGif:
+    :commit: 430b3c869a27a60d01f7299c7623d03ec3d19808
+    :git: https://github.com/kirualex/SwiftyGif/
   TKSubmitTransition:
     :git: https://github.com/entotsu/TKSubmitTransition.git
     :tag: 2.0
@@ -151,11 +159,12 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   SkyFloatingLabelTextField: 703aa1420b697392b1e7dba25571180dde018477
+  SwiftyGif: 752fb942da1059f14f9525e38b2c6d45d90df563
   TimelineTableViewCell: 71a4bc787bfeb5a85083171d18b113a5f5db2be8
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
   WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
 
-PODFILE CHECKSUM: ddba363e1066e318ac81f676751d960e4004fa0b
+PODFILE CHECKSUM: 0b935f5bbd60d8ec311a4695594665f923cfed35
 
 COCOAPODS: 1.3.1
