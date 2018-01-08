@@ -11,6 +11,7 @@ import Firebase
 import GooglePlaces
 import GoogleMaps
 import IQKeyboardManagerSwift
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

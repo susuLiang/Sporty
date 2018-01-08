@@ -30,7 +30,9 @@ class WhoJoinController: UIViewController {
 
     var joinUsers: [UserSetting] = [] {
         didSet {
-            collectionView.reloadData()
+            if joinUsers.count > 0 {
+                collectionView.reloadData()
+            }
         }
     }
 
