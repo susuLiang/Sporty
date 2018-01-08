@@ -15,20 +15,23 @@ class MessagesViewController: UIViewController {
     
     let keyChain = KeychainSwift()
     
+    var messages: [Message] = []
     var thisActivityUid: String = "" {
         didSet {
             print(thisActivityUid)
             FirebaseProvider.shared.getMessage(postUid: thisActivityUid, completion: {(messages, userUids, error) in
                 if error == nil {
                     self.messages = messages!
+                    self.messages.sort(by: {
+                        $0.date < $1.date
+                    })
                     self.userUids = userUids!
                 }
             })
         }
     }
     
-    var messages: [String] = []
-    
+    var userSetting: [UserSetting] = []
     var userUids: [String] = [] {
         didSet {
             for user in userUids {
@@ -40,8 +43,11 @@ class MessagesViewController: UIViewController {
         }
     }
 
-    var userSetting: [UserSetting] = []
-
+    @IBAction func close(_ sender: Any) {
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -87,9 +93,9 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MessageCell else {
             fatalError("MessageCell Error")
         }
-        cell.userMessage.text = messages[indexPath.row]
+        cell.userMessage.text = messages[indexPath.row].message
         if userSetting.count == messages.count {
-            cell.userName.text = userSetting[indexPath.row].name
+            cell.userName.text = "\(userSetting[indexPath.row].name):"
             if let userUrl = userSetting[indexPath.row].urlString {
                 DispatchQueue.main.async {
                     Nuke.loadImage(with: URL(string: userUrl)!, into: cell.userPhoto)

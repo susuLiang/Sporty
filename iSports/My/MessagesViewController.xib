@@ -17,23 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trY-sU-oTK">
-                        <rect key="frame" x="23" y="528" width="274" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLb-ud-tfq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-si-uIr">
-                        <rect key="frame" x="311" y="528" width="46" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
-                            <action selector="sendMessage:" destination="2Ck-mv-iUi" eventType="touchUpInside" id="y2X-A4-81S"/>
+                            <action selector="close:" destination="2Ck-mv-iUi" eventType="touchUpInside" id="TnT-1c-kgG"/>
                         </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ipe-2U-Ebt">
+                        <rect key="frame" x="0.0" y="439" width="375" height="228"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="baX-cw-kf8">
-                        <rect key="frame" x="14" y="74" width="343" height="446"/>
+                        <rect key="frame" x="16" y="446" width="343" height="155"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -41,8 +38,33 @@
                             <outlet property="delegate" destination="2Ck-mv-iUi" id="NMK-Js-m6U"/>
                         </connections>
                     </tableView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trY-sU-oTK">
+                        <rect key="frame" x="16" y="617" width="274" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="274" id="J2m-80-JvJ"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-si-uIr">
+                        <rect key="frame" x="313" y="616" width="53" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="53" id="7ke-EW-GQf"/>
+                        </constraints>
+                        <state key="normal" title="Send"/>
+                        <connections>
+                            <action selector="sendMessage:" destination="2Ck-mv-iUi" eventType="touchUpInside" id="y2X-A4-81S"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="7GV-si-uIr" firstAttribute="leading" secondItem="trY-sU-oTK" secondAttribute="trailing" constant="23" id="S8E-de-tO0"/>
+                    <constraint firstItem="NaW-K5-NVg" firstAttribute="bottom" secondItem="trY-sU-oTK" secondAttribute="bottom" constant="20" id="SZj-fB-wjX"/>
+                    <constraint firstItem="NaW-K5-NVg" firstAttribute="bottom" secondItem="7GV-si-uIr" secondAttribute="bottom" constant="21" id="Xxh-eA-GY3"/>
+                    <constraint firstItem="trY-sU-oTK" firstAttribute="leading" secondItem="NaW-K5-NVg" secondAttribute="leading" constant="16" id="afK-w9-9Lg"/>
+                </constraints>
                 <viewLayoutGuide key="safeArea" id="NaW-K5-NVg"/>
             </view>
             <connections>
@@ -50,7 +72,7 @@
                 <outlet property="tableView" destination="baX-cw-kf8" id="c76-nW-rnf"/>
                 <outlet property="typeTextField" destination="trY-sU-oTK" id="Fo8-aC-wJm"/>
             </connections>
-            <point key="canvasLocation" x="7" y="58"/>
+            <point key="canvasLocation" x="6.5" y="57.5"/>
         </viewController>
     </objects>
 </document>

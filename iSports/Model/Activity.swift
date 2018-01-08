@@ -134,3 +134,8 @@ struct Preference {
     var time: String
 
 }
+
+struct Message {
+    var message: String
+    var date: String
+}

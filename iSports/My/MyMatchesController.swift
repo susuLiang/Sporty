@@ -73,7 +73,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         
         // swiftlint:disable force_cast
         let messagesView = UINib.load(nibName: "MessagesViewController") as! MessagesViewController
-        
+        // swiftlint:enable force_cast
+
         let keys = self.myMatches.keys
         var uid = ""
         
@@ -81,8 +82,9 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             uid = key
         }
         messagesView.thisActivityUid = uid
-        navigationController?.pushViewController(messagesView, animated: true)
-        // swiftlint:enable force_cast
+        self.addChildViewController(messagesView)
+        self.view.addSubview(messagesView.view)
+        messagesView.didMove(toParentViewController: self)
     }
     
     @objc func quitIt(_ sender: UIButton) {
@@ -159,6 +161,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             cell.cancelButton.setImage(quitIcon, for: .normal)
             cell.cancelButton.tintColor = .red
             cell.cancelButton.addTarget(self, action: #selector(quitIt), for: .touchUpInside)
+            cell.chatButton.setImage(UIImage(named: "icon-chat"), for: .normal)
             cell.chatButton.addTarget(self, action: #selector(showMessages), for: .touchUpInside)
             switch timeMatchs[indexPath.row].type {
             case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
