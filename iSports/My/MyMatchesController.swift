@@ -57,6 +57,65 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc func showMessages(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview as? TimelineTableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not the right cell.")
+                return
+        }
+        
+        let thatWeek = self.myMatches.values.filter({ (myMatch) -> Bool in
+            let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+            let matchWeek = myMatch.time[..<matchIndex]
+            return matchWeek == time[indexPath.section]
+        })
+        
+        // swiftlint:disable force_cast
+        let messagesView = UINib.load(nibName: "MessagesViewController") as! MessagesViewController
+        
+        let keys = self.myMatches.keys
+        var uid = ""
+        
+        for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
+            uid = key
+        }
+        messagesView.thisActivityUid = uid
+        navigationController?.pushViewController(messagesView, animated: true)
+        // swiftlint:enable force_cast
+    }
+    
+    @objc func quitIt(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview as? TimelineTableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not the right cell.")
+                return
+        }
+        let thatWeek = self.myMatches.values.filter({ (myMatch) -> Bool in
+            let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+            let matchWeek = myMatch.time[..<matchIndex]
+            return matchWeek == time[indexPath.section]
+        })
+        
+        let keys = self.myMatches.keys
+        var uid = ""
+        
+        for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
+            uid = key
+        }
+        
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
+            let ref = Database.database().reference()
+            let activityUid = thatWeek[indexPath.row].id
+            let newValue = thatWeek[indexPath.row].number - 1
+            ref.child("user_joinId").child(uid).removeValue()
+            ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
+        })
+        alertView.addButton(NSLocalizedString("NO", comment: "")) {}
+        alertView.showWarning(NSLocalizedString("Sure to quit ?", comment: ""), subTitle: "")
+    }
 
     // MARK: - Table view data source
 
@@ -70,7 +129,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
                 let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                 let matchWeek = myMatch.time[..<matchIndex]
-
                 return matchWeek == time[section]
             })
             return timeMatchs.count
@@ -100,7 +158,8 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)
             cell.cancelButton.setImage(quitIcon, for: .normal)
             cell.cancelButton.tintColor = .red
-            cell.cancelButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+            cell.cancelButton.addTarget(self, action: #selector(quitIt), for: .touchUpInside)
+            cell.chatButton.addTarget(self, action: #selector(showMessages), for: .touchUpInside)
             switch timeMatchs[indexPath.row].type {
             case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
             case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
@@ -140,37 +199,4 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
-
-    @objc func deleteIt(_ sender: UIButton) {
-        guard let cell = sender.superview?.superview as? TimelineTableViewCell,
-            let indexPath = tableView.indexPath(for: cell) else {
-                print("It's not the right cell.")
-                return
-        }
-        let thatWeek = self.myMatches.values.filter({ (myMatch) -> Bool in
-            let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
-            let matchWeek = myMatch.time[..<matchIndex]
-            return matchWeek == time[indexPath.section]
-        })
-        
-        let keys = self.myMatches.keys
-        var uid = ""
-        
-        for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
-            uid = key
-        }
-
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
-        let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
-            let ref = Database.database().reference()
-            let activityUid = thatWeek[indexPath.row].id
-            let newValue = thatWeek[indexPath.row].number - 1
-            ref.child("user_joinId").child(uid).removeValue()
-            ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
-        })
-        alertView.addButton(NSLocalizedString("NO", comment: "")) {}
-        alertView.showWarning(NSLocalizedString("Sure to quit ?", comment: ""), subTitle: "")
-    }
-
 }

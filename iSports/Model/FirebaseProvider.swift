@@ -117,9 +117,9 @@ class FirebaseProvider {
         }
     }
 
-    func getUserProfile(completion: @escaping (UserSetting?, Error?) -> Void) {
+    func getUserProfile(userUid: String, completion: @escaping (UserSetting?, Error?) -> Void) {
         var userSetting: UserSetting? = nil
-        if let userUid = keyChain.get("uid") {
+//        if let userUid = keyChain.get("uid") {
             Database.database().reference().child("users").child(userUid).observe(.value) { (snapshot: DataSnapshot) in
                 if let object = snapshot.value as? [String: AnyObject] {
                         do {
@@ -130,7 +130,7 @@ class FirebaseProvider {
                     }
                 completion(userSetting, nil)
             }
-        }
+//        }
     }
 
     func getWhoJoin(activityId: String, completion: @escaping ([UserSetting]?, Error?) -> Void) {
@@ -164,6 +164,25 @@ class FirebaseProvider {
                 usersInfo = [UserSetting]()
                 completion(usersInfo, nil)
             }
+        }
+    }
+    
+    func getMessage(postUid: String, completion: @escaping ([String]?, [String]?, Error?) -> Void ) {
+        var messages = [String]()
+        var userUids = [String]()
+        
+        Database.database().reference().child("messages").queryOrdered(byChild: "postUid").queryEqual(toValue: postUid).observe(.value) { (snapshot: DataSnapshot) in
+            if let objects = snapshot.value as? [String: AnyObject] {
+                messages = [String]()
+                for (key, object) in objects {
+                    if let message = object["message"] as? String,
+                        let userUid = object["userUid"] as? String {
+                        messages.append(message)
+                        userUids.append(userUid)
+                    }
+                }
+            }
+           completion(messages, userUids, nil)
         }
     }
 }
