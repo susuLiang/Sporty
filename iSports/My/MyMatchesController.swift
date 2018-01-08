@@ -26,7 +26,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
 
     var itemInfo = IndicatorInfo(title: "Join")
     let userUid = KeychainSwift().get("uid")
-    var myMatches = [Activity]()
+    var myMatches = [String: Activity]()
     var keyUid = [String]()
 
     override func viewDidLoad() {
@@ -36,12 +36,12 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
 
         view.backgroundColor = .white
 
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
-//            posts?.sorted() { $0.time > $1.time }
-            self.myMatches = posts!
-            self.myMatches.sorted() { $0.time > $1.time }
-            self.keyUid = keyUid!
-            self.tableView.reloadData()
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            if error == nil {
+                self.myMatches = posts!
+                self.myMatches.values.sorted(by: { $0.postedTime > $1.postedTime })
+                self.tableView.reloadData()
+            }
         })
     }
 
@@ -67,7 +67,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case section:
-            let timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+            let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
                 let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                 let matchWeek = myMatch.time[..<matchIndex]
 
@@ -84,7 +84,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             else { fatalError() }
         switch indexPath.section {
         case indexPath.section:
-            var timeMatchs = self.myMatches.filter({ (myMatch) -> Bool in
+            var timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
                 let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                 let matchWeek = myMatch.time[..<matchIndex]
                 return matchWeek == time[indexPath.section]
@@ -127,7 +127,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             return
         }
 
-        let thatWeek = self.myMatches.filter({ (myMatch) -> Bool in
+        let thatWeek = self.myMatches.values.filter({ (myMatch) -> Bool in
             let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
             let matchWeek = myMatch.time[..<matchIndex]
             return matchWeek == time[indexPath.section]
@@ -147,14 +147,25 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
                 print("It's not the right cell.")
                 return
         }
+        let thatWeek = self.myMatches.values.filter({ (myMatch) -> Bool in
+            let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+            let matchWeek = myMatch.time[..<matchIndex]
+            return matchWeek == time[indexPath.section]
+        })
+        
+        let keys = self.myMatches.keys
+        var uid = ""
+        
+        for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
+            uid = key
+        }
 
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
-            let uid = self.keyUid[indexPath.row]
             let ref = Database.database().reference()
-            let activityUid = self.myMatches[indexPath.row].id
-            let newValue = self.myMatches[indexPath.row].number - 1
+            let activityUid = thatWeek[indexPath.row].id
+            let newValue = thatWeek[indexPath.row].number - 1
             ref.child("user_joinId").child(uid).removeValue()
             ref.child("activities").child(activityUid).updateChildValues(["number": newValue])
         })

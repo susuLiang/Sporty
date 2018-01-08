@@ -118,9 +118,11 @@ class ListsController: UIViewController {
     }
 
     func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
-            self.myMatches = posts!
-            self.tableView.reloadData()
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            if let posts = posts {
+                self.myMatches = Array(posts.values)
+                self.tableView.reloadData()
+            }
         })
     }
 

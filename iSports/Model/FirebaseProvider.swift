@@ -79,45 +79,40 @@ class FirebaseProvider {
         }
     }
 
-    func getPosts(childKind: String, completion: @escaping ([Activity]?, [String]?, Error?) -> Void) {
+    func getPosts(childKind: String, completion: @escaping ([String: Activity]?, Error?) -> Void) {
 
-        var keyUid = [String]()
-        var results = [String]()
-        var posts = [Activity]()
+        var results = [String: String]()
+        var posts = [String: Activity]()
 
         let userCurrentUid = keyChain.get("uid")
 
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
-                results = [String]()
-                keyUid = [String]()
+                results = [String: String]()
                 for (key, data) in objects {
-                    keyUid.append(key)
                     if let postId = data[childKind] as? String {
-                        results.append(postId)
+                        results.updateValue(postId, forKey: key)
                     }
                 }
-                posts = [Activity]()
-                for result in results {
+                posts = [String: Activity]()
+                for (key, result) in results {
                     Database.database().reference().child("activities").child(result).observeSingleEvent(of: .value, with: {
                         (snapshot) in
                         if let data = snapshot.value as? [String: AnyObject] {
                             let id = snapshot.key
                             do {
                                 let activity = try Activity(data, id: id)
-                                posts.append(activity)
+                                posts.updateValue(activity, forKey: key)
                             } catch {
                                 print("Can not get users activities data.")
                             }
                         }
-                        posts.sort(by: { $0.postedTime > $1.postedTime })
-                        completion(posts, keyUid, nil)
+                        completion(posts, nil)
                     })
                 }
             } else {
-                posts = [Activity]()
-                keyUid = [String]()
-                completion(posts, keyUid, nil)
+                posts = [String: Activity]()
+                completion(posts, nil)
             }
         }
     }

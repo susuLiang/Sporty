@@ -43,11 +43,6 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         getPosts()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getPosts()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -98,14 +93,12 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
     }
 
     func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, keyUid, error) in
-            if error == nil {
-                self.myPosts = posts!
-                self.keyUid = keyUid!
+        FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, error) in
+            if error == nil, let posts = posts {
+                self.myPosts = Array(posts.values)
                 self.tableView.reloadData()
             }
         })
-
     }
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {

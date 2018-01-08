@@ -86,9 +86,9 @@ class ShowDetailController: UIViewController {
     }
 
     func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, keyUid, error) in
-            if error == nil {
-                self.myMatches = posts!
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            if error == nil, let posts = posts {
+                self.myMatches = Array(posts.values)
                 self.setJoinButton()
             }
         })
