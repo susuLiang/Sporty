@@ -12,13 +12,12 @@ import KeychainSwift
 import Nuke
 
 class MessagesViewController: UIViewController {
-    
+
     let keyChain = KeychainSwift()
-    
+
     var messages: [Message] = []
     var thisActivityUid: String = "" {
         didSet {
-            print(thisActivityUid)
             FirebaseProvider.shared.getMessage(postUid: thisActivityUid, completion: {(messages, userUids, error) in
                 if error == nil {
                     self.messages = messages!
@@ -30,14 +29,22 @@ class MessagesViewController: UIViewController {
             })
         }
     }
-    
+
     var userSetting: [UserSetting] = []
     var userUids: [String] = [] {
         didSet {
             for user in userUids {
                 FirebaseProvider.shared.getUserProfile(userUid: user, completion: { (userSetting, error) in
-                    self.userSetting.append(userSetting!)
-                    self.tableView.reloadData()
+                    if error == nil {
+                        self.userSetting.append(userSetting!)
+                        
+                        if self.tableView.numberOfRows(inSection: 0) > 0 {
+                            let lastRow = self.tableView.numberOfRows(inSection: 0) - 1
+                            let indexPath = IndexPath(row: lastRow, section: 0)
+                            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                        }
+                        self.tableView.reloadData()
+                    }
                 })
             }
         }
@@ -47,7 +54,7 @@ class MessagesViewController: UIViewController {
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
     }
-    
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -56,42 +63,52 @@ class MessagesViewController: UIViewController {
         if let text = typeTextField.text {
             let ref = Database.database().reference().child("messages").childByAutoId()
             let date = "\(Date())"
-            let value = ["userUid": userUid, "message": text, "postUid": thisActivityUid, "date": date] as [String : Any]
+            let value = ["userUid": userUid, "message": text, "postUid": thisActivityUid, "date": date] as [String: Any]
             ref.setValue(value)
+            self.typeTextField.text = ""
         }
+        self.tableView.beginUpdates()
+        self.tableView.reloadData()
+        self.tableView.endUpdates()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
+        
+        if self.tableView.numberOfRows(inSection: 0) > 0 {
+            let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
+            let indexPath = IndexPath(row: lastRow, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setUpCell() {
         let nib = UINib(nibName: "MessageCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 22
     }
-
 }
 
 extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MessageCell else {
             fatalError("MessageCell Error")
@@ -107,5 +124,6 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    
 }
-

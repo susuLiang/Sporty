@@ -119,18 +119,16 @@ class FirebaseProvider {
 
     func getUserProfile(userUid: String, completion: @escaping (UserSetting?, Error?) -> Void) {
         var userSetting: UserSetting? = nil
-//        if let userUid = keyChain.get("uid") {
             Database.database().reference().child("users").child(userUid).observe(.value) { (snapshot: DataSnapshot) in
                 if let object = snapshot.value as? [String: AnyObject] {
-                        do {
-                            userSetting = try UserSetting(object)
-                        } catch {
-                            print("Can not get users profile.")
-                        }
+                    do {
+                        userSetting = try UserSetting(object)
+                    } catch {
+                        print("Can not get users profile.")
                     }
-                completion(userSetting, nil)
-            }
-//        }
+                }
+            completion(userSetting, nil)
+        }
     }
 
     func getWhoJoin(activityId: String, completion: @escaping ([UserSetting]?, Error?) -> Void) {
@@ -166,11 +164,11 @@ class FirebaseProvider {
             }
         }
     }
-    
+
     func getMessage(postUid: String, completion: @escaping ([Message]?, [String]?, Error?) -> Void ) {
         var messages = [Message]()
         var userUids = [String]()
-        
+
         Database.database().reference().child("messages").queryOrdered(byChild: "postUid").queryEqual(toValue: postUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
                 messages = [Message]()

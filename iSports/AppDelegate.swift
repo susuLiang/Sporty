@@ -22,11 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
 
+        Fabric.with([Crashlytics()])
+
         GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
         GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
 
         IQKeyboardManager.sharedManager().enable = true
-        
+
         // swiftlint:disable force_cast
         let gifViewController = UINib.load(nibName: "GifViewController") as! GifViewController
         // swiftlint:enable force_cast

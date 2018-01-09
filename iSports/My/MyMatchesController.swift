@@ -30,7 +30,6 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     var keyUid = [String]()
     var timeMatchArray: [[Activity]] = []
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,7 +40,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
             if error == nil {
                 self.myMatches = posts!
-                
+
                 self.timeMatchArray = []
                 for i in 0...time.count - 1 {
                     let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
@@ -51,7 +50,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
                     })
                     self.timeMatchArray.append(timeMatchs)
                 }
-                    
+
                 self.myMatches.values.sorted(by: { $0.postedTime > $1.postedTime })
                 self.tableView.reloadData()
             }
@@ -70,48 +69,43 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     @objc func showMessages(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? TimelineTableViewCell,
             let indexPath = tableView.indexPath(for: cell) else {
                 print("It's not the right cell.")
                 return
         }
-        
+
         let thatWeek = timeMatchArray[indexPath.section]
-        
+
         // swiftlint:disable force_cast
         let messagesView = UINib.load(nibName: "MessagesViewController") as! MessagesViewController
         // swiftlint:enable force_cast
 
-        let keys = self.myMatches.keys
-        var uid = ""
-            for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
-                uid = key
-            }
-            messagesView.thisActivityUid = uid
-            self.addChildViewController(messagesView)
-            self.view.addSubview(messagesView.view)
-            messagesView.didMove(toParentViewController: self)
-        
+        messagesView.thisActivityUid = thatWeek[indexPath.row].id
+        self.addChildViewController(messagesView)
+        self.view.addSubview(messagesView.view)
+        messagesView.didMove(toParentViewController: self)
+
     }
-    
+
     @objc func quitIt(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? TimelineTableViewCell,
             let indexPath = tableView.indexPath(for: cell) else {
                 print("It's not the right cell.")
                 return
         }
-        
+
         let thatWeek = timeMatchArray[indexPath.section]
 
         let keys = self.myMatches.keys
         var uid = ""
-        
+
         for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
             uid = key
         }
-        
+
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
@@ -152,8 +146,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let timeMatchs = timeMatchArray[indexPath.section]
 
             timeMatchs.sorted(by: {$0.time < $1.time})
-            
-            
+
             cell.titleLabel.text = timeMatchs[indexPath.row].time
 
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
@@ -199,5 +192,5 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
-    
+
 }
