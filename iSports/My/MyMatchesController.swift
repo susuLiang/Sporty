@@ -45,7 +45,7 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setupTableView() {
         tableView.frame = view.frame
         view.addSubview(tableView)
@@ -135,11 +135,11 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
 
     // MARK: - Table view data source
 
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
 
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if timeMatchArray.count > 0 {
             switch section {
             case section:
@@ -152,7 +152,7 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         return 0
     }
 
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as? TimelineTableViewCell
             else { fatalError() }
         switch indexPath.section {
@@ -187,11 +187,11 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         return cell
     }
 
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
 
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let activityView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
             print("ShowDetailController invalid")
             return

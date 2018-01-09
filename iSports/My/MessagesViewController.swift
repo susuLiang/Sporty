@@ -10,11 +10,11 @@ import UIKit
 import Firebase
 import KeychainSwift
 import Nuke
+import SCLAlertView
 
 class MessagesViewController: UIViewController {
 
     let keyChain = KeychainSwift()
-
     var messages: [Message] = []
     var thisActivityUid: String = "" {
         didSet {
@@ -45,7 +45,7 @@ class MessagesViewController: UIViewController {
                         if self.tableView.numberOfRows(inSection: 0) > 0 {
                             let lastRow = self.tableView.numberOfRows(inSection: 0) - 1
                             let indexPath = IndexPath(row: lastRow, section: 0)
-                            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                         }
                         self.tableView.reloadData()
                     }
@@ -65,34 +65,32 @@ class MessagesViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBAction func sendMessage(_ sender: Any) {
         let userUid = Auth.auth().currentUser?.uid
-        if let text = typeTextField.text {
+        if typeTextField.text == "" {
+            SCLAlertView().showError(NSLocalizedString("Error", comment: ""), subTitle: NSLocalizedString("Please enter something.", comment: ""))
+        } else if let text = typeTextField.text {
             let ref = Database.database().reference().child("messages").childByAutoId()
             let date = "\(Date())"
             let value = ["userUid": userUid, "message": text, "postUid": thisActivityUid, "date": date] as [String: Any]
-            ref.setValue(value)
+            ref.updateChildValues(value)
+//            ref.setValue(value)
             self.typeTextField.text = ""
         }
-        self.tableView.beginUpdates()
         self.tableView.reloadData()
-        self.tableView.endUpdates()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
-        
         if self.tableView.numberOfRows(inSection: 0) > 0 {
             let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
             let indexPath = IndexPath(row: lastRow, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     func setUpCell() {
