@@ -13,11 +13,11 @@ import KeychainSwift
 import SCLAlertView
 import TimelineTableViewCell
 
-class MyMatchesController: UITableViewController, IndicatorInfoProvider {
+class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
 
-    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
+    init(itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
-        super.init(style: style)
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,32 +29,28 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
     var myMatches = [String: Activity]()
     var keyUid = [String]()
     var timeMatchArray: [[Activity]] = []
+    let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupTableCell()
-
         view.backgroundColor = .white
 
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
-            if error == nil {
-                self.myMatches = posts!
-
-                self.timeMatchArray = []
-                for i in 0...time.count - 1 {
-                    let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
-                        let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
-                        let matchWeek = myMatch.time[..<matchIndex]
-                        return matchWeek == time[i]
-                    })
-                    self.timeMatchArray.append(timeMatchs)
-                }
-
-                self.myMatches.values.sorted(by: { $0.postedTime > $1.postedTime })
-                self.tableView.reloadData()
-            }
-        })
+        setupTableView()
+        setupTableCell()
+        getFilterArrayByTime()
+        
+        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-cancel"), style: .plain, target: self, action: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func setupTableView() {
+        tableView.frame = view.frame
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     func setupTableCell() {
@@ -65,9 +61,26 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
                                              bundle: Bundle(url: nibUrl!)!)
         tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func getFilterArrayByTime() {
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            if error == nil {
+                self.myMatches = posts!
+                
+                self.timeMatchArray = []
+                for i in 0...time.count - 1 {
+                    let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
+                        let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
+                        let matchWeek = myMatch.time[..<matchIndex]
+                        return matchWeek == time[i]
+                    })
+                    self.timeMatchArray.append(timeMatchs)
+                }
+                
+                self.myMatches.values.sorted(by: { $0.postedTime > $1.postedTime })
+                self.tableView.reloadData()
+            }
+        })
     }
 
     @objc func showMessages(_ sender: UIButton) {
@@ -84,10 +97,11 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         // swiftlint:enable force_cast
 
         messagesView.thisActivityUid = thatWeek[indexPath.row].id
+        messagesView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! * 2 - (self.navigationController?.navigationBar.frame.height)!)
+        
         self.addChildViewController(messagesView)
         self.view.addSubview(messagesView.view)
         messagesView.didMove(toParentViewController: self)
-
     }
 
     @objc func quitIt(_ sender: UIButton) {
@@ -121,11 +135,11 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if timeMatchArray.count > 0 {
             switch section {
             case section:
@@ -138,7 +152,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         return 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as? TimelineTableViewCell
             else { fatalError() }
         switch indexPath.section {
@@ -173,11 +187,11 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let activityView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
             print("ShowDetailController invalid")
             return

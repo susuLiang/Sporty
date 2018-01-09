@@ -27,13 +27,13 @@
                         </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="ipe-2U-Ebt">
-                        <rect key="frame" x="0.0" y="220" width="375" height="228"/>
+                        <rect key="frame" x="0.0" y="424" width="375" height="228"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ipe-2U-Ebt" secondAttribute="height" multiplier="125:76" id="ykA-XQ-HvT"/>
                         </constraints>
                     </imageView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="baX-cw-kf8">
-                        <rect key="frame" x="20" y="236" width="335" height="143"/>
+                        <rect key="frame" x="20" y="440" width="335" height="143"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="baX-cw-kf8" secondAttribute="height" multiplier="335:143" id="ssn-2n-tKI"/>
@@ -44,13 +44,13 @@
                         </connections>
                     </tableView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trY-sU-oTK">
-                        <rect key="frame" x="16" y="387" width="279" height="30"/>
+                        <rect key="frame" x="16" y="591" width="279" height="30"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GV-si-uIr">
-                        <rect key="frame" x="303" y="387" width="57" height="30"/>
+                        <rect key="frame" x="303" y="591" width="57" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="57" id="YFA-Ue-lUU"/>
                         </constraints>
@@ -67,13 +67,12 @@
                 <constraints>
                     <constraint firstItem="ipe-2U-Ebt" firstAttribute="top" secondItem="baX-cw-kf8" secondAttribute="top" constant="-16" id="1NA-ec-EUI"/>
                     <constraint firstItem="baX-cw-kf8" firstAttribute="trailing" secondItem="ipe-2U-Ebt" secondAttribute="trailing" constant="-20" id="427-ul-SYX"/>
+                    <constraint firstItem="NaW-K5-NVg" firstAttribute="bottom" secondItem="ipe-2U-Ebt" secondAttribute="bottom" constant="15" id="4r7-yZ-oLN"/>
                     <constraint firstItem="7GV-si-uIr" firstAttribute="top" secondItem="baX-cw-kf8" secondAttribute="bottom" constant="8" id="E2n-Kk-kmV"/>
                     <constraint firstItem="trY-sU-oTK" firstAttribute="top" secondItem="baX-cw-kf8" secondAttribute="bottom" constant="8" id="RnG-3E-zce"/>
                     <constraint firstItem="7GV-si-uIr" firstAttribute="leading" secondItem="trY-sU-oTK" secondAttribute="trailing" constant="8" id="SJ2-pb-BeN"/>
                     <constraint firstItem="trY-sU-oTK" firstAttribute="leading" secondItem="NaW-K5-NVg" secondAttribute="leading" constant="16" id="UnD-1h-Pxt"/>
-                    <constraint firstItem="ipe-2U-Ebt" firstAttribute="centerX" secondItem="CiB-8r-NJd" secondAttribute="centerX" id="VMA-mQ-dcY"/>
                     <constraint firstItem="baX-cw-kf8" firstAttribute="leading" secondItem="ipe-2U-Ebt" secondAttribute="leading" constant="20" id="VqM-co-1YH"/>
-                    <constraint firstItem="ipe-2U-Ebt" firstAttribute="centerY" secondItem="CiB-8r-NJd" secondAttribute="centerY" id="Y9t-Hz-rK6"/>
                     <constraint firstItem="ipe-2U-Ebt" firstAttribute="width" secondItem="CiB-8r-NJd" secondAttribute="width" id="ekh-9G-Liq"/>
                     <constraint firstItem="trY-sU-oTK" firstAttribute="centerY" secondItem="7GV-si-uIr" secondAttribute="centerY" id="kT3-AZ-oNm"/>
                     <constraint firstItem="7GV-si-uIr" firstAttribute="trailing" secondItem="ipe-2U-Ebt" secondAttribute="trailing" constant="-15" id="mrl-jc-gdq"/>

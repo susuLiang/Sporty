@@ -18,13 +18,16 @@ class MessagesViewController: UIViewController {
     var messages: [Message] = []
     var thisActivityUid: String = "" {
         didSet {
-            FirebaseProvider.shared.getMessage(postUid: thisActivityUid, completion: {(messages, userUids, error) in
+            FirebaseProvider.shared.getMessage(postUid: thisActivityUid, completion: {(messages, error) in
                 if error == nil {
                     self.messages = messages!
                     self.messages.sort(by: {
                         $0.date < $1.date
                     })
-                    self.userUids = userUids!
+                    self.userUids = []
+                    for message in self.messages {
+                        self.userUids.append(message.userUid)
+                    }
                 }
             })
         }
@@ -33,6 +36,7 @@ class MessagesViewController: UIViewController {
     var userSetting: [UserSetting] = []
     var userUids: [String] = [] {
         didSet {
+            if userUids.count == messages.count {
             for user in userUids {
                 FirebaseProvider.shared.getUserProfile(userUid: user, completion: { (userSetting, error) in
                     if error == nil {
@@ -46,6 +50,7 @@ class MessagesViewController: UIViewController {
                         self.tableView.reloadData()
                     }
                 })
+            }
             }
         }
     }
@@ -76,7 +81,6 @@ class MessagesViewController: UIViewController {
         super.viewDidLoad()
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
         

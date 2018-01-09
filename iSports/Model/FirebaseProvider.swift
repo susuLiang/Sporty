@@ -165,9 +165,9 @@ class FirebaseProvider {
         }
     }
 
-    func getMessage(postUid: String, completion: @escaping ([Message]?, [String]?, Error?) -> Void ) {
+    func getMessage(postUid: String, completion: @escaping ([Message]?, Error?) -> Void ) {
         var messages = [Message]()
-        var userUids = [String]()
+//        var userUids = [String]()
 
         Database.database().reference().child("messages").queryOrdered(byChild: "postUid").queryEqual(toValue: postUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
@@ -176,12 +176,12 @@ class FirebaseProvider {
                     if let message = object["message"] as? String,
                         let userUid = object["userUid"] as? String,
                         let date = object["date"] as? String {
-                        messages.append(Message(message: message, date: date))
-                        userUids.append(userUid)
+                        messages.append(Message(message: message, date: date, userUid: userUid))
+//                        userUids.append(userUid)
                     }
                 }
             }
-           completion(messages, userUids, nil)
+           completion(messages, nil)
         }
     }
 }
