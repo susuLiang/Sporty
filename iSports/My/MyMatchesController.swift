@@ -51,6 +51,8 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
     }
 
     func setupTableCell() {

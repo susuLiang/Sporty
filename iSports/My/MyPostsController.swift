@@ -44,6 +44,8 @@ class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDel
         view.backgroundColor = .white
         setupTableCell()
         getPosts()
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
     }
 
     override func didReceiveMemoryWarning() {

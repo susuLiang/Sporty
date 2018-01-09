@@ -83,6 +83,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="h6d-YT-2J4" secondAttribute="trailing" id="GQh-4p-7eH"/>
+                            <constraint firstAttribute="width" secondItem="hEt-yf-RCu" secondAttribute="height" multiplier="207:250" id="ajQ-yW-IEI"/>
                             <constraint firstItem="h6d-YT-2J4" firstAttribute="top" secondItem="hEt-yf-RCu" secondAttribute="top" id="cZO-aH-6xK"/>
                             <constraint firstItem="h6d-YT-2J4" firstAttribute="leading" secondItem="hEt-yf-RCu" secondAttribute="leading" id="kIj-Gb-HGI"/>
                             <constraint firstAttribute="bottom" secondItem="h6d-YT-2J4" secondAttribute="bottom" id="v9H-6r-d7n"/>

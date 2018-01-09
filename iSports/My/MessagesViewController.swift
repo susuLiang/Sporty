@@ -75,6 +75,8 @@ class MessagesViewController: UIViewController {
         tableView.tableFooterView = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
         if self.tableView.numberOfRows(inSection: 0) > 0 {
             let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
             let indexPath = IndexPath(row: lastRow, section: 0)
