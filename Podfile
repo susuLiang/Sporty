@@ -14,7 +14,6 @@ target 'iSports' do
   pod 'Firebase/AdMob'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'MessageKit'
   pod 'Cartography', '2.1.0'
   pod 'NVActivityIndicatorView'
   pod 'XLPagerTabStrip', '~> 8.0'

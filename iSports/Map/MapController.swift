@@ -11,11 +11,11 @@ import GoogleMaps
 import GooglePlaces
 
 class MapController: UIViewController, GMSMapViewDelegate {
-    
+
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
-    
+
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
 
@@ -57,26 +57,26 @@ class MapController: UIViewController, GMSMapViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func setSearchBar() {
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
-        
+
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
-        
+
         let subView = UIView(frame: CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)! + UIApplication.shared.statusBarFrame.height, width: 350.0, height: 45.0))
-        
+
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
-        
+
         // When UISearchController presents the results view, present it in
         // this view controller, not one further up the chain.
         definesPresentationContext = true
     }
-    
+
     func setMapView() {
         mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -241,26 +241,21 @@ extension MapController: GMSAutocompleteResultsViewControllerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude,
                                               longitude: place.coordinate.longitude,
                                               zoom: zoomLevel)
-        
+
         mapView.camera = camera
-        
-        print(place.coordinate)
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
     }
-    
+
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didFailAutocompleteWithError error: Error){
+                           didFailAutocompleteWithError error: Error) {
         // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
-    
+
     // Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
-    
+
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }

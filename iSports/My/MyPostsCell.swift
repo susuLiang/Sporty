@@ -17,7 +17,8 @@ class MyPostsCell: UITableViewCell {
     @IBOutlet weak var seeWhoButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var numLabel: UILabel!
-
+    @IBOutlet weak var messageButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 30
@@ -32,6 +33,9 @@ class MyPostsCell: UITableViewCell {
         let seeWhoIcon = UIImage(named: "icon-group")?.withRenderingMode(.alwaysTemplate)
         seeWhoButton.setImage(seeWhoIcon, for: .normal)
         seeWhoButton.tintColor = UIColor(red: 249/255, green: 69/255, blue: 46/255, alpha: 1)
+        
+        let messageIcon = UIImage(named: "icon-chat")
+        messageButton.setImage(messageIcon, for: .normal)
 
     }
 

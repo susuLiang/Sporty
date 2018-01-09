@@ -90,9 +90,17 @@
                         <color key="textColor" red="0.01176470588" green="0.25490196079999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26B-yO-Mbh">
+                        <rect key="frame" x="155" y="19" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="26B-yO-Mbh" secondAttribute="height" multiplier="1:1" id="PTP-9e-ce2"/>
+                            <constraint firstAttribute="width" constant="30" id="SOs-Me-RJ5"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="2Rz-dN-Xtc" firstAttribute="leading" secondItem="4Od-hl-ENS" secondAttribute="trailing" constant="18" id="1cR-v5-lWY"/>
+                    <constraint firstItem="26B-yO-Mbh" firstAttribute="centerY" secondItem="2Rz-dN-Xtc" secondAttribute="centerY" id="2Iu-7f-Apd"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="top" secondItem="2Rz-dN-Xtc" secondAttribute="bottom" constant="12" id="3rS-ql-g6Q"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="centerY" secondItem="2Rz-dN-Xtc" secondAttribute="centerY" id="6P6-hc-aYO"/>
                     <constraint firstAttribute="bottomMargin" secondItem="h2K-xg-hrK" secondAttribute="bottom" constant="1" id="7N4-3P-Cdy"/>
@@ -104,6 +112,7 @@
                     <constraint firstItem="2Rz-dN-Xtc" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="8" id="Xh2-mj-c44"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="centerY" secondItem="W66-Ck-wDF" secondAttribute="centerY" id="aeo-Ux-Iwh"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="leading" secondItem="aFP-zW-cVP" secondAttribute="trailing" constant="33" id="ajE-HI-VcB"/>
+                    <constraint firstItem="26B-yO-Mbh" firstAttribute="leading" secondItem="2Rz-dN-Xtc" secondAttribute="trailing" constant="19" id="dIM-af-KYe"/>
                     <constraint firstItem="2D0-6Z-FaV" firstAttribute="top" secondItem="2Rz-dN-Xtc" secondAttribute="bottom" constant="10" id="iL7-9r-ocE"/>
                     <constraint firstItem="h2K-xg-hrK" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="55" id="mTJ-wM-fKw"/>
                     <constraint firstItem="1fR-8z-bCk" firstAttribute="top" secondItem="4Od-hl-ENS" secondAttribute="top" id="mi4-jS-a9S"/>
@@ -117,6 +126,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cancelButton" destination="1fR-8z-bCk" id="MQ3-14-NYd"/>
+                <outlet property="chatButton" destination="26B-yO-Mbh" id="qvE-ch-zfn"/>
                 <outlet property="descriptionLabel" destination="LWm-f0-Lj3" id="fpE-cB-Cup"/>
                 <outlet property="illustrationImageView" destination="aFP-zW-cVP" id="9AD-3h-Weg"/>
                 <outlet property="lineInfoLabel" destination="W66-Ck-wDF" id="WZr-av-HnT"/>

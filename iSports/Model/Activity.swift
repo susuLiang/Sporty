@@ -50,7 +50,7 @@ struct Activity {
     let author: String
 
     let authorUid: String
-    
+
     let postedTime: String
 
     init(_ json: Any, id: String) throws {
@@ -133,4 +133,10 @@ struct Preference {
 
     var time: String
 
+}
+
+struct Message {
+    var message: String
+    var date: String
+    var userUid: String
 }

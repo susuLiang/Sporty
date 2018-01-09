@@ -37,6 +37,10 @@
 		1F74D7451FFB6D3500B746E6 /* WhoJoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */; };
 		1F74D7481FFC70EC00B746E6 /* MyPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7461FFC70EC00B746E6 /* MyPostsCell.swift */; };
 		1F74D7491FFC70EC00B746E6 /* MyPostsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D7471FFC70EC00B746E6 /* MyPostsCell.xib */; };
+		1F7E1E9F20035CAA0038C19C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E1E9D20035CAA0038C19C /* MessagesViewController.swift */; };
+		1F7E1EA020035CAA0038C19C /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */; };
+		1F7E1EA320035E2A0038C19C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E1EA120035E2A0038C19C /* MessageCell.swift */; };
+		1F7E1EA420035E2A0038C19C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7E1EA220035E2A0038C19C /* MessageCell.xib */; };
 		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
 		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
 		1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627821FF0D82000D82614 /* MapSearchController.swift */; };
@@ -117,6 +121,10 @@
 		1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoJoinCell.swift; sourceTree = "<group>"; };
 		1F74D7461FFC70EC00B746E6 /* MyPostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCell.swift; sourceTree = "<group>"; };
 		1F74D7471FFC70EC00B746E6 /* MyPostsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPostsCell.xib; sourceTree = "<group>"; };
+		1F7E1E9D20035CAA0038C19C /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewController.xib; sourceTree = "<group>"; };
+		1F7E1EA120035E2A0038C19C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		1F7E1EA220035E2A0038C19C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
 		1F8627821FF0D82000D82614 /* MapSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
@@ -226,13 +234,13 @@
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
 				1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */,
-				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
+				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
-				1F3897BC2000DC4400910B10 /* GifViewController.xib */,
-				1F3897C02000DCC900910B10 /* GifViewController.swift */,
-				1F31BB7C2002297D00DE9CFA /* sporty.gif */,
 				1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */,
+				1F3897C02000DCC900910B10 /* GifViewController.swift */,
+				1F3897BC2000DC4400910B10 /* GifViewController.xib */,
+				1F31BB7C2002297D00DE9CFA /* sporty.gif */,
 				1FFC9DEA1FE17195003071B9 /* NavigationController.swift */,
 				1F8627761FEEB04200D82614 /* MyProfile */,
 				1F705F111FEA0ACB0010963E /* My */,
@@ -268,6 +276,10 @@
 			children = (
 				1F705F121FEA0AED0010963E /* MyActivitiesController.swift */,
 				1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */,
+				1F7E1E9D20035CAA0038C19C /* MessagesViewController.swift */,
+				1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */,
+				1F7E1EA120035E2A0038C19C /* MessageCell.swift */,
+				1F7E1EA220035E2A0038C19C /* MessageCell.xib */,
 				1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */,
 				1F74D7461FFC70EC00B746E6 /* MyPostsCell.swift */,
 				1F74D7471FFC70EC00B746E6 /* MyPostsCell.xib */,
@@ -502,8 +514,10 @@
 			files = (
 				1F6776641FFF8BFB00011404 /* ShowDetailController.xib in Resources */,
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
+				1F7E1EA020035CAA0038C19C /* MessagesViewController.xib in Resources */,
 				1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
+				1F7E1EA420035E2A0038C19C /* MessageCell.xib in Resources */,
 				1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */,
 				1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */,
 				1FFC9DEF1FE17B1B003071B9 /* ListsCell.xib in Resources */,
@@ -567,7 +581,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
@@ -590,7 +603,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
@@ -672,6 +684,7 @@
 				1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */,
 				1F8627871FF0D98900D82614 /* ColorSetting.swift in Sources */,
 				1F86279B1FF2606900D82614 /* CityAndTimeSettingCell.swift in Sources */,
+				1F7E1E9F20035CAA0038C19C /* MessagesViewController.swift in Sources */,
 				1FFC9DEB1FE17195003071B9 /* NavigationController.swift in Sources */,
 				1FFA2F201FE8EB8D00E485F1 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */,
@@ -692,6 +705,7 @@
 				1F8627931FF2441E00D82614 /* TypeSettingController.swift in Sources */,
 				1FFC9DE01FE16A3A003071B9 /* TabBarItem.swift in Sources */,
 				1F6CE5C51FE11BFC006D6AAD /* AppDelegate.swift in Sources */,
+				1F7E1EA320035E2A0038C19C /* MessageCell.swift in Sources */,
 				1F74D7411FFB6B6500B746E6 /* WhoJoinController.swift in Sources */,
 				1F86278B1FF0E8BD00D82614 /* MapSearchCell.swift in Sources */,
 				1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */,

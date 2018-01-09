@@ -20,14 +20,14 @@ class LoginController: UIViewController {
         let alert = SCLAlertView(appearance: appearance)
 
         let txt = alert.addTextField(NSLocalizedString("Email", comment: ""))
-        
+
         alert.addButton(NSLocalizedString("Done", comment: "")) {
             if let email = txt.text {
                 Auth.auth().sendPasswordReset(withEmail: email) { error in
                     if error != nil {
                         if let errCode = AuthErrorCode(rawValue: error!._code) {
                             var message: String = ""
-                            
+
                             switch errCode {
                             case .userNotFound:
                                 message = NSLocalizedString("User not found", comment: "")
@@ -73,8 +73,7 @@ class LoginController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         logInLabel.text = NSLocalizedString("Sign In", comment: "")
         signInPage.isHidden = false
         signUpPage.isHidden = true
@@ -83,12 +82,11 @@ class LoginController: UIViewController {
         loginIcon.clipsToBounds = true
         loginIcon.layer.shadowRadius = 5
         loginIcon.layer.shadowOffset = CGSize(width: 1, height: 3)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-  
 
 }

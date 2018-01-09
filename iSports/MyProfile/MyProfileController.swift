@@ -131,7 +131,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func getUserProfile() {
-        FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
+        let userUid = keyChain.get("uid")
+        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
             self.loadingIndicator.start()
             if error == nil {
                 self.userSetting = userSetting

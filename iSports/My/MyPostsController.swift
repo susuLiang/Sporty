@@ -12,9 +12,11 @@ import KeychainSwift
 import Firebase
 import SCLAlertView
 
-class MyPostsController: UITableViewController, IndicatorInfoProvider {
+class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
 
     var user: UserSetting?
+    
+    var tableView = UITableView()
 
     let userUid = Auth.auth().currentUser?.uid
 
@@ -24,12 +26,9 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
     var keyUid = [String]()
 
-    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-
+    init(itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
-
-        super.init(style: style)
-
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -38,9 +37,15 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.frame = view.frame
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
         view.backgroundColor = .white
         setupTableCell()
         getPosts()
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,15 +61,15 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.myPosts.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyPostsCell else { fatalError() }
 
         let result = myPosts[indexPath.row]
@@ -85,10 +90,11 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
         cell.seeWhoButton.addTarget(self, action: #selector(seeWhoJoin), for: .touchUpInside)
         cell.editButton.addTarget(self, action: #selector(edit), for: .touchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(deleteIt), for: .touchUpInside)
+        cell.messageButton.addTarget(self, action: #selector(message), for: .touchUpInside)
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
 
@@ -103,6 +109,27 @@ class MyPostsController: UITableViewController, IndicatorInfoProvider {
 
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
+    }
+    
+    @objc func message(_ sender: UIButton) {
+         guard let cell = sender.superview?.superview?.superview?.superview as? MyPostsCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                print("It's not the right cell.")
+                return
+        }
+        
+        let thisActivity = myPosts[indexPath.row]
+        
+        // swiftlint:disable force_cast
+        let messagesView = UINib.load(nibName: "MessagesViewController") as! MessagesViewController
+        // swiftlint:enable force_cast
+        
+        messagesView.thisActivityUid = thisActivity.id
+        messagesView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! * 2 - (self.navigationController?.navigationBar.frame.height)!)
+        
+        self.addChildViewController(messagesView)
+        self.view.addSubview(messagesView.view)
+        messagesView.didMove(toParentViewController: self)
     }
 
     @objc func seeWhoJoin(_ sender: UIButton) {

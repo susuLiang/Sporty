@@ -10,14 +10,13 @@ import UIKit
 import Firebase
 import SwiftyGif
 
-
 class GifViewController: UIViewController {
-    
+
     @IBOutlet weak var gifImage: UIImageView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let gifmanager = SwiftyGifManager(memoryLimit: 20)
         let gif = UIImage(gifName: "sporty", levelOfIntegrity: 1)
         self.gifImage.setGifImage(gif, manager: gifmanager, loopCount: 1)

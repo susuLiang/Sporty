@@ -56,7 +56,7 @@ class ListsController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-      
+
         view.backgroundColor = .clear
 
         tableView.delegate = self
@@ -97,7 +97,8 @@ class ListsController: UIViewController {
     }
 
     func getUserProfile() {
-        FirebaseProvider.shared.getUserProfile(completion: { (userSetting, error) in
+        let userUid = keyChain.get("uid")
+        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
             if error == nil {
                 self.userSetting = userSetting
             }
