@@ -25,5 +25,9 @@ class MessageCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: false)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 
 }

@@ -13,7 +13,7 @@ import Nuke
 import SCLAlertView
 
 class MessagesViewController: UIViewController {
-
+    
     let keyChain = KeychainSwift()
     var messages: [Message] = []
     var thisActivityUid: String = "" {
@@ -25,7 +25,7 @@ class MessagesViewController: UIViewController {
                         $0.date < $1.date
                     })
                     self.userUids = []
-                    for message in self.messages {
+                    for message in self.messages where !self.userUids.contains(message.userUid) {
                         self.userUids.append(message.userUid)
                     }
                 }
@@ -33,24 +33,16 @@ class MessagesViewController: UIViewController {
         }
     }
 
-    var userSetting: [UserSetting] = []
+    var userSetting: [String: UserSetting] = [:]
     var userUids: [String] = [] {
         didSet {
-            if userUids.count == messages.count {
-            for user in userUids {
-                FirebaseProvider.shared.getUserProfile(userUid: user, completion: { (userSetting, error) in
+            for userUid in userUids {
+                FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
                     if error == nil {
-                        self.userSetting.append(userSetting!)
-                        
-                        if self.tableView.numberOfRows(inSection: 0) > 0 {
-                            let lastRow = self.tableView.numberOfRows(inSection: 0) - 1
-                            let indexPath = IndexPath(row: lastRow, section: 0)
-                            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                        }
-                        self.tableView.reloadData()
+                        self.userSetting.updateValue(userSetting!, forKey: userUid)
                     }
+                    self.tableView.reloadData()
                 })
-            }
             }
         }
     }
@@ -72,7 +64,6 @@ class MessagesViewController: UIViewController {
             let date = "\(Date())"
             let value = ["userUid": userUid, "message": text, "postUid": thisActivityUid, "date": date] as [String: Any]
             ref.updateChildValues(value)
-//            ref.setValue(value)
             self.typeTextField.text = ""
         }
         self.tableView.reloadData()
@@ -80,8 +71,6 @@ class MessagesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -89,7 +78,7 @@ class MessagesViewController: UIViewController {
         if self.tableView.numberOfRows(inSection: 0) > 0 {
             let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
             let indexPath = IndexPath(row: lastRow, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
 
@@ -115,17 +104,18 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MessageCell else {
             fatalError("MessageCell Error")
         }
-        cell.userMessage.text = messages[indexPath.row].message
-        if userSetting.count == messages.count {
-            cell.userName.text = "\(userSetting[indexPath.row].name):"
-            if let userUrl = userSetting[indexPath.row].urlString {
-                DispatchQueue.main.async {
-                    Nuke.loadImage(with: URL(string: userUrl)!, into: cell.userPhoto)
+        let message = messages[indexPath.row]
+        cell.userMessage.text = message.message
+        if userSetting.count == userUids.count {
+            if let userSetting = userSetting[message.userUid] {
+                cell.userName.text = "\(userSetting.name):"
+                if let userUrl = userSetting.urlString {
+                    DispatchQueue.main.async {
+                        Nuke.loadImage(with: URL(string: userUrl)!, into: cell.userPhoto)
+                    }
                 }
             }
         }
         return cell
     }
-    
-    
 }
