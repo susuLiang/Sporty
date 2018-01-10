@@ -91,8 +91,7 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             })
 
             timeMatchs.sort(by: {$0.time < $1.time})
-            
-            
+
             cell.titleLabel.text = timeMatchs[indexPath.row].time
 
             cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
@@ -152,10 +151,10 @@ class MyMatchesController: UITableViewController, IndicatorInfoProvider {
             let matchWeek = myMatch.time[..<matchIndex]
             return matchWeek == time[indexPath.section]
         })
-        
+
         let keys = self.myMatches.keys
         var uid = ""
-        
+
         for key in keys where self.myMatches[key]?.id == thatWeek[indexPath.row].id {
             uid = key
         }

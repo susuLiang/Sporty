@@ -57,6 +57,9 @@ Carthage/Build
 # Firebase
 iSports/GoogleService-Info.plist
 
+# GoogleMapKey
+iSports/GoogleMapKey.swift
+
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the

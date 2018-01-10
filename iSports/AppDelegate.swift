@@ -22,11 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
 
-        GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
-        GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
+        Fabric.sharedSDK().debug = true
+
+        let key = GoogleMapKey.init()
+
+        GMSServices.provideAPIKey(key.mapKey)
+        GMSPlacesClient.provideAPIKey(key.mapKey)
 
         IQKeyboardManager.sharedManager().enable = true
-        
+
         // swiftlint:disable force_cast
         let gifViewController = UINib.load(nibName: "GifViewController") as! GifViewController
         // swiftlint:enable force_cast

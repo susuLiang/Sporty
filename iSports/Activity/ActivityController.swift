@@ -149,12 +149,12 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     }
 
     func change() {
-        
+
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         let dateString = dateFormatter.string(from: date as Date)
-        
+
         guard
             let level = self.levelTextField.text,
             let num = self.numberTextField.text,

@@ -14,7 +14,6 @@ target 'iSports' do
   pod 'Firebase/AdMob'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'MessageKit'
   pod 'Cartography', '2.1.0'
   pod 'NVActivityIndicatorView'
   pod 'XLPagerTabStrip', '~> 8.0'
@@ -29,5 +28,5 @@ target 'iSports' do
   pod 'WCLShineButton'
   pod 'Fabric', '~> 1.7.2'
   pod 'Crashlytics', '~> 3.9.3'
-   pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif/', :branch => 'swift4'
+  pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif/', :branch => 'swift4'
 end

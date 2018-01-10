@@ -50,7 +50,7 @@ struct Activity {
     let author: String
 
     let authorUid: String
-    
+
     let postedTime: String
 
     init(_ json: Any, id: String) throws {
