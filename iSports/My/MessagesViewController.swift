@@ -42,13 +42,12 @@ class MessagesViewController: UIViewController {
                     if error == nil {
                         self.userSetting.updateValue(userSetting!, forKey: userUid)
                     }
+                    self.tableView.reloadData()
                     if self.tableView.numberOfRows(inSection: 0) > 0 {
                         let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
                         let indexPath = IndexPath(row: lastRow, section: 0)
-                        print(lastRow)
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
-                    self.tableView.reloadData()
                 })
             }
         }
@@ -83,12 +82,6 @@ class MessagesViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-//        if self.tableView.numberOfRows(inSection: 0) > 0 {
-//            let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
-//            let indexPath = IndexPath(row: lastRow, section: 0)
-//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//        }
     }
 
     func setUpCell() {
