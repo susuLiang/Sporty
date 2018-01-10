@@ -53,6 +53,7 @@
 		1F8627991FF2596E00D82614 /* CityAndTimeSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */; };
 		1F86279B1FF2606900D82614 /* CityAndTimeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */; };
 		1F8627A11FF32C1400D82614 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627A01FF32C1400D82614 /* LoginController.swift */; };
+		1F955FA32005B7F200EE7567 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F955FA22005B7F200EE7567 /* GoogleMapKey.swift */; };
 		1FB108161FEBA7D000D2B4BF /* MyProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */; };
 		1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */; };
 		1FBA9D001FE75DF000A6EF87 /* CourtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */; };
@@ -137,6 +138,7 @@
 		1F8627981FF2596E00D82614 /* CityAndTimeSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CityAndTimeSettingController.swift; sourceTree = "<group>"; };
 		1F86279A1FF2606900D82614 /* CityAndTimeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAndTimeSettingCell.swift; sourceTree = "<group>"; };
 		1F8627A01FF32C1400D82614 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1F955FA22005B7F200EE7567 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
 		1FB108141FEBA7D000D2B4BF /* MyProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileController.swift; sourceTree = "<group>"; };
 		1FBA9CFD1FE75D4200A6EF87 /* CourtsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtsProvider.swift; sourceTree = "<group>"; };
 		1FBA9CFF1FE75DF000A6EF87 /* CourtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtModel.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
+				1F955FA22005B7F200EE7567 /* GoogleMapKey.swift */,
 				1FDB88E41FFF49920069E024 /* InfoPlist.strings */,
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
@@ -712,6 +715,7 @@
 				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
 				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */,
+				1F955FA32005B7F200EE7567 /* GoogleMapKey.swift in Sources */,
 				1FFA2F1F1FE8EB8D00E485F1 /* GMUWrappingDictionaryKey.m in Sources */,
 				1FFA2F141FE8EB8300E485F1 /* GMUStaticCluster.m in Sources */,
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
