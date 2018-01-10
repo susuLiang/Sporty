@@ -11,6 +11,7 @@ import Firebase
 import KeychainSwift
 import SCLAlertView
 import TKSubmitTransition
+import IQKeyboardManagerSwift
 
 class SignInController: UIViewController {
 
@@ -68,6 +69,7 @@ class SignInController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.sharedManager()
         logInButton.layer.cornerRadius = 10
         logInButton.layer.shadowRadius = 10
     }
