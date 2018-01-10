@@ -31,7 +31,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blackboard" translatesAutoresizingMaskIntoConstraints="NO" id="ipe-2U-Ebt">
-                                        <rect key="frame" x="0.0" y="279" width="415" height="221"/>
+                                        <rect key="frame" x="0.0" y="120" width="415" height="380"/>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trY-sU-oTK">
                                         <rect key="frame" x="20" y="447" width="303" height="30"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="baX-cw-kf8">
-                                        <rect key="frame" x="20" y="297" width="375" height="143"/>
+                                        <rect key="frame" x="20" y="138" width="375" height="302"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="dataSource" destination="2Ck-mv-iUi" id="feI-lY-OCR"/>
@@ -66,9 +66,9 @@
                                     <constraint firstItem="trY-sU-oTK" firstAttribute="centerY" secondItem="7GV-si-uIr" secondAttribute="centerY" id="3EW-bC-jb4"/>
                                     <constraint firstItem="lR3-OI-mPF" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" id="47v-QH-5eD"/>
                                     <constraint firstAttribute="width" secondItem="h6d-YT-2J4" secondAttribute="height" multiplier="415:500" id="52p-PL-4cP"/>
-                                    <constraint firstItem="ipe-2U-Ebt" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="279" id="7Q5-h4-v3F"/>
+                                    <constraint firstItem="ipe-2U-Ebt" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="120" id="7Q5-h4-v3F"/>
                                     <constraint firstAttribute="trailing" secondItem="baX-cw-kf8" secondAttribute="trailing" constant="20" id="BX8-Vl-DtN"/>
-                                    <constraint firstItem="baX-cw-kf8" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="297" id="FYk-2u-g1t"/>
+                                    <constraint firstItem="baX-cw-kf8" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="138" id="FYk-2u-g1t"/>
                                     <constraint firstItem="7GV-si-uIr" firstAttribute="leading" secondItem="trY-sU-oTK" secondAttribute="trailing" constant="22" id="IW2-ke-fn5"/>
                                     <constraint firstItem="trY-sU-oTK" firstAttribute="top" secondItem="baX-cw-kf8" secondAttribute="bottom" constant="7" id="MKO-1U-ukQ"/>
                                     <constraint firstItem="ipe-2U-Ebt" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" id="Nz0-1d-GAn"/>

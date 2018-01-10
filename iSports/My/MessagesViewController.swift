@@ -45,6 +45,7 @@ class MessagesViewController: UIViewController {
                     if self.tableView.numberOfRows(inSection: 0) > 0 {
                         let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
                         let indexPath = IndexPath(row: lastRow, section: 0)
+                        print(lastRow)
                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                     self.tableView.reloadData()

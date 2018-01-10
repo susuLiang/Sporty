@@ -90,6 +90,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         saveButton.isHidden = true
         saveButton.isEnabled = false
         photoPickButton.isEnabled = false
+        loadUserPhoto()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
     }
@@ -182,7 +183,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         editButton.layer.shadowRadius = 5
         saveButton.layer.cornerRadius = 20
         saveButton.layer.shadowRadius = 5
-
     }
 
     func sureSave() {
