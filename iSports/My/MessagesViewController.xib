@@ -24,9 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6d-YT-2J4">
                                 <rect key="frame" x="0.0" y="0.0" width="415" height="500"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-OI-mPF">
-                                        <rect key="frame" x="0.0" y="-218" width="414" height="733"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR3-OI-mPF">
+                                        <rect key="frame" x="0.0" y="-218" width="415" height="733"/>
                                         <connections>
                                             <action selector="close:" destination="-1" eventType="touchUpInside" id="q1p-wY-UQG"/>
                                         </connections>
@@ -65,6 +64,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="trY-sU-oTK" firstAttribute="centerY" secondItem="7GV-si-uIr" secondAttribute="centerY" id="3EW-bC-jb4"/>
+                                    <constraint firstItem="lR3-OI-mPF" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" id="47v-QH-5eD"/>
                                     <constraint firstAttribute="width" secondItem="h6d-YT-2J4" secondAttribute="height" multiplier="415:500" id="52p-PL-4cP"/>
                                     <constraint firstItem="ipe-2U-Ebt" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="279" id="7Q5-h4-v3F"/>
                                     <constraint firstAttribute="trailing" secondItem="baX-cw-kf8" secondAttribute="trailing" constant="20" id="BX8-Vl-DtN"/>
@@ -73,17 +73,21 @@
                                     <constraint firstItem="trY-sU-oTK" firstAttribute="top" secondItem="baX-cw-kf8" secondAttribute="bottom" constant="7" id="MKO-1U-ukQ"/>
                                     <constraint firstItem="ipe-2U-Ebt" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" id="Nz0-1d-GAn"/>
                                     <constraint firstAttribute="trailing" secondItem="ipe-2U-Ebt" secondAttribute="trailing" id="Q9i-dh-2Po"/>
+                                    <constraint firstAttribute="bottom" secondItem="lR3-OI-mPF" secondAttribute="bottom" constant="-15" id="SMe-tL-wyr"/>
                                     <constraint firstItem="trY-sU-oTK" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" constant="20" id="aUg-e5-DET"/>
+                                    <constraint firstItem="ipe-2U-Ebt" firstAttribute="width" secondItem="h6d-YT-2J4" secondAttribute="width" id="c39-0p-lmb"/>
                                     <constraint firstItem="baX-cw-kf8" firstAttribute="leading" secondItem="h6d-YT-2J4" secondAttribute="leading" constant="20" id="g1v-Da-0Xa"/>
                                     <constraint firstAttribute="height" constant="500" id="iB4-Ne-51m"/>
                                     <constraint firstAttribute="bottom" secondItem="ipe-2U-Ebt" secondAttribute="bottom" id="kdY-8d-QEY"/>
+                                    <constraint firstAttribute="trailing" secondItem="lR3-OI-mPF" secondAttribute="trailing" id="phL-li-7lp"/>
                                     <constraint firstAttribute="bottom" secondItem="trY-sU-oTK" secondAttribute="bottom" constant="23" id="xO4-Bh-1eC"/>
+                                    <constraint firstAttribute="trailing" secondItem="7GV-si-uIr" secondAttribute="trailing" constant="32" id="z46-Nc-vrN"/>
+                                    <constraint firstItem="lR3-OI-mPF" firstAttribute="top" secondItem="h6d-YT-2J4" secondAttribute="top" constant="-218" id="zFj-RE-PyH"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="h6d-YT-2J4" secondAttribute="trailing" id="GQh-4p-7eH"/>
-                            <constraint firstAttribute="width" secondItem="hEt-yf-RCu" secondAttribute="height" multiplier="207:250" id="ajQ-yW-IEI"/>
                             <constraint firstItem="h6d-YT-2J4" firstAttribute="top" secondItem="hEt-yf-RCu" secondAttribute="top" id="cZO-aH-6xK"/>
                             <constraint firstItem="h6d-YT-2J4" firstAttribute="leading" secondItem="hEt-yf-RCu" secondAttribute="leading" id="kIj-Gb-HGI"/>
                             <constraint firstAttribute="bottom" secondItem="h6d-YT-2J4" secondAttribute="bottom" id="v9H-6r-d7n"/>
@@ -100,6 +104,7 @@
                 <viewLayoutGuide key="safeArea" id="NaW-K5-NVg"/>
             </view>
             <connections>
+                <outlet property="scrollView" destination="h6d-YT-2J4" id="jUE-P8-kCA"/>
                 <outlet property="sendButton" destination="7GV-si-uIr" id="VxW-9h-i3f"/>
                 <outlet property="tableView" destination="baX-cw-kf8" id="c76-nW-rnf"/>
                 <outlet property="typeTextField" destination="trY-sU-oTK" id="Fo8-aC-wJm"/>

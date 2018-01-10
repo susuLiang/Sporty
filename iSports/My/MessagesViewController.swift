@@ -14,6 +14,7 @@ import SCLAlertView
 
 class MessagesViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIView!
     let keyChain = KeychainSwift()
     var messages: [Message] = []
     var thisActivityUid: String = "" {
@@ -40,6 +41,11 @@ class MessagesViewController: UIViewController {
                 FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
                     if error == nil {
                         self.userSetting.updateValue(userSetting!, forKey: userUid)
+                    }
+                    if self.tableView.numberOfRows(inSection: 0) > 0 {
+                        let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
+                        let indexPath = IndexPath(row: lastRow, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                     }
                     self.tableView.reloadData()
                 })
@@ -77,11 +83,11 @@ class MessagesViewController: UIViewController {
         setUpCell()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
-        if self.tableView.numberOfRows(inSection: 0) > 0 {
-            let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
-            let indexPath = IndexPath(row: lastRow, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
+//        if self.tableView.numberOfRows(inSection: 0) > 0 {
+//            let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
+//            let indexPath = IndexPath(row: lastRow, section: 0)
+//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//        }
     }
 
     func setUpCell() {

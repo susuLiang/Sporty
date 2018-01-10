@@ -181,6 +181,7 @@ class ListsController: UIViewController {
     }
 
     func setNavigation() {
+        navigationItem.title = "Sporty"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
