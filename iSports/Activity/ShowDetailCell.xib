@@ -35,7 +35,7 @@
                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                <color key="value" red="0.98571257710000004" green="1" blue="0.87391826770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="1" green="0.943389233168624" blue="0.43204707754771798" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" red="0.95804625749588013" green="0.93292403221130371" blue="0.68912941217422485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -59,7 +59,7 @@
 		1FBA9D021FE7C07D00A6EF87 /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBA9D011FE7C07D00A6EF87 /* FirebaseProvider.swift */; };
 		1FDB88DD1FFF49910069E024 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB88DF1FFF49910069E024 /* Localizable.strings */; };
 		1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB88E41FFF49920069E024 /* InfoPlist.strings */; };
-		1FE295312005EC1D000F1AC0 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE295302005EC1D000F1AC0 /* GoogleMapKey.swift */; };
+		1FEA3EB420070A46009120E1 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA3EB320070A46009120E1 /* GoogleMapKey.swift */; };
 		1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */; };
 		1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */; };
 		1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */; };
@@ -146,7 +146,7 @@
 		1FDB88DA1FFF49860069E024 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		1FDB88DE1FFF49910069E024 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1FDB88E31FFF49920069E024 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		1FE295302005EC1D000F1AC0 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
+		1FEA3EB320070A46009120E1 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
 		1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsController.swift; sourceTree = "<group>"; };
 		1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesController.swift; sourceTree = "<group>"; };
 		1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
-				1FE295302005EC1D000F1AC0 /* GoogleMapKey.swift */,
+				1FEA3EB320070A46009120E1 /* GoogleMapKey.swift */,
 				1FDB88E41FFF49920069E024 /* InfoPlist.strings */,
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
@@ -582,6 +582,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JTMaterialTransition/JTMaterialTransition.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
@@ -604,6 +605,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTMaterialTransition.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
@@ -720,7 +722,7 @@
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
 				1F3897C12000DCC900910B10 /* GifViewController.swift in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
-				1FE295312005EC1D000F1AC0 /* GoogleMapKey.swift in Sources */,
+				1FEA3EB420070A46009120E1 /* GoogleMapKey.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,

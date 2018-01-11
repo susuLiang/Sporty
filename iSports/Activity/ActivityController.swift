@@ -50,6 +50,18 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    @IBAction func cancelAndBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func addOne(_ sender: Any) {
+        save()
+    }
+    
+    
+    
 
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
@@ -81,6 +93,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        backView.backgroundColor = myLightBlue
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
         courtTextField.inputView = courtPicker
@@ -103,6 +116,8 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     func setText(_ activity: Activity, isEnable: Bool) {
         navigationItem.title = activity.name
         nameTextField.text = activity.name
+
+        
         typeTextField.text = activity.type
         levelTextField.text = activity.level
         timeTextField.text = activity.time

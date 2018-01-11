@@ -17,6 +17,8 @@ class ShowDetailCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 204/255, alpha: 1)
+
 //        backView.isHidden = true
         // Initialization code
     }

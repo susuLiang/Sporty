@@ -92,11 +92,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         saveButton.isHidden = true
         saveButton.isEnabled = false
         photoPickButton.isEnabled = false
-        if let thisUserPhoto = cache.object(forKey: "userPhoto" as AnyObject) as? UIImage {
-            self.userPhoto?.image = thisUserPhoto
-            self.blurBackView.image = thisUserPhoto
-        }
-//        loadUserPhoto()
+//        if let thisUserPhoto = cache.object(forKey: "userPhoto" as AnyObject) as? UIImage {
+//            self.userPhoto?.image = thisUserPhoto
+//            self.blurBackView.image = thisUserPhoto
+//        }
+        loadUserPhoto()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
     }

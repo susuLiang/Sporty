@@ -66,6 +66,8 @@ class ShowDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 204/255, alpha: 1)
+        tableView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 204/255, alpha: 1)
         unJoinButton.isHidden = true
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
