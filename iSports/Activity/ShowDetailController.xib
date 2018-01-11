@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-d0-XdG" customClass="LGButton" customModule="LGButton">
-                        <rect key="frame" x="87" y="602" width="200" height="45"/>
+                        <rect key="frame" x="87" y="610" width="200" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="TcD-Dt-4Hb"/>
@@ -53,7 +53,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImQ-J6-0A2" customClass="LGButton" customModule="LGButton">
-                        <rect key="frame" x="87" y="602" width="200" height="45"/>
+                        <rect key="frame" x="87" y="610" width="200" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ImQ-J6-0A2" secondAttribute="height" multiplier="40:9" id="DtP-By-qXb"/>
@@ -96,7 +96,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-XS-BVW">
-                        <rect key="frame" x="0.0" y="280" width="375" height="314"/>
+                        <rect key="frame" x="0.0" y="280" width="375" height="322"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="blb-CC-Qeq">
                             <size key="itemSize" width="50" height="50"/>
@@ -118,7 +118,7 @@
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="trailing" secondItem="YMd-CH-veq" secondAttribute="trailing" id="GSO-Y1-gcf"/>
                     <constraint firstItem="jYd-d0-XdG" firstAttribute="width" secondItem="jYd-d0-XdG" secondAttribute="height" multiplier="40:9" id="Iui-zy-o6D"/>
                     <constraint firstItem="1zu-XS-BVW" firstAttribute="trailing" secondItem="YMd-CH-veq" secondAttribute="trailing" id="NbX-b6-lSl"/>
-                    <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="jYd-d0-XdG" secondAttribute="bottom" constant="20" id="U11-KN-pyD"/>
+                    <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="jYd-d0-XdG" secondAttribute="bottom" constant="12" id="U11-KN-pyD"/>
                     <constraint firstItem="U85-ag-fqs" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="U8N-VG-Xaw"/>
                     <constraint firstItem="1zu-XS-BVW" firstAttribute="leading" secondItem="YMd-CH-veq" secondAttribute="leading" id="VK1-x9-hai"/>
                     <constraint firstItem="IZZ-nI-T3n" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="VLe-cF-aW0"/>
@@ -128,7 +128,7 @@
                     <constraint firstItem="ImQ-J6-0A2" firstAttribute="width" secondItem="jYd-d0-XdG" secondAttribute="width" id="bgf-2W-GeT"/>
                     <constraint firstItem="ImQ-J6-0A2" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="iMB-oe-i9l"/>
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="top" secondItem="YMd-CH-veq" secondAttribute="top" id="li5-gp-pk8"/>
-                    <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="ImQ-J6-0A2" secondAttribute="bottom" constant="20" id="mfc-a8-atu"/>
+                    <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="ImQ-J6-0A2" secondAttribute="bottom" constant="12" id="mfc-a8-atu"/>
                     <constraint firstItem="IZZ-nI-T3n" firstAttribute="top" secondItem="U85-ag-fqs" secondAttribute="bottom" constant="5" id="z6l-cd-4ac"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="YMd-CH-veq"/>

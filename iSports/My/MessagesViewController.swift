@@ -82,6 +82,7 @@ class MessagesViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
     }
 
     func setUpCell() {

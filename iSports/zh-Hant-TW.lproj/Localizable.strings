@@ -29,6 +29,9 @@
 "Enter your email" = "請輸入你的Email";
 
 /* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
 "Home" = "首頁";
 
 /* No comment provided by engineer. */
@@ -77,6 +80,9 @@
 "Please choose the type and city first." = "請先選擇類型及城市";
 
 /* No comment provided by engineer. */
+"Please enter something." = "請輸入訊息";
+
+/* No comment provided by engineer. */
 "Please enter your email" = "請輸入你的Email";
 
 /* No comment provided by engineer. */
@@ -96,6 +102,9 @@
 
 /* No comment provided by engineer. */
 "Saved !" = "儲存 !";
+
+/* No comment provided by engineer. */
+"Send" = "送出";
 
 /* No comment provided by engineer. */
 "Setting" = "個人設定";

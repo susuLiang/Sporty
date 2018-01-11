@@ -17,6 +17,8 @@ import SCLAlertView
 
 class ActivityController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var oKButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mapPlacedView: UIView!
@@ -38,11 +40,12 @@ class ActivityController: UIViewController, UITextFieldDelegate {
                 setText(myPost, isEnable: true)
                 self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
-                cityTextField.title = "address"
+                cityTextField.title = NSLocalizedString("address", comment: "")
+                oKButton.isHidden = true
+                cancelButton.isHidden = true
             }
         }
     }
-
     var nowPlace: (latitude: String, longitude: String, address: String)? {
         didSet {
             if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
@@ -59,9 +62,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBAction func addOne(_ sender: Any) {
         save()
     }
-    
-    
-    
 
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()

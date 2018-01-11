@@ -165,6 +165,7 @@ class ListsController: UIViewController {
 //        navigationController?.pushViewController(activityView, animated: true)
         activityView.modalPresentationStyle = .custom
         activityView.transitioningDelegate = self.transition
+//        navigationController?.pushViewController(activityView, animated: true)
         self.present(activityView, animated: true, completion: nil)
 
     }

@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIA-fD-mbH">
-                        <rect key="frame" x="0.0" y="52" width="375" height="808"/>
+                        <rect key="frame" x="0.0" y="58" width="375" height="802"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iM1-KZ-LBI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
@@ -363,13 +361,11 @@
                                     <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" constant="40" id="3US-6J-rqZ"/>
                                     <constraint firstAttribute="trailing" secondItem="YIZ-qt-DvM" secondAttribute="trailing" constant="20" id="DX6-Uf-9O5"/>
                                     <constraint firstAttribute="bottom" secondItem="6vJ-e1-LYV" secondAttribute="bottom" id="IDU-L1-sEe"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="width" secondItem="YIZ-qt-DvM" secondAttribute="width" id="PUK-pZ-p5K"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="XXB-QD-oDU"/>
-                                    <constraint firstItem="YIZ-qt-DvM" firstAttribute="centerX" secondItem="iM1-KZ-LBI" secondAttribute="centerX" id="fJV-Zy-Ukb"/>
                                     <constraint firstItem="6vJ-e1-LYV" firstAttribute="centerX" secondItem="YIZ-qt-DvM" secondAttribute="centerX" id="gUt-GD-402"/>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="leading" secondItem="iM1-KZ-LBI" secondAttribute="leading" constant="20" id="kGK-C5-W1y"/>
                                     <constraint firstAttribute="height" constant="800" id="l1V-NC-86M"/>
                                     <constraint firstItem="YIZ-qt-DvM" firstAttribute="top" secondItem="iM1-KZ-LBI" secondAttribute="top" id="qHi-x6-HWc"/>
-                                    <constraint firstAttribute="trailing" secondItem="6vJ-e1-LYV" secondAttribute="trailing" constant="20" id="wIR-0O-03Y"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
@@ -383,14 +379,14 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="iM1-KZ-LBI" secondAttribute="trailing" id="4zu-J9-g5i"/>
+                            <constraint firstAttribute="width" constant="375" id="7LN-pU-ErP"/>
                             <constraint firstItem="iM1-KZ-LBI" firstAttribute="top" secondItem="sIA-fD-mbH" secondAttribute="top" id="7O9-bm-erQ"/>
                             <constraint firstItem="iM1-KZ-LBI" firstAttribute="leading" secondItem="sIA-fD-mbH" secondAttribute="leading" id="Rs9-My-J2c"/>
-                            <constraint firstItem="iM1-KZ-LBI" firstAttribute="centerX" secondItem="sIA-fD-mbH" secondAttribute="centerXWithinMargins" id="b6Q-I2-oiP"/>
                             <constraint firstAttribute="bottom" secondItem="iM1-KZ-LBI" secondAttribute="bottom" id="wz1-tO-vyk"/>
                         </constraints>
                     </scrollView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-1g-MSS">
-                        <rect key="frame" x="0.0" y="20" width="32" height="32"/>
+                        <rect key="frame" x="20" y="20" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="BD5-B7-Inc"/>
                             <constraint firstAttribute="height" constant="32" id="aBt-h2-rIN"/>
@@ -401,7 +397,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FA1-Gq-5k1">
-                        <rect key="frame" x="343" y="20" width="32" height="32"/>
+                        <rect key="frame" x="323" y="20" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="ag7-cz-4QI"/>
                             <constraint firstAttribute="height" constant="32" id="akZ-Ew-r6y"/>
@@ -414,14 +410,14 @@
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="FA1-Gq-5k1" firstAttribute="trailing" secondItem="BNE-rK-p7L" secondAttribute="trailing" id="9Na-ZE-oWx"/>
+                    <constraint firstItem="FA1-Gq-5k1" firstAttribute="trailing" secondItem="BNE-rK-p7L" secondAttribute="trailing" constant="-20" id="9Na-ZE-oWx"/>
                     <constraint firstItem="BNE-rK-p7L" firstAttribute="bottom" secondItem="sIA-fD-mbH" secondAttribute="bottom" id="DJE-zw-tTx"/>
                     <constraint firstItem="sIA-fD-mbH" firstAttribute="centerX" secondItem="bhq-ZG-iuW" secondAttribute="centerX" id="Gww-0M-1Ib"/>
                     <constraint firstItem="FA1-Gq-5k1" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" id="KTv-XW-a59"/>
                     <constraint firstItem="iM1-KZ-LBI" firstAttribute="width" secondItem="bhq-ZG-iuW" secondAttribute="width" id="cBf-Ps-t7z"/>
-                    <constraint firstItem="sIA-fD-mbH" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="32" id="mYw-cM-Xfn"/>
+                    <constraint firstItem="sIA-fD-mbH" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" constant="38" id="mYw-cM-Xfn"/>
                     <constraint firstItem="XcH-1g-MSS" firstAttribute="top" secondItem="BNE-rK-p7L" secondAttribute="top" id="uwQ-Ht-boT"/>
-                    <constraint firstItem="XcH-1g-MSS" firstAttribute="leading" secondItem="BNE-rK-p7L" secondAttribute="leading" id="wHa-1a-rKi"/>
+                    <constraint firstItem="XcH-1g-MSS" firstAttribute="leading" secondItem="BNE-rK-p7L" secondAttribute="leading" constant="20" id="wHa-1a-rKi"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="BNE-rK-p7L"/>
             </view>
@@ -429,6 +425,7 @@
             <connections>
                 <outlet property="allNumberTextField" destination="Ttk-nc-Nje" id="Eeb-ms-DIE"/>
                 <outlet property="backView" destination="iM1-KZ-LBI" id="Pna-dE-j8w"/>
+                <outlet property="cancelButton" destination="XcH-1g-MSS" id="caA-Oz-Eeg"/>
                 <outlet property="cityTextField" destination="QUJ-i7-NWJ" id="kme-xr-9c8"/>
                 <outlet property="courtTextField" destination="ojN-6b-sJn" id="79V-w9-WrC"/>
                 <outlet property="feeTextField" destination="scg-0j-rGX" id="kjk-1a-uqC"/>
@@ -436,6 +433,7 @@
                 <outlet property="mapPlacedView" destination="6vJ-e1-LYV" id="BEb-vd-mCC"/>
                 <outlet property="nameTextField" destination="1kz-6d-CKM" id="vvo-Yq-EO1"/>
                 <outlet property="numberTextField" destination="0Ta-uL-AYH" id="w2t-eE-sNJ"/>
+                <outlet property="oKButton" destination="FA1-Gq-5k1" id="Ypm-Dj-GdE"/>
                 <outlet property="scrollView" destination="sIA-fD-mbH" id="TYV-8W-hMa"/>
                 <outlet property="timeTextField" destination="yin-66-tFA" id="pjT-nq-noy"/>
                 <outlet property="typeTextField" destination="r7P-Yu-7DE" id="ZcN-c3-aHN"/>
