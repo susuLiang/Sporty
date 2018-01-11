@@ -77,35 +77,69 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Def-L6-se5">
-                        <rect key="frame" x="0.0" y="222" width="375" height="360"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U85-ag-fqs">
+                        <rect key="frame" x="36" y="229" width="303" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="303" id="bUj-kz-3KL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.01176470588" green="0.25490196079999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZZ-nI-T3n">
+                        <rect key="frame" x="36" y="252" width="303" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="303" id="kSX-kY-rZZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.01176470588" green="0.25490196079999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1zu-XS-BVW">
+                        <rect key="frame" x="0.0" y="280" width="375" height="314"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tableView>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="blb-CC-Qeq">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="kc4-wQ-DAI" id="ZPS-fM-cX2"/>
+                            <outlet property="delegate" destination="kc4-wQ-DAI" id="p5V-jb-fWz"/>
+                        </connections>
+                    </collectionView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="Def-L6-se5" firstAttribute="trailing" secondItem="YMd-CH-veq" secondAttribute="trailing" id="0Ht-7h-j8z"/>
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="leading" secondItem="YMd-CH-veq" secondAttribute="leading" id="1dE-Yb-6Jd"/>
-                    <constraint firstItem="Def-L6-se5" firstAttribute="top" secondItem="0FB-vh-MmT" secondAttribute="bottom" id="E2S-3e-hTK"/>
+                    <constraint firstItem="ImQ-J6-0A2" firstAttribute="top" secondItem="1zu-XS-BVW" secondAttribute="bottom" constant="8" id="2Le-vf-eoY"/>
                     <constraint firstItem="jYd-d0-XdG" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="EGJ-1r-Dwl"/>
-                    <constraint firstItem="Def-L6-se5" firstAttribute="leading" secondItem="YMd-CH-veq" secondAttribute="leading" id="FdT-YM-L9X"/>
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="trailing" secondItem="YMd-CH-veq" secondAttribute="trailing" id="GSO-Y1-gcf"/>
                     <constraint firstItem="jYd-d0-XdG" firstAttribute="width" secondItem="jYd-d0-XdG" secondAttribute="height" multiplier="40:9" id="Iui-zy-o6D"/>
+                    <constraint firstItem="1zu-XS-BVW" firstAttribute="trailing" secondItem="YMd-CH-veq" secondAttribute="trailing" id="NbX-b6-lSl"/>
                     <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="jYd-d0-XdG" secondAttribute="bottom" constant="20" id="U11-KN-pyD"/>
+                    <constraint firstItem="U85-ag-fqs" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="U8N-VG-Xaw"/>
+                    <constraint firstItem="1zu-XS-BVW" firstAttribute="leading" secondItem="YMd-CH-veq" secondAttribute="leading" id="VK1-x9-hai"/>
+                    <constraint firstItem="IZZ-nI-T3n" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="VLe-cF-aW0"/>
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="width" secondItem="Wkh-Q3-5uX" secondAttribute="width" id="X7B-ij-dGP"/>
-                    <constraint firstItem="jYd-d0-XdG" firstAttribute="top" secondItem="Def-L6-se5" secondAttribute="bottom" constant="20" id="aoj-Kw-3Vc"/>
+                    <constraint firstItem="1zu-XS-BVW" firstAttribute="top" secondItem="IZZ-nI-T3n" secondAttribute="bottom" constant="10" id="a1I-9K-ftY"/>
+                    <constraint firstItem="U85-ag-fqs" firstAttribute="top" secondItem="0FB-vh-MmT" secondAttribute="bottom" constant="7" id="bFD-Dh-byV"/>
                     <constraint firstItem="ImQ-J6-0A2" firstAttribute="width" secondItem="jYd-d0-XdG" secondAttribute="width" id="bgf-2W-GeT"/>
                     <constraint firstItem="ImQ-J6-0A2" firstAttribute="centerX" secondItem="Wkh-Q3-5uX" secondAttribute="centerX" id="iMB-oe-i9l"/>
                     <constraint firstItem="0FB-vh-MmT" firstAttribute="top" secondItem="YMd-CH-veq" secondAttribute="top" id="li5-gp-pk8"/>
                     <constraint firstItem="YMd-CH-veq" firstAttribute="bottom" secondItem="ImQ-J6-0A2" secondAttribute="bottom" constant="20" id="mfc-a8-atu"/>
-                    <constraint firstItem="Def-L6-se5" firstAttribute="width" secondItem="Wkh-Q3-5uX" secondAttribute="width" id="qX4-OY-P3O"/>
+                    <constraint firstItem="IZZ-nI-T3n" firstAttribute="top" secondItem="U85-ag-fqs" secondAttribute="bottom" constant="5" id="z6l-cd-4ac"/>
                 </constraints>
                 <viewLayoutGuide key="safeArea" id="YMd-CH-veq"/>
             </view>
             <connections>
+                <outlet property="addressLabel" destination="IZZ-nI-T3n" id="emO-o2-SOq"/>
+                <outlet property="collectionView" destination="1zu-XS-BVW" id="m3r-wG-e9e"/>
+                <outlet property="collectionViewFlowLayout" destination="blb-CC-Qeq" id="6kG-z1-AsM"/>
+                <outlet property="courtLabel" destination="U85-ag-fqs" id="irL-q7-Brt"/>
                 <outlet property="joinButton" destination="jYd-d0-XdG" id="LGU-t8-EgP"/>
                 <outlet property="mapPlacedView" destination="0FB-vh-MmT" id="YDJ-5A-zZd"/>
-                <outlet property="tableView" destination="Def-L6-se5" id="zoL-0E-J8q"/>
                 <outlet property="unJoinButton" destination="ImQ-J6-0A2" id="BrT-Nk-W0n"/>
             </connections>
             <point key="canvasLocation" x="-41.5" y="20.5"/>
