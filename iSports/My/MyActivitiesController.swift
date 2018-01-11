@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import Firebase
+import Crashlytics
 
 class MyActivitiesController: ButtonBarPagerTabStripViewController {
 

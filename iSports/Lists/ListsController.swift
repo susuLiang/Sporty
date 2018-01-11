@@ -11,6 +11,7 @@ import Firebase
 import KeychainSwift
 import WCLShineButton
 import SCLAlertView
+import Crashlytics
 
 class ListsController: UIViewController {
     // Property

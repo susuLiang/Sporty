@@ -12,6 +12,7 @@ import Firebase
 import KeychainSwift
 import SCLAlertView
 import TimelineTableViewCell
+import Crashlytics
 
 class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
 

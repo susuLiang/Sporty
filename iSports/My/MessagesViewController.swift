@@ -11,10 +11,10 @@ import Firebase
 import KeychainSwift
 import Nuke
 import SCLAlertView
+import Crashlytics
 
 class MessagesViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIView!
     let keyChain = KeychainSwift()
     var messages: [Message] = []
     var thisActivityUid: String = "" {

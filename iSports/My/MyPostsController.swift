@@ -11,6 +11,7 @@ import XLPagerTabStrip
 import KeychainSwift
 import Firebase
 import SCLAlertView
+import Crashlytics
 
 class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
 
