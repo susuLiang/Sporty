@@ -16,7 +16,7 @@ import SkyFloatingLabelTextField
 import SCLAlertView
 import LGButton
 
-class ActivityController: UIViewController, UITextFieldDelegate {
+class ActivityController: UIViewController {
     
     @IBOutlet weak var addButton: LGButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -42,13 +42,13 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     
     var myMatches = [Activity]()
     
-    var allTextField = [UITextField]()
-
     var myPost: Activity? {
         didSet {
             if let myPost = myPost {
                 setText(myPost)
-                self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
+//                self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
+                mapPlacedView.isHidden = true
+                cityLabel.text = NSLocalizedString("ADDRESS", comment: "")
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
                 cancelButton.isHidden = true
                 addButton.isHidden = true
@@ -66,10 +66,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     
     @IBAction func cancelAndBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func addOne(_ sender: Any) {
-        save()
     }
 
     let loadingIndicator = LoadingIndicator()
@@ -99,10 +95,14 @@ class ActivityController: UIViewController, UITextFieldDelegate {
             courtPicker.reloadAllComponents()
         }
     }
-
+    @IBAction func add(_ sender: Any) {
+        save()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        allTextField = [nameTextField, levelTextField, typeTextField, numberTextField, allNumberTextField, timeTextField, courtTextField, feeTextField]
+        textFieldDelegate()
+        setLabelText()
         setTextField(cornerRadius: 10)
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
@@ -110,7 +110,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         timeTextField.inputView = timePicker
         levelTextField.inputView = levelPicker
         pickerDelegate()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-check"), style: .plain, target: self, action: #selector(save))
+        addButton.addTarget(self, action: #selector(save), for: .touchUpInside)
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -122,14 +122,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @objc func closeKeyboard() {
         self.view.endEditing(true)
     }
-    
-    @objc func textFieldUI(_ sender: UITextField) {
-        sender.backgroundColor = .white
-        sender.layer.shadowColor = UIColor.black.cgColor
-        sender.layer.shadowRadius = 5
-        sender.layer.shadowOpacity = 0.5
-    }
-    
+
     func setText(_ activity: Activity) {
         navigationItem.title = activity.name
         nameTextField.text = activity.name
@@ -142,7 +135,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         allNumberTextField.text = "\(activity.allNumber)"
         feeTextField.text = "\(activity.fee)"
         mapPlacedView.addSubview(setMap(latitude: Double(activity.place.placeLatitude)!, longitude: Double(activity.place.placeLongitude)!))
-
     }
     
     func setTextField(cornerRadius: CGFloat) {
@@ -156,19 +148,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         numberTextField.layer.cornerRadius = cornerRadius
         allNumberTextField.layer.cornerRadius = cornerRadius
         feeTextField.layer.cornerRadius = cornerRadius
-        
-        nameTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        typeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        levelTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        timeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        courtTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        cityTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        numberTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        allNumberTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
-        feeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
     }
-    
-    
 
     func getLocation(city: String, gym: String) {
         loadingIndicator.start()
@@ -270,10 +250,51 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         let childRef = refChild.childByAutoId()
         childRef.setValue(value)
         ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func setLabelText() {
+        nameLabel.text = NSLocalizedString("NAME", comment: "")
+        levelLabel.text = NSLocalizedString("LEVEL", comment: "")
+        typeLabel.text = NSLocalizedString("TYPE", comment: "")
+        timeLabel.text = NSLocalizedString("TIME", comment: "")
+        courtLabel.text = NSLocalizedString("COURT", comment: "")
+        cityLabel.text = NSLocalizedString("CITY", comment: "")
+        feeLabel.text = NSLocalizedString("FEE", comment: "")
+        numberLabel.text = NSLocalizedString("NUMBER", comment: "")
+        allNumberLabel.text = NSLocalizedString("ALL NUMBER", comment: "")
 
-        self.navigationController?.popToRootViewController(animated: true)
     }
 
+}
+
+extension ActivityController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.backgroundColor = .white
+        textField.layer.shadowColor = UIColor.black.cgColor
+        textField.layer.shadowRadius = 5
+        textField.layer.shadowOpacity = 0.5
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textField.backgroundColor = UIColor.groupTableViewBackground
+        textField.layer.shadowOpacity = 0
+        return true
+    }
+    
+    func textFieldDelegate() {
+        nameTextField.delegate = self
+        levelTextField.delegate = self
+        cityTextField.delegate = self
+        numberTextField.delegate = self
+        allNumberTextField.delegate = self
+        feeTextField.delegate = self
+        timeTextField.delegate = self
+        courtTextField.delegate = self
+        typeTextField.delegate = self
+    }
 }
 
 extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {

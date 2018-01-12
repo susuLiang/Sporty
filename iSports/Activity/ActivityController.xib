@@ -65,8 +65,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -112,8 +110,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -159,8 +155,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -206,8 +200,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -258,8 +250,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -305,8 +295,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -352,8 +340,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -399,8 +385,6 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -447,8 +431,6 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="名稱"/>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="名稱"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                         <color key="value" red="0.0" green="0.31884269510000002" blue="0.66102871190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
@@ -474,6 +456,23 @@
                             <constraint firstItem="q13-qo-4EE" firstAttribute="width" secondItem="hnf-WA-sED" secondAttribute="width" id="XwA-45-cOO"/>
                         </constraints>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-1g-MSS">
+                        <rect key="frame" x="20" y="20" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="2Ev-sP-EPd"/>
+                            <constraint firstAttribute="height" constant="32" id="fWA-Kn-CRF"/>
+                        </constraints>
+                        <state key="normal" image="icon-quit"/>
+                        <connections>
+                            <action selector="cancelAndBack:" destination="kSf-zN-GOk" eventType="touchUpInside" id="c5x-yg-fr5"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-ee-gp7">
+                        <rect key="frame" x="20" y="443.66666666666674" width="374" height="192"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="SgM-ee-gp7" secondAttribute="height" multiplier="191:98" id="Xiq-iP-PAK"/>
+                        </constraints>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Zf-Xe-kqE" customClass="LGButton" customModule="LGButton">
                         <rect key="frame" x="107" y="679" width="200" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -503,27 +502,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="titleFontName" value="ArialHebrew-Bold"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Add"/>
                         </userDefinedRuntimeAttributes>
-                        <connections>
-                            <action selector="addOne:" destination="kSf-zN-GOk" eventType="valueChanged" id="TPD-5l-mZn"/>
-                        </connections>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcH-1g-MSS">
-                        <rect key="frame" x="20" y="20" width="32" height="32"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opm-JF-hrE">
+                        <rect key="frame" x="107" y="687" width="200" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="2Ev-sP-EPd"/>
-                            <constraint firstAttribute="height" constant="32" id="fWA-Kn-CRF"/>
+                            <constraint firstAttribute="width" constant="200" id="XSJ-t7-DHS"/>
                         </constraints>
-                        <state key="normal" image="icon-quit"/>
                         <connections>
-                            <action selector="cancelAndBack:" destination="kSf-zN-GOk" eventType="touchUpInside" id="c5x-yg-fr5"/>
+                            <action selector="add:" destination="kSf-zN-GOk" eventType="touchUpInside" id="rbr-VT-bko"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-ee-gp7">
-                        <rect key="frame" x="20" y="443.66666666666674" width="374" height="192"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="SgM-ee-gp7" secondAttribute="height" multiplier="191:98" id="Xiq-iP-PAK"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -538,9 +526,11 @@
                     <constraint firstItem="6Zf-Xe-kqE" firstAttribute="centerX" secondItem="Wtc-wo-Ims" secondAttribute="centerX" id="Tvq-aY-KPF"/>
                     <constraint firstItem="SgM-ee-gp7" firstAttribute="leading" secondItem="OxW-Tr-Tvi" secondAttribute="leading" constant="20" id="X7c-9K-Pnu"/>
                     <constraint firstItem="iM1-KZ-LBI" firstAttribute="trailing" secondItem="OxW-Tr-Tvi" secondAttribute="trailing" id="eCd-Er-0XK"/>
+                    <constraint firstItem="opm-JF-hrE" firstAttribute="centerY" secondItem="6Zf-Xe-kqE" secondAttribute="centerY" id="gRN-9g-Sal"/>
                     <constraint firstItem="iM1-KZ-LBI" firstAttribute="bottom" secondItem="OxW-Tr-Tvi" secondAttribute="bottom" id="h3X-t3-UNv"/>
                     <constraint firstItem="SgM-ee-gp7" firstAttribute="top" secondItem="hnf-WA-sED" secondAttribute="bottom" constant="15" id="iAG-t1-N8r"/>
                     <constraint firstItem="hnf-WA-sED" firstAttribute="top" secondItem="kOh-FQ-78I" secondAttribute="bottom" constant="15" id="jwc-1S-uEa"/>
+                    <constraint firstItem="opm-JF-hrE" firstAttribute="centerX" secondItem="6Zf-Xe-kqE" secondAttribute="centerX" id="lX7-aA-pw1"/>
                     <constraint firstItem="iM1-KZ-LBI" firstAttribute="top" secondItem="Wtc-wo-Ims" secondAttribute="top" id="msp-z2-h25"/>
                     <constraint firstItem="SgM-ee-gp7" firstAttribute="width" secondItem="hnf-WA-sED" secondAttribute="width" id="mtG-vE-aZg"/>
                     <constraint firstItem="hnf-WA-sED" firstAttribute="leading" secondItem="OxW-Tr-Tvi" secondAttribute="leading" constant="20" id="tVt-kB-Qlb"/>
@@ -550,7 +540,7 @@
                 <viewLayoutGuide key="safeArea" id="OxW-Tr-Tvi"/>
             </view>
             <connections>
-                <outlet property="addButton" destination="6Zf-Xe-kqE" id="aBs-4n-rPu"/>
+                <outlet property="addButton" destination="6Zf-Xe-kqE" id="z8q-fe-o7l"/>
                 <outlet property="allNumberLabel" destination="8gX-v3-AEk" id="ihf-7a-oVv"/>
                 <outlet property="allNumberTextField" destination="bDv-3c-PWq" id="n5Q-dS-v06"/>
                 <outlet property="cancelButton" destination="XcH-1g-MSS" id="DKs-Di-0TS"/>
