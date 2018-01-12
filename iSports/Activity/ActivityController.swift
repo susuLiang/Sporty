@@ -14,38 +14,48 @@ import NVActivityIndicatorView
 import KeychainSwift
 import SkyFloatingLabelTextField
 import SCLAlertView
+import LGButton
 
 class ActivityController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var oKButton: UIButton!
+    
+    @IBOutlet weak var addButton: LGButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var mapPlacedView: UIView!
-    @IBOutlet weak var nameTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var cityTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var levelTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var timeTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var courtTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var numberTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var feeTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var typeTextField: SkyFloatingLabelTextField!
-    @IBOutlet weak var allNumberTextField: SkyFloatingLabelTextField!
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var feeLabel: UILabel!
+    @IBOutlet weak var feeTextField: UITextField!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var numberTextField: UITextField!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var levelTextField: UITextField!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var allNumberLabel: UILabel!
+    @IBOutlet weak var allNumberTextField: UITextField!
+    @IBOutlet weak var courtLabel: UILabel!
+    @IBOutlet weak var courtTextField: UITextField!
+    @IBOutlet weak var mapPlacedView: UIImageView!
+    
     var myMatches = [Activity]()
+    
+    var allTextField = [UITextField]()
 
     var myPost: Activity? {
         didSet {
             if let myPost = myPost {
-                setText(myPost, isEnable: true)
+                setText(myPost)
                 self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
-                cityTextField.title = NSLocalizedString("address", comment: "")
-                oKButton.isHidden = true
                 cancelButton.isHidden = true
+                addButton.isHidden = true
             }
         }
     }
+    
     var nowPlace: (latitude: String, longitude: String, address: String)? {
         didSet {
             if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
@@ -57,7 +67,6 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @IBAction func cancelAndBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     @IBAction func addOne(_ sender: Any) {
         save()
@@ -93,7 +102,8 @@ class ActivityController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        backView.backgroundColor = myLightBlue
+        allTextField = [nameTextField, levelTextField, typeTextField, numberTextField, allNumberTextField, timeTextField, courtTextField, feeTextField]
+        setTextField(cornerRadius: 10)
         typeTextField.inputView = typePicker
         cityTextField.inputView = cityPicker
         courtTextField.inputView = courtPicker
@@ -104,7 +114,7 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeKeyboard))
         view.addGestureRecognizer(tap)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -112,12 +122,17 @@ class ActivityController: UIViewController, UITextFieldDelegate {
     @objc func closeKeyboard() {
         self.view.endEditing(true)
     }
-
-    func setText(_ activity: Activity, isEnable: Bool) {
+    
+    @objc func textFieldUI(_ sender: UITextField) {
+        sender.backgroundColor = .white
+        sender.layer.shadowColor = UIColor.black.cgColor
+        sender.layer.shadowRadius = 5
+        sender.layer.shadowOpacity = 0.5
+    }
+    
+    func setText(_ activity: Activity) {
         navigationItem.title = activity.name
         nameTextField.text = activity.name
-
-        
         typeTextField.text = activity.type
         levelTextField.text = activity.level
         timeTextField.text = activity.time
@@ -128,16 +143,32 @@ class ActivityController: UIViewController, UITextFieldDelegate {
         feeTextField.text = "\(activity.fee)"
         mapPlacedView.addSubview(setMap(latitude: Double(activity.place.placeLatitude)!, longitude: Double(activity.place.placeLongitude)!))
 
-        nameTextField.isEnabled = isEnable
-        typeTextField.isEnabled = isEnable
-        levelTextField.isEnabled = isEnable
-        timeTextField.isEnabled = isEnable
-        courtTextField.isEnabled = isEnable
-        cityTextField.isEnabled = isEnable
-        numberTextField.isEnabled = isEnable
-        allNumberTextField.isEnabled = isEnable
-        feeTextField.isEnabled = isEnable
     }
+    
+    func setTextField(cornerRadius: CGFloat) {
+        
+        nameTextField.layer.cornerRadius = cornerRadius
+        typeTextField.layer.cornerRadius = cornerRadius
+        levelTextField.layer.cornerRadius = cornerRadius
+        timeTextField.layer.cornerRadius = cornerRadius
+        courtTextField.layer.cornerRadius = cornerRadius
+        cityTextField.layer.cornerRadius = cornerRadius
+        numberTextField.layer.cornerRadius = cornerRadius
+        allNumberTextField.layer.cornerRadius = cornerRadius
+        feeTextField.layer.cornerRadius = cornerRadius
+        
+        nameTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        typeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        levelTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        timeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        courtTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        cityTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        numberTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        allNumberTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+        feeTextField.addTarget(self, action: #selector(textFieldUI), for: .touchDown)
+    }
+    
+    
 
     func getLocation(city: String, gym: String) {
         loadingIndicator.start()
@@ -422,3 +453,4 @@ extension ActivityController: CLLocationManagerDelegate {
         marker.map = mapView
     }
 }
+
