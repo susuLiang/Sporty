@@ -23,10 +23,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iM1-KZ-LBI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vJ-e1-LYV">
-                                        <rect key="frame" x="20" y="545" width="335" height="255"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YIZ-qt-DvM">
                                         <rect key="frame" x="20" y="0.0" width="335" height="505"/>
                                         <subviews>
@@ -356,9 +352,13 @@
                                             <constraint firstAttribute="trailing" secondItem="yin-66-tFA" secondAttribute="trailing" id="ugH-fD-7rW"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6vJ-e1-LYV">
+                                        <rect key="frame" x="20" y="518" width="335" height="282"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" constant="40" id="3US-6J-rqZ"/>
+                                    <constraint firstItem="6vJ-e1-LYV" firstAttribute="top" secondItem="YIZ-qt-DvM" secondAttribute="bottom" constant="13" id="3US-6J-rqZ"/>
                                     <constraint firstAttribute="trailing" secondItem="YIZ-qt-DvM" secondAttribute="trailing" constant="20" id="DX6-Uf-9O5"/>
                                     <constraint firstAttribute="bottom" secondItem="6vJ-e1-LYV" secondAttribute="bottom" id="IDU-L1-sEe"/>
                                     <constraint firstItem="6vJ-e1-LYV" firstAttribute="width" secondItem="YIZ-qt-DvM" secondAttribute="width" id="PUK-pZ-p5K"/>
