@@ -103,12 +103,13 @@ class ListsController: UIViewController {
     }
 
     func getUserProfile() {
-        let userUid = keyChain.get("uid")
-        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
-            if error == nil {
-                self.userSetting = userSetting
-            }
-        })
+        if let userUid = keyChain.get("uid") {
+            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                if error == nil {
+                    self.userSetting = userSetting
+                }
+            })
+        }
     }
 
     @objc func join(sender: UIButton) {

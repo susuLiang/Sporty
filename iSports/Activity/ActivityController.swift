@@ -52,6 +52,7 @@ class ActivityController: UIViewController {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
                 cancelButton.isHidden = true
                 addButton.isHidden = true
+//                view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             }
         }
     }

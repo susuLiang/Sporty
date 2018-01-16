@@ -104,7 +104,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
-        self.loadingIndicator.start()
+//        self.loadingIndicator.start()
 
         saveButton.isHidden = true
         saveButton.titleString = NSLocalizedString("Save", comment: "")
@@ -138,18 +138,19 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func getUserProfile() {
-        let userUid = keyChain.get("uid")
-        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
-            self.loadingIndicator.start()
-            if error == nil {
-                self.userSetting = userSetting
-                self.nameLabel.text = self.userSetting?.name
-                if userSetting?.urlString != nil {
-                    self.loadUserPhoto()
+        if let userUid = keyChain.get("uid") {
+            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                self.loadingIndicator.start()
+                if error == nil {
+                    self.userSetting = userSetting
+                    self.nameLabel.text = self.userSetting?.name
+                    if userSetting?.urlString != nil {
+                        self.loadUserPhoto()
+                    }
                 }
-            }
-            self.loadingIndicator.stop()
-        })
+                self.loadingIndicator.stop()
+            })
+        }
     }
 
     func loadUserPhoto() {

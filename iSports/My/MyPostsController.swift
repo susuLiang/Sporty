@@ -103,6 +103,7 @@ class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDel
         FirebaseProvider.shared.getPosts(childKind: "postId", completion: { (posts, error) in
             if error == nil, let posts = posts {
                 self.myPosts = Array(posts.values)
+                self.keyUid = Array(posts.keys)
                 self.tableView.reloadData()
             }
         })
