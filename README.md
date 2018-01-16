@@ -3,14 +3,14 @@
 時常想運動卻找不到團嗎？ 不管是臨時還是固定的，都可以讓你找到適合的球類運動團體！<br>
 可以依據地點來尋找附近的活動，還有即時群組聊天功能，增加大家運動的頻率與人與人間的交流。
 
-# Features
+## Features
 
 - 使用 Firebase 作為後端資料庫
 - 串接 Google Map API 取得地圖與搜尋自動完成功能
 - 使用 Swiftlint 管理 Code 的撰寫 
 - 使用 Firebase Analytics 跟 Fabric Crashlytics
 
-# Screenshot
+## Screenshot
 ### 登入頁面
  - 註冊新帳號
  - 忘記密碼可發郵件至信箱改密碼
@@ -64,7 +64,7 @@
  
 <kbd><img src="https://github.com/susuLiang/Sporty/blob/develop/Screenshot/profile.jpg" width="200"></kbd> 
 
-# Libraries
+## Libraries
   - SwiftLint
   - Firebase
     - Core
@@ -87,11 +87,11 @@
   - SwiftyGif
   - JTMaterialTransition
   
-# Requirement
+## Requirement
   - iOS 10.3+ 
   - Xcode 8.3.3+
     
-# Contact Me
+## Contact Me
 
 Susu Liang<br>
 sophie790709@gmail.com
