@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController restorationIdentifier="GifViewController" id="1MC-gR-I5Y" customClass="GifViewController" customModule="iSports" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="YzU-hD-SRW">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sJv-SL-xKX">
+                        <rect key="frame" x="67" y="213" width="240" height="240"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sJv-SL-xKX" secondAttribute="height" multiplier="1:1" id="TcQ-RB-v5s"/>
+                            <constraint firstAttribute="width" constant="240" id="dcb-Q3-gZC"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="sJv-SL-xKX" firstAttribute="centerY" secondItem="YzU-hD-SRW" secondAttribute="centerY" id="9VY-kP-mC8"/>
+                    <constraint firstItem="sJv-SL-xKX" firstAttribute="centerX" secondItem="YzU-hD-SRW" secondAttribute="centerX" id="xVI-3U-2ET"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="Hkl-1t-b5M"/>
+            </view>
+            <connections>
+                <outlet property="gifImage" destination="sJv-SL-xKX" id="lFM-dj-nOM"/>
+            </connections>
+            <point key="canvasLocation" x="-91" y="-347"/>
+        </viewController>
+    </objects>
+</document>

@@ -1,0 +1,15 @@
+/* (No Comment) */
+"NSCameraUsageDescription" = "使用相機功能，可放入照片於個人資料內";
+
+/* (No Comment) */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "取得目前所在地，以獲取您附近的活動資料";
+
+/* (No Comment) */
+"NSLocationAlwaysUsageDescription" = "取得目前所在地，以獲取您附近的活動資料";
+
+/* (No Comment) */
+"NSLocationWhenInUseUsageDescription" = "取得目前所在地，以獲取您附近的活動資料";
+
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "取得相簿內照片，可放入照片於個人資料內";
+
