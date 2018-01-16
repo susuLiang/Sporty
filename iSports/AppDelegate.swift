@@ -22,10 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
 
-        Fabric.with([Crashlytics()])
+        Fabric.sharedSDK().debug = true
 
-        GMSServices.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
-        GMSPlacesClient.provideAPIKey("AIzaSyDMdFZL04R9B8KTMXgcUXEMOa6PptbQBj8")
+        let key = GoogleMapKey.init()
+
+        GMSServices.provideAPIKey(key.mapKey)
+        GMSPlacesClient.provideAPIKey(key.mapKey)
 
         IQKeyboardManager.sharedManager().enable = true
 

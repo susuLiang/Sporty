@@ -17,11 +17,14 @@ import SkyFloatingLabelTextField
 
 class ShowDetailController: UIViewController {
 
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var courtLabel: UILabel!
     @IBOutlet weak var unJoinButton: LGButton!
     @IBOutlet weak var mapPlacedView: UIImageView!
     @IBOutlet weak var joinButton: LGButton!
-    @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
 
@@ -33,12 +36,9 @@ class ShowDetailController: UIViewController {
     var selectedPlace: GMSPlace?
 
     var activityTitleInCell: [ActivityTitle.RawValue] = [
-        ActivityTitle.name.rawValue,
         ActivityTitle.type.rawValue,
-        ActivityTitle.address.rawValue,
         ActivityTitle.level.rawValue,
         ActivityTitle.time.rawValue,
-        ActivityTitle.court.rawValue,
         ActivityTitle.fee.rawValue,
         ActivityTitle.num.rawValue,
         ActivityTitle.allNum.rawValue
@@ -48,6 +48,8 @@ class ShowDetailController: UIViewController {
         didSet {
             if let selectedActivity = selectedActivity {
                 navigationItem.title = selectedActivity.name
+                addressLabel.text = selectedActivity.address
+                courtLabel.text = selectedActivity.place.placeName
                 self.nowPlace = (selectedActivity.place.placeLatitude, selectedActivity.place.placeLongitude, selectedActivity.address)
                 setJoinButton()
             }
@@ -67,17 +69,12 @@ class ShowDetailController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         unJoinButton.isHidden = true
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib(nibName: "ShowDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+        collectionViewFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3 - 20), height: 105)
         getPosts()
-
-        setupTableCell()
-
-        view.addSubview(tableView)
 
     }
 
@@ -141,26 +138,20 @@ class ShowDetailController: UIViewController {
     }
 }
 
-extension ShowDetailController: UITableViewDelegate, UITableViewDataSource {
-
-    func setupTableCell() {
-        let nib = UINib(nibName: "ShowDetailCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension ShowDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return activityTitleInCell.count
     }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ShowDetailCell else {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ShowDetailCollectionViewCell else {
             fatalError("Invalid ShowDetailCell")
         }
-
         guard let result = selectedActivity else {
             print("selected nil")
             return cell
@@ -169,20 +160,19 @@ extension ShowDetailController: UITableViewDelegate, UITableViewDataSource {
         let thisActivityTitle = activityTitleInCell[indexPath.row]
 
         switch thisActivityTitle {
-        case "名稱":
-            cell.setCell(title: "名稱", detail: result.name)
+
         case "類型":
             cell.setCell(title: "類型", detail: result.type)
-        case "地址":
-            cell.setCell(title: "地址", detail: result.address)
         case "程度":
             cell.setCell(title: "程度", detail: result.level)
-        case "場地":
-            cell.setCell(title: "場地", detail: result.place.placeName)
         case "費用":
             cell.setCell(title: "費用", detail: result.fee)
         case "時間":
-            cell.setCell(title: "時間", detail: result.time)
+            let start = result.time.index(result.time.startIndex, offsetBy: 3)
+            let end = result.time.index(result.time.startIndex, offsetBy: 4)
+            let thisTime = result.time.replacingCharacters(in: start..<end, with: "\n")
+            cell.descriptionLabel.font = UIFont(name: "Arial", size: 16)
+            cell.setCell(title: "時間", detail: thisTime)
         case "目前人數":
             cell.setCell(title: "目前人數", detail: result.number)
         case "總人數":
@@ -190,12 +180,9 @@ extension ShowDetailController: UITableViewDelegate, UITableViewDataSource {
         default: break
         }
         return cell
+        
+        
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
-
 }
 
 extension ShowDetailController: CLLocationManagerDelegate {
@@ -203,6 +190,8 @@ extension ShowDetailController: CLLocationManagerDelegate {
     func setMap(latitude: Double, longitude: Double) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: 16.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: mapPlacedView.frame.height), camera: camera)
+        mapView.settings.scrollGestures = false
+        mapView.settings.zoomGestures = false
         mapView.isMyLocationEnabled = false
         mapView.settings.myLocationButton = false
 
@@ -212,15 +201,11 @@ extension ShowDetailController: CLLocationManagerDelegate {
         marker.map = mapView
         return mapView
     }
-
 }
 
 enum ActivityTitle: String {
-    case name = "名稱"
     case type =  "類型"
-    case address = "地址"
     case level = "程度"
-    case court = "場地"
     case fee = "費用"
     case time = "時間"
     case num = "目前人數"

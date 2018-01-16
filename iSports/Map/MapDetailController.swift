@@ -8,6 +8,7 @@
 
 import UIKit
 import KeychainSwift
+import Crashlytics
 
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 

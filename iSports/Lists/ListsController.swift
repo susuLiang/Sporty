@@ -11,6 +11,8 @@ import Firebase
 import KeychainSwift
 import WCLShineButton
 import SCLAlertView
+import Crashlytics
+import JTMaterialTransition
 
 class ListsController: UIViewController {
     // Property
@@ -38,6 +40,8 @@ class ListsController: UIViewController {
     var uid = Auth.auth().currentUser?.uid
 
     var ref = Database.database().reference()
+    
+    var transition: JTMaterialTransition?
 
     var myMatches = [Activity]()
     var tableView = UITableView()
@@ -84,6 +88,8 @@ class ListsController: UIViewController {
         getPosts()
 
         getUserProfile()
+        
+        self.transition = JTMaterialTransition(animatedView: self.addButton)
 
     }
 
@@ -97,12 +103,13 @@ class ListsController: UIViewController {
     }
 
     func getUserProfile() {
-        let userUid = keyChain.get("uid")
-        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
-            if error == nil {
-                self.userSetting = userSetting
-            }
-        })
+        if let userUid = keyChain.get("uid") {
+            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                if error == nil {
+                    self.userSetting = userSetting
+                }
+            })
+        }
     }
 
     @objc func join(sender: UIButton) {
@@ -156,7 +163,12 @@ class ListsController: UIViewController {
             print("ActivityController invalid")
             return
         }
-        navigationController?.pushViewController(activityView, animated: true)
+//        navigationController?.pushViewController(activityView, animated: true)
+        activityView.modalPresentationStyle = .custom
+        activityView.transitioningDelegate = self.transition
+//        navigationController?.pushViewController(activityView, animated: true)
+        self.present(activityView, animated: true, completion: nil)
+
     }
 
     func search(selected: Preference) {
@@ -181,6 +193,7 @@ class ListsController: UIViewController {
     }
 
     func setNavigation() {
+        navigationItem.title = "Sporty"
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")

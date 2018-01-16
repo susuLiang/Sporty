@@ -9,6 +9,7 @@
 import UIKit
 import Nuke
 import NVActivityIndicatorView
+import Crashlytics
 
 class WhoJoinController: UIViewController {
 

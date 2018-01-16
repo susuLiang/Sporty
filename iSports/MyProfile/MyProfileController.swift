@@ -17,6 +17,8 @@ import NVActivityIndicatorView
 import LGButton
 
 class MyProfileController: UIViewController, UITextFieldDelegate {
+    
+    var cache = NSCache<AnyObject, AnyObject>()
 
     var cell: MyProfileCell?
 
@@ -90,6 +92,11 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         saveButton.isHidden = true
         saveButton.isEnabled = false
         photoPickButton.isEnabled = false
+//        if let thisUserPhoto = cache.object(forKey: "userPhoto" as AnyObject) as? UIImage {
+//            self.userPhoto?.image = thisUserPhoto
+//            self.blurBackView.image = thisUserPhoto
+//        }
+        loadUserPhoto()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
     }
@@ -97,7 +104,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
-        self.loadingIndicator.start()
+//        self.loadingIndicator.start()
 
         saveButton.isHidden = true
         saveButton.titleString = NSLocalizedString("Save", comment: "")
@@ -131,23 +138,25 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func getUserProfile() {
-        let userUid = keyChain.get("uid")
-        FirebaseProvider.shared.getUserProfile(userUid: userUid!, completion: { (userSetting, error) in
-            self.loadingIndicator.start()
-            if error == nil {
-                self.userSetting = userSetting
-                self.nameLabel.text = self.userSetting?.name
-                if userSetting?.urlString != nil {
-                    self.loadUserPhoto()
+        if let userUid = keyChain.get("uid") {
+            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                self.loadingIndicator.start()
+                if error == nil {
+                    self.userSetting = userSetting
+                    self.nameLabel.text = self.userSetting?.name
+                    if userSetting?.urlString != nil {
+                        self.loadUserPhoto()
+                    }
                 }
-            }
-            self.loadingIndicator.stop()
-        })
+                self.loadingIndicator.stop()
+            })
+        }
     }
 
     func loadUserPhoto() {
         Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.userPhoto,
                        handler: { (response, _) in
+            self.cache.setObject(response.value!, forKey: "userPhoto" as AnyObject)
             self.userPhoto?.image = response.value
         })
         Nuke.loadImage(with: URL(string: (self.userSetting?.urlString)!)!, into: self.blurBackView,
@@ -182,7 +191,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         editButton.layer.shadowRadius = 5
         saveButton.layer.cornerRadius = 20
         saveButton.layer.shadowRadius = 5
-
     }
 
     func sureSave() {

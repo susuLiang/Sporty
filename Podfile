@@ -28,5 +28,7 @@ target 'iSports' do
   pod 'WCLShineButton'
   pod 'Fabric', '~> 1.7.2'
   pod 'Crashlytics', '~> 3.9.3'
-   pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif/', :branch => 'swift4'
+  pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif/', :branch => 'swift4'
+  pod 'JTMaterialTransition', '~> 2.0'
+
 end

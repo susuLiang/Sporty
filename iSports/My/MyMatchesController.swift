@@ -12,6 +12,7 @@ import Firebase
 import KeychainSwift
 import SCLAlertView
 import TimelineTableViewCell
+import Crashlytics
 
 class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
 
@@ -52,7 +53,6 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
     }
 
     func setupTableCell() {

@@ -5,7 +5,19 @@
 "4 / 4 Time" = "4 / 4 時間";
 
 /* No comment provided by engineer. */
+"ADDRESS" = "地址";
+
+/* No comment provided by engineer. */
+"ALL NUMBER" = "總人數";
+
+/* No comment provided by engineer. */
 "Back to sign in" = "回到登入";
+
+/* No comment provided by engineer. */
+"CITY" = "城市";
+
+/* No comment provided by engineer. */
+"COURT" = "場地";
 
 /* No comment provided by engineer. */
 "Cancel" = "取消";
@@ -29,6 +41,12 @@
 "Enter your email" = "請輸入你的Email";
 
 /* No comment provided by engineer. */
+"Error" = "Error";
+
+/* No comment provided by engineer. */
+"FEE" = "費用";
+
+/* No comment provided by engineer. */
 "Home" = "首頁";
 
 /* No comment provided by engineer. */
@@ -36,6 +54,9 @@
 
 /* No comment provided by engineer. */
 "Join" = "已參加";
+
+/* No comment provided by engineer. */
+"LEVEL" = "程度";
 
 /* No comment provided by engineer. */
 "Map" = "地圖";
@@ -56,7 +77,13 @@
 "MyPosts" = "已發起";
 
 /* No comment provided by engineer. */
+"NAME" = "名稱";
+
+/* No comment provided by engineer. */
 "NO" = "不";
+
+/* No comment provided by engineer. */
+"NUMBER" = "目前人數";
 
 /* No comment provided by engineer. */
 "No text" = "尚未選擇";
@@ -75,6 +102,9 @@
 
 /* No comment provided by engineer. */
 "Please choose the type and city first." = "請先選擇類型及城市";
+
+/* No comment provided by engineer. */
+"Please enter something." = "請輸入訊息";
 
 /* No comment provided by engineer. */
 "Please enter your email" = "請輸入你的Email";
@@ -96,6 +126,9 @@
 
 /* No comment provided by engineer. */
 "Saved !" = "儲存 !";
+
+/* No comment provided by engineer. */
+"Send" = "送出";
 
 /* No comment provided by engineer. */
 "Setting" = "個人設定";
@@ -123,6 +156,12 @@
 
 /* No comment provided by engineer. */
 "Sure to save it ?" = "確定儲存？";
+
+/* No comment provided by engineer. */
+"TIME" = "時間";
+
+/* No comment provided by engineer. */
+"TYPE" = "類型";
 
 /* No comment provided by engineer. */
 "The Email address is badly formatted" = "Email格式錯誤";

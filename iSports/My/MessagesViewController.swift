@@ -11,6 +11,7 @@ import Firebase
 import KeychainSwift
 import Nuke
 import SCLAlertView
+import Crashlytics
 
 class MessagesViewController: UIViewController {
     
@@ -42,6 +43,11 @@ class MessagesViewController: UIViewController {
                         self.userSetting.updateValue(userSetting!, forKey: userUid)
                     }
                     self.tableView.reloadData()
+                    if self.tableView.numberOfRows(inSection: 0) > 0 {
+                        let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
+                        let indexPath = IndexPath(row: lastRow, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    }
                 })
             }
         }
@@ -76,12 +82,7 @@ class MessagesViewController: UIViewController {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         setUpCell()
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        if self.tableView.numberOfRows(inSection: 0) > 0 {
-            let lastRow: Int = self.tableView.numberOfRows(inSection: 0) - 1
-            let indexPath = IndexPath(row: lastRow, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
+        sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
     }
 
     func setUpCell() {

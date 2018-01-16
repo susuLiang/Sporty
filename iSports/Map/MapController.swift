@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import Crashlytics
 
 class MapController: UIViewController, GMSMapViewDelegate {
 

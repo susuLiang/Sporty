@@ -35,8 +35,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-hl-ENS">
-                        <rect key="frame" x="88" y="26" width="0.0" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-hl-ENS">
+                        <rect key="frame" x="88" y="33.5" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -55,9 +55,8 @@
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-zW-cVP">
-                        <rect key="frame" x="39" y="26" width="16" height="16"/>
+                        <rect key="frame" x="54" y="33.5" width="1" height="1"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="16" id="PXT-6u-JPT"/>
                             <constraint firstAttribute="width" secondItem="aFP-zW-cVP" secondAttribute="height" multiplier="1:1" id="aMd-vc-LxB"/>
                         </constraints>
                     </imageView>
@@ -71,10 +70,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fR-8z-bCk">
-                        <rect key="frame" x="39" y="25.5" width="16" height="16"/>
+                        <rect key="frame" x="30" y="33" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="1fR-8z-bCk" secondAttribute="height" multiplier="1:1" id="OuT-0w-XTh"/>
-                            <constraint firstAttribute="width" constant="16" id="mRT-U5-PKZ"/>
+                            <constraint firstAttribute="width" constant="25" id="mRT-U5-PKZ"/>
                         </constraints>
                         <color key="tintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                         <state key="normal">
@@ -106,7 +105,6 @@
                     <constraint firstAttribute="bottomMargin" secondItem="h2K-xg-hrK" secondAttribute="bottom" constant="1" id="7N4-3P-Cdy"/>
                     <constraint firstItem="2D0-6Z-FaV" firstAttribute="leading" secondItem="HxZ-h8-hOq" secondAttribute="leadingMargin" constant="84" id="NVf-CI-4uY"/>
                     <constraint firstItem="4Od-hl-ENS" firstAttribute="top" secondItem="aFP-zW-cVP" secondAttribute="top" id="SE8-4Y-Rsb"/>
-                    <constraint firstItem="1fR-8z-bCk" firstAttribute="centerY" secondItem="4Od-hl-ENS" secondAttribute="centerY" id="V8j-pv-aeK"/>
                     <constraint firstItem="LWm-f0-Lj3" firstAttribute="leading" secondItem="W66-Ck-wDF" secondAttribute="trailing" constant="26" id="Vam-zR-XmD"/>
                     <constraint firstAttribute="bottomMargin" secondItem="LWm-f0-Lj3" secondAttribute="bottom" constant="0.5" id="XMs-7H-S0s"/>
                     <constraint firstItem="2Rz-dN-Xtc" firstAttribute="top" secondItem="HxZ-h8-hOq" secondAttribute="topMargin" constant="8" id="Xh2-mj-c44"/>

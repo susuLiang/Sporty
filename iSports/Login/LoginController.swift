@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SCLAlertView
+import Crashlytics
 
 class LoginController: UIViewController {
 
