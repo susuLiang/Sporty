@@ -43,9 +43,10 @@ class SignInController: UIViewController {
 
                     case .wrongPassword:
                         message = NSLocalizedString("Wrong password", comment: "")
-
+                        
                     default:
-                        print("Create User Error: \(error!)")
+                         let errorString: String = (error?.localizedDescription)!
+                        message = "\(errorString)"
                     }
                     self.logInButton.startFinishAnimation(0.2, completion: nil)
                     SCLAlertView().showWarning("Error", subTitle: message)

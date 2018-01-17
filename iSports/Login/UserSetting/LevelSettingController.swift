@@ -43,20 +43,32 @@ class LevelSettingController: UIViewController {
     @IBAction func selectButtonA(_ sender: Any) {
         buttonA.backgroundColor = mySkyBlue
         self.selectedLevel = "A"
+        buttonB.backgroundColor = .clear
+        buttonC.backgroundColor = .clear
+        buttonD.backgroundColor = .clear
     }
 
     @IBAction func selectButtonB(_ sender: Any) {
         buttonB.backgroundColor = mySkyBlue
         self.selectedLevel = "B"
+        buttonA.backgroundColor = .clear
+        buttonC.backgroundColor = .clear
+        buttonD.backgroundColor = .clear
     }
 
     @IBAction func selectButtonC(_ sender: Any) {
         buttonC.backgroundColor = mySkyBlue
         self.selectedLevel = "C"
+        buttonB.backgroundColor = .clear
+        buttonA.backgroundColor = .clear
+        buttonD.backgroundColor = .clear
     }
     @IBAction func selectButtonD(_ sender: Any) {
         buttonD.backgroundColor = mySkyBlue
         self.selectedLevel = "D"
+        buttonB.backgroundColor = .clear
+        buttonC.backgroundColor = .clear
+        buttonA.backgroundColor = .clear
     }
 
     @IBAction func saveUserLevel(_ sender: Any) {

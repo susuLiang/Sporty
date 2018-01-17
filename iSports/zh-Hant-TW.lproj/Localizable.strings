@@ -98,6 +98,9 @@
 "Password should be greater than six digits" = "密碼須大於六位數";
 
 /* No comment provided by engineer. */
+"Please check network" = "請確認網路連線";
+
+/* No comment provided by engineer. */
 "Please check your mail to reset password" = "請收信以重設密碼";
 
 /* No comment provided by engineer. */
@@ -165,6 +168,9 @@
 
 /* No comment provided by engineer. */
 "The Email address is badly formatted" = "Email格式錯誤";
+
+/* No comment provided by engineer. */
+"Unable to connect" = "連線失敗";
 
 /* No comment provided by engineer. */
 "User not found" = "使用者不存在";

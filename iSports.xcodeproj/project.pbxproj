@@ -10,6 +10,7 @@
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
 		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
 		1F318E18200F22110007BC08 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F318E17200F22110007BC08 /* GoogleMapKey.swift */; };
+		1F318E1A200F25EF0007BC08 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F318E19200F25EF0007BC08 /* Reachability.swift */; };
 		1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F31BB7C2002297D00DE9CFA /* sporty.gif */; };
 		1F3897BD2000DC4400910B10 /* GifViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3897BC2000DC4400910B10 /* GifViewController.xib */; };
 		1F3897C12000DCC900910B10 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3897C02000DCC900910B10 /* GifViewController.swift */; };
@@ -93,6 +94,7 @@
 		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
 		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
 		1F318E17200F22110007BC08 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
+		1F318E19200F25EF0007BC08 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1F31BB7C2002297D00DE9CFA /* sporty.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sporty.gif; sourceTree = "<group>"; };
 		1F3897BC2000DC4400910B10 /* GifViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifViewController.xib; sourceTree = "<group>"; };
 		1F3897C02000DCC900910B10 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
 				1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */,
+				1F318E19200F25EF0007BC08 /* Reachability.swift */,
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
@@ -705,6 +708,7 @@
 				1FFA2F151FE8EB8300E485F1 /* GMUDefaultClusterRenderer.m in Sources */,
 				1F74D73B1FF5E14400B746E6 /* FadeInOutTransition.swift in Sources */,
 				1FFA2F241FE908E100E485F1 /* SignUpController.swift in Sources */,
+				1F318E1A200F25EF0007BC08 /* Reachability.swift in Sources */,
 				1FFC9DE41FE16A9F003071B9 /* TabBarController.swift in Sources */,
 				1FFA2F131FE8EB8300E485F1 /* GMUClusterManager.m in Sources */,
 				1F8627931FF2441E00D82614 /* TypeSettingController.swift in Sources */,

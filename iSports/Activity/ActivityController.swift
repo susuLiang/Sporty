@@ -46,13 +46,12 @@ class ActivityController: UIViewController {
         didSet {
             if let myPost = myPost {
                 setText(myPost)
-//                self.nowPlace = (myPost.place.placeLatitude, myPost.place.placeLongitude, myPost.address)
                 mapPlacedView.isHidden = true
-                cityLabel.text = NSLocalizedString("ADDRESS", comment: "")
+//                cityLabel.text = NSLocalizedString("ADDRESS", comment: "")
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
                 cancelButton.isHidden = true
                 addButton.isHidden = true
-//                view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)!, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
             }
         }
     }
@@ -252,7 +251,6 @@ class ActivityController: UIViewController {
         childRef.setValue(value)
         ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
         self.dismiss(animated: true, completion: nil)
-//        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func setLabelText() {
