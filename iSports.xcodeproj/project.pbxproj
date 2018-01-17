@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
 		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
+		1F318E18200F22110007BC08 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F318E17200F22110007BC08 /* GoogleMapKey.swift */; };
 		1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F31BB7C2002297D00DE9CFA /* sporty.gif */; };
 		1F3897BD2000DC4400910B10 /* GifViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3897BC2000DC4400910B10 /* GifViewController.xib */; };
 		1F3897C12000DCC900910B10 /* GifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3897C02000DCC900910B10 /* GifViewController.swift */; };
@@ -59,7 +60,6 @@
 		1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FDB88E41FFF49920069E024 /* InfoPlist.strings */; };
 		1FEA3EB720073EF0009120E1 /* ShowDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA3EB520073EF0009120E1 /* ShowDetailCollectionViewCell.swift */; };
 		1FEA3EB820073EF0009120E1 /* ShowDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEA3EB620073EF0009120E1 /* ShowDetailCollectionViewCell.xib */; };
-		1FEA3EBA20078D57009120E1 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEA3EB920078D57009120E1 /* GoogleMapKey.swift */; };
 		1FF6E3EE1FEA1A0F0070ADE8 /* MyPostsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */; };
 		1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */; };
 		1FF6E3F31FEA44290070ADE8 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */; };
@@ -92,6 +92,7 @@
 		1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileCell.strings"; sourceTree = "<group>"; };
 		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
 		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
+		1F318E17200F22110007BC08 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
 		1F31BB7C2002297D00DE9CFA /* sporty.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sporty.gif; sourceTree = "<group>"; };
 		1F3897BC2000DC4400910B10 /* GifViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifViewController.xib; sourceTree = "<group>"; };
 		1F3897C02000DCC900910B10 /* GifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		1FDB88E31FFF49920069E024 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1FEA3EB520073EF0009120E1 /* ShowDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		1FEA3EB620073EF0009120E1 /* ShowDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowDetailCollectionViewCell.xib; sourceTree = "<group>"; };
-		1FEA3EB920078D57009120E1 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
 		1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsController.swift; sourceTree = "<group>"; };
 		1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMatchesController.swift; sourceTree = "<group>"; };
 		1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
-				1FEA3EB920078D57009120E1 /* GoogleMapKey.swift */,
+				1F318E17200F22110007BC08 /* GoogleMapKey.swift */,
 				1FDB88E41FFF49920069E024 /* InfoPlist.strings */,
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */,
@@ -722,7 +722,7 @@
 				1FFA2F001FE8EB6D00E485F1 /* GQTPointQuadTreeChild.m in Sources */,
 				1F3897C12000DCC900910B10 /* GifViewController.swift in Sources */,
 				1FBA9CFE1FE75D4200A6EF87 /* CourtsProvider.swift in Sources */,
-				1FEA3EBA20078D57009120E1 /* GoogleMapKey.swift in Sources */,
+				1F318E18200F22110007BC08 /* GoogleMapKey.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */,
 				1FFC9DE91FE16D1B003071B9 /* UINibExtensions.swift in Sources */,
