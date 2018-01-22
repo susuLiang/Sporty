@@ -24,7 +24,7 @@ class ShowDetailController: UIViewController {
     @IBOutlet weak var joinButton: LGButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
-    
+
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
 
@@ -139,15 +139,15 @@ class ShowDetailController: UIViewController {
 }
 
 extension ShowDetailController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return activityTitleInCell.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ShowDetailCollectionViewCell else {
             fatalError("Invalid ShowDetailCell")
@@ -180,8 +180,7 @@ extension ShowDetailController: UICollectionViewDelegate, UICollectionViewDataSo
         default: break
         }
         return cell
-        
-        
+
     }
 }
 

@@ -39,10 +39,10 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         setupTableView()
         setupTableCell()
         getFilterArrayByTime()
-        
+
         navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-cancel"), style: .plain, target: self, action: nil)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -63,12 +63,12 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
                                              bundle: Bundle(url: nibUrl!)!)
         tableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
     }
-    
+
     func getFilterArrayByTime() {
         FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
             if error == nil {
                 self.myMatches = posts!
-                
+
                 self.timeMatchArray = []
                 for i in 0...time.count - 1 {
                     let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
@@ -78,7 +78,7 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
                     })
                     self.timeMatchArray.append(timeMatchs)
                 }
-                
+
                 self.myMatches.values.sorted(by: { $0.postedTime > $1.postedTime })
                 self.tableView.reloadData()
             }
@@ -100,7 +100,7 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
 
         messagesView.thisActivityUid = thatWeek[indexPath.row].id
         messagesView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! * 2 - (self.navigationController?.navigationBar.frame.height)!)
-        
+
         self.addChildViewController(messagesView)
         self.view.addSubview(messagesView.view)
         messagesView.didMove(toParentViewController: self)

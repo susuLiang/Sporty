@@ -53,7 +53,7 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
         case "排球": iconName = "settingVolleyball"
         case "網球": iconName = "settingTennis"
         case "足球": iconName = "settingFootball"
-        default: ""
+        default: break
         }
         DispatchQueue.main.async {
             cell.typeImage.image = UIImage(named: iconName)

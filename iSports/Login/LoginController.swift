@@ -12,7 +12,7 @@ import SCLAlertView
 import Crashlytics
 
 class LoginController: UIViewController {
-    
+
     @IBAction func send(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false

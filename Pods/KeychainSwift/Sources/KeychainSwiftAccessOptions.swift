@@ -6,7 +6,7 @@ These options are used to determine when a keychain item should be readable. The
 
 */
 public enum KeychainSwiftAccessOptions {
-  
+
   /**
   
   The data in the keychain item can be accessed only while the device is unlocked by the user.
@@ -17,7 +17,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleWhenUnlocked
-  
+
   /**
   
   The data in the keychain item can be accessed only while the device is unlocked by the user.
@@ -26,7 +26,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleWhenUnlockedThisDeviceOnly
-  
+
   /**
   
   The data in the keychain item cannot be accessed after a restart until the device has been unlocked once by the user.
@@ -35,7 +35,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleAfterFirstUnlock
-  
+
   /**
   
   The data in the keychain item cannot be accessed after a restart until the device has been unlocked once by the user.
@@ -44,7 +44,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleAfterFirstUnlockThisDeviceOnly
-  
+
   /**
   
   The data in the keychain item can always be accessed regardless of whether the device is locked.
@@ -53,7 +53,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleAlways
-  
+
   /**
   
   The data in the keychain can only be accessed when the device is unlocked. Only available if a passcode is set on the device.
@@ -62,7 +62,7 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleWhenPasscodeSetThisDeviceOnly
-  
+
   /**
   
   The data in the keychain item can always be accessed regardless of whether the device is locked.
@@ -71,36 +71,36 @@ public enum KeychainSwiftAccessOptions {
   
   */
   case accessibleAlwaysThisDeviceOnly
-  
+
   static var defaultOption: KeychainSwiftAccessOptions {
     return .accessibleWhenUnlocked
   }
-  
+
   var value: String {
     switch self {
     case .accessibleWhenUnlocked:
       return toString(kSecAttrAccessibleWhenUnlocked)
-      
+
     case .accessibleWhenUnlockedThisDeviceOnly:
       return toString(kSecAttrAccessibleWhenUnlockedThisDeviceOnly)
-      
+
     case .accessibleAfterFirstUnlock:
       return toString(kSecAttrAccessibleAfterFirstUnlock)
-      
+
     case .accessibleAfterFirstUnlockThisDeviceOnly:
       return toString(kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly)
-      
+
     case .accessibleAlways:
       return toString(kSecAttrAccessibleAlways)
-      
+
     case .accessibleWhenPasscodeSetThisDeviceOnly:
       return toString(kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly)
-      
+
     case .accessibleAlwaysThisDeviceOnly:
       return toString(kSecAttrAccessibleAlwaysThisDeviceOnly)
     }
   }
-  
+
   func toString(_ value: CFString) -> String {
     return KeychainSwiftConstants.toString(value)
   }

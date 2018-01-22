@@ -20,8 +20,7 @@ extension Timer {
         CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, .commonModes)
         return timer
     }
-    
-    
+
     /*class func schedule(delay delay: NSTimeInterval, handler: NSTimer! -> Void) -> NSTimer {
      let fireDate = delay + CFAbsoluteTimeGetCurrent()
      let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, 0, 0, 0, handler)

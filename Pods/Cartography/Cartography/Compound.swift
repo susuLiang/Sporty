@@ -19,7 +19,7 @@ public protocol Compound {
 
 /// Compound properties conforming to this protocol can use the `==` operator
 /// with other compound properties of the same type.
-public protocol RelativeCompoundEquality : Compound { }
+public protocol RelativeCompoundEquality: Compound { }
 
 /// Declares a property equal to a the result of an expression.
 ///
@@ -45,7 +45,7 @@ public protocol RelativeCompoundEquality : Compound { }
 
 /// Compound properties conforming to this protocol can use the `<=` and `>=`
 /// operators with other compound properties of the same type.
-public protocol RelativeCompoundInequality : Compound { }
+public protocol RelativeCompoundInequality: Compound { }
 
 /// Declares a property less than or equal to another compound property.
 ///
@@ -135,7 +135,7 @@ public protocol RelativeCompoundInequality : Compound { }
     @discardableResult public func >= <P: RelativeEquality>(lhs: P, rhs: LayoutSupport) -> NSLayoutConstraint {
         return lhs.context.addConstraint(lhs, to: rhs, relation: NSLayoutRelation.greaterThanOrEqual)
     }
-    
+
     /// Declares a property less than or equal to a layout support.
     ///
     /// - parameter lhs: The affected property. The associated view will have
@@ -174,5 +174,5 @@ public protocol RelativeCompoundInequality : Compound { }
     @discardableResult public func <= <P: RelativeEquality>(lhs: P, rhs: Expression<LayoutSupport>) -> NSLayoutConstraint {
         return lhs.context.addConstraint(lhs, to: rhs.value, coefficients: rhs.coefficients[0], relation: NSLayoutRelation.lessThanOrEqual)
     }
-    
+
 #endif

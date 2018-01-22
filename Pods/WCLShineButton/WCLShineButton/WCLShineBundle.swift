@@ -26,19 +26,19 @@
 import UIKit
 
 struct WCLShineBundle {
-    
+
     // 当前的bundle
     static var bundle: Bundle {
         let bundle = Bundle(for: WCLShineButton.self)
         return bundle
     }
-    
+
     // 存放资源的bundle
     static var wclBundle: Bundle {
         let bundle = Bundle(path: self.bundle.path(forResource: "WCLShineButton", ofType: "bundle")!)
         return bundle!
     }
-    
+
     static func imageFromBundle(_ imageName: String) -> UIImage {
         let bundle = Bundle(path: wclBundle.bundlePath + "/resource")
         if let path = bundle?.path(forResource: imageName, ofType: "png") {

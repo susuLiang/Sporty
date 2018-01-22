@@ -6,9 +6,9 @@ import Foundation
 
 /// Represents an image request.
 public struct Request {
-    
+
     // MARK: Parameters of the Request
-    
+
     public var urlRequest: URLRequest {
         get { return container.resource.urlRequest }
         set {
@@ -51,21 +51,19 @@ public struct Request {
 
     /// Custom info passed alongside the request.
     public var userInfo: Any?
-    
-    
+
     // MARK: Initializers
-    
+
     public init(url: URL) {
         container = Container(resource: Resource.url(url))
         container.urlString = url.absoluteString
     }
-    
+
     public init(urlRequest: URLRequest) {
         container = Container(resource: Resource.request(urlRequest))
         container.urlString = urlRequest.url?.absoluteString
     }
 
-    
     // Everything in the scope below exists solely to improve performance
 
     fileprivate var container: Container
@@ -151,7 +149,7 @@ public extension Request {
     public static func cacheKey(for request: Request) -> AnyHashable {
         return request.cacheKey ?? AnyHashable(makeCacheKey(request))
     }
-    
+
     private static func makeCacheKey(_ request: Request) -> Key {
         return Key(request: request) {
             $0.container.urlString == $1.container.urlString && $0.processor == $1.processor
@@ -167,7 +165,7 @@ public extension Request {
     public static func loadKey(for request: Request) -> AnyHashable {
         return request.loadKey ?? AnyHashable(makeLoadKey(request))
     }
-    
+
     private static func makeLoadKey(_ request: Request) -> Key {
         func isEqual(_ a: URLRequest, _ b: URLRequest) -> Bool {
             return a.cachePolicy == b.cachePolicy && a.allowsCellularAccess == b.allowsCellularAccess

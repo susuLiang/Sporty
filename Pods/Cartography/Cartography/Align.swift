@@ -15,12 +15,12 @@ import AppKit
 private func makeEqual<P: RelativeEquality>(by attribute: (LayoutProxy) -> P, elements: [LayoutProxy]) -> [NSLayoutConstraint] {
     if let first = elements.first {
         first.view.car_translatesAutoresizingMaskIntoConstraints = false
-        
+
         let rest = elements.dropFirst()
-        
+
         return rest.reduce([]) { acc, current in
             current.view.car_translatesAutoresizingMaskIntoConstraints = false
-            
+
             return acc + [ attribute(first) == attribute(current) ]
         }
     } else {

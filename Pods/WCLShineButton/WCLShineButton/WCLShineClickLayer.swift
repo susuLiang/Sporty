@@ -26,47 +26,47 @@
 import UIKit
 
 class WCLShineClickLayer: CALayer {
-    
+
     var color: UIColor = UIColor.lightGray
-    
+
     var fillColor: UIColor = UIColor(rgb: (255, 102, 102))
-    
+
     var image: WCLShineImage = .heart {
         didSet {
             if image.isDefaultAndSelect() {
                 mask     = nil
                 contents = image.getImages().first?.cgImage
-            }else {
+            } else {
                 maskLayer.contents = image.getImages().first?.cgImage
                 mask = maskLayer
             }
         }
     }
-    
+
     var animDuration: Double = 0.5
-    
+
     var clicked: Bool = false {
         didSet {
             if image.isDefaultAndSelect() {
                 backgroundColor = UIColor.clear.cgColor
                 if clicked {
                     contents = image.getImages().last?.cgImage
-                }else {
+                } else {
                     contents = image.getImages().first?.cgImage
                 }
-            }else {
+            } else {
                 if clicked {
                     backgroundColor = fillColor.cgColor
-                }else {
+                } else {
                     backgroundColor = color.cgColor
                 }
             }
         }
     }
-    
+
     let maskLayer = CALayer()
-    
-    //MARK: Public Methods
+
+    // MARK: Public Methods
     func startAnim() {
         let anim = CAKeyframeAnimation(keyPath: "transform.scale")
         anim.duration  = animDuration
@@ -74,22 +74,22 @@ class WCLShineClickLayer: CALayer {
         anim.calculationMode = kCAAnimationCubic
         if image.isDefaultAndSelect() {
             add(anim, forKey: "scale")
-        }else {
+        } else {
             maskLayer.add(anim, forKey: "scale")
         }
     }
-    
-    //MARK: Override
+
+    // MARK: Override
     override func layoutSublayers() {
         if image.isDefaultAndSelect() {
             backgroundColor = UIColor.clear.cgColor
-        }else {
+        } else {
             maskLayer.frame = bounds
             maskLayer.contents = image.getImages().first?.cgImage
             mask = maskLayer
             if clicked {
                 backgroundColor = fillColor.cgColor
-            }else {
+            } else {
                 backgroundColor = color.cgColor
             }
         }

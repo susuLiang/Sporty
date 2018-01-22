@@ -69,14 +69,14 @@ public struct WCLShineParams {
 /// - custom: 自定义图片
 /// - defaultAndSelect: 自定义默认和选中的图片
 public enum WCLShineImage {
-    
+
     case heart
     case like
     case smile
     case star
     case custom(UIImage)
     case defaultAndSelect(UIImage, UIImage)
-    
+
     func getImages() -> [UIImage] {
         switch self {
         case .heart:
@@ -93,11 +93,11 @@ public enum WCLShineImage {
             return [defaultImage, selectImage]
         }
     }
-    
+
     func isDefaultAndSelect() -> Bool {
         return self.getValue() == 5
     }
-    
+
     func getValue() -> Int {
         switch self {
         case .heart:
@@ -119,7 +119,7 @@ public enum WCLShineImage {
 var isIOS10: Bool {
     if #available(iOS 10.0, *) {
         return true
-    }else {
+    } else {
         return false
     }
 }

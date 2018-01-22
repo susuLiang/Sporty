@@ -28,7 +28,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
 // Pop Up Styles
 public enum SCLAlertViewStyle {
     case success, error, notice, warning, info, edit, wait, question
@@ -182,7 +181,7 @@ open class SCLAlertView: UIViewController {
         // Activity indicator
         var activityIndicatorStyle: UIActivityIndicatorViewStyle
         
-        public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = 0.0, kCircleBackgroundTopPosition: CGFloat = 6.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleTop:CGFloat = 30.0, kTitleHeight:CGFloat = 25.0,  kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 45.0, kTextViewdHeight: CGFloat = 80.0, kButtonHeight: CGFloat = 45.0, kTitleFont: UIFont = UIFont.systemFont(ofSize: 20), kTitleMinimumScaleFactor: CGFloat = 1.0, kTextFont: UIFont = UIFont.systemFont(ofSize: 14), kButtonFont: UIFont = UIFont.boldSystemFont(ofSize: 14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, circleBackgroundColor: UIColor = UIColor.white, contentViewColor: UIColor = UIColorFromRGB(0xFFFFFF), contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor = UIColorFromRGB(0x4D4D4D), dynamicAnimatorActive: Bool = false, disableTapGesture: Bool = false, buttonsLayout: SCLAlertButtonLayout = .vertical, activityIndicatorStyle: UIActivityIndicatorViewStyle = .white) {
+        public init(kDefaultShadowOpacity: CGFloat = 0.7, kCircleTopPosition: CGFloat = 0.0, kCircleBackgroundTopPosition: CGFloat = 6.0, kCircleHeight: CGFloat = 56.0, kCircleIconHeight: CGFloat = 20.0, kTitleTop:CGFloat = 30.0, kTitleHeight:CGFloat = 25.0, kWindowWidth: CGFloat = 240.0, kWindowHeight: CGFloat = 178.0, kTextHeight: CGFloat = 90.0, kTextFieldHeight: CGFloat = 45.0, kTextViewdHeight: CGFloat = 80.0, kButtonHeight: CGFloat = 45.0, kTitleFont: UIFont = UIFont.systemFont(ofSize: 20), kTitleMinimumScaleFactor: CGFloat = 1.0, kTextFont: UIFont = UIFont.systemFont(ofSize: 14), kButtonFont: UIFont = UIFont.boldSystemFont(ofSize: 14), showCloseButton: Bool = true, showCircularIcon: Bool = true, shouldAutoDismiss: Bool = true, contentViewCornerRadius: CGFloat = 5.0, fieldCornerRadius: CGFloat = 3.0, buttonCornerRadius: CGFloat = 3.0, hideWhenBackgroundViewIsTapped: Bool = false, circleBackgroundColor: UIColor = UIColor.white, contentViewColor: UIColor = UIColorFromRGB(0xFFFFFF), contentViewBorderColor: UIColor = UIColorFromRGB(0xCCCCCC), titleColor: UIColor = UIColorFromRGB(0x4D4D4D), dynamicAnimatorActive: Bool = false, disableTapGesture: Bool = false, buttonsLayout: SCLAlertButtonLayout = .vertical, activityIndicatorStyle: UIActivityIndicatorViewStyle = .white) {
             
             self.kDefaultShadowOpacity = kDefaultShadowOpacity
             self.kCircleTopPosition = kCircleTopPosition
@@ -333,7 +332,7 @@ open class SCLAlertView: UIViewController {
         viewText.isSelectable = false
         viewText.textAlignment = .center
         viewText.textContainerInset = UIEdgeInsets.zero
-        viewText.textContainer.lineFragmentPadding = 0;
+        viewText.textContainer.lineFragmentPadding = 0
         viewText.font = appearance.kTextFont
         // Colours
         contentView.backgroundColor = appearance.contentViewColor
@@ -459,8 +458,8 @@ open class SCLAlertView: UIViewController {
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(SCLAlertView.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(SCLAlertView.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(SCLAlertView.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SCLAlertView.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
@@ -568,7 +567,6 @@ open class SCLAlertView: UIViewController {
         if(self.view.alpha != 0.0 && appearance.shouldAutoDismiss){ hideView() }
     }
     
-    
     @objc func buttonTapDown(_ btn:SCLButton) {
         var hue : CGFloat = 0
         var saturation : CGFloat = 0
@@ -631,7 +629,7 @@ open class SCLAlertView: UIViewController {
     @objc func tapped(_ gestureRecognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
         
-        if let tappedView = gestureRecognizer.view , tappedView.hitTest(gestureRecognizer.location(in: tappedView), with: nil) == baseView && appearance.hideWhenBackgroundViewIsTapped {
+        if let tappedView = gestureRecognizer.view, tappedView.hitTest(gestureRecognizer.location(in: tappedView), with: nil) == baseView && appearance.hideWhenBackgroundViewIsTapped {
             
             hideView()
         }
@@ -792,13 +790,11 @@ open class SCLAlertView: UIViewController {
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: appearance.activityIndicatorStyle)
             indicator.startAnimating()
             circleIconView = indicator
-        }
-        else {
+        } else {
             if let iconTintColor = iconTintColor {
                 circleIconView = UIImageView(image: iconImage!.withRenderingMode(.alwaysTemplate))
                 circleIconView?.tintColor = iconTintColor
-            }
-            else {
+            } else {
                 circleIconView = UIImageView(image: iconImage!)
             }
         }
@@ -860,7 +856,7 @@ open class SCLAlertView: UIViewController {
 
         case .noAnimation:
             self.view.alpha = 1.0
-            return;
+            return
             
         case .topToBottom:
             animationStartOrigin = CGPoint(x: animationStartOrigin.x, y: self.baseView.frame.origin.y + animationStartOffset)
@@ -903,7 +899,7 @@ open class SCLAlertView: UIViewController {
     var animator : UIDynamicAnimator?
     var snapBehavior : UISnapBehavior?
     
-    fileprivate func animate(item : UIView , center: CGPoint) {
+    fileprivate func animate(item : UIView, center: CGPoint) {
     
         if let snapBehavior = self.snapBehavior {
             self.animator?.removeBehavior(snapBehavior)
@@ -1048,7 +1044,7 @@ class SCLAlertViewStyleKit : NSObject {
         checkmarkShapePath.addLine(to: CGPoint(x: 73.08, y: 23.35))
         checkmarkShapePath.addCurve(to: CGPoint(x: 73.25, y: 14.05), controlPoint1: CGPoint(x: 75.52, y: 20.75), controlPoint2: CGPoint(x: 75.7, y: 16.65))
         checkmarkShapePath.close()
-        checkmarkShapePath.miterLimit = 4;
+        checkmarkShapePath.miterLimit = 4
         
         UIColor.white.setFill()
         checkmarkShapePath.fill()
@@ -1061,8 +1057,8 @@ class SCLAlertViewStyleKit : NSObject {
         crossShapePath.addLine(to: CGPoint(x: 70, y: 10))
         crossShapePath.move(to: CGPoint(x: 10, y: 10))
         crossShapePath.addLine(to: CGPoint(x: 70, y: 70))
-        crossShapePath.lineCapStyle = CGLineCap.round;
-        crossShapePath.lineJoinStyle = CGLineJoin.round;
+        crossShapePath.lineCapStyle = CGLineCap.round
+        crossShapePath.lineJoinStyle = CGLineJoin.round
         UIColor.white.setStroke()
         crossShapePath.lineWidth = 14
         crossShapePath.stroke()
@@ -1099,7 +1095,7 @@ class SCLAlertViewStyleKit : NSObject {
         noticeShapePath.addCurve(to: CGPoint(x: 71.61, y: 52.08), controlPoint1: CGPoint(x: 56.48, y: 78), controlPoint2: CGPoint(x: 69.87, y: 75.05))
         noticeShapePath.addCurve(to: CGPoint(x: 72, y: 48.54), controlPoint1: CGPoint(x: 71.81, y: 51.29), controlPoint2: CGPoint(x: 72, y: 49.72))
         noticeShapePath.close()
-        noticeShapePath.miterLimit = 4;
+        noticeShapePath.miterLimit = 4
         
         UIColor.white.setFill()
         noticeShapePath.fill()
@@ -1122,11 +1118,10 @@ class SCLAlertViewStyleKit : NSObject {
         warningCirclePath.addCurve(to: CGPoint(x: 45.86, y: 65.35), controlPoint1: CGPoint(x: 47.93, y: 68.49), controlPoint2: CGPoint(x: 47.18, y: 66.72))
         warningCirclePath.addCurve(to: CGPoint(x: 40.94, y: 63.39), controlPoint1: CGPoint(x: 44.53, y: 64.18), controlPoint2: CGPoint(x: 42.83, y: 63.39))
         warningCirclePath.close()
-        warningCirclePath.miterLimit = 4;
+        warningCirclePath.miterLimit = 4
         
         greyColor.setFill()
         warningCirclePath.fill()
-        
         
         // Warning Shape Drawing
         let warningShapePath = UIBezierPath()
@@ -1142,7 +1137,7 @@ class SCLAlertViewStyleKit : NSObject {
         warningShapePath.addLine(to: CGPoint(x: 48.5, y: 8.77))
         warningShapePath.addCurve(to: CGPoint(x: 46.23, y: 4.26), controlPoint1: CGPoint(x: 48.5, y: 7.01), controlPoint2: CGPoint(x: 47.74, y: 5.44))
         warningShapePath.close()
-        warningShapePath.miterLimit = 4;
+        warningShapePath.miterLimit = 4
         
         greyColor.setFill()
         warningShapePath.fill()
@@ -1215,8 +1210,8 @@ class SCLAlertViewStyleKit : NSObject {
         editPathPath.addLine(to: CGPoint(x: 11.3, y: 55.5))
         editPathPath.addLine(to: CGPoint(x: 25.9, y: 68.1))
         editPathPath.close()
-        editPathPath.miterLimit = 4;
-        editPathPath.usesEvenOddFillRule = true;
+        editPathPath.miterLimit = 4
+        editPathPath.usesEvenOddFillRule = true
         color.setFill()
         editPathPath.fill()
     }

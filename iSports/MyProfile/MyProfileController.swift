@@ -17,7 +17,7 @@ import NVActivityIndicatorView
 import LGButton
 
 class MyProfileController: UIViewController, UITextFieldDelegate {
-    
+
     var cache = NSCache<AnyObject, AnyObject>()
 
     var cell: MyProfileCell?
@@ -92,11 +92,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         saveButton.isHidden = true
         saveButton.isEnabled = false
         photoPickButton.isEnabled = false
-//        if let thisUserPhoto = cache.object(forKey: "userPhoto" as AnyObject) as? UIImage {
-//            self.userPhoto?.image = thisUserPhoto
-//            self.blurBackView.image = thisUserPhoto
-//        }
-        loadUserPhoto()
+        if userSetting?.urlString != nil {
+            loadUserPhoto()
+        } else {
+            userPhoto.image = nil
+            blurBackView.image = nil
+        }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
 
     }

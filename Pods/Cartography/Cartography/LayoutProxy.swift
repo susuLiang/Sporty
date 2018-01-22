@@ -96,7 +96,7 @@ public struct LayoutProxy {
     public var lastBaseline: Edge {
         return Edge(context, view, .lastBaseline, needsSafeArea)
     }
-    
+
     #if os(iOS) || os(tvOS)
     /// The first baseline of the view. iOS exclusive.
     @available(iOS, introduced: 8.0)

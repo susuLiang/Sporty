@@ -14,7 +14,7 @@ import SCLAlertView
 import Crashlytics
 
 class MessagesViewController: UIViewController {
-    
+
     let keyChain = KeychainSwift()
     var messages: [Message] = []
     var thisActivityUid: String = "" {

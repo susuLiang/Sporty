@@ -47,7 +47,7 @@ public struct IndicatorInfo {
 
 }
 
-extension IndicatorInfo : ExpressibleByStringLiteral {
+extension IndicatorInfo: ExpressibleByStringLiteral {
 
     public init(stringLiteral value: String) {
         title = value

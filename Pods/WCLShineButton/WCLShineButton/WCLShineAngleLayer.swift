@@ -26,28 +26,28 @@
 import UIKit
 
 class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
-    
+
     var params: WCLShineParams = WCLShineParams()
-    
+
     var shineLayers: [CAShapeLayer] = [CAShapeLayer]()
-    
+
     var smallShineLayers: [CAShapeLayer] = [CAShapeLayer]()
-    
+
     var displaylink: CADisplayLink?
-    
-    //MARK: Initial Methods
+
+    // MARK: Initial Methods
     init(frame: CGRect, params: WCLShineParams) {
         super.init()
         self.frame = frame
         self.params = params
         addShines()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: Public Methods
+
+    // MARK: Public Methods
     func startAnim() {
         let radius = frame.size.width/2 * CGFloat(params.shineDistanceMultiple*1.4)
         var startAngle: CGFloat = 0
@@ -72,7 +72,7 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
                 bigShine.add(bigFlash, forKey: "bigFlash")
                 smallShine.add(smallFlash, forKey: "smallFlash")
             }
-            
+
         }
         let angleAnim = CABasicAnimation(keyPath: "transform.rotation")
         angleAnim.duration = params.animDuration * 0.87
@@ -85,18 +85,18 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
             startFlash()
         }
     }
-    
-    //MARK: Privater Methods
+
+    // MARK: Privater Methods
     private func startFlash() {
         displaylink = CADisplayLink(target: self, selector: #selector(flashAction))
         if #available(iOS 10.0, *) {
             displaylink?.preferredFramesPerSecond = 10
-        }else {
+        } else {
             displaylink?.frameInterval = 6
         }
         displaylink?.add(to: .current, forMode: .commonModes)
     }
-    
+
     private func addShines() {
         var startAngle: CGFloat = 0
         let angle = CGFloat(Double.pi*2/Double(params.shineCount)) + startAngle
@@ -116,12 +116,12 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
             if params.allowRandomColor {
                 let index = Int(arc4random()%UInt32(params.colorRandom.count))
                 bigShine.fillColor = params.colorRandom[index].cgColor
-            }else {
+            } else {
                 bigShine.fillColor = params.bigShineColor.cgColor
             }
             addSublayer(bigShine)
             shineLayers.append(bigShine)
-            
+
             let smallShine = CAShapeLayer()
             let smallWidth = bigWidth*0.66
             let smallCenter = getShineCenter(angle: startAngle + CGFloat(angle)*CGFloat(i) - CGFloat(params.smallShineOffsetAngle)*CGFloat(Double.pi)/180, radius: radius-bigWidth)
@@ -130,14 +130,14 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
             if params.allowRandomColor {
                 let index = Int(arc4random()%UInt32(params.colorRandom.count))
                 smallShine.fillColor = params.colorRandom[index].cgColor
-            }else {
+            } else {
                 smallShine.fillColor = params.smallShineColor.cgColor
             }
             addSublayer(smallShine)
             smallShineLayers.append(smallShine)
         }
     }
-    
+
     private func getAngleAnim(shine: CAShapeLayer, angle: CGFloat, radius: CGFloat) -> CABasicAnimation {
         let anim = CABasicAnimation(keyPath: "path")
         anim.duration = params.animDuration * 0.87
@@ -150,7 +150,7 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
         anim.fillMode = kCAFillModeForwards
         return anim
     }
-    
+
     private func getFlashAnim() -> CABasicAnimation {
         let flash = CABasicAnimation(keyPath: "opacity")
         flash.fromValue = 1
@@ -163,18 +163,18 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
         flash.fillMode = kCAFillModeForwards
         return flash
     }
-    
+
     private func getShineCenter(angle: CGFloat, radius: CGFloat) -> CGPoint {
         let cenx = bounds.midX
         let ceny = bounds.midY
         var multiple: Int = 0
         if (angle >= 0 && angle <= CGFloat(90 * Double.pi/180)) {
             multiple = 1
-        }else if (angle <= CGFloat(Double.pi) && angle > CGFloat(90 * Double.pi/180)) {
+        } else if (angle <= CGFloat(Double.pi) && angle > CGFloat(90 * Double.pi/180)) {
             multiple = 2
-        }else if (angle > CGFloat(Double.pi) && angle <= CGFloat(270 * Double.pi/180)) {
+        } else if (angle > CGFloat(Double.pi) && angle <= CGFloat(270 * Double.pi/180)) {
             multiple = 3
-        }else {
+        } else {
             multiple = 4
         }
         let resultAngel = CGFloat(multiple)*CGFloat(90 * Double.pi/180) - angle
@@ -182,15 +182,15 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
         let b = cos(resultAngel)*radius
         if (multiple == 1) {
             return CGPoint.init(x: cenx+b, y: ceny-a)
-        }else if (multiple == 2) {
+        } else if (multiple == 2) {
             return CGPoint.init(x: cenx+a, y: ceny+b)
-        }else if (multiple == 3) {
+        } else if (multiple == 3) {
             return CGPoint.init(x: cenx-b, y: ceny+a)
-        }else {
+        } else {
             return CGPoint.init(x: cenx-a, y: ceny-b)
         }
     }
-    
+
     @objc private func flashAction() {
         for i in 0..<params.shineCount {
             let bigShine = shineLayers[i]
@@ -201,8 +201,8 @@ class WCLShineAngleLayer: CALayer, CAAnimationDelegate {
             smallShine.fillColor = params.colorRandom[index2].cgColor
         }
     }
-    
-    //MARK: CAAnimationDelegate
+
+    // MARK: CAAnimationDelegate
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag {
             displaylink?.invalidate()

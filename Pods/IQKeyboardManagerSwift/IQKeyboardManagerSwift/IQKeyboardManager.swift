@@ -287,7 +287,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
     /**
     If YES, then it add the textField's placeholder text on IQToolbar. Default is YES.
     */
-    @available(*,deprecated, message: "This is renamed to `shouldShowToolbarPlaceholder` for more clear naming.")
+    @available(*, deprecated, message: "This is renamed to `shouldShowToolbarPlaceholder` for more clear naming.")
     open var shouldShowTextFieldPlaceholder: Bool {
         
         set {
@@ -739,8 +739,8 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         
         registeredClasses.append(aClass)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldViewDidBeginEditing(_:)),    name: Notification.Name(rawValue: didBeginEditingNotificationName), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldViewDidEndEditing(_:)),      name: Notification.Name(rawValue: didEndEditingNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldViewDidBeginEditing(_:)), name: Notification.Name(rawValue: didBeginEditingNotificationName), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.textFieldViewDidEndEditing(_:)), name: Notification.Name(rawValue: didEndEditingNotificationName), object: nil)
     }
     
     open func unregisterTextFieldViewClass(_ aClass: UIView.Type, didBeginEditingNotificationName : String, didEndEditingNotificationName : String) {
@@ -924,15 +924,15 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
             
 #if swift(>=3.2)
     
-            var safeAreaNewInset = UIEdgeInsets.zero;
+            var safeAreaNewInset = UIEdgeInsets.zero
 
             if canAdjustAdditionalSafeAreaInsets {
         
                 if #available(iOS 11, *) {
                     
                     if let textFieldView = _textFieldView {
-                        safeAreaNewInset = _initialAdditionalSafeAreaInsets;
-                        let viewMovement : CGFloat = _topViewBeginRect.maxY - newFrame.maxY;
+                        safeAreaNewInset = _initialAdditionalSafeAreaInsets
+                        let viewMovement : CGFloat = _topViewBeginRect.maxY - newFrame.maxY
                         
                         //Maintain keyboardDistanceFromTextField
                         var specialKeyboardDistanceFromTextField = textFieldView.keyboardDistanceFromTextField
@@ -946,8 +946,8 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                         
                         let newKeyboardDistanceFromTextField = (specialKeyboardDistanceFromTextField == kIQUseDefaultKeyboardDistance) ? keyboardDistanceFromTextField : specialKeyboardDistanceFromTextField
                         
-                        let textFieldDistance = textFieldView.frame.size.height + newKeyboardDistanceFromTextField;
-                        safeAreaNewInset.bottom += min(viewMovement, textFieldDistance);
+                        let textFieldDistance = textFieldView.frame.size.height + newKeyboardDistanceFromTextField
+                        safeAreaNewInset.bottom += min(viewMovement, textFieldDistance)
                     }
                 }
             }
@@ -959,7 +959,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
 #if swift(>=3.2)
                 if self.canAdjustAdditionalSafeAreaInsets {
                     if #available(iOS 11, *) {
-                        unwrappedController.additionalSafeAreaInsets = safeAreaNewInset;
+                        unwrappedController.additionalSafeAreaInsets = safeAreaNewInset
                     }
                 }
 #endif
@@ -1056,8 +1056,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                     if (itemLayoutGuide === viewController.topLayoutGuide)    //If topLayoutGuide constraint
                     {
                         layoutGuidePosition = .top
-                    }
-                    else if (itemLayoutGuide === viewController.bottomLayoutGuide)    //If bottomLayoutGuice constraint
+                    } else if (itemLayoutGuide === viewController.bottomLayoutGuide)    //If bottomLayoutGuice constraint
                     {
                         layoutGuidePosition = .bottom
                     }
@@ -1091,8 +1090,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
             if (view.isScrollEnabled && view.shouldIgnoreScrollingAdjustment == false) {
                 superScrollView = view
                 break
-            }
-            else {
+            } else {
                 //  Getting it's superScrollView.   //  (Enhancement ID: #21, #24)
                 superView = view.superviewOfClassType(UIScrollView.self) as? UIScrollView
             }
@@ -1178,7 +1176,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                     if let lastViewRect = lastView.superview?.convert(lastView.frame, to: scrollView) {
                         
                         //Calculating the expected Y offset from move and scrollView's contentOffset.
-                        var shouldOffsetY = scrollView.contentOffset.y - min(scrollView.contentOffset.y,-move)
+                        var shouldOffsetY = scrollView.contentOffset.y - min(scrollView.contentOffset.y, -move)
                         
                         //Rearranging the expected Y offset according to the view.
                         shouldOffsetY = min(shouldOffsetY, lastViewRect.origin.y /*-5*/)   //-5 is for good UI.//Commenting -5 (Bug ID: #69)
@@ -1209,13 +1207,11 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
 
                                 //Setting move to 0 because now we don't want to move any view anymore (All will be managed by our contentInset logic.
                                 move = 0
-                            }
-                            else {
+                            } else {
                                 //Subtracting the Y offset from the move variable, because we are going to change scrollView's contentOffset.y to shouldOffsetY.
                                 move -= (shouldOffsetY-scrollView.contentOffset.y)
                             }
-                        }
-                        else
+                        } else
                         {
                             //Subtracting the Y offset from the move variable, because we are going to change scrollView's contentOffset.y to shouldOffsetY.
                             move -= (shouldOffsetY-scrollView.contentOffset.y)
@@ -1504,7 +1500,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 
 #if swift(>=3.2)
                 if #available(iOS 11, *) {
-                    _initialAdditionalSafeAreaInsets = unwrappedRootController.additionalSafeAreaInsets;
+                    _initialAdditionalSafeAreaInsets = unwrappedRootController.additionalSafeAreaInsets
                 }
 #endif
                 if _topViewBeginRect.origin.y != 0 &&
@@ -1667,8 +1663,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                         constraint.constant = self._layoutGuideConstraintInitialConstant
                         rootViewController.view.setNeedsLayout()
                         rootViewController.view.layoutIfNeeded()
-                    }
-                    else {
+                    } else {
                         self.showLog("Restoring \(rootViewController._IQDescription()) frame to : \(self._topViewBeginRect)")
                         
                         //  Setting it's new frame
@@ -1676,7 +1671,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                         
 #if swift(>=3.2)
                         if #available(iOS 11, *) {
-                            rootViewController.additionalSafeAreaInsets = self._initialAdditionalSafeAreaInsets;
+                            rootViewController.additionalSafeAreaInsets = self._initialAdditionalSafeAreaInsets
                         }
 #endif
 
@@ -1729,7 +1724,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         
 #if swift(>=3.2)
         if #available(iOS 11, *) {
-            _initialAdditionalSafeAreaInsets = .zero;
+            _initialAdditionalSafeAreaInsets = .zero
         }
 #endif
         
@@ -1818,7 +1813,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                     
 #if swift(>=3.2)
                     if #available(iOS 11, *) {
-                        _initialAdditionalSafeAreaInsets = rootViewController.additionalSafeAreaInsets;
+                        _initialAdditionalSafeAreaInsets = rootViewController.additionalSafeAreaInsets
                     }
 #endif
 
@@ -1926,7 +1921,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
         if let rootViewController = _rootViewController {
             if #available(iOS 11, *) {
                 if UIEdgeInsetsEqualToEdgeInsets(_initialAdditionalSafeAreaInsets, rootViewController.additionalSafeAreaInsets) {
-                    rootViewController.additionalSafeAreaInsets = _initialAdditionalSafeAreaInsets;
+                    rootViewController.additionalSafeAreaInsets = _initialAdditionalSafeAreaInsets
                 }
             }
         }
@@ -1964,7 +1959,7 @@ open class IQKeyboardManager: NSObject, UIGestureRecognizerDelegate {
                 
 #if swift(>=3.2)
                 if #available(iOS 11, *) {
-                    _initialAdditionalSafeAreaInsets = unwrappedRootController.additionalSafeAreaInsets;
+                    _initialAdditionalSafeAreaInsets = unwrappedRootController.additionalSafeAreaInsets
                 }
 #endif
                 

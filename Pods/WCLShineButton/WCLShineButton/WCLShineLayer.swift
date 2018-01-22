@@ -26,22 +26,22 @@
 import UIKit
 
 class WCLShineLayer: CALayer, CAAnimationDelegate {
-    
+
     let shapeLayer =  CAShapeLayer()
-    
+
     var fillColor: UIColor = UIColor(rgb: (255, 102, 102)) {
         willSet {
             shapeLayer.strokeColor = newValue.cgColor
         }
     }
-    
+
     var params: WCLShineParams = WCLShineParams()
-    
+
     var displaylink: CADisplayLink?
-    
-    var endAnim: (()->Void)?
-    
-    //MARK: Public Methods
+
+    var endAnim: (() -> Void)?
+
+    // MARK: Public Methods
     func startAnim() {
         let anim = CAKeyframeAnimation(keyPath: "path")
         anim.duration = params.animDuration * 0.1
@@ -58,47 +58,46 @@ class WCLShineLayer: CALayer, CAAnimationDelegate {
             startFlash()
         }
     }
-    
-    
-    //MARK: Initial Methods
+
+    // MARK: Initial Methods
     override init() {
         super.init()
         initLayers()
     }
-    
+
     override init(layer: Any) {
         super.init(layer: layer)
         initLayers()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: Privater Methods
+
+    // MARK: Privater Methods
     private func initLayers() {
         shapeLayer.fillColor = UIColor.white.cgColor
         shapeLayer.strokeColor = fillColor.cgColor
         shapeLayer.lineWidth = 1.5
         addSublayer(shapeLayer)
     }
-    
+
     private func startFlash() {
         displaylink = CADisplayLink(target: self, selector: #selector(flashAction))
         if #available(iOS 10.0, *) {
             displaylink?.preferredFramesPerSecond = 6
-        }else {
+        } else {
             displaylink?.frameInterval = 10
         }
         displaylink?.add(to: .current, forMode: .commonModes)
     }
-    
+
     @objc private func flashAction() {
         let index = Int(arc4random()%UInt32(params.colorRandom.count))
         shapeLayer.strokeColor = params.colorRandom[index].cgColor
     }
-    
-    //MARK: CAAnimationDelegate
+
+    // MARK: CAAnimationDelegate
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if flag {
             displaylink?.invalidate()

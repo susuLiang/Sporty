@@ -44,7 +44,7 @@ public class Context {
                 view = superview
             }
             constraints.append(Constraint(view: view, layoutConstraint: layoutConstraint))
-            
+
             return layoutConstraint
         }
 

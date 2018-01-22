@@ -12,19 +12,19 @@ import Foundation
     import UIKit
 
     public struct LayoutSupport {
-        let layoutGuide : UILayoutSupport
-        let attribute : NSLayoutAttribute
+        let layoutGuide: UILayoutSupport
+        let attribute: NSLayoutAttribute
     }
 
     public extension UIViewController {
-        
-        public var topLayoutGuideCartography : LayoutSupport {
+
+        public var topLayoutGuideCartography: LayoutSupport {
             get {
                 return LayoutSupport(layoutGuide: self.topLayoutGuide, attribute: .bottom)
             }
         }
-        
-        public var bottomLayoutGuideCartography : LayoutSupport {
+
+        public var bottomLayoutGuideCartography: LayoutSupport {
             get {
                 return LayoutSupport(layoutGuide: self.bottomLayoutGuide, attribute: .top)
             }

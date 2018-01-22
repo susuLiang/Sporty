@@ -21,11 +21,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import UIKit
 
 /** @abstract UITextView with placeholder support   */
-open class IQTextView : UITextView {
+open class IQTextView: UITextView {
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,33 +35,33 @@ open class IQTextView : UITextView {
         super.init(frame: frame, textContainer: textContainer)
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder), name: Notification.Name.UITextViewTextDidChange, object: self)
     }
-    
+
     override open func awakeFromNib() {
          super.awakeFromNib()
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshPlaceholder), name: Notification.Name.UITextViewTextDidChange, object: self)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     fileprivate var placeholderLabel: UILabel?
-    
+
     /** @abstract To set textView's placeholder text. Default is ni.    */
-    @IBInspectable open var placeholder : String? {
+    @IBInspectable open var placeholder: String? {
 
         get {
             return placeholderLabel?.text
         }
- 
+
         set {
-            
+
             if placeholderLabel == nil {
-                
+
                 placeholderLabel = UILabel()
-                
+
                 if let unwrappedPlaceholderLabel = placeholderLabel {
-                    
+
                     unwrappedPlaceholderLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     unwrappedPlaceholderLabel.lineBreakMode = .byWordWrapping
                     unwrappedPlaceholderLabel.numberOfLines = 0
@@ -74,17 +73,17 @@ open class IQTextView : UITextView {
                     addSubview(unwrappedPlaceholderLabel)
                 }
             }
-            
+
             placeholderLabel?.text = newValue
             refreshPlaceholder()
         }
     }
-    
+
     open override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if let unwrappedPlaceholderLabel = placeholderLabel {
-            
+
             let offsetLeft = textContainerInset.left + textContainer.lineFragmentPadding
             let offsetRight = textContainerInset.right + textContainer.lineFragmentPadding
             let offsetTop = textContainerInset.top
@@ -97,27 +96,27 @@ open class IQTextView : UITextView {
     }
 
     @objc open func refreshPlaceholder() {
-        
+
         if text.characters.count != 0 {
             placeholderLabel?.alpha = 0
         } else {
             placeholderLabel?.alpha = 1
         }
     }
-    
+
     override open var text: String! {
-        
+
         didSet {
-            
+
             refreshPlaceholder()
 
         }
     }
-    
-    override open var font : UIFont? {
-       
+
+    override open var font: UIFont? {
+
         didSet {
-            
+
             if let unwrappedFont = font {
                 placeholderLabel?.font = unwrappedFont
             } else {
@@ -125,25 +124,22 @@ open class IQTextView : UITextView {
             }
         }
     }
-    
-    override open var textAlignment: NSTextAlignment
-    {
+
+    override open var textAlignment: NSTextAlignment {
         didSet {
             placeholderLabel?.textAlignment = textAlignment
         }
     }
-    
-    override open var delegate : UITextViewDelegate? {
-        
+
+    override open var delegate: UITextViewDelegate? {
+
         get {
             refreshPlaceholder()
             return super.delegate
         }
-        
+
         set {
             super.delegate = newValue
         }
     }
 }
-
-

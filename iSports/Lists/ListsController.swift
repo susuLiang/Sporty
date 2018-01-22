@@ -40,7 +40,7 @@ class ListsController: UIViewController {
     var uid = Auth.auth().currentUser?.uid
 
     var ref = Database.database().reference()
-    
+
     var transition: JTMaterialTransition?
 
     var myMatches = [Activity]()
@@ -88,7 +88,7 @@ class ListsController: UIViewController {
         getPosts()
 
         getUserProfile()
-        
+
         self.transition = JTMaterialTransition(animatedView: self.addButton)
 
     }
@@ -184,11 +184,11 @@ class ListsController: UIViewController {
     }
 
     @objc func fetch() {
-        
+
         if !Reachability.isConnectedToNetwork() {
             SCLAlertView().showNotice(NSLocalizedString("Unable to connect", comment: ""), subTitle: NSLocalizedString("Please check network", comment: ""))
         }
-        
+
         FirebaseProvider.shared.getData(completion: { [weak self] (results, error) in
             if error == nil {
                 self?.results = results!

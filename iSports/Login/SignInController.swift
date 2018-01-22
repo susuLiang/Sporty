@@ -43,7 +43,7 @@ class SignInController: UIViewController {
 
                     case .wrongPassword:
                         message = NSLocalizedString("Wrong password", comment: "")
-                        
+
                     default:
                          let errorString: String = (error?.localizedDescription)!
                         message = "\(errorString)"

@@ -16,7 +16,7 @@ import Crashlytics
 class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider {
 
     var user: UserSetting?
-    
+
     var tableView = UITableView()
 
     let userUid = Auth.auth().currentUser?.uid
@@ -112,23 +112,23 @@ class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDel
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
     }
-    
+
     @objc func message(_ sender: UIButton) {
          guard let cell = sender.superview?.superview?.superview?.superview as? MyPostsCell,
             let indexPath = tableView.indexPath(for: cell) else {
                 print("It's not the right cell.")
                 return
         }
-        
+
         let thisActivity = myPosts[indexPath.row]
-        
+
         // swiftlint:disable force_cast
         let messagesView = UINib.load(nibName: "MessagesViewController") as! MessagesViewController
         // swiftlint:enable force_cast
-        
+
         messagesView.thisActivityUid = thisActivity.id
         messagesView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! * 2 - (self.navigationController?.navigationBar.frame.height)!)
-        
+
         self.addChildViewController(messagesView)
         self.view.addSubview(messagesView.view)
         messagesView.didMove(toParentViewController: self)

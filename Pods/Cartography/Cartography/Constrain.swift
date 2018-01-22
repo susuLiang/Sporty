@@ -15,7 +15,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for `view`.
 ///
-@discardableResult public func constrain(_ view: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ view: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(LayoutProxy(context, view))
@@ -32,7 +32,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for the views.
 ///
-@discardableResult public func constrain(_ view1: View, _ view2: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ view1: View, _ view2: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(LayoutProxy(context, view1), LayoutProxy(context, view2))
@@ -50,7 +50,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for the views.
 ///
-@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(LayoutProxy(context, view1), LayoutProxy(context, view2), LayoutProxy(context, view3))
@@ -69,7 +69,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for the views.
 ///
-@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, _ view4: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, _ view4: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(LayoutProxy(context, view1), LayoutProxy(context, view2), LayoutProxy(context, view3), LayoutProxy(context, view4))
@@ -89,7 +89,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for the views.
 ///
-@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, _ view4: View, _ view5: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ view1: View, _ view2: View, _ view3: View, _ view4: View, _ view5: View, replace group: ConstraintGroup? = nil, block: (LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy, LayoutProxy) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(LayoutProxy(context, view1), LayoutProxy(context, view2), LayoutProxy(context, view3), LayoutProxy(context, view4), LayoutProxy(context, view5))
@@ -105,7 +105,7 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for `views`.
 ///
-@discardableResult public func constrain(_ views: [View], replace group: ConstraintGroup? = nil, block: ([LayoutProxy]) -> ()) -> ConstraintGroup {
+@discardableResult public func constrain(_ views: [View], replace group: ConstraintGroup? = nil, block: ([LayoutProxy]) -> Void) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     block(views.map({ LayoutProxy(context, $0) }))
@@ -121,16 +121,16 @@ import Foundation
 ///                      replaced.
 /// - parameter block:   A block that declares the layout for `views`.
 ///
-@discardableResult public func constrain<T>(_ views: [T: View], replace group: ConstraintGroup? = nil, block: (([T : LayoutProxy]) -> ())) -> ConstraintGroup {
+@discardableResult public func constrain<T>(_ views: [T: View], replace group: ConstraintGroup? = nil, block: (([T: LayoutProxy]) -> Void)) -> ConstraintGroup {
     let constraintGroup = group ?? ConstraintGroup()
     let context = Context()
     let proxies = views.map { ($0, LayoutProxy(context, $1)) }
     var dict = [T:LayoutProxy]()
-    
+
     proxies.forEach {
         dict[$0.0] = $0.1
     }
-    
+
     block(dict)
     constraintGroup.replaceConstraints(context.constraints)
 
