@@ -167,7 +167,6 @@ class FirebaseProvider {
 
     func getMessage(postUid: String, completion: @escaping ([Message]?, Error?) -> Void ) {
         var messages = [Message]()
-//        var userUids = [String]()
 
         Database.database().reference().child("messages").queryOrdered(byChild: "postUid").queryEqual(toValue: postUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {
@@ -177,7 +176,6 @@ class FirebaseProvider {
                         let userUid = object["userUid"] as? String,
                         let date = object["date"] as? String {
                         messages.append(Message(message: message, date: date, userUid: userUid))
-//                        userUids.append(userUid)
                     }
                 }
             }

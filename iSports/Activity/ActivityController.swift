@@ -121,16 +121,10 @@ class ActivityController: UIViewController {
     
     func setPickerView() {
         typeTextField.inputView = typePicker
-        typeTextField.placeholder = NSLocalizedString("Please select type", comment: "type")
         cityTextField.inputView = cityPicker
-        cityTextField.placeholder = NSLocalizedString("Please select city", comment: "city")
         courtTextField.inputView = courtPicker
-        courtTextField.placeholder = NSLocalizedString("Please select court", comment: "court")
         timeTextField.inputView = timePicker
-        timeTextField.placeholder = NSLocalizedString("Please select time", comment: "time")
         levelTextField.inputView = levelPicker
-        levelTextField.placeholder = NSLocalizedString("Please select level", comment: "level")
-
     }
 
     func setText(_ activity: Activity) {
@@ -148,7 +142,6 @@ class ActivityController: UIViewController {
     }
 
     func setTextField(cornerRadius: CGFloat) {
-
         nameTextField.layer.cornerRadius = cornerRadius
         typeTextField.layer.cornerRadius = cornerRadius
         levelTextField.layer.cornerRadius = cornerRadius
@@ -362,20 +355,20 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
-        case typePicker: return Sportstype.count
-        case cityPicker: return city.count
+        case typePicker: return Sportstype.count + 1
+        case cityPicker: return city.count + 1
         case timePicker:
             switch component {
-            case 0: return time.count
-            case 1: return hour.count
-            case 2: return minute.count
+            case 0: return time.count + 1
+            case 1: return hour.count + 1
+            case 2: return minute.count + 1
             default:
                 return 0
             }
-        case levelPicker: return levelArray.count
+        case levelPicker: return levelArray.count + 1
         case courtPicker:
             if courts != nil {
-                return courts!.count
+                return courts!.count + 1
             }
             return 0
         default: return 0
@@ -383,70 +376,80 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView {
-        case typePicker: return typeArray[row]
-        case cityPicker: return city[row]
-        case timePicker:
-            switch component {
-            case 0: return time[row]
-            case 1: return String(hour[row])
-            case 2: return String(minute[row])
-            default:
-            return ""
-        }
-        case levelPicker: return levelArray[row]
-        case courtPicker:
-            if courts != nil {
-                return courts?[row].name
-            } else {
+        if row == 0 {
+            let titleString = NSLocalizedString("Please select", comment: "first row in picker")
+            return titleString
+        } else {
+            let row = row - 1
+            
+            switch pickerView {
+            case typePicker: return typeArray[row]
+            case cityPicker: return city[row]
+            case timePicker:
+                switch component {
+                case 0: return time[row]
+                case 1: return String(hour[row])
+                case 2: return String(minute[row])
+                default:
                 return ""
             }
-        default: return ""
+            case levelPicker: return levelArray[row]
+            case courtPicker:
+                if courts != nil {
+                    return courts?[row].name
+                } else {
+                    return ""
+                }
+            default: return ""
+            }
         }
 
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView {
-        case typePicker:
-            typeTextField.text = typeArray[row]
-            if cityTextField.text != "" {
-                if let type = typeTextField.text, let place = cityTextField.text {
-                    getLocation(city: place, gym: type)
-                }
-            }
-
-        case cityPicker:
-            cityTextField.text = city[row]
-            if typeTextField.text != "" {
-                if let type = typeTextField.text, let place = cityTextField.text {
-                    getLocation(city: place, gym: type)
-                }
-            }
-
-        case courtPicker:
-            courtTextField.text = courts![row].name
-            self.nowPlace = (courts![row].latitude, courts![row].longitude, courts![row].address)
-
-        case levelPicker:
-            levelTextField.text = levelArray[row]
-
-        case timePicker:
-            switch component {
-            case 0: thisTime = time[row]
-            case 1: thisHour = String(hour[row])
-            case 2:
-                if minute[row] == 0 {
-                    thisMinute = "00"
-                } else {
-                    thisMinute = String(minute[row])
+        if row != 0 {
+            let row = row - 1
+            switch pickerView {
+            case typePicker:
+                typeTextField.text = typeArray[row]
+                if cityTextField.text != "" {
+                    if let type = typeTextField.text, let place = cityTextField.text {
+                        getLocation(city: place, gym: type)
+                    }
                 }
 
-            default:
-                break
+            case cityPicker:
+                cityTextField.text = city[row]
+                if typeTextField.text != "" {
+                    if let type = typeTextField.text, let place = cityTextField.text {
+                        getLocation(city: place, gym: type)
+                    }
+                }
+
+            case courtPicker:
+                courtTextField.text = courts![row].name
+                self.nowPlace = (courts![row].latitude, courts![row].longitude, courts![row].address)
+
+            case levelPicker:
+                levelTextField.text = levelArray[row]
+
+            case timePicker:
+                switch component {
+                case 0: thisTime = time[row]
+                case 1: thisHour = String(hour[row])
+                case 2:
+                    if minute[row] == 0 {
+                        thisMinute = "00"
+                    } else {
+                        thisMinute = String(minute[row])
+                    }
+
+                default:
+                    break
+                }
+                timeTextField.text = "\(thisTime) \(thisHour) : \(thisMinute)"
+            default: return
             }
-            timeTextField.text = "\(thisTime) \(thisHour) : \(thisMinute)"
-        default: return
         }
     }
 }
