@@ -85,7 +85,7 @@
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cry-cO-Gt3">
-                                <rect key="frame" x="120" y="25.5" width="42" height="17.5"/>
+                                <rect key="frame" x="120" y="47.5" width="42" height="17.5"/>
                                 <fontDescription key="fontDescription" name="ArialHebrew-Bold" family="Arial Hebrew" pointSize="16"/>
                                 <color key="textColor" red="0.34901960780000002" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -99,8 +99,8 @@
                             <constraint firstItem="MUX-3J-yJx" firstAttribute="leading" secondItem="Cry-cO-Gt3" secondAttribute="trailing" constant="20" id="KB1-z2-7za"/>
                             <constraint firstItem="2za-0c-DuW" firstAttribute="centerY" secondItem="TcK-f0-pvv" secondAttribute="centerY" id="Nee-79-S02"/>
                             <constraint firstItem="MUX-3J-yJx" firstAttribute="centerY" secondItem="TcK-f0-pvv" secondAttribute="centerY" id="PKo-uJ-cCq"/>
+                            <constraint firstAttribute="bottom" secondItem="Cry-cO-Gt3" secondAttribute="bottom" constant="3" id="Wmr-8X-lL5"/>
                             <constraint firstAttribute="trailing" secondItem="MUX-3J-yJx" secondAttribute="trailing" constant="5" id="knG-QH-1oK"/>
-                            <constraint firstItem="Cry-cO-Gt3" firstAttribute="centerY" secondItem="TcK-f0-pvv" secondAttribute="centerY" id="kuP-tW-BcO"/>
                             <constraint firstAttribute="height" constant="68" id="nLF-Tc-sNP"/>
                         </constraints>
                     </view>

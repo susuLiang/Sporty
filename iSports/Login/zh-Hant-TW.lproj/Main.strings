@@ -19,6 +19,9 @@
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "BkC-qz-HHr"; */
 "BkC-qz-HHr.placeholder" = "Email";
 
+/* Class = "UILabel"; text = "Expert"; ObjectID = "F9u-v5-ERp"; */
+"F9u-v5-ERp.text" = "專家";
+
 /* Class = "UILabel"; text = "City"; ObjectID = "H9D-3a-JrS"; */
 "H9D-3a-JrS.text" = "所在城市";
 
@@ -31,6 +34,9 @@
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "MNl-gG-dQ2"; */
 "MNl-gG-dQ2.placeholder" = "Email";
 
+/* Class = "UILabel"; text = "Elite"; ObjectID = "NqG-Rb-KTb"; */
+"NqG-Rb-KTb.text" = "菁英";
+
 /* Class = "UILabel"; text = "Please choose your level"; ObjectID = "UTe-A7-N7X"; */
 "UTe-A7-N7X.text" = "請選擇您的等級程度";
 
@@ -39,6 +45,9 @@
 
 /* Class = "UILabel"; text = "1 / 4 Type"; ObjectID = "XWM-E7-XNo"; */
 "XWM-E7-XNo.text" = "1 / 4 運動類型";
+
+/* Class = "UILabel"; text = "Beginner"; ObjectID = "Y7S-6J-5H2"; */
+"Y7S-6J-5H2.text" = "初學者";
 
 /* Class = "UILabel"; text = "Please select your favorite type"; ObjectID = "Ysr-Py-aJ1"; */
 "Ysr-Py-aJ1.text" = "請選擇您最喜歡的運動類型";
@@ -54,6 +63,9 @@
 
 /* Class = "UIButton"; normalTitle = "OK"; ObjectID = "ofX-hF-yjb"; */
 "ofX-hF-yjb.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Master"; ObjectID = "q10-qb-fAU"; */
+"q10-qb-fAU.text" = "大師";
 
 /* Class = "UIButton"; normalTitle = "Log in"; ObjectID = "wVM-we-XuC"; */
 "wVM-we-XuC.normalTitle" = "登入";

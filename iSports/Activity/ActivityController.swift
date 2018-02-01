@@ -51,7 +51,6 @@ class ActivityController: UIViewController {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
                 cancelButton.isHidden = true
                 addButton.isHidden = true
-
             }
         }
     }
@@ -59,11 +58,11 @@ class ActivityController: UIViewController {
     var nowPlace: (latitude: String, longitude: String, address: String)? {
         didSet {
             if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
-            mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
+                mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
             }
         }
     }
-
+    
     @IBAction func cancelAndBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -138,7 +137,9 @@ class ActivityController: UIViewController {
         numberTextField.text = "\(activity.number)"
         allNumberTextField.text = "\(activity.allNumber)"
         feeTextField.text = "\(activity.fee)"
-        mapPlacedView.addSubview(setMap(latitude: Double(activity.place.placeLatitude)!, longitude: Double(activity.place.placeLongitude)!))
+        self.nowPlace = (activity.place.placeLatitude ,activity.place.placeLongitude, activity.address)
+
+//        mapPlacedView.addSubview(setMap(latitude: Double(activity.place.placeLatitude)!, longitude: Double(activity.place.placeLongitude)!))
     }
 
     func setTextField(cornerRadius: CGFloat) {

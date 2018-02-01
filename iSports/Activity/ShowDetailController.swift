@@ -24,7 +24,7 @@ class ShowDetailController: UIViewController {
     @IBOutlet weak var joinButton: LGButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
-
+    @IBOutlet weak var authorName: UILabel!
     let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
 
@@ -51,6 +51,7 @@ class ShowDetailController: UIViewController {
                 addressLabel.text = selectedActivity.address
                 courtLabel.text = selectedActivity.place.placeName
                 self.nowPlace = (selectedActivity.place.placeLatitude, selectedActivity.place.placeLongitude, selectedActivity.address)
+                authorName.text = NSLocalizedString("By : ", comment: "") + selectedActivity.author
                 setJoinButton()
             }
         }
