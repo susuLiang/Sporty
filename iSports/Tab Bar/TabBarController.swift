@@ -40,6 +40,35 @@ class TabBarController: UITabBarController {
         self.selectedIndex = 0
 
     }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        for (key, value) in (tabBar.items?.enumerated())! {
+            
+            if value == item {
+                animation(withIndex: key)
+            }
+            
+        }
+    }
+    
+    func animation(withIndex index: Int) {
+        
+        var tabBarButtonArray: [Any] = []
+        
+        for tabBarButton in self.tabBar.subviews {
+            if tabBarButton.isKind(of: NSClassFromString("UITabBarButton")!) {
+                tabBarButtonArray.append(tabBarButton)
+            }
+        }
+        
+        let animation = CAKeyframeAnimation(keyPath: "transform.scale")
+        animation.values = [1.0, 1.2, 0.9, 1.02, 1.0]
+        animation.duration = TimeInterval(0.5)
+        animation.calculationMode = kCAAnimationCubic
+        
+        let tabBarLayer = (tabBarButtonArray[index] as AnyObject).layer
+        tabBarLayer?.add(animation, forKey: "animtaion")
+    }
 
     // MARK: Set Up
 
