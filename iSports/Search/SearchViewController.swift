@@ -81,7 +81,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         case typePicker: return typeArray.count
         case levelPicker : return level.count
         case timePicker: return time.count
-        case placePicker: return city.count
+        case placePicker: return cityArray.count
         default: return 1
 
         }
@@ -92,7 +92,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         case typePicker: return typeArray[row]
         case levelPicker : return level[row]
         case timePicker: return time[row]
-        case placePicker: return city[row]
+        case placePicker: return cityArray[row]
         default: return ""
         }
     }
@@ -109,8 +109,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             timeTF.text = time[row]
             self.selectedTime = time[row]
         case placePicker:
-            placeTF.text = city[row]
-            self.selectedPlace = city[row]
+            placeTF.text = cityArray[row]
+            self.selectedPlace = cityArray[row]
         default: break
         }
     }

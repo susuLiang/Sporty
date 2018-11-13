@@ -380,7 +380,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case typePicker: return Sportstype.count
-        case cityPicker: return city.count
+        case cityPicker: return cityArray.count
         case timePicker: return time.count
         case levelPicker: return levelArray.count
         default:
@@ -391,7 +391,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case typePicker: return typeArray[row]
-        case cityPicker: return city[row]
+        case cityPicker: return cityArray[row]
         case timePicker: return time[row]
         case levelPicker: return levelArray[row]
         default:
@@ -406,7 +406,7 @@ extension MyProfileController: UIPickerViewDelegate, UIPickerViewDataSource {
             cell?.typeSettingTextField.text = typeArray[row]
 
         case cityPicker:
-            cell?.citySettingTextField.text = city[row]
+            cell?.citySettingTextField.text = cityArray[row]
 
         case levelPicker:
             cell?.levelSettingTextField.text = levelArray[row]

@@ -356,7 +356,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case typePicker: return Sportstype.count + 1
-        case cityPicker: return city.count + 1
+        case cityPicker: return cityArray.count + 1
         case timePicker:
             switch component {
             case 0: return time.count + 1
@@ -384,7 +384,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
             
             switch pickerView {
             case typePicker: return typeArray[row]
-            case cityPicker: return city[row]
+            case cityPicker: return cityArray[row]
             case timePicker:
                 switch component {
                 case 0: return time[row]
@@ -419,7 +419,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
                 }
 
             case cityPicker:
-                cityTextField.text = city[row]
+                cityTextField.text = cityArray[row]
                 if typeTextField.text != "" {
                     if let type = typeTextField.text, let place = cityTextField.text {
                         getLocation(city: place, gym: type)
@@ -438,7 +438,7 @@ extension ActivityController: UIPickerViewDelegate, UIPickerViewDataSource {
                 case 0: thisTime = time[row]
                 case 1: thisHour = String(hour[row])
                 case 2:
-                    if minute[row] == 0 {
+                    if minute[row] == "0" {
                         thisMinute = "00"
                     } else {
                         thisMinute = String(minute[row])

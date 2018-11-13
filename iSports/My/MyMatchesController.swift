@@ -70,11 +70,11 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
                 self.myMatches = posts!
 
                 self.timeMatchArray = []
-                for i in 0...time.count - 1 {
+                for index in 0...time.count - 1 {
                     let timeMatchs = self.myMatches.values.filter({ (myMatch) -> Bool in
                         let matchIndex = myMatch.time.index(myMatch.time.startIndex, offsetBy: 3)
                         let matchWeek = myMatch.time[..<matchIndex]
-                        return matchWeek == time[i]
+                        return matchWeek == time[index]
                     })
                     self.timeMatchArray.append(timeMatchs)
                 }

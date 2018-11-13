@@ -159,10 +159,16 @@ class ListsController: UIViewController {
     }
 
     @objc func showAddView() {
-        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
-            print("ActivityController invalid")
+        
+        guard let activityView = UINib.load(nibName: "ActivityViewController") as? ActivityViewController else {
+            print("ActivityViewController invalid")
             return
         }
+        
+//        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
+//            print("ActivityController invalid")
+//            return
+//        }
 //        navigationController?.pushViewController(activityView, animated: true)
         activityView.modalPresentationStyle = .custom
         activityView.transitioningDelegate = self.transition

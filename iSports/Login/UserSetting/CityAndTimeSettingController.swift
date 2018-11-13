@@ -57,7 +57,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch controllerType {
         case .city:
-            return city.count
+            return cityArray.count
         case .time:
             return time.count
         }
@@ -69,7 +69,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         }
         switch controllerType {
         case .city:
-            cell.textLabel?.text = city[indexPath.row]
+            cell.textLabel?.text = cityArray[indexPath.row]
         case .time:
             cell.textLabel?.text = time[indexPath.row]
         }
@@ -79,7 +79,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch controllerType {
         case .city:
-            self.selected = city[indexPath.row]
+            self.selected = cityArray[indexPath.row]
         case .time:
             self.selected = time[indexPath.row]
         }
