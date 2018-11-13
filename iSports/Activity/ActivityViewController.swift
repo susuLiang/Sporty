@@ -12,6 +12,7 @@ import GoogleMaps
 import GooglePlaces
 import NVActivityIndicatorView
 import SCLAlertView
+import KeychainSwift
 
 class ActivityViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class ActivityViewController: UIViewController {
     }
     
     var activityViewModel = ActivityViewModel()
+    let keyChain = KeychainSwift()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,6 +165,42 @@ extension ActivityViewController: CLLocationManagerDelegate {
 extension ActivityViewController: ActivityButtonDelegate {
     
     func tapButton() {
+        
+        guard !activityViewModel.thisPost.address.isEmpty,
+              !activityViewModel.thisPost.name.isEmpty,
+              !activityViewModel.thisPost.level.isEmpty,
+              !activityViewModel.thisPost.time.isEmpty,
+              !activityViewModel.thisPost.type.isEmpty,
+              activityViewModel.thisPost.number != -1,
+              activityViewModel.thisPost.allNumber != -1,
+              activityViewModel.thisPost.fee != -1 else {
+                SCLAlertView().showError(NSLocalizedString("Please fill up the blank.", comment: ""), subTitle: "")
+                return
+        }
+        
+        let ref = Database.database().reference()
+        let refChild = ref.child("activities")
+        let uid = keyChain.get("uid") ?? ""
+        let authorName = keyChain.get("name") ?? ""
+        let thisPost = activityViewModel.thisPost
+        let value = ["name": thisPost.name,
+                     "level": thisPost.level,
+                     "time": thisPost.time,
+                     "place": thisPost.place.placeName,
+                     "number": Int(thisPost.number),
+                     "fee": Int(thisPost.fee),
+                     "author": authorName,
+                     "type": thisPost.type,
+                     "allNumber": Int(thisPost.allNumber),
+                     "address": thisPost.address,
+                     "userUid": uid,
+                     "latitude": thisPost.place.placeLatitude,
+                     "longitude": thisPost.place.placeLongitude,
+                     "postedTime": "\(Date())"] as [String: Any]
+        let childRef = refChild.childByAutoId()
+        childRef.setValue(value)
+        ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -175,6 +213,7 @@ extension ActivityViewController: ActivityTextFieldDelegate {
         activityViewModel.thisPost.place = Place(placeName: thisPlace.name,
                                                 placeLatitude: thisPlace.latitude,
                                                 placeLongitude: thisPlace.longitude)
+        activityViewModel.thisPost.address = thisPlace.address
         DispatchQueue.main.async {
             self.activityViewModel.cells[ActivityCellType.map.rawValue] = self.createCellByType(type: .map)
             self.tableView.reloadRows(at: [IndexPath(row: ActivityCellType.map.rawValue, section: 0)], with: .automatic)

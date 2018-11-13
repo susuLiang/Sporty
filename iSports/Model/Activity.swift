@@ -34,9 +34,9 @@ struct Activity {
     var address: String = ""
     var time: String = ""
     var type: String = ""
-    var number: Int = 0
-    var allNumber: Int = 0
-    var fee: Int = 0
+    var number: Int = -1
+    var allNumber: Int = -1
+    var fee: Int = -1
     var author: String = ""
     var authorUid: String = ""
     var postedTime: String = ""
@@ -79,7 +79,7 @@ struct Activity {
         self.postedTime = postedTime
     }
     
-    init(id: String = "", name: String = "", level: String = "", place: Place! = nil, address: String = "", time: String = "", type: String = "", number: Int = 0, allNumber: Int = 0, fee: Int = 0, author: String = "", authorUid: String = "", postedTime: String = "") {
+    init(id: String = "", name: String = "", level: String = "", place: Place! = nil, address: String = "", time: String = "", type: String = "", number: Int = -1, allNumber: Int = -1, fee: Int = -1, author: String = "", authorUid: String = "", postedTime: String = "") {
         self.id = id
         self.name = name
         self.type = type
