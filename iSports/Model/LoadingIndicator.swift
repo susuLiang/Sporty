@@ -10,6 +10,8 @@ import Foundation
 import NVActivityIndicatorView
 
 class LoadingIndicator {
+    
+    static let shared = LoadingIndicator()
 
     var activityData = ActivityData(type: .ballPulseSync)
 

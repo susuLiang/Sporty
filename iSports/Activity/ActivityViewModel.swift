@@ -52,8 +52,6 @@ enum ActivityCellType: Int {
 
 class ActivityViewModel {
     
-    
-    
     var cells: [UITableViewCell] = []
     var courts: [Court]? {
         didSet {
@@ -75,10 +73,29 @@ class ActivityViewModel {
         }
     }
     
+    var thisPost: Activity = Activity() {
+        didSet {
+            if !thisPost.type.isEmpty {
+                typeChanged = true
+            }
+        }
+        
+    }
+    var didSelectedCity: String = "" {
+        didSet {
+            if !didSelectedCity.isEmpty {
+                cityChanged = true
+            }
+        }
+    }
+    
+    var typeChanged: Bool = false
+    var cityChanged: Bool = false
+    
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    var mapView: GMSMapView!
+//    var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-    var zoomLevel: Float = 15.0
-    var selectedPlace: GMSPlace?
+//    var zoomLevel: Float = 15.0
+//    var selectedPlace: GMSPlace?
 }

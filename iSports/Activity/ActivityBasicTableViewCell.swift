@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ActivityTextFieldDelegate: class {
+    func textFieldTextDidChange(cell: UITableViewCell,textField: UITextField)
+    func pickerViewSelected(index: Int)
+}
+
 class ActivityBasicTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,6 +25,8 @@ class ActivityBasicTableViewCell: UITableViewCell {
     
     var selectedTime: (day: String, hour: String, minute: String) = (day: "", hour: "", minute: "")
     var type: String = ""
+    
+    weak var delegate: ActivityTextFieldDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +43,7 @@ class ActivityBasicTableViewCell: UITableViewCell {
         textField.leftView = paddingView
         textField.leftViewMode = UITextFieldViewMode.always
         
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange(_:)), name: nil, object: textField)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -54,6 +62,10 @@ class ActivityBasicTableViewCell: UITableViewCell {
         self.data = data
         self.components = components
         self.numberOfRows = numberOfRows
+    }
+    
+    @objc func textFieldTextDidChange(_ notification: Notification) {
+        delegate?.textFieldTextDidChange(cell: self, textField: textField)
     }
     
 }
@@ -79,7 +91,7 @@ extension ActivityBasicTableViewCell: UIPickerViewDataSource, UIPickerViewDelega
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row != 0 else { return }
-        if type == "time" {
+        if type == ActivityCellType.time.description {
             switch component {
             case 0: selectedTime.day = time[row-1]
             case 1: selectedTime.hour = hour[row-1]
@@ -92,6 +104,9 @@ extension ActivityBasicTableViewCell: UIPickerViewDataSource, UIPickerViewDelega
             default: break
             }
             textField.text = "\(selectedTime.day) \(selectedTime.hour) : \(selectedTime.minute)"
+        } else if type == ActivityCellType.court.description {
+            textField.text = data[component][row - 1]
+            delegate?.pickerViewSelected(index: row)
         } else {
             textField.text = data[component][row - 1]
         }

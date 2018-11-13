@@ -27,31 +27,19 @@ struct Place {
 
 struct Activity {
 
-    let id: String
-
-    let name: String
-
-    var level: String
-
-    var place: Place
-
-    let address: String
-
-    let time: String
-
-    let type: String
-
-    let number: Int
-
-    let allNumber: Int
-
-    let fee: Int
-
-    let author: String
-
-    let authorUid: String
-
-    let postedTime: String
+    var id: String = ""
+    var name: String = ""
+    var level: String = ""
+    var place: Place!
+    var address: String = ""
+    var time: String = ""
+    var type: String = ""
+    var number: Int = 0
+    var allNumber: Int = 0
+    var fee: Int = 0
+    var author: String = ""
+    var authorUid: String = ""
+    var postedTime: String = ""
 
     init(_ json: Any, id: String) throws {
 
@@ -87,6 +75,22 @@ struct Activity {
         self.allNumber = allNumber
         self.fee = fee
         self.authorUid = userUid
+        self.author = author
+        self.postedTime = postedTime
+    }
+    
+    init(id: String = "", name: String = "", level: String = "", place: Place! = nil, address: String = "", time: String = "", type: String = "", number: Int = 0, allNumber: Int = 0, fee: Int = 0, author: String = "", authorUid: String = "", postedTime: String = "") {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.time = time
+        self.place = place
+        self.level = level
+        self.address = address
+        self.number = number
+        self.allNumber = allNumber
+        self.fee = fee
+        self.authorUid = authorUid
         self.author = author
         self.postedTime = postedTime
     }

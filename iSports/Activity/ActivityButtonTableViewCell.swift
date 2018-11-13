@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import LGButton
+
+protocol ActivityButtonDelegate: class {
+    func tapButton()
+}
 
 class ActivityButtonTableViewCell: UITableViewCell {
+    
+    weak var delegate: ActivityButtonDelegate?
 
+    @IBAction func tapButton(_ sender: LGButton) {
+        delegate?.tapButton()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

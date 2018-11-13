@@ -45,6 +45,9 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="titleFontName" value="ArialHebrew-Bold"/>
                             <userDefinedRuntimeAttribute type="string" keyPath="titleString" value="Add"/>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="tapButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mXL-KY-lG5"/>
+                        </connections>
                     </view>
                 </subviews>
                 <constraints>
