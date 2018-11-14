@@ -62,16 +62,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
     }
-
-//    func makeEntryController() -> UIViewController {
-//        if Auth.auth().currentUser?.uid == nil {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
-//            return loginController
-//        } else {
-//            let tabBarController = TabBarController(itemTypes: [ .home, .map, .my, .setting])
-//            tabBarController.selectedIndex = 0
-//            return tabBarController
-//        }
-//    }
 }
