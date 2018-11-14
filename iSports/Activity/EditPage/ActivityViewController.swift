@@ -107,10 +107,10 @@ class ActivityViewController: UIViewController {
         case .court:
             let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
-            if let courts = activityViewModel.courts {
+            if activityViewModel.courts.count > 0 {
                 cell.textField.text = ""
                 cell.textField.isEnabled = true
-                cell.addPickerView(data: [courts.map { $0.name }], components: 1, numberOfRows: [courts.count + 1])
+                cell.addPickerView(data: [activityViewModel.courts.map { $0.name }], components: 1, numberOfRows: [activityViewModel.courts.count + 1])
             } else {
                 cell.textField.text = NSLocalizedString("Please choose the TYPE and CITY first.", comment: "")
                 cell.textField.isEnabled = false
@@ -272,8 +272,8 @@ extension ActivityViewController: ActivityButtonDelegate {
 extension ActivityViewController: ActivityTextFieldDelegate {
     
     func pickerViewSelected(index: Int) {
-        guard let courts = activityViewModel.courts else { return }
-        let thisPlace = courts[index - 1]
+        guard activityViewModel.courts.count > 0 else { return }
+        let thisPlace = activityViewModel.courts[index - 1]
         activityViewModel.thisPost.place = Place(placeName: thisPlace.name,
                                                 placeLatitude: thisPlace.latitude,
                                                 placeLongitude: thisPlace.longitude)

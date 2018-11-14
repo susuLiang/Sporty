@@ -59,25 +59,7 @@ class ActivityViewModel {
     
     var viewType: ActivityViewType = .add
     var cells: [UITableViewCell] = []
-    var courts: [Court]? {
-        didSet {
-            //            courtPicker.reloadAllComponents()
-        }
-    }
-    
-    var myPost: Activity? {
-        didSet {
-//            if let myPost = myPost {
-//                setText(myPost)
-//                mapPlacedView.isHidden = true
-//                //                cityLabel.text = NSLocalizedString("ADDRESS", comment: "")
-//                navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
-//                cancelButton.isHidden = true
-//                addButton.isHidden = true
-//                
-//            }
-        }
-    }
+    var courts: [Court] = []
     
     var thisPost: Activity = Activity() {
         didSet {
@@ -100,8 +82,5 @@ class ActivityViewModel {
     
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-//    var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-//    var zoomLevel: Float = 15.0
-//    var selectedPlace: GMSPlace?
 }
