@@ -22,7 +22,6 @@
 		1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */; };
 		1F6CE5D91FE12A28006D6AAD /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CE5D81FE12A28006D6AAD /* SignInController.swift */; };
 		1F705F131FEA0AED0010963E /* MyActivitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F705F121FEA0AED0010963E /* MyActivitiesController.swift */; };
-		1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */; };
 		1F70C4FC1FE28CAA00DDAF03 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */; };
 		1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */; };
 		1F70C5041FE39EC600DDAF03 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */; };
@@ -31,7 +30,6 @@
 		1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */; };
 		1F74D73B1FF5E14400B746E6 /* FadeInOutTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */; };
 		1F74D73D1FF5E1A700B746E6 /* AppDelegateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */; };
-		1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D73E1FF653A400B746E6 /* ActivityController.xib */; };
 		1F74D7411FFB6B6500B746E6 /* WhoJoinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7401FFB6B6500B746E6 /* WhoJoinController.swift */; };
 		1F74D7431FFB6BD200B746E6 /* WhoJoinCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F74D7421FFB6BD200B746E6 /* WhoJoinCell.xib */; };
 		1F74D7451FFB6D3500B746E6 /* WhoJoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */; };
@@ -177,7 +175,6 @@
 		1F6CE5D01FE11BFC006D6AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F6CE5D81FE12A28006D6AAD /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		1F705F121FEA0AED0010963E /* MyActivitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesController.swift; sourceTree = "<group>"; };
-		1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		1F70C4FB1FE28CAA00DDAF03 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		1F70C4FD1FE37E4B00DDAF03 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		1F70C5031FE39EC600DDAF03 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +183,6 @@
 		1F74D7381FF5E11400B746E6 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
 		1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeInOutTransition.swift; sourceTree = "<group>"; };
 		1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtensions.swift; sourceTree = "<group>"; };
-		1F74D73E1FF653A400B746E6 /* ActivityController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityController.xib; sourceTree = "<group>"; };
 		1F74D7401FFB6B6500B746E6 /* WhoJoinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoJoinController.swift; sourceTree = "<group>"; };
 		1F74D7421FFB6BD200B746E6 /* WhoJoinCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhoJoinCell.xib; sourceTree = "<group>"; };
 		1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoJoinCell.swift; sourceTree = "<group>"; };
@@ -437,8 +433,6 @@
 		1F70C5091FE3CE1500DDAF03 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				1F70C4F91FE28C4600DDAF03 /* ActivityController.swift */,
-				1F74D73E1FF653A400B746E6 /* ActivityController.xib */,
 				1F6776611FFF8BFB00011404 /* ShowDetailController.swift */,
 				1F6776621FFF8BFB00011404 /* ShowDetailController.xib */,
 				1FEA3EB520073EF0009120E1 /* ShowDetailCollectionViewCell.swift */,
@@ -829,7 +823,6 @@
 				C20BFBBA219A7A1300EAB486 /* ActivityViewController.xib in Resources */,
 				1F74D7491FFC70EC00B746E6 /* MyPostsCell.xib in Resources */,
 				1FDB88DD1FFF49910069E024 /* Localizable.strings in Resources */,
-				1F74D73F1FF653A400B746E6 /* ActivityController.xib in Resources */,
 				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
 				1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */,
 				C20BFC49219A9C4700EAB486 /* ActivityMapTableViewCell.xib in Resources */,
@@ -868,7 +861,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "
+";
 		};
 		59741D498A6784534A510E19 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1067,7 +1061,6 @@
 				1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */,
 				C20BFC38219A802000EAB486 /* DictionaryExtensions.swift in Sources */,
 				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
-				1F70C4FA1FE28C4600DDAF03 /* ActivityController.swift in Sources */,
 				C20BFC24219A802000EAB486 /* UIFontExtensions.swift in Sources */,
 				C20BFC19219A802000EAB486 /* UINavigationBarExtensions.swift in Sources */,
 				1F74D7391FF5E11400B746E6 /* UIWindowExtensions.swift in Sources */,

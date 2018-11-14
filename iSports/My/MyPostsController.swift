@@ -152,11 +152,9 @@ class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDel
                 print("It's not the right cell.")
                 return
         }
-        guard let activityView = UINib.load(nibName: "ActivityController") as? ActivityController else {
-            print("ActivityController invalid")
-            return
-        }
-        activityView.myPost = myPosts[indexPath.row]
+        
+        let activityView = ActivityViewController.initVC(type: .edit)
+        activityView.activityViewModel.thisPost = myPosts[indexPath.row]
         self.navigationController?.pushViewController(activityView, animated: true)
     }
 

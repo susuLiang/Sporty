@@ -50,8 +50,14 @@ enum ActivityCellType: Int {
     }
 }
 
+enum ActivityViewType {
+    case add
+    case edit
+}
+
 class ActivityViewModel {
     
+    var viewType: ActivityViewType = .add
     var cells: [UITableViewCell] = []
     var courts: [Court]? {
         didSet {
@@ -79,8 +85,8 @@ class ActivityViewModel {
                 typeChanged = true
             }
         }
-        
     }
+    
     var didSelectedCity: String = "" {
         didSet {
             if !didSelectedCity.isEmpty {

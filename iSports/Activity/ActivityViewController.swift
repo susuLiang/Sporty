@@ -15,7 +15,7 @@ import SCLAlertView
 import KeychainSwift
 
 class ActivityViewController: UIViewController {
-
+    
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +26,12 @@ class ActivityViewController: UIViewController {
     var activityViewModel = ActivityViewModel()
     let keyChain = KeychainSwift()
     
+    static func initVC(type: ActivityViewType) -> ActivityViewController {
+        let activityView = UINib.load(nibName: "ActivityViewController") as! ActivityViewController
+        activityView.activityViewModel.viewType = type
+        return activityView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -35,8 +41,22 @@ class ActivityViewController: UIViewController {
         tableView.register(nibWithCellClass: ActivityMapTableViewCell.self)
         tableView.separatorStyle = .none
         
-        for index in 0..<ActivityCellType.count {
-            activityViewModel.cells.append(createCellByType(type: ActivityCellType(rawValue: index)!))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch activityViewModel.viewType {
+        case .add:
+            for index in 0..<ActivityCellType.count {
+                activityViewModel.cells.append(createCellByType(type: ActivityCellType(rawValue: index)!))
+            }
+            
+        case .edit:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-save"), style: .plain, target: self, action: #selector(showSaveAlert))
+            closeButton.isHidden = true
+            for index in 0..<ActivityCellType.count - 1 {
+                activityViewModel.cells.append(createCellByType(type: ActivityCellType(rawValue: index)!))
+            }
         }
     }
     
@@ -45,6 +65,15 @@ class ActivityViewController: UIViewController {
         case .name, .fee, .number, .allNumber:
             let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
             cell.configCell(title: type.description)
+            if activityViewModel.viewType == .edit {
+                switch type {
+                case .name: cell.textField.text = activityViewModel.thisPost.name
+                case .fee: cell.textField.text = activityViewModel.thisPost.fee.string
+                case .number: cell.textField.text = activityViewModel.thisPost.number.string
+                case .allNumber: cell.textField.text = activityViewModel.thisPost.allNumber.string
+                default: break
+                }
+            }
             cell.delegate = self
             return cell
             
@@ -52,6 +81,14 @@ class ActivityViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
             cell.configCell(title: type.description)
             cell.addPickerView(data: [type.data], components: 1, numberOfRows: [type.data.count + 1])
+            if activityViewModel.viewType == .edit {
+                switch type {
+                case .type: cell.textField.text = activityViewModel.thisPost.type
+                case .city: cell.textField.text = activityViewModel.thisPost.city
+                case .level: cell.textField.text = activityViewModel.thisPost.level
+                default: break
+                }
+            }
             cell.delegate = self
             return cell
 
@@ -60,6 +97,9 @@ class ActivityViewController: UIViewController {
             cell.configCell(title: type.description)
             cell.addPickerView(data: [time, hour, minute], components: 3, numberOfRows: [time.count + 1, hour.count + 1, minute.count + 1])
             cell.type = type.description
+            if activityViewModel.viewType == .edit {
+                cell.textField.text = activityViewModel.thisPost.time
+            }
             cell.delegate = self
             return cell
 
@@ -73,6 +113,9 @@ class ActivityViewController: UIViewController {
             } else {
                 cell.textField.text = NSLocalizedString("Please choose the TYPE and CITY first.", comment: "")
                 cell.textField.isEnabled = false
+            }
+            if activityViewModel.viewType == .edit {
+                cell.textField.text = activityViewModel.thisPost.place.placeName
             }
             cell.delegate = self
             cell.type = type.description
@@ -116,13 +159,21 @@ class ActivityViewController: UIViewController {
             })
         }
     }
+    
+    @objc func showSaveAlert() {
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton(NSLocalizedString("SURE", comment: ""), action: self.tapButton)
+        alertView.addButton(NSLocalizedString("NO", comment: ""), action: {})
+        alertView.showWarning(NSLocalizedString("Sure to save it ?", comment: ""), subTitle: "")
+    }
 
 }
 
 extension ActivityViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ActivityCellType.count
+        return activityViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -186,6 +237,7 @@ extension ActivityViewController: ActivityButtonDelegate {
         let value = ["name": thisPost.name,
                      "level": thisPost.level,
                      "time": thisPost.time,
+                     "city": thisPost.city,
                      "place": thisPost.place.placeName,
                      "number": Int(thisPost.number),
                      "fee": Int(thisPost.fee),
@@ -197,10 +249,18 @@ extension ActivityViewController: ActivityButtonDelegate {
                      "latitude": thisPost.place.placeLatitude,
                      "longitude": thisPost.place.placeLongitude,
                      "postedTime": "\(Date())"] as [String: Any]
-        let childRef = refChild.childByAutoId()
-        childRef.setValue(value)
-        ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
-        self.dismiss(animated: true, completion: nil)
+        
+        switch activityViewModel.viewType {
+        case .add:
+            let childRef = refChild.childByAutoId()
+            childRef.setValue(value)
+            ref.child("user_postId").childByAutoId().setValue(["user": uid, "postId": childRef.key])
+            self.dismiss(animated: true, completion: nil)
+        case .edit:
+            let activityUid = thisPost.id
+            refChild.child(activityUid).updateChildValues(value)
+            SCLAlertView().showSuccess(NSLocalizedString("Saved !", comment: ""), subTitle: "")
+        }
     }
     
 }
@@ -250,6 +310,7 @@ extension ActivityViewController: ActivityTextFieldDelegate {
             activityViewModel.thisPost.allNumber = Int(text) ?? 0
             
         case .city:
+            activityViewModel.thisPost.city = text
             activityViewModel.didSelectedCity = text
             
         case .map, .button, .court:
@@ -257,11 +318,10 @@ extension ActivityViewController: ActivityTextFieldDelegate {
         }
         
         if activityViewModel.typeChanged && activityViewModel.cityChanged {
-            getLocation(city: activityViewModel.didSelectedCity, gym: activityViewModel.thisPost.type)
+            getLocation(city: activityViewModel.thisPost.city, gym: activityViewModel.thisPost.type)
             activityViewModel.cityChanged = false
             activityViewModel.typeChanged = false
         }
-        
     }
     
     
