@@ -100,14 +100,36 @@ struct Activity {
 }
 
 enum Sportstype: String {
-    case basketball
-    case volleyball
-    case baseball
-    case football
-    case badminton
-    case tennis
+    case basketball = "籃球"
+    case volleyball = "排球"
+    case baseball = "棒球"
+    case football = "足球"
+    case badminton = "羽球"
+    case tennis = "網球"
     
     static var count: Int { return Sportstype.tennis.hashValue + 1}
+    
+    var image: UIImage {
+        switch self {
+        case .basketball:
+            return UIImage(named: "basketball")!
+            
+        case .volleyball:
+            return UIImage(named: "volleyball")!
+            
+        case .baseball:
+            return UIImage(named: "baseball")!
+            
+        case .football:
+            return UIImage(named: "soccer")!
+            
+        case .badminton:
+            return UIImage(named: "badminton")!
+            
+        case .tennis:
+            return UIImage(named: "tennis")!
+        }
+    }
 }
 
 let levelArray = ["A", "B", "C", "D"]

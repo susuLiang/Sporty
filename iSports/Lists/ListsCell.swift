@@ -69,18 +69,7 @@ class ListsCell: UITableViewCell {
         timeLabel.text = activity.time
         placeLabel.text = activity.place.placeName
         numLabel.text = "\(activity.number) / \(activity.allNumber)"
-
-        var name: String = ""
-        switch activity.type {
-        case "羽球": name = "badminton"
-        case "棒球": name = "baseball"
-        case "籃球": name = "basketball"
-        case "排球": name = "volleyball"
-        case "網球": name = "tennis"
-        case "足球": name = "soccer"
-        default:  break
-        }
-        imagePlaced.image = UIImage(named: name)
+        imagePlaced.image = (Sportstype(rawValue: activity.type) ?? Sportstype.baseball).image
 
         var thisLevel: String = ""
         switch activity.level {

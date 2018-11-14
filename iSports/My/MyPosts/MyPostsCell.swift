@@ -72,15 +72,7 @@ class MyPostsCell: UITableViewCell {
         thisPost = post
         nameLabel.text = post.name
         numLabel.text = "\(post.number) / \(post.allNumber)"
-        switch post.type {
-        case "羽球": typeImage.image = UIImage(named: "badminton")!
-        case "棒球": typeImage.image = UIImage(named: "baseball")!
-        case "籃球": typeImage.image = UIImage(named: "basketball")!
-        case "排球": typeImage.image = UIImage(named: "volleyball")!
-        case "網球": typeImage.image = UIImage(named: "tennis")!
-        case "足球": typeImage.image = UIImage(named: "soccer")!
-        default: break
-        }
+        typeImage.image = (Sportstype(rawValue: post.type) ?? Sportstype.baseball).image
     }
 
 }

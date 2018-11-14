@@ -174,16 +174,7 @@ extension MyMatchesController: UITableViewDataSource {
         cell.cancelButton.addTarget(self, action: #selector(quitIt), for: .touchUpInside)
         cell.chatButton.setImage(UIImage(named: "icon-chat"), for: .normal)
         cell.chatButton.addTarget(self, action: #selector(showMessages), for: .touchUpInside)
-        switch timeMatchs[indexPath.row].type {
-        case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
-        case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
-        case "籃球": cell.thumbnailImageView.image = UIImage(named: "basketball")!
-        case "排球": cell.thumbnailImageView.image = UIImage(named: "volleyball")!
-        case "網球": cell.thumbnailImageView.image = UIImage(named: "tennis")!
-        case "足球": cell.thumbnailImageView.image = UIImage(named: "soccer")!
-        default: break
-        }
-        
+        cell.thumbnailImageView.image = (Sportstype(rawValue: timeMatchs[indexPath.row].type) ?? Sportstype.baseball).image
         return cell
     }
 
