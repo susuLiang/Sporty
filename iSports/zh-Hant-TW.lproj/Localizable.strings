@@ -196,4 +196,8 @@
 /* No comment provided by engineer. */
 "Please select" = "請選擇";
 
+/* No comment provided by engineer. */
+"Please choose the TYPE and CITY first." = "請先選擇 類別 與 城市";
 
+/* No comment provided by engineer. */
+"ALLNUMBER" = "總人數";

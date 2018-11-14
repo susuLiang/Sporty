@@ -27,15 +27,15 @@ enum ActivityCellType: Int {
     
     var description: String {
         switch self {
-        case .name: return "NAME"
-        case .type: return "TYPE"
-        case .city: return "CITY"
-        case .level: return "LEVEL"
-        case .fee: return "FEE"
-        case .time: return "TIME"
-        case .number: return "NUMBER"
-        case .allNumber: return "ALLNUMBER"
-        case .court: return "COURT"
+        case .name: return NSLocalizedString("NAME", comment: "")
+        case .type: return NSLocalizedString("TYPE", comment: "")
+        case .city: return NSLocalizedString("CITY", comment: "")
+        case .level: return NSLocalizedString("LEVEL", comment: "")
+        case .fee: return NSLocalizedString("FEE", comment: "")
+        case .time: return NSLocalizedString("TIME", comment: "")
+        case .number: return NSLocalizedString("NUMBER", comment: "")
+        case .allNumber: return NSLocalizedString("ALLNUMBER", comment: "")
+        case .court: return NSLocalizedString("COURT", comment: "")
         case .map, .button: return ""
         }
     }
