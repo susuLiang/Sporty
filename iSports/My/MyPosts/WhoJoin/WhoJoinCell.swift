@@ -13,7 +13,7 @@ class WhoJoinCell: UICollectionViewCell {
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var cancelButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         userPhoto.layer.cornerRadius = userPhoto.frame.width / 2

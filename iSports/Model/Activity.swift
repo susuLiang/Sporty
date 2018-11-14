@@ -99,10 +99,6 @@ struct Activity {
 
 }
 
-let levelArray = ["A", "B", "C", "D"]
-
-let cityArray: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
-
 enum Sportstype: String {
     case basketball
     case volleyball
@@ -110,12 +106,13 @@ enum Sportstype: String {
     case football
     case badminton
     case tennis
-
+    
     static var count: Int { return Sportstype.tennis.hashValue + 1}
 }
 
+let levelArray = ["A", "B", "C", "D"]
+let cityArray: [String] = ["臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "苗栗縣", "臺中市", "彰化縣", "南投縣", "雲林縣", "嘉義市", "嘉義縣", "臺南市", "高雄市", "屏東縣", "宜蘭縣", "花蓮縣", "臺東縣", "澎湖縣", "金門縣" ]
 let typeArray: [String] = ["棒球", "籃球", "排球", "羽球", "網球", "足球"]
-
 let time = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
 let hour = Array(1...24).map { $0.string }
 let minute = (00...11).map { $0 * 5}.map { $0.string }
@@ -123,17 +120,16 @@ let minute = (00...11).map { $0 * 5}.map { $0.string }
 struct Preference {
 
     var type: String
-
     var level: String?
-
     var place: String
-
     var time: String
 
 }
 
 struct Message {
+    
     var message: String
     var date: String
     var userUid: String
+    
 }

@@ -17,10 +17,10 @@ class WhoJoinController: UIViewController {
 
     var collectionView: UICollectionView!
 
-    var thisActivity: Activity? {
+    var thisActivity: Activity = Activity() {
         didSet {
             loadingIndicator.start()
-            FirebaseProvider.shared.getWhoJoin(activityId: (thisActivity?.id)!, completion: {(users, error) in
+            FirebaseProvider.shared.getWhoJoin(activityId: thisActivity.id, completion: {(users, error) in
                 if error == nil, let users = users {
                     self.joinUsers = users
                 }
