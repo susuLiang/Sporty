@@ -8,6 +8,13 @@
 
 import UIKit
 
+protocol MyPostsCellButtonDelegate: class {
+    func tapMessageButton(cell: UITableViewCell)
+    func tapEditButton(cell: UITableViewCell)
+    func tapSeeWhoButton(cell: UITableViewCell)
+    func tapDeleteButton(cell: UITableViewCell)
+}
+
 class MyPostsCell: UITableViewCell {
 
     @IBOutlet weak var backView: UIView!
@@ -19,6 +26,25 @@ class MyPostsCell: UITableViewCell {
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var messageButton: UIButton!
 
+    @IBAction func tapMessageButton(_ sender: UIButton) {
+        delegate?.tapMessageButton(cell: self)
+    }
+    
+    @IBAction func tapEditButton(_ sender: UIButton) {
+        delegate?.tapEditButton(cell: self)
+    }
+    
+    @IBAction func tapSeeWhoButton(_ sender: UIButton) {
+        delegate?.tapSeeWhoButton(cell: self)
+    }
+    
+    @IBAction func tapDeleteButton(_ sender: Any) {
+        delegate?.tapDeleteButton(cell: self)
+    }
+    
+    weak var delegate: MyPostsCellButtonDelegate?
+    var thisPost: Activity = Activity()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 30
@@ -36,11 +62,25 @@ class MyPostsCell: UITableViewCell {
 
         let messageIcon = UIImage(named: "icon-chat")
         messageButton.setImage(messageIcon, for: .normal)
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: false)
+    }
+    
+    func configCell(post: Activity) {
+        thisPost = post
+        nameLabel.text = post.name
+        numLabel.text = "\(post.number) / \(post.allNumber)"
+        switch post.type {
+        case "羽球": typeImage.image = UIImage(named: "badminton")!
+        case "棒球": typeImage.image = UIImage(named: "baseball")!
+        case "籃球": typeImage.image = UIImage(named: "basketball")!
+        case "排球": typeImage.image = UIImage(named: "volleyball")!
+        case "網球": typeImage.image = UIImage(named: "tennis")!
+        case "足球": typeImage.image = UIImage(named: "soccer")!
+        default: break
+        }
     }
 
 }

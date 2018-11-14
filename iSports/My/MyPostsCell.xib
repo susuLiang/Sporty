@@ -49,6 +49,9 @@
                                             <constraint firstAttribute="width" constant="32" id="R4g-xx-aPq"/>
                                             <constraint firstAttribute="width" secondItem="cqP-MK-pa3" secondAttribute="height" multiplier="1:1" id="gcb-75-6D1"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="tapMessageButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nvc-9h-HyA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yND-g2-Vgl">
                                         <rect key="frame" x="42" y="0.0" width="32" height="32"/>
@@ -57,6 +60,9 @@
                                             <constraint firstAttribute="width" secondItem="yND-g2-Vgl" secondAttribute="height" multiplier="1:1" id="knn-tg-J0X"/>
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="tapEditButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4or-YK-lkg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-Sk-KpA">
                                         <rect key="frame" x="84" y="0.0" width="32" height="32"/>
@@ -65,6 +71,9 @@
                                             <constraint firstAttribute="width" constant="32" id="Qlr-lg-iZH"/>
                                         </constraints>
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="tapSeeWhoButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zbr-CS-2pM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnE-3l-JSH">
                                         <rect key="frame" x="126" y="0.0" width="32" height="32"/>
@@ -73,6 +82,9 @@
                                             <constraint firstAttribute="width" constant="32" id="xiX-9t-oQs"/>
                                         </constraints>
                                         <state key="normal" image="icon-delete"/>
+                                        <connections>
+                                            <action selector="tapDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ty4-Cy-ZmG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

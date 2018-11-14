@@ -17,10 +17,8 @@ import JTMaterialTransition
 class ListsController: UIViewController {
     // Property
     var isShowed = false
-
-    var keyChain = KeychainSwift()
-
-    var results = [Activity]()
+    let keyChain = KeychainSwift()
+    var results: [Activity] = []
 
     var selectedPreference: Preference? {
         didSet {
