@@ -93,14 +93,14 @@ class MapController: UIViewController, GMSMapViewDelegate {
         searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (self.navigationController?.navigationBar.frame.height)! + UIApplication.shared.statusBarFrame.height, width: 150, height: UIScreen.main.bounds.height)
 
         if !isShowed {
-            self.addChildViewController(searchView)
+            self.addChild(searchView)
             self.view.addSubview(searchView.view)
-            searchView.didMove(toParentViewController: self)
+            searchView.didMove(toParent: self)
             isShowed = true
         } else {
-            searchView.willMove(toParentViewController: nil)
+            searchView.willMove(toParent: nil)
             searchView.view.removeFromSuperview()
-            searchView.removeFromParentViewController()
+            searchView.removeFromParent()
             self.getLocation()
             isShowed = false
         }
@@ -118,8 +118,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
 
     func setNavigationBar() {
         navigationItem.title = NSLocalizedString("Map", comment: "")
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
-                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedString.Key.foregroundColor: UIColor.white]
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.tintColor = .white
@@ -209,7 +209,7 @@ extension MapController {
         detailView.selectedPlace = selectedActivity?.place
         detailView.mainViewController = self
 
-        self.addChildViewController(detailView)
+        self.addChild(detailView)
         self.view.addSubview(detailView.view)
 
         return true

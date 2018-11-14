@@ -64,7 +64,7 @@ class TabBarController: UITabBarController {
         let animation = CAKeyframeAnimation(keyPath: "transform.scale")
         animation.values = [1.0, 1.2, 0.9, 1.02, 1.0]
         animation.duration = TimeInterval(0.5)
-        animation.calculationMode = kCAAnimationCubic
+        animation.calculationMode = CAAnimationCalculationMode.cubic
         
         let tabBarLayer = (tabBarButtonArray[index] as AnyObject).layer
         tabBarLayer?.add(animation, forKey: "animtaion")

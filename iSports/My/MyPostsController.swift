@@ -129,9 +129,9 @@ class MyPostsController: UIViewController, UITableViewDataSource, UITableViewDel
         messagesView.thisActivityUid = thisActivity.id
         messagesView.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - (self.tabBarController?.tabBar.frame.height)! * 2 - (self.navigationController?.navigationBar.frame.height)!)
 
-        self.addChildViewController(messagesView)
+        self.addChild(messagesView)
         self.view.addSubview(messagesView.view)
-        messagesView.didMove(toParentViewController: self)
+        messagesView.didMove(toParent: self)
     }
 
     @objc func seeWhoJoin(_ sender: UIButton) {

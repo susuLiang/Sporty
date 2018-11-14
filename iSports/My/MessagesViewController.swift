@@ -55,7 +55,7 @@ class MessagesViewController: UIViewController {
 
     @IBAction func close(_ sender: Any) {
         self.view.removeFromSuperview()
-        self.removeFromParentViewController()
+        self.removeFromParent()
     }
 
     @IBOutlet weak var tableView: UITableView!
@@ -88,7 +88,7 @@ class MessagesViewController: UIViewController {
     func setUpCell() {
         let nib = UINib(nibName: "MessageCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 22
     }
 }

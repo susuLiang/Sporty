@@ -58,8 +58,8 @@ class BlueNavigationController: UINavigationController {
         navigationBar.isTranslucent = true
 
         navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: "IowanOldStyle-Bold", size: 22)!
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "IowanOldStyle-Bold", size: 22)!
         ]
 
         // Prepare gradient navigation bar view

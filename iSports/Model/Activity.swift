@@ -9,24 +9,20 @@
 import Foundation
 
 enum JSONError: Error {
-
     case jsonError
-
     case userSettingJsonError
 }
 
 struct Place {
-
+    
     var placeName: String
-
     var placeLatitude: String
-
     var placeLongitude: String
-
+    
 }
 
 struct Activity {
-
+    
     var id: String = ""
     var name: String = ""
     var level: String = ""

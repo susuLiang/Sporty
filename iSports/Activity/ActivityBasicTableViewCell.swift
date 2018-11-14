@@ -39,9 +39,9 @@ class ActivityBasicTableViewCell: UITableViewCell {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
         
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: textField.size.height))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: textField.frame.height))
         textField.leftView = paddingView
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChange(_:)), name: nil, object: textField)
     }

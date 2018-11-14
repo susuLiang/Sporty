@@ -132,15 +132,15 @@ class ListsController: UIViewController {
                                        width: 150, height: UIScreen.main.bounds.height)
 
         if !isShowed {
-            self.addChildViewController(searchView)
+            self.addChild(searchView)
             self.thisSearchView = searchView
             self.view.addSubview(searchView.view)
-            searchView.didMove(toParentViewController: self)
+            searchView.didMove(toParent: self)
             isShowed = true
         } else {
-            thisSearchView?.willMove(toParentViewController: nil)
+            thisSearchView?.willMove(toParent: nil)
             thisSearchView?.view.removeFromSuperview()
-            thisSearchView?.removeFromParentViewController()
+            thisSearchView?.removeFromParent()
             self.fetch()
             isShowed = false
         }
@@ -188,8 +188,8 @@ class ListsController: UIViewController {
 
     func setNavigation() {
         navigationItem.title = "Sporty"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
-                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedString.Key.foregroundColor: UIColor.white]
 
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         navigationItem.rightBarButtonItems = [searchButton]

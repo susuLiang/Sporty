@@ -126,7 +126,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
 
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = blurBackView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -218,8 +218,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
             }
         }
         var data = Data()
-        if userPhoto.image != nil {
-            data = UIImageJPEGRepresentation(userPhoto.image!, 0.6)!
+        if let image = userPhoto.image {
+            data = image.jpegData(compressionQuality: 0.6)!
             let ref = Database.database().reference()
             let storageRef = Storage.storage().reference()
             let metadata = StorageMetadata()
@@ -246,8 +246,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         let logout = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-logout"), style: .plain, target: self, action: #selector(self.logout))
         navigationItem.rightBarButtonItem = logout
         navigationItem.title = NSLocalizedString("Profile", comment: "")
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
-                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 
 }

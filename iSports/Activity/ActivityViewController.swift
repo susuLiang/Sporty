@@ -64,7 +64,7 @@ class ActivityViewController: UIViewController {
     func createCellByType(type: ActivityCellType) -> UITableViewCell {
         switch type {
         case .name, .fee, .number, .allNumber:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
             if activityViewModel.viewType == .edit {
                 switch type {
@@ -79,7 +79,7 @@ class ActivityViewController: UIViewController {
             return cell
             
         case .type, .city, .level:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
             cell.addPickerView(data: [type.data], components: 1, numberOfRows: [type.data.count + 1])
             if activityViewModel.viewType == .edit {
@@ -94,7 +94,7 @@ class ActivityViewController: UIViewController {
             return cell
 
         case .time:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
             cell.addPickerView(data: [time, hour, minute], components: 3, numberOfRows: [time.count + 1, hour.count + 1, minute.count + 1])
             cell.type = type.description
@@ -105,7 +105,7 @@ class ActivityViewController: UIViewController {
             return cell
 
         case .court:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
             if let courts = activityViewModel.courts {
                 cell.textField.text = ""
@@ -123,7 +123,7 @@ class ActivityViewController: UIViewController {
             return cell
 
         case .map:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityMapTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityMapTableViewCell.self)
             if let place = activityViewModel.thisPost.place {
                 cell.mapImageView.isHidden = false
                 cell.mapImageView.addSubview(setMap(on: cell.mapImageView,
@@ -135,7 +135,7 @@ class ActivityViewController: UIViewController {
             return cell
 
         case .button:
-            let cell = tableView.dequeueReusableCell(withClass: ActivityButtonTableViewCell.self)!
+            let cell = tableView.dequeueReusableCell(withClass: ActivityButtonTableViewCell.self)
             cell.delegate = self
             return cell
             
@@ -171,6 +171,7 @@ class ActivityViewController: UIViewController {
 
 }
 
+// MARK: UITableViewDataSource
 extension ActivityViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -183,10 +184,11 @@ extension ActivityViewController: UITableViewDataSource {
     
 }
 
+// MARK: UITableViewDelegate
 extension ActivityViewController: UITableViewDelegate {
 }
 
-
+// MARK: CLLocationManagerDelegate
 extension ActivityViewController: CLLocationManagerDelegate {
     
     func setMap(on imageView: UIImageView, latitude: Double, longitude: Double) -> GMSMapView {
@@ -214,6 +216,7 @@ extension ActivityViewController: CLLocationManagerDelegate {
     
 }
 
+// MARK: ActivityButtonDelegate
 extension ActivityViewController: ActivityButtonDelegate {
     
     func tapButton() {
