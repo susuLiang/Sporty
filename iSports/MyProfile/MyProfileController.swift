@@ -246,8 +246,7 @@ extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MyProfileCell else {
-            fatalError("Invalid MyProfileCell") }
+        let cell = tableView.dequeueReusableCell(withClass: MyProfileCell.self, for: indexPath)
         self.cell = cell
         cell.cellLabel?.text = settingType[indexPath.section]
         cell.accessoryType = .disclosureIndicator
