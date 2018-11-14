@@ -453,19 +453,8 @@
 		1F70C5091FE3CE1500DDAF03 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				1F6776611FFF8BFB00011404 /* ShowDetailController.swift */,
-				1F6776621FFF8BFB00011404 /* ShowDetailController.xib */,
-				1FEA3EB520073EF0009120E1 /* ShowDetailCollectionViewCell.swift */,
-				1FEA3EB620073EF0009120E1 /* ShowDetailCollectionViewCell.xib */,
-				C20BFC4A219AA82400EAB486 /* ActivityViewModel.swift */,
-				C20BFBB7219A7A1300EAB486 /* ActivityViewController.swift */,
-				C20BFBB8219A7A1300EAB486 /* ActivityViewController.xib */,
-				C20BFBBB219A7A5700EAB486 /* ActivityBasicTableViewCell.swift */,
-				C20BFBBC219A7A5700EAB486 /* ActivityBasicTableViewCell.xib */,
-				C20BFBBF219A7E2700EAB486 /* ActivityButtonTableViewCell.swift */,
-				C20BFBC0219A7E2700EAB486 /* ActivityButtonTableViewCell.xib */,
-				C20BFC46219A9C4700EAB486 /* ActivityMapTableViewCell.swift */,
-				C20BFC47219A9C4700EAB486 /* ActivityMapTableViewCell.xib */,
+				C21F8C16219BF03500C83D79 /* EditPage */,
+				C21F8C15219BF02200C83D79 /* Detail */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -822,6 +811,33 @@
 				1F74D7421FFB6BD200B746E6 /* WhoJoinCell.xib */,
 			);
 			path = WhoJoin;
+			sourceTree = "<group>";
+		};
+		C21F8C15219BF02200C83D79 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1F6776611FFF8BFB00011404 /* ShowDetailController.swift */,
+				1F6776621FFF8BFB00011404 /* ShowDetailController.xib */,
+				1FEA3EB520073EF0009120E1 /* ShowDetailCollectionViewCell.swift */,
+				1FEA3EB620073EF0009120E1 /* ShowDetailCollectionViewCell.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C21F8C16219BF03500C83D79 /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				C20BFC4A219AA82400EAB486 /* ActivityViewModel.swift */,
+				C20BFBB7219A7A1300EAB486 /* ActivityViewController.swift */,
+				C20BFBB8219A7A1300EAB486 /* ActivityViewController.xib */,
+				C20BFBBB219A7A5700EAB486 /* ActivityBasicTableViewCell.swift */,
+				C20BFBBC219A7A5700EAB486 /* ActivityBasicTableViewCell.xib */,
+				C20BFBBF219A7E2700EAB486 /* ActivityButtonTableViewCell.swift */,
+				C20BFBC0219A7E2700EAB486 /* ActivityButtonTableViewCell.xib */,
+				C20BFC46219A9C4700EAB486 /* ActivityMapTableViewCell.swift */,
+				C20BFC47219A9C4700EAB486 /* ActivityMapTableViewCell.xib */,
+			);
+			path = EditPage;
 			sourceTree = "<group>";
 		};
 		C2FB8904219BC65C0080ED9E /* Fonts */ = {
