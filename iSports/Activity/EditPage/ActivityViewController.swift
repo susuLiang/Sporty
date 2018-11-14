@@ -61,7 +61,17 @@ class ActivityViewController: UIViewController {
     
     func createCellByType(type: ActivityCellType) -> UITableViewCell {
         switch type {
-        case .name, .fee, .number, .allNumber:
+            
+        case .name:
+            let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
+            cell.configCell(title: type.description)
+            if activityViewModel.viewType == .edit {
+                cell.textField.text = activityViewModel.thisPost.name
+            }
+            cell.delegate = self
+            return cell
+            
+        case .fee, .number, .allNumber:
             let cell = tableView.dequeueReusableCell(withClass: ActivityBasicTableViewCell.self)
             cell.configCell(title: type.description)
             if activityViewModel.viewType == .edit {
@@ -73,6 +83,7 @@ class ActivityViewController: UIViewController {
                 default: break
                 }
             }
+            cell.textField.keyboardType = .numberPad
             cell.delegate = self
             return cell
             
