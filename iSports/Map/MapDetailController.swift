@@ -71,9 +71,7 @@ extension MapDetailController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else {
-            fatalError("Invalid ListsCell")
-        }
+        let cell = tableView.dequeueReusableCell(withClass: ListsCell.self, for: indexPath)
         let result = selectedPlaceActivities[indexPath.row]
         
         cell.setCell(result)
