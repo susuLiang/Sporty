@@ -10,10 +10,8 @@ import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
-import NVActivityIndicatorView
 import KeychainSwift
 import LGButton
-import SkyFloatingLabelTextField
 
 class ShowDetailController: UIViewController {
 
@@ -25,46 +23,27 @@ class ShowDetailController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
 
-    let loadingIndicator = LoadingIndicator()
     let keyChain = KeychainSwift()
 
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
-    var zoomLevel: Float = 15.0
-    var selectedPlace: GMSPlace?
 
-    var activityTitleInCell: [ActivityTitle.RawValue] = [
-        ActivityTitle.type.rawValue,
-        ActivityTitle.level.rawValue,
-        ActivityTitle.time.rawValue,
-        ActivityTitle.fee.rawValue,
-        ActivityTitle.num.rawValue,
-        ActivityTitle.allNum.rawValue
-    ]
-
-    var selectedActivity: Activity? {
+    var selectedActivity: Activity = Activity() {
         didSet {
-            if let selectedActivity = selectedActivity {
-                navigationItem.title = selectedActivity.name
-                addressLabel.text = selectedActivity.address
-                courtLabel.text = selectedActivity.place.placeName
-                self.nowPlace = (selectedActivity.place.placeLatitude, selectedActivity.place.placeLongitude, selectedActivity.address)
-                setJoinButton()
+            navigationItem.title = selectedActivity.name
+            addressLabel.text = selectedActivity.address
+            courtLabel.text = selectedActivity.place.placeName
+            if let place = selectedActivity.place {
+                mapPlacedView.addSubview(setMap(latitude: Double(place.placeLatitude) ?? 0.0,
+                                                longitude: Double(place.placeLongitude) ?? 0.0))
             }
+            setJoinButton()
         }
     }
 
-    var myMatches = [Activity]()
-
-    var nowPlace: (latitude: String, longitude: String, address: String)? {
-        didSet {
-            if let lat = nowPlace?.latitude, let lng = nowPlace?.longitude {
-                mapPlacedView.addSubview(setMap(latitude: Double(lat)!, longitude: Double(lng)!))
-            }
-        }
-    }
+    var myMatches: [Activity] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +53,6 @@ class ShowDetailController: UIViewController {
         collectionView.register(UINib(nibName: "ShowDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         collectionViewFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3 - 20), height: 105)
-        getPosts()
 
     }
 
@@ -82,44 +60,32 @@ class ShowDetailController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
-            if error == nil, let posts = posts {
-                self.myMatches = Array(posts.values)
-                self.setJoinButton()
-            }
-        })
-    }
-
     func setJoinButton() {
         var isMyMatch = false
         let uid = keyChain.get("uid")
-
-        if let selected = selectedActivity {
-
-            if selected.authorUid != uid {
-                for myMatch in myMatches where myMatch.id == selected.id {
-                    isMyMatch = true
-                }
-                if selected.number < selected.allNumber && !isMyMatch {
-                    joinButton.titleString = "參加"
-                    joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
-                } else if isMyMatch {
-                    joinButton.isHidden = true
-                    unJoinButton.isHidden = false
-                    unJoinButton.titleString = "已參加"
-                } else if selected.number == selected.allNumber {
-                    joinButton.isHidden = true
-                    unJoinButton.isHidden = false
-                    unJoinButton.titleString = "人數已滿"
-                }
-
-            } else {
-                joinButton.backgroundColor = .clear
-                joinButton.isHidden = true
-                unJoinButton.isHidden = true
+        if selectedActivity.authorUid != uid {
+            for myMatch in myMatches where myMatch.id == selectedActivity.id {
+                isMyMatch = true
             }
+            if selectedActivity.number < selectedActivity.allNumber && !isMyMatch {
+                joinButton.titleString = "參加"
+                joinButton.addTarget(self, action: #selector(self.join), for: .touchUpInside)
+            } else if isMyMatch {
+                joinButton.isHidden = true
+                unJoinButton.isHidden = false
+                unJoinButton.titleString = "已參加"
+            } else if selectedActivity.number == selectedActivity.allNumber {
+                joinButton.isHidden = true
+                unJoinButton.isHidden = false
+                unJoinButton.titleString = "人數已滿"
+            }
+
+        } else {
+            joinButton.backgroundColor = .clear
+            joinButton.isHidden = true
+            unJoinButton.isHidden = true
         }
+        
     }
 
     @objc func join(_ sender: LGButton) {
@@ -128,13 +94,12 @@ class ShowDetailController: UIViewController {
         unJoinButton.titleString = "已參加"
         let uid = keyChain.get("uid")
         let ref = Database.database().reference()
-        if let selected = selectedActivity {
-            let joinId = selected.id
-            let newVaule = selected.number + 1
+        let joinId = selectedActivity.id
+        let newVaule = selectedActivity.number + 1
 
-            ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
-            ref.child("activities").child(joinId).child("number").setValue(newVaule)
-        }
+        ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
+        ref.child("activities").child(joinId).child("number").setValue(newVaule)
+        
     }
 }
 
@@ -145,39 +110,35 @@ extension ShowDetailController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return activityTitleInCell.count
+        return ActivityTitle.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ShowDetailCollectionViewCell else {
-            fatalError("Invalid ShowDetailCell")
-        }
-        guard let result = selectedActivity else {
-            print("selected nil")
-            return cell
-        }
+        let cell = collectionView.dequeueReusableCell(withClass: ShowDetailCollectionViewCell.self, for: indexPath)
+        let cellType = ActivityTitle(rawValue: indexPath.row) ?? ActivityTitle.type
 
-        let thisActivityTitle = activityTitleInCell[indexPath.row]
-
-        switch thisActivityTitle {
-
-        case "類型":
-            cell.setCell(title: "類型", detail: result.type)
-        case "程度":
-            cell.setCell(title: "程度", detail: result.level)
-        case "費用":
-            cell.setCell(title: "費用", detail: result.fee)
-        case "時間":
-            let start = result.time.index(result.time.startIndex, offsetBy: 3)
-            let end = result.time.index(result.time.startIndex, offsetBy: 4)
-            let thisTime = result.time.replacingCharacters(in: start..<end, with: "\n")
+        switch cellType {
+        case .type:
+            cell.setCell(title: cellType.title, detail: selectedActivity.type)
+            
+        case .level:
+            cell.setCell(title: cellType.title, detail: selectedActivity.level)
+            
+        case .fee:
+            cell.setCell(title: cellType.title, detail: selectedActivity.fee)
+            
+        case .time:
+            let start = selectedActivity.time.index(selectedActivity.time.startIndex, offsetBy: 3)
+            let end = selectedActivity.time.index(selectedActivity.time.startIndex, offsetBy: 4)
+            let thisTime = selectedActivity.time.replacingCharacters(in: start..<end, with: "\n")
             cell.descriptionLabel.font = UIFont(name: "Arial", size: 16)
-            cell.setCell(title: "時間", detail: thisTime)
-        case "目前人數":
-            cell.setCell(title: "目前人數", detail: result.number)
-        case "總人數":
-            cell.setCell(title: "總人數", detail: result.allNumber)
-        default: break
+            cell.setCell(title: cellType.title, detail: thisTime)
+            
+        case .num:
+            cell.setCell(title: cellType.title, detail: selectedActivity.number)
+            
+        case .allNum:
+            cell.setCell(title: cellType.title, detail: selectedActivity.allNumber)
         }
         return cell
 
@@ -202,11 +163,31 @@ extension ShowDetailController: CLLocationManagerDelegate {
     }
 }
 
-enum ActivityTitle: String {
-    case type =  "類型"
-    case level = "程度"
-    case fee = "費用"
-    case time = "時間"
-    case num = "目前人數"
-    case allNum = "總人數"
+enum ActivityTitle: Int {
+    
+    case type
+    case level
+    case fee
+    case time
+    case num
+    case allNum
+    
+    static let count = 6
+    
+    var title: String {
+        switch self {
+        case .type:
+            return "類型"
+        case .level:
+            return "程度"
+        case .fee:
+            return "費用"
+        case .time:
+            return "時間"
+        case .num:
+            return "目前人數"
+        case .allNum:
+            return "總人數"
+        }
+    }
 }

@@ -31,7 +31,6 @@ class ShowDetailCollectionViewCell: UICollectionViewCell {
     func setCell(title: String, detail: Any) {
         titleLabel.text = "\(title)"
         descriptionLabel.text = "\(detail)"
-
     }
 
 }
