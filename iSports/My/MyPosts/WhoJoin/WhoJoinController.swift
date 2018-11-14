@@ -24,18 +24,15 @@ class WhoJoinController: UIViewController {
                 if error == nil, let users = users {
                     self.joinUsers = users
                 }
-                self.loadingIndicator.stop()
+                DispatchQueue.main.async {
+                    self.loadingIndicator.stop()
+                    self.collectionView.reloadData()
+                }
             })
         }
     }
 
-    var joinUsers: [UserSetting] = [] {
-        didSet {
-            if joinUsers.count > 0 {
-                collectionView.reloadData()
-            }
-        }
-    }
+    var joinUsers: [UserSetting] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +46,7 @@ class WhoJoinController: UIViewController {
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "WhoJoinCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        collectionView.register(nibWithCellClass: WhoJoinCell.self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,28 +61,20 @@ extension WhoJoinController: UICollectionViewDelegate, UICollectionViewDataSourc
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if joinUsers.count == 0 {
-            return 0
-        } else {
-            return joinUsers.count
-        }
+        return joinUsers.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? WhoJoinCell else {
-            fatalError()
-        }
+        let cell = collectionView.dequeueReusableCell(withClass: WhoJoinCell.self, for: indexPath)
         let joinUser = joinUsers[indexPath.row]
         cell.userName.text = joinUser.name
         if let url = joinUser.urlString {
             DispatchQueue.main.async {
                 Nuke.loadImage(with: URL(string: url)!, into: cell.userPhoto) { response, _ in
                     cell.userPhoto.image = response.value
-                    self.loadingIndicator.stop()
                 }
             }
         }
-        loadingIndicator.stop()
         return cell
     }
 

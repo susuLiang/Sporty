@@ -445,16 +445,7 @@
 			children = (
 				1F705F121FEA0AED0010963E /* MyActivitiesController.swift */,
 				1FF6E3EF1FEA30870070ADE8 /* MyMatchesController.swift */,
-				1F7E1E9D20035CAA0038C19C /* MessagesViewController.swift */,
-				1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */,
-				1F7E1EA120035E2A0038C19C /* MessageCell.swift */,
-				1F7E1EA220035E2A0038C19C /* MessageCell.xib */,
-				1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */,
-				1F74D7461FFC70EC00B746E6 /* MyPostsCell.swift */,
-				1F74D7471FFC70EC00B746E6 /* MyPostsCell.xib */,
-				1F74D7401FFB6B6500B746E6 /* WhoJoinController.swift */,
-				1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */,
-				1F74D7421FFB6BD200B746E6 /* WhoJoinCell.xib */,
+				C21F8C12219BEB6600C83D79 /* MyPosts */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -798,6 +789,39 @@
 				C21F8BC7219BD0D000C83D79 /* NSImageExtensions.swift */,
 			);
 			path = AppKit;
+			sourceTree = "<group>";
+		};
+		C21F8C12219BEB6600C83D79 /* MyPosts */ = {
+			isa = PBXGroup;
+			children = (
+				1FF6E3ED1FEA1A0F0070ADE8 /* MyPostsController.swift */,
+				1F74D7461FFC70EC00B746E6 /* MyPostsCell.swift */,
+				1F74D7471FFC70EC00B746E6 /* MyPostsCell.xib */,
+				C21F8C14219BEB8700C83D79 /* WhoJoin */,
+				C21F8C13219BEB7000C83D79 /* Messages */,
+			);
+			path = MyPosts;
+			sourceTree = "<group>";
+		};
+		C21F8C13219BEB7000C83D79 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				1F7E1E9D20035CAA0038C19C /* MessagesViewController.swift */,
+				1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */,
+				1F7E1EA120035E2A0038C19C /* MessageCell.swift */,
+				1F7E1EA220035E2A0038C19C /* MessageCell.xib */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		C21F8C14219BEB8700C83D79 /* WhoJoin */ = {
+			isa = PBXGroup;
+			children = (
+				1F74D7401FFB6B6500B746E6 /* WhoJoinController.swift */,
+				1F74D7441FFB6D3500B746E6 /* WhoJoinCell.swift */,
+				1F74D7421FFB6BD200B746E6 /* WhoJoinCell.xib */,
+			);
+			path = WhoJoin;
 			sourceTree = "<group>";
 		};
 		C2FB8904219BC65C0080ED9E /* Fonts */ = {
