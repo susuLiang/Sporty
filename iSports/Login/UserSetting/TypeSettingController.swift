@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 
 class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,9 +15,6 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
 
     var selectedType: String = ""
-
-    let keyChain = KeychainSwift()
-
     var selectedIndexPath: IndexPath?
 
     override func viewDidLoad() {
@@ -76,7 +72,7 @@ class TypeSettingController: UIViewController, UITableViewDelegate, UITableViewD
 
         let value = ["type": self.selectedType]
 
-        if let userUid = keyChain.get("uid") {
+        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
 
             let ref = Database.database().reference().child("users").child(userUid)
 

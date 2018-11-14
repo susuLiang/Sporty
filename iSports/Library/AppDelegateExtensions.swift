@@ -12,9 +12,7 @@ extension AppDelegate {
 
     // swiftlint:disable force_cast
     class var shared: AppDelegate {
-
         return UIApplication.shared.delegate as! AppDelegate
-
     }
     // swiftlint:enable force_cast
 

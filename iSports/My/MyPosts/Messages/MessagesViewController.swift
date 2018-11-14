@@ -8,14 +8,12 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 import Nuke
 import SCLAlertView
 import Crashlytics
 
 class MessagesViewController: UIViewController {
 
-    let keyChain = KeychainSwift()
     var messages: [Message] = []
     var thisActivityUid: String = "" {
         didSet {

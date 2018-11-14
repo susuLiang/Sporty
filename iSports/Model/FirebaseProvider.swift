@@ -8,13 +8,10 @@
 
 import Foundation
 import Firebase
-import KeychainSwift
 
 class FirebaseProvider {
 
     static let shared = FirebaseProvider()
-
-    var keyChain = KeychainSwift()
 
     func getData(completion: @escaping ([Activity]?, Error?) -> Void) {
         Database.database().reference().child("activities").observe(.value) { (snapshot: DataSnapshot) in
@@ -84,7 +81,7 @@ class FirebaseProvider {
         var results = [String: String]()
         var posts = [String: Activity]()
 
-        let userCurrentUid = keyChain.get("uid")
+        let userCurrentUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
 
         Database.database().reference().child("user_\(childKind)").queryOrdered(byChild: "user").queryEqual(toValue: userCurrentUid).observe(.value) { (snapshot: DataSnapshot) in
             if let objects = snapshot.value as? [String: AnyObject] {

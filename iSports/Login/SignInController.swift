@@ -8,14 +8,11 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 import SCLAlertView
 import TKSubmitTransition
 import IQKeyboardManagerSwift
 
 class SignInController: UIViewController {
-
-    let keyChain = KeychainSwift()
 
     @IBOutlet weak var logInButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
@@ -23,10 +20,9 @@ class SignInController: UIViewController {
     @IBAction func signIn(_ sender: Any) {
         logInButton.startLoadingAnimation()
         guard let email = emailText.text,
-            let password = passwordText.text
-            else {
-                print("Form is not valid.")
-                return
+              let password = passwordText.text else {
+            print("Form is not valid.")
+            return
         }
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
 
@@ -54,13 +50,15 @@ class SignInController: UIViewController {
                 return
             }
 
-            let uid = Auth.auth().currentUser?.uid
-
-            self.keyChain.set(uid!, forKey: "uid")
-            self.keyChain.set(email, forKey: "email")
+            if let uid = Auth.auth().currentUser?.uid {
+                UserDefaults.standard.set(uid, forKey: UserDefaultKey.uid.rawValue)
+            }
+            
+            UserDefaults.standard.set(email, forKey: UserDefaultKey.email.rawValue)
+            UserDefaults.standard.synchronize()
 
             self.logInButton.startFinishAnimation(0.2, completion: {
-                let tabBarController = TabBarController(itemTypes: [ .home, .map, .my, .setting])
+                let tabBarController = TabBarController(itemTypes: [.home, .map, .my, .setting])
                 tabBarController.selectedIndex = 0
                 self.present(tabBarController, animated: true, completion: nil)
                 })

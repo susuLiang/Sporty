@@ -9,7 +9,6 @@
 import UIKit
 import XLPagerTabStrip
 import Firebase
-import KeychainSwift
 import SCLAlertView
 import TimelineTableViewCell
 import Crashlytics
@@ -26,7 +25,7 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
     }
 
     var itemInfo = IndicatorInfo(title: "Join")
-    let userUid = KeychainSwift().get("uid")
+    let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
     var myMatches = [String: Activity]()
     var keyUid = [String]()
     var timeMatchArray: [[Activity]] = []

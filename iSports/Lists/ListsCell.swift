@@ -46,14 +46,14 @@ class ListsCell: UITableViewCell {
         imagePlaced.contentMode = .scaleToFill
 
         // titleLabel
-        titleLabel.font = UIFont(name: "ArialHebrew-Bold", size: 20)
+        titleLabel.font = UIFont(name: "MyriadApple-Semibold", size: 20)
 
         // timeLabel
-        timeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
+        timeLabel.font = UIFont(name: "MyriadApple-Semibold", size: 14)
         timeLabel.tintColor = .white
 
         //placeLabel
-        placeLabel.font = UIFont(name: "ArialHebrew-Bold", size: 14)
+        placeLabel.font = UIFont(name: "MyriadApple-Semibold", size: 14)
         placeLabel.tintColor = .white
 
     }

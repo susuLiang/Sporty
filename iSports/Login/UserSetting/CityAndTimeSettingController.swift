@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 
 enum SettingType {
 
@@ -22,8 +21,6 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sureButton: UIButton!
-
-    let keyChain = KeychainSwift()
 
     var selected: String? = ""
 
@@ -100,8 +97,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         case .city:
 
             let value = self.selected
-
-            if let userUid = keyChain.get("uid") {
+            if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
 
                 let ref = Database.database().reference().child("users").child(userUid)
 
@@ -122,7 +118,7 @@ class CityAndTimeSettingController: UIViewController, UITableViewDataSource, UIT
         case .time:
                 let value = self.selected
 
-                if let userUid = keyChain.get("uid") {
+                if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
 
                     let ref = Database.database().reference().child("users").child(userUid)
 

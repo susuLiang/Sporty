@@ -12,7 +12,6 @@ import GoogleMaps
 import GooglePlaces
 import NVActivityIndicatorView
 import SCLAlertView
-import KeychainSwift
 
 class ActivityViewController: UIViewController {
     
@@ -24,7 +23,6 @@ class ActivityViewController: UIViewController {
     }
     
     var activityViewModel = ActivityViewModel()
-    let keyChain = KeychainSwift()
     
     static func initVC(type: ActivityViewType) -> ActivityViewController {
         let activityView = UINib.load(nibName: "ActivityViewController") as! ActivityViewController
@@ -235,8 +233,8 @@ extension ActivityViewController: ActivityButtonDelegate {
         
         let ref = Database.database().reference()
         let refChild = ref.child("activities")
-        let uid = keyChain.get("uid") ?? ""
-        let authorName = keyChain.get("name") ?? ""
+        let uid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
+        let authorName = UserDefaults.standard.string(forKey: UserDefaultKey.name.rawValue) ?? ""
         let thisPost = activityViewModel.thisPost
         let value = ["name": thisPost.name,
                      "level": thisPost.level,

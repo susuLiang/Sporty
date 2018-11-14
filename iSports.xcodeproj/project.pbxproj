@@ -165,6 +165,7 @@
 		C21F8C0F219BD0D000C83D79 /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21F8BC6219BD0D000C83D79 /* NSViewExtensions.swift */; };
 		C21F8C10219BD0D000C83D79 /* NSImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21F8BC7219BD0D000C83D79 /* NSImageExtensions.swift */; };
 		C21F8C11219BD0D000C83D79 /* SwifterSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21F8BC8219BD0D000C83D79 /* SwifterSwift.swift */; };
+		C21F8C18219BFA1900C83D79 /* UserDefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21F8C17219BFA1900C83D79 /* UserDefaultKey.swift */; };
 		C2FB8909219BC8660080ED9E /* MYRIADAM.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8905219BC6690080ED9E /* MYRIADAM.TTF */; };
 		C2FB890A219BC8680080ED9E /* MYRIADAS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8908219BC6690080ED9E /* MYRIADAS.TTF */; };
 		C2FB890B219BC86A0080ED9E /* MYRIADAT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8907219BC6690080ED9E /* MYRIADAT.TTF */; };
@@ -358,6 +359,7 @@
 		C21F8BC6219BD0D000C83D79 /* NSViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtensions.swift; sourceTree = "<group>"; };
 		C21F8BC7219BD0D000C83D79 /* NSImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImageExtensions.swift; sourceTree = "<group>"; };
 		C21F8BC8219BD0D000C83D79 /* SwifterSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterSwift.swift; sourceTree = "<group>"; };
+		C21F8C17219BFA1900C83D79 /* UserDefaultKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKey.swift; sourceTree = "<group>"; };
 		C2FB8905219BC6690080ED9E /* MYRIADAM.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAM.TTF; sourceTree = "<group>"; };
 		C2FB8907219BC6690080ED9E /* MYRIADAT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAT.TTF; sourceTree = "<group>"; };
 		C2FB8908219BC6690080ED9E /* MYRIADAS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAS.TTF; sourceTree = "<group>"; };
@@ -406,7 +408,6 @@
 				1FFA2EF71FE8EB4500E485F1 /* Google-Maps-iOS-Utils */,
 				1FFA2EF41FE8AD3400E485F1 /* Model */,
 				1F6CE5C41FE11BFC006D6AAD /* AppDelegate.swift */,
-				1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */,
 				1F3897C02000DCC900910B10 /* GifViewController.swift */,
 				1F3897BC2000DC4400910B10 /* GifViewController.xib */,
 				1F31BB7C2002297D00DE9CFA /* sporty.gif */,
@@ -494,6 +495,7 @@
 		1FFA2EF41FE8AD3400E485F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C21F8C17219BFA1900C83D79 /* UserDefaultKey.swift */,
 				1FF6E3F21FEA44290070ADE8 /* UserSetting.swift */,
 				1F70C50A1FE3D3D600DDAF03 /* Activity.swift */,
 				1F8627861FF0D98900D82614 /* ColorSetting.swift */,
@@ -573,6 +575,7 @@
 				C21F8B73219BD0CF00C83D79 /* Extensions */,
 				C2FB8904219BC65C0080ED9E /* Fonts */,
 				1FFC9DE81FE16D1B003071B9 /* UINibExtensions.swift */,
+				1F74D73C1FF5E1A700B746E6 /* AppDelegateExtensions.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1190,6 +1193,7 @@
 				1F86278B1FF0E8BD00D82614 /* MapSearchCell.swift in Sources */,
 				1F6776631FFF8BFB00011404 /* ShowDetailController.swift in Sources */,
 				1FF6E3F01FEA30870070ADE8 /* MyMatchesController.swift in Sources */,
+				C21F8C18219BFA1900C83D79 /* UserDefaultKey.swift in Sources */,
 				C21F8BCC219BD0D000C83D79 /* CGPointExtensions.swift in Sources */,
 				C21F8C03219BD0D000C83D79 /* StringExtensions.swift in Sources */,
 				C21F8BF9219BD0D000C83D79 /* SKNodeExtensions.swift in Sources */,

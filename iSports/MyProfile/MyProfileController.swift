@@ -24,8 +24,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
     var loadingIndicator = LoadingIndicator()
 
-    let keyChain = KeychainSwift()
-
     let fusuma = FusumaViewController()
 
     var userImage = UIImage()
@@ -122,7 +120,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         setNavigationBar()
         setEditButton()
 
-        nameLabel.text = keyChain.get("name")
+        nameLabel.text = UserDefaults.standard.string(forKey: UserDefaultKey.name.rawValue) ?? ""
         userPhoto.layer.cornerRadius = 100
         userPhoto.clipsToBounds = true
 
@@ -139,7 +137,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
     }
 
     func getUserProfile() {
-        if let userUid = keyChain.get("uid") {
+        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
             FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
                 self.loadingIndicator.start()
                 if error == nil {
@@ -172,7 +170,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton(NSLocalizedString("SURE", comment: ""), action: {
-            self.keyChain.clear()
+            KeychainSwift().clear()
             do {
                 try Auth.auth().signOut()
             } catch let logoutError {
@@ -200,7 +198,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         userPhoto.layer.borderWidth = 0
         photoPickButton.isEnabled = false
 
-        guard let userUid = keyChain.get("uid") else { return }
+        guard let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) else { return }
 
         let userRef = Database.database().reference().child("users").child(userUid)
         if selectedIndexPath != nil {

@@ -14,8 +14,6 @@ import TKSubmitTransition
 
 class SignUpController: UIViewController {
 
-    let keyChain = KeychainSwift()
-
     @IBOutlet weak var signUpButton: TKTransitionSubmitButton!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -68,16 +66,18 @@ class SignUpController: UIViewController {
             let userReference = ref.child("users").child(uid)
             let value = ["name": name, "email": email]
             userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
-                if err != nil {
+                
+                guard err == nil else {
                     print(err)
                     return
                 }
-
-                self.keyChain.set(email, forKey: "email")
-                self.keyChain.set(password, forKey: "password")
-                self.keyChain.set(name, forKey: "name")
-                self.keyChain.set(uid, forKey: "uid")
-
+                
+                KeychainSwift().set(password, forKey: "password")
+                UserDefaults.standard.set(uid, forKey: UserDefaultKey.uid.rawValue)
+                UserDefaults.standard.set(email, forKey: UserDefaultKey.email.rawValue)
+                UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
+                UserDefaults.standard.synchronize()
+                
                 self.signUpButton.startFinishAnimation(0.2, completion: {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     guard let userSettingController = storyboard.instantiateViewController(withIdentifier: "typeSettingController") as? TypeSettingController else {
@@ -91,7 +91,6 @@ class SignUpController: UIViewController {
     }
 
     override func viewDidLoad() {
-        keyChain.clear()
         super.viewDidLoad()
         signUpButton.layer.cornerRadius = 10
         signUpButton.layer.shadowRadius = 10
@@ -105,17 +104,11 @@ class SignUpController: UIViewController {
 
     func showAlert(title: String?, message: String?, dismiss handler: ShowAlertDismissHandler?) {
 
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let ok = UIAlertAction(
-            title: NSLocalizedString("OK", comment: ""),
-            style: .cancel,
-            handler: { _ in handler?() }
-        )
+        let ok = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                               style: .cancel,
+                               handler: { _ in handler?() })
 
         alert.addAction(ok)
 

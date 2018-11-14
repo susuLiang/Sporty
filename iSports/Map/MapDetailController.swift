@@ -7,23 +7,15 @@
 //
 
 import UIKit
-import KeychainSwift
 import Crashlytics
 
 class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var tableView = UITableView()
-
-//    var keyChain = KeychainSwift()
-
     var selectedPlaceActivities = [Activity]()
-
     var mainViewController: MapController?
-
     var headerView = UITableViewHeaderFooterView()
-
     var selectedPlace: Place? {
-
         didSet {
             FirebaseProvider.shared.getPlaceAllActivities(place: selectedPlace, completion: { (results, error) in
                 self.selectedPlaceActivities = results!
@@ -42,21 +34,13 @@ class MapDetailController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
         view.addSubview(backButton)
-
         tableView.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 300, width: UIScreen.main.bounds.width, height: 300)
-
         tableView.delegate = self
-
         tableView.dataSource = self
-
         tableView.separatorStyle = .none
-
         setupTableCell()
-
         view.addSubview(tableView)
 
     }

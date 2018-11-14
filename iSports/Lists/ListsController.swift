@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import KeychainSwift
 import WCLShineButton
 import SCLAlertView
 import Crashlytics
@@ -17,7 +16,6 @@ import JTMaterialTransition
 class ListsController: UIViewController {
     // Property
     var isShowed = false
-    let keyChain = KeychainSwift()
     var results: [Activity] = []
 
     var selectedPreference: Preference? {
@@ -29,7 +27,7 @@ class ListsController: UIViewController {
     var userSetting: UserSetting? {
         didSet {
             if let name = userSetting?.name {
-                keyChain.set(name, forKey: "name")
+                UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
             }
             self.tableView.reloadData()
         }
@@ -59,16 +57,10 @@ class ListsController: UIViewController {
 
         super.viewDidLoad()
         view.backgroundColor = .clear
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        tableView.separatorStyle = .none
-        self.view.addSubview(tableView)
+        setupTableView()
         self.view.addSubview(addButton)
         setUpAddButton()
-        setupTableCell()
-        setNavigation()
+        setNavigationBar()
         fetch()
 
         getPosts()
@@ -82,14 +74,19 @@ class ListsController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    func setupTableCell() {
-        let nib = UINib(nibName: "ListsCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.separatorStyle = .none
+        self.view.addSubview(tableView)
+        tableView.register(nibWithCellClass: ListsCell.self)
     }
 
     func getUserProfile() {
-        if let userUid = keyChain.get("uid") {
+        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
             FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
                 if error == nil {
                     self.userSetting = userSetting
@@ -160,12 +157,13 @@ class ListsController: UIViewController {
 
     func search(selected: Preference) {
         FirebaseProvider.shared.getTypeData(selected: selected, completion: { [weak self] (results, error) in
-            if error == nil {
-                if results?.count == 0 {
+            guard let `self` = self else { return }
+            if error == nil, let results = results {
+                if results.count == 0 {
                     SCLAlertView().showNotice(NSLocalizedString("Not found any activity.", comment: ""), subTitle: "")
                 }
-                self?.results = results!
-                self?.tableView.reloadData()
+                self.results = results
+                self.tableView.reloadData()
             }
         })
     }
@@ -173,18 +171,20 @@ class ListsController: UIViewController {
     @objc func fetch() {
 
         if !Reachability.isConnectedToNetwork() {
-            SCLAlertView().showNotice(NSLocalizedString("Unable to connect", comment: ""), subTitle: NSLocalizedString("Please check network", comment: ""))
+            SCLAlertView().showNotice(NSLocalizedString("Unable to connect", comment: ""),
+                                      subTitle: NSLocalizedString("Please check network", comment: ""))
         }
 
         FirebaseProvider.shared.getData(completion: { [weak self] (results, error) in
-            if error == nil {
-                self?.results = results!
-                self?.tableView.reloadData()
+            guard let `self` = self else { return }
+            if error == nil, let results = results {
+                self.results = results
+                self.tableView.reloadData()
             }
         })
     }
 
-    func setNavigation() {
+    func setNavigationBar() {
         navigationItem.title = "Sporty"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "MyriadApple-Semibold", size: 24),
                                                                         NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -205,9 +205,9 @@ class ListsController: UIViewController {
     }
 }
 
-extension ListsController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - Table view data source
-
+// MARK: UITableViewDataSource
+extension ListsController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -217,14 +217,11 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListsCell else {
-            fatalError("Invalid ListsCell")
-        }
+        let cell = tableView.dequeueReusableCell(withClass: ListsCell.self, for: indexPath)
         let result = results[indexPath.row]
-
         cell.setCell(result)
+        
         var isMyMatch = false
-
         if result.authorUid != uid {
             for myMatch in myMatches where myMatch.id == result.id {
                 isMyMatch = true
@@ -250,17 +247,22 @@ extension ListsController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
+}
 
+// MARK: UITableViewDelegate
+extension ListsController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let detailView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
             print("ShowDetailController invalid")
             return
         }
         detailView.selectedActivity = results[indexPath.row]
+        detailView.myMatches = myMatches
         navigationController?.pushViewController(detailView, animated: true)
     }
 }

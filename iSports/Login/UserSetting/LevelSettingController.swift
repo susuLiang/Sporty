@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import KeychainSwift
 
 class LevelSettingController: UIViewController {
 
@@ -19,8 +18,6 @@ class LevelSettingController: UIViewController {
     @IBOutlet weak var buttonD: UIButton!
 
     var selectedLevel: String? = ""
-
-    var keyChain = KeychainSwift()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +72,7 @@ class LevelSettingController: UIViewController {
 
         let value = self.selectedLevel
 
-        if let userUid = keyChain.get("uid") {
+        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
 
             let ref = Database.database().reference().child("users").child(userUid)
 

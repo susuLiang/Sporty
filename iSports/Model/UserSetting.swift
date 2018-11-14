@@ -17,7 +17,6 @@ struct UserSetting {
 
     init(_ json: Any) throws {
 
-        var preference: Preference? = nil
         guard let data = json as? [String: AnyObject] else { throw JSONError.userSettingJsonError}
         guard let name = data["name"] as? String,
             let email = data["email"] as? String,

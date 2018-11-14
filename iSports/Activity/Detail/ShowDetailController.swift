@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
-import KeychainSwift
 import LGButton
 
 class ShowDetailController: UIViewController {
@@ -22,8 +21,6 @@ class ShowDetailController: UIViewController {
     @IBOutlet weak var joinButton: LGButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
-
-    let keyChain = KeychainSwift()
 
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -62,7 +59,7 @@ class ShowDetailController: UIViewController {
 
     func setJoinButton() {
         var isMyMatch = false
-        let uid = keyChain.get("uid")
+        let uid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
         if selectedActivity.authorUid != uid {
             for myMatch in myMatches where myMatch.id == selectedActivity.id {
                 isMyMatch = true
@@ -92,7 +89,7 @@ class ShowDetailController: UIViewController {
         joinButton.isHidden = true
         unJoinButton.isHidden = false
         unJoinButton.titleString = "已參加"
-        let uid = keyChain.get("uid")
+        let uid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
         let ref = Database.database().reference()
         let joinId = selectedActivity.id
         let newVaule = selectedActivity.number + 1
