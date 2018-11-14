@@ -246,6 +246,8 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         let logout = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-logout"), style: .plain, target: self, action: #selector(self.logout))
         navigationItem.rightBarButtonItem = logout
         navigationItem.title = NSLocalizedString("Profile", comment: "")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
 }

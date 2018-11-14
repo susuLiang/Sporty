@@ -60,29 +60,17 @@ class ListsController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
         view.backgroundColor = .clear
-
         tableView.delegate = self
-
         tableView.dataSource = self
-
         tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
         tableView.separatorStyle = .none
-
         self.view.addSubview(tableView)
-
         self.view.addSubview(addButton)
-
         setUpAddButton()
-
         setupTableCell()
-
         setNavigation()
-
         fetch()
 
         getPosts()
@@ -200,6 +188,9 @@ class ListsController: UIViewController {
 
     func setNavigation() {
         navigationItem.title = "Sporty"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
+
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(showSearchView))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")

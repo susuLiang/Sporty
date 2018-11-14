@@ -153,6 +153,9 @@
 		C20BFC48219A9C4700EAB486 /* ActivityMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BFC46219A9C4700EAB486 /* ActivityMapTableViewCell.swift */; };
 		C20BFC49219A9C4700EAB486 /* ActivityMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20BFC47219A9C4700EAB486 /* ActivityMapTableViewCell.xib */; };
 		C20BFC4B219AA82400EAB486 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BFC4A219AA82400EAB486 /* ActivityViewModel.swift */; };
+		C2FB8909219BC8660080ED9E /* MYRIADAM.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8905219BC6690080ED9E /* MYRIADAM.TTF */; };
+		C2FB890A219BC8680080ED9E /* MYRIADAS.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8908219BC6690080ED9E /* MYRIADAS.TTF */; };
+		C2FB890B219BC86A0080ED9E /* MYRIADAT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = C2FB8907219BC6690080ED9E /* MYRIADAT.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -331,6 +334,9 @@
 		C20BFC46219A9C4700EAB486 /* ActivityMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapTableViewCell.swift; sourceTree = "<group>"; };
 		C20BFC47219A9C4700EAB486 /* ActivityMapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityMapTableViewCell.xib; sourceTree = "<group>"; };
 		C20BFC4A219AA82400EAB486 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		C2FB8905219BC6690080ED9E /* MYRIADAM.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAM.TTF; sourceTree = "<group>"; };
+		C2FB8907219BC6690080ED9E /* MYRIADAT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAT.TTF; sourceTree = "<group>"; };
+		C2FB8908219BC6690080ED9E /* MYRIADAS.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = MYRIADAS.TTF; sourceTree = "<group>"; };
 		C6C5625200452BB789C1CC23 /* Pods_iSports.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSports.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16CEEBCF8DE1FE5AE8FF54A /* Pods-iSports.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -561,6 +567,7 @@
 		1FFC9DE51FE16C8B003071B9 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				C2FB8904219BC65C0080ED9E /* Fonts */,
 				C20BFBC3219A802000EAB486 /* Extensions */,
 				1FFC9DE81FE16D1B003071B9 /* UINibExtensions.swift */,
 			);
@@ -741,6 +748,16 @@
 			path = AppKit;
 			sourceTree = "<group>";
 		};
+		C2FB8904219BC65C0080ED9E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C2FB8905219BC6690080ED9E /* MYRIADAM.TTF */,
+				C2FB8908219BC6690080ED9E /* MYRIADAS.TTF */,
+				C2FB8907219BC6690080ED9E /* MYRIADAT.TTF */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -810,6 +827,8 @@
 				1F6CE5CF1FE11BFC006D6AAD /* LaunchScreen.storyboard in Resources */,
 				1F7E1EA020035CAA0038C19C /* MessagesViewController.xib in Resources */,
 				1FDB88E21FFF49920069E024 /* InfoPlist.strings in Resources */,
+				C2FB8909219BC8660080ED9E /* MYRIADAM.TTF in Resources */,
+				C2FB890A219BC8680080ED9E /* MYRIADAS.TTF in Resources */,
 				1F70C4FE1FE37E4B00DDAF03 /* SearchView.xib in Resources */,
 				C20BFBBE219A7A5700EAB486 /* ActivityBasicTableViewCell.xib in Resources */,
 				1F7E1EA420035E2A0038C19C /* MessageCell.xib in Resources */,
@@ -821,12 +840,14 @@
 				1F6CE5CC1FE11BFC006D6AAD /* Assets.xcassets in Resources */,
 				C20BFBC2219A7E2700EAB486 /* ActivityButtonTableViewCell.xib in Resources */,
 				C20BFBBA219A7A1300EAB486 /* ActivityViewController.xib in Resources */,
+				C2FB890B219BC86A0080ED9E /* MYRIADAT.TTF in Resources */,
 				1F74D7491FFC70EC00B746E6 /* MyPostsCell.xib in Resources */,
 				1FDB88DD1FFF49910069E024 /* Localizable.strings in Resources */,
 				1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */,
 				1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */,
 				C20BFC49219A9C4700EAB486 /* ActivityMapTableViewCell.xib in Resources */,
 				1F3897BD2000DC4400910B10 /* GifViewController.xib in Resources */,
+				C20BFBAC219A785400EAB486 /* GoogleService-Info.plist in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
 				1FEA3EB820073EF0009120E1 /* ShowDetailCollectionViewCell.xib in Resources */,
 			);

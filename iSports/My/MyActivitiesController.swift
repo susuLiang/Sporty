@@ -59,6 +59,8 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
 
     func setNavigationItem() {
         navigationItem.title = NSLocalizedString("My Activities", comment: "")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = myBlue
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "icon-left")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "icon-left")

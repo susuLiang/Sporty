@@ -57,6 +57,7 @@ class ActivityViewController: UIViewController {
             for index in 0..<ActivityCellType.count - 1 {
                 activityViewModel.cells.append(createCellByType(type: ActivityCellType(rawValue: index)!))
             }
+            getLocation(city: activityViewModel.thisPost.city, gym: activityViewModel.thisPost.type)
         }
     }
     

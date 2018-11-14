@@ -118,6 +118,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
 
     func setNavigationBar() {
         navigationItem.title = NSLocalizedString("Map", comment: "")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "MyriadApple-Semibold", size: 24),
+                                                                        NSAttributedStringKey.foregroundColor: UIColor.white]
         let searchButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon-search"), style: .plain, target: self, action: #selector(search))
         navigationItem.rightBarButtonItems = [searchButton]
         navigationController?.navigationBar.tintColor = .white
