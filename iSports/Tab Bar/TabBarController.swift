@@ -66,8 +66,9 @@ class TabBarController: UITabBarController {
         animation.duration = TimeInterval(0.5)
         animation.calculationMode = CAAnimationCalculationMode.cubic
         
-        let tabBarLayer = (tabBarButtonArray[index] as AnyObject).layer
-        tabBarLayer?.add(animation, forKey: "animtaion")
+        if let tabBarLayer = tabBarButtonArray[index] as? UIView {
+           tabBarLayer.layer.add(animation, forKey: "animtaion")
+        }
     }
 
     // MARK: Set Up
