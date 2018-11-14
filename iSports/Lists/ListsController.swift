@@ -53,47 +53,10 @@ class ListsController: UIViewController {
         setUpAddButton()
         
         setNavigationBar()
+        getUserProfile()
+        getPosts()
+        fetch()
         
-        let group = DispatchGroup()
-        let queue = DispatchQueue.global()
-        
-        group.enter()
-        queue.async {
-            self.fetch {
-                group.leave()
-            }
-        }
-        
-        group.enter()
-        queue.async {
-            FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
-                if let posts = posts {
-                    self.myMatches = Array(posts.values)
-                    group.leave()
-                }
-            })
-        }
-        
-        if let userUid = userUid {
-            group.enter()
-            queue.async {
-                FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
-                    if error == nil {
-                        self.userSetting = userSetting
-                        if let name = userSetting?.name {
-                            UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
-                        }
-                        group.leave()
-                    }
-                })
-            }
-        }
-        
-        group.notify(queue: queue) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,6 +73,16 @@ class ListsController: UIViewController {
         tableView.register(nibWithCellClass: ListsCell.self)
     }
 
+    func getUserProfile() {
+        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
+            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                if error == nil {
+                    self.userSetting = userSetting
+                }
+            })
+        }
+    }
+
     @objc func join(sender: UIButton) {
         sender.tintColor = UIColor.gray
         if let cell = sender.superview?.superview?.superview as? ListsCell,
@@ -121,6 +94,15 @@ class ListsController: UIViewController {
             ref.child("user_joinId").childByAutoId().setValue(["user": userUid, "joinId": joinId])
             ref.child("activities").child(joinId).child("number").setValue(newVaule)
         }
+    }
+
+    func getPosts() {
+        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+            if let posts = posts {
+                self.myMatches = Array(posts.values)
+                self.tableView.reloadData()
+            }
+        })
     }
 
     @objc func showSearchView() {
@@ -144,11 +126,7 @@ class ListsController: UIViewController {
             thisSearchView?.willMove(toParent: nil)
             thisSearchView?.view.removeFromSuperview()
             thisSearchView?.removeFromParent()
-            self.fetch(completionHandler: {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            })
+            self.fetch()
             isShowed = false
         }
     }
@@ -179,12 +157,12 @@ class ListsController: UIViewController {
         })
     }
 
-    @objc func fetch(completionHandler: @escaping () -> Void) {
+    @objc func fetch() {
         FirebaseProvider.shared.getData(completion: { [weak self] (results, error) in
             guard let `self` = self else { return }
             if error == nil, let results = results {
                 self.results = results
-                completionHandler()
+                self.tableView.reloadData()
             }
         })
     }
