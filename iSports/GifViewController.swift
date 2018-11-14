@@ -28,6 +28,7 @@ class GifViewController: UIViewController {
                 let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
                 self.present(loginController, animated: false, completion: nil)
             } else {
+                UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: UserDefaultKey.uid.rawValue)
                 let tabBarController = TabBarController(itemTypes: [.home, .map, .my, .setting])
                 tabBarController.selectedIndex = 0
                 self.present(tabBarController, animated: false, completion: nil)

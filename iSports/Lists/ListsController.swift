@@ -28,7 +28,7 @@ class ListsController: UIViewController {
 
     var ref = Database.database().reference()
     var transition: JTMaterialTransition?
-    let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
+    let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue)
 
     var myMatches: [Activity] = []
     var tableView = UITableView()
@@ -74,17 +74,19 @@ class ListsController: UIViewController {
             })
         }
         
-        group.enter()
-        queue.async {
-            FirebaseProvider.shared.getUserProfile(userUid: self.userUid, completion: { (userSetting, error) in
-                if error == nil {
-                    self.userSetting = userSetting
-                    if let name = userSetting?.name {
-                        UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
+        if let userUid = userUid {
+            group.enter()
+            queue.async {
+                FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
+                    if error == nil {
+                        self.userSetting = userSetting
+                        if let name = userSetting?.name {
+                            UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
+                        }
+                        group.leave()
                     }
-                    group.leave()
-                }
-            })
+                })
+            }
         }
         
         group.notify(queue: queue) {

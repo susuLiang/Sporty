@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1F290B5E1FFF4BEF00A4DA5A /* MyProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B601FFF4BEF00A4DA5A /* MyProfileCell.xib */; };
 		1F290B631FFF5C8100A4DA5A /* MyProfileController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F290B651FFF5C8100A4DA5A /* MyProfileController.xib */; };
-		1F318E18200F22110007BC08 /* GoogleMapKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F318E17200F22110007BC08 /* GoogleMapKey.swift */; };
 		1F318E1A200F25EF0007BC08 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F318E19200F25EF0007BC08 /* Reachability.swift */; };
 		1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1F31BB7C2002297D00DE9CFA /* sporty.gif */; };
 		1F3897BD2000DC4400910B10 /* GifViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F3897BC2000DC4400910B10 /* GifViewController.xib */; };
@@ -38,7 +37,6 @@
 		1F7E1EA020035CAA0038C19C /* MessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */; };
 		1F7E1EA320035E2A0038C19C /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7E1EA120035E2A0038C19C /* MessageCell.swift */; };
 		1F7E1EA420035E2A0038C19C /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F7E1EA220035E2A0038C19C /* MessageCell.xib */; };
-		1F8627791FF0A48B00D82614 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */; };
 		1F86277C1FF0A5B600D82614 /* MapDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86277A1FF0A5B600D82614 /* MapDetailController.swift */; };
 		1F8627841FF0D82000D82614 /* MapSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627821FF0D82000D82614 /* MapSearchController.swift */; };
 		1F8627871FF0D98900D82614 /* ColorSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8627861FF0D98900D82614 /* ColorSetting.swift */; };
@@ -82,7 +80,6 @@
 		1FFC9DF11FE17B81003071B9 /* ListsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF01FE17B81003071B9 /* ListsController.swift */; };
 		1FFC9DF31FE17FD4003071B9 /* ListsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */; };
 		AF7D1C3524BBB56E03E5420B /* Pods_iSports.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6C5625200452BB789C1CC23 /* Pods_iSports.framework */; };
-		C20BFBAC219A785400EAB486 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C20BFBAB219A785400EAB486 /* GoogleService-Info.plist */; };
 		C20BFBB9219A7A1300EAB486 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BFBB7219A7A1300EAB486 /* ActivityViewController.swift */; };
 		C20BFBBA219A7A1300EAB486 /* ActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C20BFBB8219A7A1300EAB486 /* ActivityViewController.xib */; };
 		C20BFBBD219A7A5700EAB486 /* ActivityBasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20BFBBB219A7A5700EAB486 /* ActivityBasicTableViewCell.swift */; };
@@ -176,7 +173,6 @@
 		1F290B621FFF4C0C00A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileCell.strings"; sourceTree = "<group>"; };
 		1F290B661FFF5C8600A4DA5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MyProfileController.xib; sourceTree = "<group>"; };
 		1F290B671FFF5C9000A4DA5A /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MyProfileController.strings"; sourceTree = "<group>"; };
-		1F318E17200F22110007BC08 /* GoogleMapKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapKey.swift; sourceTree = "<group>"; };
 		1F318E19200F25EF0007BC08 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1F31BB7C2002297D00DE9CFA /* sporty.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sporty.gif; sourceTree = "<group>"; };
 		1F3897BC2000DC4400910B10 /* GifViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GifViewController.xib; sourceTree = "<group>"; };
@@ -207,7 +203,6 @@
 		1F7E1E9E20035CAA0038C19C /* MessagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessagesViewController.xib; sourceTree = "<group>"; };
 		1F7E1EA120035E2A0038C19C /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		1F7E1EA220035E2A0038C19C /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
-		1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F86277A1FF0A5B600D82614 /* MapDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailController.swift; sourceTree = "<group>"; };
 		1F8627821FF0D82000D82614 /* MapSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchController.swift; sourceTree = "<group>"; };
 		1F8627861FF0D98900D82614 /* ColorSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetting.swift; sourceTree = "<group>"; };
@@ -276,7 +271,6 @@
 		1FFC9DF01FE17B81003071B9 /* ListsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsController.swift; sourceTree = "<group>"; };
 		1FFC9DF21FE17FD4003071B9 /* ListsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsCell.swift; sourceTree = "<group>"; };
 		4DD76A467625E70E85392DE9 /* Pods-iSports.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSports.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iSports/Pods-iSports.debug.xcconfig"; sourceTree = "<group>"; };
-		C20BFBAB219A785400EAB486 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C20BFBB7219A7A1300EAB486 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		C20BFBB8219A7A1300EAB486 /* ActivityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityViewController.xib; sourceTree = "<group>"; };
 		C20BFBBB219A7A5700EAB486 /* ActivityBasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityBasicTableViewCell.swift; sourceTree = "<group>"; };
@@ -400,7 +394,6 @@
 		1F6CE5C31FE11BFC006D6AAD /* iSports */ = {
 			isa = PBXGroup;
 			children = (
-				1F318E17200F22110007BC08 /* GoogleMapKey.swift */,
 				1FDB88E41FFF49920069E024 /* InfoPlist.strings */,
 				1FDB88DF1FFF49910069E024 /* Localizable.strings */,
 				1F74D73A1FF5E14400B746E6 /* FadeInOutTransition.swift */,
@@ -424,7 +417,6 @@
 				1F6CE5CB1FE11BFC006D6AAD /* Assets.xcassets */,
 				1F6CE5CD1FE11BFC006D6AAD /* LaunchScreen.storyboard */,
 				1F6CE5D01FE11BFC006D6AAD /* Info.plist */,
-				1F8627781FF0A48B00D82614 /* GoogleService-Info.plist */,
 			);
 			path = iSports;
 			sourceTree = "<group>";
@@ -941,7 +933,6 @@
 				1F31BB7D2002297E00DE9CFA /* sporty.gif in Resources */,
 				C20BFC49219A9C4700EAB486 /* ActivityMapTableViewCell.xib in Resources */,
 				1F3897BD2000DC4400910B10 /* GifViewController.xib in Resources */,
-				C20BFBAC219A785400EAB486 /* GoogleService-Info.plist in Resources */,
 				1F6CE5CA1FE11BFC006D6AAD /* Main.storyboard in Resources */,
 				1FEA3EB820073EF0009120E1 /* ShowDetailCollectionViewCell.xib in Resources */,
 			);
@@ -1207,7 +1198,6 @@
 				C21F8BD7219BD0D000C83D79 /* UICollectionViewExtensions.swift in Sources */,
 				C21F8BF2219BD0D000C83D79 /* FileManagerExtensions.swift in Sources */,
 				C21F8BE9219BD0D000C83D79 /* UIRefreshControlExtensions.swift in Sources */,
-				1F318E18200F22110007BC08 /* GoogleMapKey.swift in Sources */,
 				1FFA2F211FE8EB8D00E485F1 /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				C21F8BEB219BD0D000C83D79 /* UIFontExtensions.swift in Sources */,
 				C21F8BFF219BD0D000C83D79 /* FloatExtensions.swift in Sources */,
