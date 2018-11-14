@@ -44,7 +44,6 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     }
 
     // MARK: - PagerTabStripDataSource
-
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let matchesVC = MyMatchesController(itemInfo: IndicatorInfo(title: NSLocalizedString("Join", comment: "")))
         let postsVC = MyPostsController(itemInfo: IndicatorInfo(title: NSLocalizedString("MyPosts", comment: "")))
@@ -52,7 +51,6 @@ class MyActivitiesController: ButtonBarPagerTabStripViewController {
     }
 
     // MARK: - Actions
-
     @IBAction func closeAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

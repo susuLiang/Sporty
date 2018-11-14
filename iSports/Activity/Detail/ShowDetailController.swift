@@ -50,7 +50,7 @@ class ShowDetailController: UIViewController {
         collectionView.register(UINib(nibName: "ShowDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         collectionViewFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3 - 20), height: 105)
-
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -24,22 +24,13 @@ class ListsController: UIViewController {
         }
     }
 
-    var userSetting: UserSetting? {
-        didSet {
-            if let name = userSetting?.name {
-                UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
-            }
-            self.tableView.reloadData()
-        }
-    }
-
-    var uid = Auth.auth().currentUser?.uid
+    var userSetting: UserSetting?
 
     var ref = Database.database().reference()
-
     var transition: JTMaterialTransition?
+    let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
 
-    var myMatches = [Activity]()
+    var myMatches: [Activity] = []
     var tableView = UITableView()
     var thisSearchView: SearchViewController?
 
@@ -60,15 +51,47 @@ class ListsController: UIViewController {
         setupTableView()
         self.view.addSubview(addButton)
         setUpAddButton()
+        
         setNavigationBar()
-        fetch()
-
-        getPosts()
-
-        getUserProfile()
-
-        self.transition = JTMaterialTransition(animatedView: self.addButton)
-
+        
+        let group = DispatchGroup()
+        let queue = DispatchQueue.global()
+        
+        group.enter()
+        queue.async {
+            self.fetch {
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        queue.async {
+            FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
+                if let posts = posts {
+                    self.myMatches = Array(posts.values)
+                    group.leave()
+                }
+            })
+        }
+        
+        group.enter()
+        queue.async {
+            FirebaseProvider.shared.getUserProfile(userUid: self.userUid, completion: { (userSetting, error) in
+                if error == nil {
+                    self.userSetting = userSetting
+                    if let name = userSetting?.name {
+                        UserDefaults.standard.set(name, forKey: UserDefaultKey.name.rawValue)
+                    }
+                    group.leave()
+                }
+            })
+        }
+        
+        group.notify(queue: queue) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,16 +108,6 @@ class ListsController: UIViewController {
         tableView.register(nibWithCellClass: ListsCell.self)
     }
 
-    func getUserProfile() {
-        if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
-            FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
-                if error == nil {
-                    self.userSetting = userSetting
-                }
-            })
-        }
-    }
-
     @objc func join(sender: UIButton) {
         sender.tintColor = UIColor.gray
         if let cell = sender.superview?.superview?.superview as? ListsCell,
@@ -103,18 +116,9 @@ class ListsController: UIViewController {
             let joinId = results[indexPath.row].id
             let newVaule = results[indexPath.row].number + 1
 
-            ref.child("user_joinId").childByAutoId().setValue(["user": uid, "joinId": joinId])
+            ref.child("user_joinId").childByAutoId().setValue(["user": userUid, "joinId": joinId])
             ref.child("activities").child(joinId).child("number").setValue(newVaule)
         }
-    }
-
-    func getPosts() {
-        FirebaseProvider.shared.getPosts(childKind: "joinId", completion: { (posts, error) in
-            if let posts = posts {
-                self.myMatches = Array(posts.values)
-                self.tableView.reloadData()
-            }
-        })
     }
 
     @objc func showSearchView() {
@@ -123,8 +127,10 @@ class ListsController: UIViewController {
             return
         }
         searchView.mainViewController = self
-        searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150, y: (self.navigationController?.navigationBar.frame.height)! + UIApplication.shared.statusBarFrame.height,
-                                       width: 150, height: UIScreen.main.bounds.height)
+        searchView.view.frame = CGRect(x: UIScreen.main.bounds.width - 150,
+                                       y: self.navigationController?.navigationBar.frame.height ?? 0 + UIApplication.shared.statusBarFrame.height,
+                                       width: 150,
+                                       height: UIScreen.main.bounds.height)
 
         if !isShowed {
             self.addChild(searchView)
@@ -136,13 +142,16 @@ class ListsController: UIViewController {
             thisSearchView?.willMove(toParent: nil)
             thisSearchView?.view.removeFromSuperview()
             thisSearchView?.removeFromParent()
-            self.fetch()
+            self.fetch(completionHandler: {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
             isShowed = false
         }
     }
 
     @objc func showAddView() {
-        
         guard let activityView = UINib.load(nibName: "ActivityViewController") as? ActivityViewController else {
             print("ActivityViewController invalid")
             return
@@ -168,18 +177,12 @@ class ListsController: UIViewController {
         })
     }
 
-    @objc func fetch() {
-
-        if !Reachability.isConnectedToNetwork() {
-            SCLAlertView().showNotice(NSLocalizedString("Unable to connect", comment: ""),
-                                      subTitle: NSLocalizedString("Please check network", comment: ""))
-        }
-
+    @objc func fetch(completionHandler: @escaping () -> Void) {
         FirebaseProvider.shared.getData(completion: { [weak self] (results, error) in
             guard let `self` = self else { return }
             if error == nil, let results = results {
                 self.results = results
-                self.tableView.reloadData()
+                completionHandler()
             }
         })
     }
@@ -202,6 +205,7 @@ class ListsController: UIViewController {
         addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        self.transition = JTMaterialTransition(animatedView: self.addButton)
     }
 }
 
@@ -222,7 +226,7 @@ extension ListsController: UITableViewDataSource {
         cell.setCell(result)
         
         var isMyMatch = false
-        if result.authorUid != uid {
+        if result.authorUid != userUid {
             for myMatch in myMatches where myMatch.id == result.id {
                 isMyMatch = true
             }

@@ -40,8 +40,6 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
 
     var mainViewController: ListsController?
 
-    var level: [String] = ["A", "B", "C", "D"]
-
     var selectedType: String?
     var selectedLevel: String?
     var selectedPlace: String?
@@ -79,7 +77,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
 
         switch pickerView {
         case typePicker: return typeArray.count
-        case levelPicker : return level.count
+        case levelPicker : return levelArray.count
         case timePicker: return time.count
         case placePicker: return cityArray.count
         default: return 1
@@ -90,7 +88,7 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
         case typePicker: return typeArray[row]
-        case levelPicker : return level[row]
+        case levelPicker : return levelArray[row]
         case timePicker: return time[row]
         case placePicker: return cityArray[row]
         default: return ""
@@ -103,8 +101,8 @@ class SearchViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             typeTF.text = typeArray[row]
             self.selectedType = typeArray[row]
         case levelPicker :
-            levelTF.text = level[row]
-            self.selectedLevel = level[row]
+            levelTF.text = levelArray[row]
+            self.selectedLevel = levelArray[row]
         case timePicker:
             timeTF.text = time[row]
             self.selectedTime = time[row]

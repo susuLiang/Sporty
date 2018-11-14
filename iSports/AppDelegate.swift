@@ -36,13 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // swiftlint:enable force_cast
 
         let rootViewController = gifViewController
-
         let window = UIWindow(frame: UIScreen.main.bounds)
-
         window.rootViewController = rootViewController
-
         window.makeKeyAndVisible()
-
         self.window = window
 
         return true

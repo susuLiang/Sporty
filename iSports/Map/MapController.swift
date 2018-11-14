@@ -20,7 +20,8 @@ class MapController: UIViewController, GMSMapViewDelegate {
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
 
-    var mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
+    var mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight),
+                                 camera: GMSCameraPosition.camera(withLatitude: 25.0472, longitude: 121.564939, zoom: 12.0))
 
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 14.0
@@ -40,9 +41,7 @@ class MapController: UIViewController, GMSMapViewDelegate {
     }
 
     let searchView = MapSearchController()
-
     var isShowed = false
-
     var detailView: MapDetailController?
 
     override func viewDidLoad() {
@@ -52,7 +51,6 @@ class MapController: UIViewController, GMSMapViewDelegate {
         setNavigationBar()
         getLocation()
         setSearchBar()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,20 +64,21 @@ class MapController: UIViewController, GMSMapViewDelegate {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
 
-        let subView = UIView(frame: CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.height)! + UIApplication.shared.statusBarFrame.height, width: 350.0, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0,
+                                           y: (self.navigationController?.navigationBar.frame.height) ?? 0 + UIApplication.shared.statusBarFrame.height,
+                                           width: SwifterSwift.screenWidth,
+                                           height: 45.0))
 
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
 
-        // When UISearchController presents the results view, present it in
-        // this view controller, not one further up the chain.
         definesPresentationContext = true
     }
 
     func setMapView() {
-        mapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIScreen.main.bounds.height)
+        mapView.frame = CGRect(x: 0, y: 0, width: SwifterSwift.screenWidth, height: SwifterSwift.screenHeight)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         view.addSubview(mapView)
@@ -130,15 +129,10 @@ class MapController: UIViewController, GMSMapViewDelegate {
 extension MapController {
 
     func getLocation() {
-
         FirebaseProvider.shared.getData(completion: { (results, error) in
-
-            if error == nil {
-
-                self.results = results!
-
+            if error == nil, let results = results {
+                self.results = results
                 self.setMarker(activities: self.results)
-
             }
         })
     }
@@ -151,10 +145,8 @@ extension MapController {
 
             let marker = GMSMarker()
 
-            marker.position = CLLocationCoordinate2D(
-                latitude: Double(court.place.placeLatitude)!,
-                longitude: Double(court.place.placeLongitude)!
-            )
+            marker.position = CLLocationCoordinate2D(latitude: Double(court.place.placeLatitude) ?? 0.0,
+                                                     longitude: Double(court.place.placeLongitude) ?? 0.0)
 
             marker.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
             marker.title = court.id
@@ -189,9 +181,8 @@ extension MapController {
             backView.clipsToBounds = true
 
             marker.iconView = backView
-
-//            marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
             marker.map = mapView
+//            marker.icon = UIImage(named: iconName)?.withRenderingMode(.alwaysTemplate)
 
         }
     }

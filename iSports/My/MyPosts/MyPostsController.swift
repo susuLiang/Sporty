@@ -16,7 +16,6 @@ class MyPostsController: UIViewController, IndicatorInfoProvider {
 
     var user: UserSetting?
     var tableView = UITableView()
-    let userUid = Auth.auth().currentUser?.uid
     var itemInfo = IndicatorInfo(title: "MyPosts")
     var myPosts: [Activity] = []
     var keyUid: [String] = []

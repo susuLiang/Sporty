@@ -19,27 +19,17 @@ import LGButton
 class MyProfileController: UIViewController, UITextFieldDelegate {
 
     var cache = NSCache<AnyObject, AnyObject>()
-
     var cell: MyProfileCell?
-
     var loadingIndicator = LoadingIndicator()
-
     let fusuma = FusumaViewController()
-
     var userImage = UIImage()
-
     var userSetting: UserSetting?
-
     var settingType = [NSLocalizedString("Profile", comment: ""), NSLocalizedString("Preference", comment: "")]
-
     var settingIconName = ["profile-user", "profile-setting"]
-
     var isEdit = false
-
     var isExpanded = [false, false]
-
     var selectedIndexPath: IndexPath?
-
+    
     var typePicker = UIPickerView()
     var timePicker = UIPickerView()
     var levelPicker = UIPickerView()
@@ -97,13 +87,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
             blurBackView.image = nil
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
-//        self.loadingIndicator.start()
+        tableView.tableFooterView = UIView()
+        tableView.register(nibWithCellClass: MyProfileCell.self)
 
         saveButton.isHidden = true
         saveButton.titleString = NSLocalizedString("Save", comment: "")
@@ -111,8 +100,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
         pickerDelegate()
         getUserProfile()
-
-        setupTableCell()
 
         fusuma.delegate = self
         fusuma.cropHeightRatio = 0.6
@@ -138,12 +125,12 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 
     func getUserProfile() {
         if let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) {
+            self.loadingIndicator.start()
             FirebaseProvider.shared.getUserProfile(userUid: userUid, completion: { (userSetting, error) in
-                self.loadingIndicator.start()
-                if error == nil {
+                if error == nil, let userSetting = userSetting  {
                     self.userSetting = userSetting
-                    self.nameLabel.text = self.userSetting?.name
-                    if userSetting?.urlString != nil {
+                    self.nameLabel.text = userSetting.name
+                    if userSetting.urlString != nil {
                         self.loadUserPhoto()
                     }
                 }
@@ -198,17 +185,15 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
         userPhoto.layer.borderWidth = 0
         photoPickButton.isEnabled = false
 
-        guard let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) else { return }
-
+        let userUid = UserDefaults.standard.string(forKey: UserDefaultKey.uid.rawValue) ?? ""
         let userRef = Database.database().reference().child("users").child(userUid)
         if selectedIndexPath != nil {
-            if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell {
-
-                let name = cell.nameSettimgTextField.text
-                let type = cell.typeSettingTextField.text
-                let city = cell.citySettingTextField.text
-                let level = cell.levelSettingTextField.text
-                let time = cell.timeSettingTextField.text
+            if let cell = tableView.cellForRow(at: selectedIndexPath!) as? MyProfileCell,
+                let name = cell.nameSettimgTextField.text,
+                let type = cell.typeSettingTextField.text,
+                let city = cell.citySettingTextField.text,
+                let level = cell.levelSettingTextField.text,
+                let time = cell.timeSettingTextField.text {
                 let value = ["name": name]
                 let preferenceValue = ["type": type, "city": city, "level": level, "time": time]
                 userRef.updateChildValues(value)
@@ -227,7 +212,7 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
                     // Todo: error handling
                     return
                 }
-                let downloadURL = metadata.downloadURL()?.absoluteString
+                let downloadURL = metadata.downloadURL()?.absoluteString ?? ""
                 let value = ["imageURL": downloadURL]
                 ref.child("users").child(userUid).updateChildValues(value)
             }
@@ -251,11 +236,6 @@ class MyProfileController: UIViewController, UITextFieldDelegate {
 }
 
 extension MyProfileController: UITableViewDelegate, UITableViewDataSource {
-
-    func setupTableCell() {
-        let nib = UINib(nibName: "MyProfileCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return settingType.count

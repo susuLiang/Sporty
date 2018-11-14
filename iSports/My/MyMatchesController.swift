@@ -13,7 +13,7 @@ import SCLAlertView
 import TimelineTableViewCell
 import Crashlytics
 
-class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewDelegate, UITableViewDataSource {
+class MyMatchesController: UIViewController, IndicatorInfoProvider {
 
     init(itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
@@ -133,13 +133,19 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         alertView.addButton(NSLocalizedString("NO", comment: "")) {}
         alertView.showWarning(NSLocalizedString("Sure to quit ?", comment: ""), subTitle: "")
     }
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
+    }
 
-    // MARK: - Table view data source
+}
 
+// MARK: UITableViewDataSource
+extension MyMatchesController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 7
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if timeMatchArray.count > 0 {
             switch section {
@@ -152,60 +158,52 @@ class MyMatchesController: UIViewController, IndicatorInfoProvider, UITableViewD
         }
         return 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as? TimelineTableViewCell
             else { fatalError() }
-        switch indexPath.section {
-        case indexPath.section:
-            let timeMatchs = timeMatchArray[indexPath.section]
-
-            timeMatchs.sorted(by: {$0.time < $1.time})
-
-            cell.titleLabel.text = timeMatchs[indexPath.row].time
-
-            cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
-            cell.newTitleLabel.text = timeMatchs[indexPath.row].name
-            let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)
-            cell.cancelButton.setImage(quitIcon, for: .normal)
-            cell.cancelButton.tintColor = .red
-            cell.cancelButton.addTarget(self, action: #selector(quitIt), for: .touchUpInside)
-            cell.chatButton.setImage(UIImage(named: "icon-chat"), for: .normal)
-            cell.chatButton.addTarget(self, action: #selector(showMessages), for: .touchUpInside)
-            switch timeMatchs[indexPath.row].type {
-            case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
-            case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
-            case "籃球": cell.thumbnailImageView.image = UIImage(named: "basketball")!
-            case "排球": cell.thumbnailImageView.image = UIImage(named: "volleyball")!
-            case "網球": cell.thumbnailImageView.image = UIImage(named: "tennis")!
-            case "足球": cell.thumbnailImageView.image = UIImage(named: "soccer")!
-            default:
-                return cell
-            }
-        default:
-            break
+        
+        let timeMatchs = timeMatchArray[indexPath.section].sorted(by: {$0.time < $1.time})
+        
+        cell.titleLabel.text = timeMatchs[indexPath.row].time
+        cell.placeLabel.text = timeMatchs[indexPath.row].place.placeName
+        cell.newTitleLabel.text = timeMatchs[indexPath.row].name
+        let quitIcon = UIImage(named: "icon-quit")?.withRenderingMode(.alwaysTemplate)
+        cell.cancelButton.setImage(quitIcon, for: .normal)
+        cell.cancelButton.tintColor = .red
+        cell.cancelButton.addTarget(self, action: #selector(quitIt), for: .touchUpInside)
+        cell.chatButton.setImage(UIImage(named: "icon-chat"), for: .normal)
+        cell.chatButton.addTarget(self, action: #selector(showMessages), for: .touchUpInside)
+        switch timeMatchs[indexPath.row].type {
+        case "羽球": cell.thumbnailImageView.image = UIImage(named: "badminton")!
+        case "棒球": cell.thumbnailImageView.image = UIImage(named: "baseball")!
+        case "籃球": cell.thumbnailImageView.image = UIImage(named: "basketball")!
+        case "排球": cell.thumbnailImageView.image = UIImage(named: "volleyball")!
+        case "網球": cell.thumbnailImageView.image = UIImage(named: "tennis")!
+        case "足球": cell.thumbnailImageView.image = UIImage(named: "soccer")!
+        default: break
         }
+        
         return cell
     }
 
+}
+
+// MARK: UITableViewDelegate
+extension MyMatchesController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let activityView = UINib.load(nibName: "ShowDetailController") as? ShowDetailController else {
             print("ShowDetailController invalid")
             return
         }
-
+        
         let thatWeek = timeMatchArray[indexPath.section]
-
+        
         activityView.selectedActivity = thatWeek[indexPath.row]
         navigationController?.pushViewController(activityView, animated: true)
     }
-
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return itemInfo
-    }
-
 }
