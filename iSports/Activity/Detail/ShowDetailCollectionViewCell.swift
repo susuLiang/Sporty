@@ -25,7 +25,6 @@ class ShowDetailCollectionViewCell: UICollectionViewCell {
         descriptionView.layer.shadowRadius = 3
         descriptionView.layer.shadowOffset = CGSize(width: 0, height: 0)
         descriptionView.layer.shadowOpacity = 1
-
     }
 
     func setCell(title: String, detail: Any) {

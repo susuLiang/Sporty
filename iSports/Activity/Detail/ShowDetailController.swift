@@ -49,10 +49,9 @@ class ShowDetailController: UIViewController {
         unJoinButton.isHidden = true
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "ShowDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         collectionViewFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3 - 20), height: 105)
-        
+        collectionView.register(nibWithCellClass: ShowDetailCollectionViewCell.self)
     }
 
     override func didReceiveMemoryWarning() {

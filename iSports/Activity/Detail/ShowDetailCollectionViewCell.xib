@@ -75,7 +75,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="iJc-ZZ-03g" id="bBc-BH-CiD"/>
                 <outlet property="descriptionView" destination="dmU-KG-ynW" id="072-zf-cbn"/>
-                <outlet property="titleLabel" destination="Yll-ni-qGB" id="PAj-Sk-VyP"/>
+                <outlet property="titleLabel" destination="Yll-ni-qGB" id="koN-Hs-9xr"/>
                 <outlet property="titleView" destination="ELW-Cc-Pk8" id="q3b-B4-2V4"/>
             </connections>
             <point key="canvasLocation" x="53" y="78"/>
