@@ -115,6 +115,9 @@
 /* No comment provided by engineer. */
 "Please fill up the blank." = "請填滿所有空格";
 
+/* first row in picker */
+"Please select" = "請選擇";
+
 /* No comment provided by engineer. */
 "Preference" = "喜好設定";
 

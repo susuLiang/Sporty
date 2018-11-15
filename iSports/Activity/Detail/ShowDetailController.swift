@@ -14,6 +14,7 @@ import LGButton
 
 class ShowDetailController: UIViewController {
 
+    @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var courtLabel: UILabel!
     @IBOutlet weak var unJoinButton: LGButton!
@@ -36,6 +37,7 @@ class ShowDetailController: UIViewController {
                 mapPlacedView.addSubview(setMap(latitude: Double(place.placeLatitude) ?? 0.0,
                                                 longitude: Double(place.placeLongitude) ?? 0.0))
             }
+            authorNameLabel.text = NSLocalizedString("By : ", comment: "") + selectedActivity.author
             setJoinButton()
         }
     }

@@ -22,7 +22,6 @@ class GifViewController: UIViewController {
         self.gifImage.setGifImage(gif, manager: gifmanager, loopCount: 1)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-
             if Auth.auth().currentUser?.uid == nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let loginController = storyboard.instantiateViewController(withIdentifier: "loginController")
