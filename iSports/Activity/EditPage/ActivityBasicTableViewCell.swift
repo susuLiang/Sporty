@@ -99,6 +99,8 @@ extension ActivityBasicTableViewCell: UIPickerViewDataSource, UIPickerViewDelega
                 selectedTime.minute = minute[row-1]
                 if minute[row-1] == "0" {
                     selectedTime.minute = "00"
+                } else if minute[row-1] == "5" {
+                    selectedTime.minute =  "05"
                 }
                 
             default: break
